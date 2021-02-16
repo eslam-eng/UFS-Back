@@ -109,6 +109,5 @@ Route::group(['namespace'=>'App\Http\Controllers'], function (){
     Route::post('statuses/store', 'StatusController@store');
     Route::post('statuses/update/{resource}', 'StatusController@update');
     Route::post('statuses/delete/{resource}', 'StatusController@destroy');
-    
 
 });
