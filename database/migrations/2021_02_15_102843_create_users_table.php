@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('photo');
-            $table->enum('active',[0,1]);
+            $table->enum('active',[0,1])->default(1);
             $table->string('notes');
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
