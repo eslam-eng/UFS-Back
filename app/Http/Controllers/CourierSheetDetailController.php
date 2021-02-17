@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+use App\Models\CourierSheetDetail;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class CourierSheetDetailController extends Controller
 {
     public function index()
     {
-        $query = Department::latest()->get();
+        $query = CourierSheetDetail::with('sheet','awb')->latest()->get();
         return $query;
     }
-
 
     public function store(Request $request)
     {
@@ -21,8 +20,8 @@ class DepartmentController extends Controller
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
-            $resource = Department::create($request->all());
-            watch(__('add department').$resource->name,'fa fa-codepen');
+            $resource = CourierSheetDetail::create($request->all());
+            watch(__('add courierSheetDetail').$resource->sheet_id,'fa fa-file');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -30,16 +29,15 @@ class DepartmentController extends Controller
     }
 
 
-
-    public function update(Request $request, Department $resource)
+    public function update(Request $request, CourierSheetDetail $resource)
     {
-        $validator = validator($request->all(),$this->rules($request->id));
+        $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update department').$resource->name,'fa fa-codepen');
+            watch(__('update courierSheetDetail').$resource->sheet_id,'fa fa-file');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -47,11 +45,11 @@ class DepartmentController extends Controller
     }
 
 
-    public function destroy(Department $resource)
+    public function destroy(CourierSheetDetail $resource)
     {
         try {
             $resource->delete();
-            watch(__('delete department').$resource->name,'fa fa-trash');
+            watch(__('delete courierSheetDetail').$resource->sheet_id,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -60,10 +58,11 @@ class DepartmentController extends Controller
     }
 
 
-    public function rules($id=null)
+    public function rules()
     {
         return [
-            'name'=>'required|string|unique:departments,name,'.$id,
+            'sheet_id'=>'required|integer|exists:courier_sheets,id',
+            'awb_id'=>'required|integer|exists:awbs,id',
         ];
     }
 }

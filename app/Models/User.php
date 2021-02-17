@@ -59,4 +59,13 @@ class User extends Model
         return $this->hasMany('App\Models\Pickup','user_id');
     }
 
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','user_id');
+    }
+
+    public function awbHistory()
+    {
+        return $this->hasMany('App\Models\AwbHistory','user_id');
+    }
 }

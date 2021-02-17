@@ -27,6 +27,7 @@ class CityController extends Controller
         }
         try {
             $resource = City::create($request->all());
+            watch(__('add city').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -49,6 +50,7 @@ class CityController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update city').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -60,6 +62,7 @@ class CityController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete city').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

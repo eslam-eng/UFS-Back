@@ -26,7 +26,9 @@ class BranchController extends Controller
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
+
             $resource = Branch::create($request->all());
+            watch(__('add branch').$resource->name,'fa fa-code-branch');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -49,6 +51,7 @@ class BranchController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update branch').$resource->name,'fa fa-code-branch');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -60,6 +63,7 @@ class BranchController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete branch').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

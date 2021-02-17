@@ -9,4 +9,9 @@ class Service extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
+
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','service_id');
+    }
 }

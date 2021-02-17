@@ -49,6 +49,7 @@ class CreateAwbsTable extends Migration
             $table->date('date');
             $table->double('weight');
             $table->double('pieces');
+            $table->double('collection');
 
             $table->timestamps();
         });

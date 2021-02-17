@@ -24,6 +24,11 @@ class Area extends Model
     {
         return $this->hasMany('App\Models\Receiver','area_id');
     }
+
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','area_id');
+    }
 }
 
 

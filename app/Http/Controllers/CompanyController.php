@@ -22,6 +22,7 @@ class CompanyController extends Controller
         }
         try {
             $resource = Company::create($request->all());
+            watch(__('add company').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -37,6 +38,7 @@ class CompanyController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update company').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -48,6 +50,7 @@ class CompanyController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete company').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

@@ -52,4 +52,9 @@ class Company extends Model
     {
         return $this->hasMany('App\Models\User','company_id');
     }
+
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','company_id');
+    }
 }

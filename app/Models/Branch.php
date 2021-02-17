@@ -23,4 +23,9 @@ class Branch extends Model
     {
         return $this->hasMany('App\Models\User','branch_id');
     }
+
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','branch_id');
+    }
 }

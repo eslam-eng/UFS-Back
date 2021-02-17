@@ -24,4 +24,9 @@ class Receiver extends Model
     {
         return $this->belongsTo('App\Models\Area','area_id');
     }
+
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','receiver_id');
+    }
 }

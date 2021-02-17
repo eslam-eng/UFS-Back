@@ -21,13 +21,12 @@ class ServiceController extends Controller
         }
         try {
             $resource = Service::create($request->all());
+            watch(__('add service').$resource->name,'fa fa-cubes');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
-
-
 
     public function update(Request $request, Service $resource)
     {
@@ -37,24 +36,24 @@ class ServiceController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update service').$resource->name,'fa fa-cubes');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
 
-
     public function destroy(Service $resource)
     {
         try {
             $resource->delete();
+            watch(__('delete service').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
 
     }
-
 
     public function rules($id=null)
     {

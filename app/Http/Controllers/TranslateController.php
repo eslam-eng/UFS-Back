@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+use App\Models\Translation;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class TranslateController extends Controller
 {
     public function index()
     {
-        $query = Department::latest()->get();
+        $query = Translation::latest()->get();
         return $query;
     }
-
 
     public function store(Request $request)
     {
@@ -21,37 +20,34 @@ class DepartmentController extends Controller
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
-            $resource = Department::create($request->all());
-            watch(__('add department').$resource->name,'fa fa-codepen');
+            $resource = Translation::create($request->all());
+            watch(__('add translation').$resource->name_en,'fa fa-cubes');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
 
-
-
-    public function update(Request $request, Department $resource)
+    public function update(Request $request, Translation $resource)
     {
-        $validator = validator($request->all(),$this->rules($request->id));
+        $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update department').$resource->name,'fa fa-codepen');
+            watch(__('update translation').$resource->name_en,'fa fa-language');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
 
-
-    public function destroy(Department $resource)
+    public function destroy(Translation $resource)
     {
         try {
             $resource->delete();
-            watch(__('delete department').$resource->name,'fa fa-trash');
+            watch(__('delete translation').$resource->name_en,'fa fa-language');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -59,11 +55,12 @@ class DepartmentController extends Controller
 
     }
 
-
-    public function rules($id=null)
+    public function rules()
     {
         return [
-            'name'=>'required|string|unique:departments,name,'.$id,
+            'key'=>'required|string',
+            'name_ar'=>'required',
+            'name_en'=>'required'
         ];
     }
 }

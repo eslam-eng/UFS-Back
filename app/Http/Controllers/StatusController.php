@@ -22,6 +22,7 @@ class StatusController extends Controller
         }
         try {
             $resource = Status::create($request->all());
+            watch(__('add status').$resource->code,'fa fa-stack-exchange');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -38,6 +39,7 @@ class StatusController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update status').$resource->code,'fa fa-stack-exchange');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -49,6 +51,7 @@ class StatusController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete status').$resource->code,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

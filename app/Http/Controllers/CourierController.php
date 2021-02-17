@@ -23,6 +23,7 @@ class CourierController extends Controller
         }
         try {
             $resource = Courier::create($request->all());
+            watch(__('add courier').$resource->name,'fa fa-user');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -38,6 +39,7 @@ class CourierController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update courier').$resource->name,'fa fa-user');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -49,6 +51,7 @@ class CourierController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete courier').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -60,7 +63,7 @@ class CourierController extends Controller
     public function rules()
     {
         return [
-            'name'=>'requied|string',
+            'name'=>'required|string',
             'photo'=>'nullable|string',
             'phone'=>'required|string',
             'email'=>'nullable|string',

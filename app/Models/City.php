@@ -30,4 +30,9 @@ class City extends Model
         return $this->hasMany('App\Models\Receiver','city_id');
     }
 
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','city_id');
+    }
+
 }

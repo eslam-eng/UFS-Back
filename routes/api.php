@@ -71,7 +71,6 @@ Route::group(['namespace'=>'App\Http\Controllers'], function (){
     Route::post('departments/update/{resource}', 'DepartmentController@update');
     Route::post('departments/delete/{resource}', 'DepartmentController@destroy');
 
-
 //  payment-type start
 
     Route::get('payment-type', 'PaymentTypeController@index');
@@ -86,7 +85,6 @@ Route::group(['namespace'=>'App\Http\Controllers'], function (){
     Route::post('pickups/update/{resource}', 'PickupController@update');
     Route::post('pickups/delete/{resource}', 'PickupController@destroy');
 
-
 //  receiver start
 
     Route::get('receivers', 'ReceiverController@index');
@@ -94,14 +92,12 @@ Route::group(['namespace'=>'App\Http\Controllers'], function (){
     Route::post('receivers/update/{resource}', 'ReceiverController@update');
     Route::post('receivers/delete/{resource}', 'ReceiverController@destroy');
 
-
 //  service start
 
     Route::get('services', 'ServiceController@index');
     Route::post('services/store', 'ServiceController@store');
     Route::post('services/update/{resource}', 'ServiceController@update');
     Route::post('services/delete/{resource}', 'ServiceController@destroy');
-
 
 //  status start
 

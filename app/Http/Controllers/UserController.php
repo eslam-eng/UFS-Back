@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class UserController extends Controller
 {
+
+
     public function index()
     {
-        $query = Department::latest()->get();
+        $query = User::latest()->get();
         return $query;
     }
 
@@ -21,8 +23,8 @@ class DepartmentController extends Controller
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
-            $resource = Department::create($request->all());
-            watch(__('add department').$resource->name,'fa fa-codepen');
+            $resource = User::create($request->all());
+            watch(__('add user').$resource->code,'fa fa-user');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -30,8 +32,7 @@ class DepartmentController extends Controller
     }
 
 
-
-    public function update(Request $request, Department $resource)
+    public function update(Request $request, User $resource)
     {
         $validator = validator($request->all(),$this->rules($request->id));
         if ($validator->fails()) {
@@ -39,7 +40,7 @@ class DepartmentController extends Controller
         }
         try {
             $resource->update($request->all());
-            watch(__('update department').$resource->name,'fa fa-codepen');
+            watch(__('update user').$resource->code,'fa fa-user');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -47,11 +48,11 @@ class DepartmentController extends Controller
     }
 
 
-    public function destroy(Department $resource)
+    public function destroy(User $resource)
     {
         try {
             $resource->delete();
-            watch(__('delete department').$resource->name,'fa fa-trash');
+            watch(__('delete user').$resource->code,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -62,8 +63,20 @@ class DepartmentController extends Controller
 
     public function rules($id=null)
     {
-        return [
-            'name'=>'required|string|unique:departments,name,'.$id,
+        return
+        [
+            'name'=>'required|string',
+            'username'=>'required|string|unique:users,username,'.$id,
+            'email'=>'required|email|unique:users,email,'.$id,
+            'password'=>'required|string|min:8',
+            'phone'=>'required|string',
+            'address'=>'required|string',
+            'photo'=>'nullable|string',
+            'active'=>'required',
+            'notes'=>'nullable|string|max:188',
+            'company_id'=>'required|integer|exists:companies,id',
+            'branch_id'=>'required|integer|exists:branches,id',
+            'department_id'=>'required|integer|exists:departments,id'
         ];
     }
 }

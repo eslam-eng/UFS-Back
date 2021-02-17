@@ -21,6 +21,7 @@ class ReceiverController extends Controller
         }
         try {
             $resource = Receiver::create($request->all());
+            watch(__('add receiver').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -36,6 +37,7 @@ class ReceiverController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update receiver').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -47,6 +49,7 @@ class ReceiverController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete receiver').$resource->code,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

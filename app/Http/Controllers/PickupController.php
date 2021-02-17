@@ -22,6 +22,7 @@ class PickupController extends Controller
         }
         try {
             $resource = Pickup::create($request->all());
+            watch(__('add pickup').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -38,6 +39,7 @@ class PickupController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update pickup').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -49,6 +51,7 @@ class PickupController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete pickup').$resource->code,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

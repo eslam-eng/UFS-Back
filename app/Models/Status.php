@@ -14,5 +14,15 @@ class Status extends Model
     {
         return $this->hasMany('App\Models\Pickup','status_id');
     }
+
+    public function awb()
+    {
+        return $this->hasMany('App\Models\Awb','status_id');
+    }
+
+    public function awbHistory()
+    {
+        return $this->hasMany('App\Models\AwbHistory','status_id');
+    }
 }
 

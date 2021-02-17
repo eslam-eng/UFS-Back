@@ -27,6 +27,7 @@ class AreaController extends Controller
         }
         try {
             $resource = Area::create($request->all());
+            watch(__('add area') . $resource->name, "fa fa-building");
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -49,6 +50,7 @@ class AreaController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update area') . $resource->name, "fa fa-building");
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -60,6 +62,7 @@ class AreaController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete area') . $resource->name, "fa fa-trash");
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -68,7 +71,7 @@ class AreaController extends Controller
     }
 
 
-    public function rules($id=null)
+    public function rules()
     {
         return [
             'name'=>'required|string',

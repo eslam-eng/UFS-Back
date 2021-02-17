@@ -24,6 +24,7 @@ class CountryController extends Controller
         }
         try {
             $resource = Country::create($request->all());
+            watch(__('add country').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -38,6 +39,7 @@ class CountryController extends Controller
         }
         try {
             $resource->update($request->all());
+            watch(__('update country').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -49,6 +51,7 @@ class CountryController extends Controller
     {
         try {
             $resource->delete();
+            watch(__('delete country').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
