@@ -7,60 +7,55 @@ use Illuminate\Http\Request;
 
 class TranslateController extends Controller
 {
-    public function index()
-    {
-        $query = Translation::latest()->get();
-        return $query;
+
+    /**
+     * Display a listing of the resource.
+     * @return Response
+     */
+    public function index() {
+        return Translation::get()->pluck('value', 'key');
     }
 
-    public function store(Request $request)
-    {
-        $validator = validator($request->all(),$this->rules());
-        if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
-        }
+    /**
+     * Display a listing of the resource.
+     * @return Response
+     */
+    public function get() {
+        return Translation::latest()->paginate(60);
+    }
+    /**
+     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return Response
+     */
+    public function update(Request $request) {
         try {
-            $resource = Translation::create($request->all());
-            watch(__('add translation').$resource->name_en,'fa fa-cubes');
-            return responseJson(1, __('done'), $resource);
-        }catch (\Exception $th) {
+            $data = $request->data;//json_decode();
+            foreach($data as $item) {
+                if (isset($item['key'])) {
+                    $translation = Translation::where('key', $item['key'])->first();
+
+                    if ($translation) {
+                        if (!$request->not_exist) {
+                            $translation->update([
+                                "name_ar" => $item['name_ar'] . " ",
+                                "name_en" => $item['name_en'] . " "
+                            ]);
+                        }
+                    } else {
+                        $translation = Translation::create([
+                            "key" => $item['key'],
+                            "name_ar" => $item['name_ar'] . " ",
+                            "name_en" => $item['name_en'] . " ",
+                        ]);
+                    }
+                }
+            }
+
+            notfy(__('change translation'), __('change translation'), "fa fa-language");
+            return responseJson(1, __('proccess has been success'));
+        } catch (Exception $th) {
             return responseJson(0, $th->getMessage());
         }
-    }
-
-    public function update(Request $request, Translation $resource)
-    {
-        $validator = validator($request->all(),$this->rules());
-        if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
-        }
-        try {
-            $resource->update($request->all());
-            watch(__('update translation').$resource->name_en,'fa fa-language');
-            return responseJson(1, __('done'), $resource);
-        } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
-        }
-    }
-
-    public function destroy(Translation $resource)
-    {
-        try {
-            $resource->delete();
-            watch(__('delete translation').$resource->name_en,'fa fa-language');
-            return responseJson(1, __('done'));
-        } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
-        }
-
-    }
-
-    public function rules()
-    {
-        return [
-            'key'=>'required|string',
-            'name_ar'=>'required',
-            'name_en'=>'required'
-        ];
     }
 }

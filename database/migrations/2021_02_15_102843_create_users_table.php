@@ -20,10 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('phone');
-            $table->string('address');
-            $table->string('photo');
+            $table->string('address')->nullable();
+            $table->string('photo')->nullable();
             $table->enum('active',[0,1])->default(1);
-            $table->string('notes');
+            $table->string('notes')->nullable();
+            $table->string('api_token')->nullable();
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedInteger('branch_id');

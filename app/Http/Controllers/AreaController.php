@@ -75,7 +75,7 @@ class AreaController extends Controller
     {
         return [
             'name'=>'required|string',
-            'city_id'=>'required|number|exists:cities,id',
+            'city_id'=>'required|exists:cities,id',
         ];
     }
 }

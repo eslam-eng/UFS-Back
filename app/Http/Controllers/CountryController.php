@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CountryImport;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,6 @@ class CountryController extends Controller
         }
     }
 
-
     public function destroy(Country $resource)
     {
         try {
@@ -59,6 +59,25 @@ class CountryController extends Controller
 
     }
 
+
+    public function countryImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->getMessages(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $countryfile = new CountryImport();
+            $countryfile->import($file);
+            if ($countryfile->failures()->isNotEmpty())
+                return responseJson(0, $countryfile->failures(), "");
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
+        }
+
+    }
 
     public function rules($id=null)
     {

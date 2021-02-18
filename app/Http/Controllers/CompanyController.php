@@ -10,7 +10,7 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $query = Company::latest()->get();
+        $query = Company::with('city','area')->latest()->get();
         return $query;
     }
 

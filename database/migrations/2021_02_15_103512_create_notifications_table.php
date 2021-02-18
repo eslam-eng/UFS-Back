@@ -16,10 +16,11 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('body');
-            $table->string('icon');
-            $table->enum('seen',[1,0]);
+            $table->string('body')->nullable();
+            $table->string('icon')->nullable();
+            $table->enum('seen',[1,0])->default(0);
             $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

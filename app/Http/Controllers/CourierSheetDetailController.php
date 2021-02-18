@@ -20,16 +20,24 @@ class CourierSheetDetailController extends Controller
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
-            $resource = CourierSheetDetail::create($request->all());
-            watch(__('add courierSheetDetail').$resource->sheet_id,'fa fa-file');
-            return responseJson(1, __('done'), $resource);
+          foreach ($request->awb_id as $awb)
+          {
+              $resource = CourierSheetDetail::create(['sheet_id'=>$request->sheet_id, 'awb_id'=>$awb]);
+          }
+          if ($resource)
+          {
+              watch(__('add courierSheetDetail'),'fa fa-file');
+              return responseJson(1, __('done'), '');
+          }else
+              return responseJson(0, __('fail'), '');
+
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
 
 
-    public function update(Request $request, CourierSheetDetail $resource)
+    public function update(Request $request,CourierSheetDetail $resource)
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
@@ -62,7 +70,7 @@ class CourierSheetDetailController extends Controller
     {
         return [
             'sheet_id'=>'required|integer|exists:courier_sheets,id',
-            'awb_id'=>'required|integer|exists:awbs,id',
+            'awb_id'=>'required|array|min:1|exists:awbs,id',
         ];
     }
 }

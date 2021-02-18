@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Model
 {
+    use LaratrustUserTrait;
     use HasFactory;
 
     protected $fillable = [
         'name',	'username','email','password','phone','address','photo','active',
-        'notes','company_id','branch_id','department_id'
+        'notes','company_id','branch_id','department_id','api_token'
     ];
 
     protected $hidden = [

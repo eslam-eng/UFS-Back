@@ -63,6 +63,7 @@ class PickupController extends Controller
     public function rules()
     {
         return [
+            'code'=>'required',
             'date'=>'required',
             'company_id'=>'required|integer|exists:companies,id',
             'status_id'=>'required|integer|exists:statuses,id',
