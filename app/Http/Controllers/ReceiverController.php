@@ -9,8 +9,28 @@ class ReceiverController extends Controller
 {
     public function index()
     {
-        $query = Receiver::latest()->get();
-        return $query;
+        $query = Receiver::with(['city', 'area', 'company'])->latest();
+        
+        if (request()->search) {
+            $query
+                    ->where('name', 'like', '%'.request()->search.'%') 
+                    ->orWhere('phone', 'like', '%'.request()->search.'%') 
+                    ->orWhere('address', 'like', '%'.request()->search.'%');
+        }
+        
+        if (request()->city_id > 0) {
+            $query->where('city_id', request()->city_id);
+        }
+        
+        if (request()->area_id > 0) {
+            $query->where('area_id', request()->area_id);
+        }
+        
+        if (request()->company_id > 0) {
+            $query->where('company_id', request()->company_id);
+        }
+        
+        return $query->get();
     }
 
     public function store(Request $request)

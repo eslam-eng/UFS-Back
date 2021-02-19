@@ -9,8 +9,10 @@ class Courier extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name','photo','phone',	'email','address','notes','active','company_id',
-        'branch_id','department_id'
+        'name','photo','phone',	'email','address','notes','active',
+        'company_id',
+        'branch_id',
+        'department_id'
     ];
 
 

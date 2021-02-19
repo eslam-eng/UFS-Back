@@ -10,8 +10,27 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $query = Company::with('city','area')->latest()->get();
-        return $query;
+        $query = Company::with(['city', 'area'])->latest();
+        
+        if (request()->search) {
+            $query
+                    ->where('name', 'like', '%'.request()->search.'%') 
+                    ->orWhere('phone', 'like', '%'.request()->search.'%') 
+                    ->orWhere('email', 'like', '%'.request()->search.'%') 
+                    ->orWhere('ceo', 'like', '%'.request()->search.'%') 
+                    ->orWhere('fax', 'like', '%'.request()->search.'%') 
+                    ->orWhere('address', 'like', '%'.request()->search.'%');
+        }
+        
+        if (request()->city_id > 0) {
+            $query->where('city_id', request()->city_id);
+        }
+        
+        if (request()->area_id > 0) {
+            $query->where('area_id', request()->area_id);
+        } 
+        
+        return $query->get();
     }
 
     public function store(Request $request)
@@ -21,7 +40,10 @@ class CompanyController extends Controller
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
-            $resource = Company::create($request->all());
+            $data = $request->all();
+            $data['type'] = "company";
+            
+            $resource = Company::create($data);
             watch(__('add company').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
@@ -49,8 +71,8 @@ class CompanyController extends Controller
     public function destroy(Company $resource)
     {
         try {
-            $resource->delete();
             watch(__('delete company').$resource->name,'fa fa-trash');
+            $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -67,12 +89,10 @@ class CompanyController extends Controller
             'address'=>'required|string',
             'phone'=>'required|string',
             'fax'=>'nullable|string',
-            'email'=>'required|string'	,
-            'active'=>'required',
+            'email'=>'required|string', 
             'notes'=>'nullable|string|max:180',
             'commercial_number'=>'nullable|integer',
-            'commercial_photo'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'type'=>'required',
+            'commercial_photo'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10000', 
             'city_id'=>'required|integer|exists:cities,id',
             'area_id'=>'required|integer|exists:areas,id'
         ];

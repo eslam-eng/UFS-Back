@@ -12,7 +12,7 @@ class Receiver extends Model
 
     public function company()
     {
-        return $this->belongsTo('App\Models\Company','company_id');
+        return $this->belongsTo('App\Models\Company','company_id')->select('id', 'name', 'logo');
     }
 
     public function city()

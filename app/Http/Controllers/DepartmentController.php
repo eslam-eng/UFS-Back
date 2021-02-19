@@ -50,8 +50,8 @@ class DepartmentController extends Controller
     public function destroy(Department $resource)
     {
         try {
-            $resource->delete();
             watch(__('delete department').$resource->name,'fa fa-trash');
+            $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -63,7 +63,8 @@ class DepartmentController extends Controller
     public function rules($id=null)
     {
         return [
-            'name'=>'required|string|unique:departments,name,'.$id,
+            'name'=>'required|string',
+            'company_id'=>'required',
         ];
     }
 }

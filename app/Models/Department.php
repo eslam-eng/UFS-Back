@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'company_id'];
 
     public function couriers()
     {
         return $this->hasMany('App\Models\Courier','department_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company','company_id');
     }
 
     public function users()

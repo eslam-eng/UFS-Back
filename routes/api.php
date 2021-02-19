@@ -110,6 +110,13 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('status/update/{resource}', 'StatusController@update');
     Route::post('status/destroy/{resource}', 'StatusController@destroy');
 
+//  users start
+
+    Route::get('users', 'UserController@index');
+    Route::post('users/store', 'UserController@store');
+    Route::post('users/update/{resource}', 'UserController@update');
+    Route::post('users/destroy/{resource}', 'UserController@destroy');
+
 //  translation start
     Route::get('translation', 'TranslateController@index');
     Route::get('translation/get', 'TranslateController@get');

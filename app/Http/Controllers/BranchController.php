@@ -62,8 +62,8 @@ class BranchController extends Controller
     public function destroy(Branch $resource)
     {
         try {
-            $resource->delete();
             watch(__('delete branch').$resource->name,'fa fa-trash');
+            $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 
 Route::post('/test','App\Http\Controllers\CountryController@countryImport')->name('test');
+
+Route::get('login', function(){
+	return responseJson(0, __('login first'));
+})->name('login');

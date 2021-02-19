@@ -8,11 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Pickup extends Model
 {
     use HasFactory;
-    protected $fillable = ['code','date','company_id','status_id','user_id','time_from','time_to', 'courier_id'];
+    protected $fillable = [
+        'code',
+        'date',
+        'company_id',
+        'status_id',
+        'user_id',
+        'time_from',
+        'time_to', 
+        'courier_id', 
+        'notes'
+    ];
 
     public function company()
     {
-        return $this->belongsTo('App\Models\Company','company_id');
+        return $this->belongsTo('App\Models\Company','company_id')->select('id', 'name', 'logo');
     }
 
     public function status()
@@ -22,11 +32,11 @@ class Pickup extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User','user_id')->select('id', 'name');
     }
 
     public function courier()
     {
-        return $this->belongsTo('App\Models\Courier','courier_id');
+        return $this->belongsTo('App\Models\Courier','courier_id')->select('id', 'name', 'photo');
     }
 }

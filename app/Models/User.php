@@ -15,6 +15,10 @@ class User extends Model
         'name',	'username','email','password','phone','address','photo','active',
         'notes','company_id','branch_id','department_id','api_token'
     ];
+    
+    protected $appends = [
+        'role'
+    ];
 
     protected $hidden = [
         'password',
@@ -26,6 +30,11 @@ class User extends Model
         'email_verified_at' => 'datetime',
     ];
 
+    public function getRoleAttribute() {
+        $role = UserRole::where('user_id', $this->id)->first(); 
+        return Role::find(optional($role)->role_id);
+    }
+    
     public function company()
     {
         return $this->belongsTo('App\Models\Company','company_id');
@@ -70,4 +79,5 @@ class User extends Model
     {
         return $this->hasMany('App\Models\AwbHistory','user_id');
     }
+     
 }

@@ -14,9 +14,9 @@ class Notification extends Model
         return Notification::create([
             "title" => $title,
             "body" => $body,
-            "seen" => 0,
+            "seen" => '0',
             "icon" => $icon,
-            "user_id" => optional(request()->user)->id
+            "user_id" => optional(request()->user())->id
         ]);
     }
 

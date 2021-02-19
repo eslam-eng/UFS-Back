@@ -11,8 +11,30 @@ class CourierController extends Controller
 
     public function index()
     {
-        $query = Courier::latest()->get();
-        return $query;
+        $query = Courier::with(['company', 'branch', 'department'])->latest();
+        
+        if (request()->search) {
+            $query
+                    ->where('name', 'like', '%'.request()->search.'%') 
+                    ->orWhere('phone', 'like', '%'.request()->search.'%') 
+                    ->orWhere('email', 'like', '%'.request()->search.'%') 
+                    ->orWhere('notes', 'like', '%'.request()->search.'%')  
+                    ->orWhere('address', 'like', '%'.request()->search.'%');
+        }
+        
+        if (request()->company_id > 0) {
+            $query->where('company_id', request()->company_id);
+        }
+        
+        if (request()->branch_id > 0) {
+            $query->where('branch_id', request()->branch_id);
+        } 
+        
+        if (request()->department_id > 0) {
+            $query->where('department_id', request()->department_id);
+        } 
+        
+        return $query->get();
     }
 
     public function store(Request $request)
@@ -50,8 +72,8 @@ class CourierController extends Controller
     public function destroy(Courier $resource)
     {
         try {
-            $resource->delete();
             watch(__('delete courier').$resource->name,'fa fa-trash');
+            $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

@@ -9,8 +9,33 @@ class PickupController extends Controller
 {
     public function index()
     {
-        $query = Pickup::latest()->get();
-        return $query;
+        $query = Pickup::with(['company', 'status', 'courier', 'user'])->latest();
+        
+        if (request()->search) {
+            $query
+                    ->where('date', 'like', '%'.request()->search.'%')  
+                    ->where('time_from', 'like', '%'.request()->search.'%')  
+                    ->where('time_to', 'like', '%'.request()->search.'%')  
+                    ->orWhere('code', 'like', '%'.request()->search.'%');
+        }
+        
+        if (request()->date) {
+            $query->where('date', request()->date);
+        }
+        
+        if (request()->company_id > 0) {
+            $query->where('company_id', request()->company_id);
+        }
+        
+        if (request()->courier_id > 0) {
+            $query->where('courier_id', request()->courier_id);
+        } 
+        
+        if (request()->status_id > 0) {
+            $query->where('status_id', request()->status_id);
+        } 
+        
+        return $query->get();
     }
 
 
@@ -21,15 +46,24 @@ class PickupController extends Controller
             return responseJson(0, $validator->errors()->getMessages(), "");
         }
         try {
-            $resource = Pickup::create($request->all());
+            $data = $request->all();
+            $data['code'] = time();
+            $data['user_id'] = $request->user()->id;
+            
+            $resource = Pickup::create($data);
+            $code = date('d') . date('m') . $resource->id;
+            
+            $resource->update([
+                "code" => $code
+            ]);
+            
             watch(__('add pickup').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
-
-
+ 
 
     public function update(Request $request, Pickup $resource)
     {
@@ -50,8 +84,8 @@ class PickupController extends Controller
     public function destroy(Pickup $resource)
     {
         try {
-            $resource->delete();
             watch(__('delete pickup').$resource->code,'fa fa-trash');
+            $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -62,12 +96,10 @@ class PickupController extends Controller
 
     public function rules()
     {
-        return [
-            'code'=>'required',
+        return [ 
             'date'=>'required',
             'company_id'=>'required|integer|exists:companies,id',
-            'status_id'=>'required|integer|exists:statuses,id',
-            'user_id'=>'required|integer|exists:users,id',
+            'status_id'=>'required|integer|exists:statuses,id', 
             'time_from'=>'required',
             'time_to'=>'required',
             'courier_id'=>'required|integer|exists:couriers,id'
