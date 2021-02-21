@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\paymentTypeImport;
 use App\Models\PaymentType;
 use Illuminate\Http\Request;
 
@@ -58,6 +59,30 @@ class PaymentTypeController extends Controller
         }
 
     }
+
+
+
+//    import excel file into data base
+
+    public function paymentTypeImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->getMessages(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $paymentfile = new paymentTypeImport();
+            $paymentfile->import($file);
+            if ($paymentfile->failures()->isNotEmpty())
+                return responseJson(0, $paymentfile->failures(), "");
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
+        }
+
+    }
+
 
 
     public function rules($id=null)

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Imports;
-use App\Models\Country;
+
+use App\Models\PaymentType;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
@@ -11,7 +12,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class CountryImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,SkipsOnFailure
+class paymentTypeImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,SkipsOnFailure
 {
     use Importable,SkipsErrors,SkipsFailures;
     /**
@@ -24,7 +25,7 @@ class CountryImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidatio
 
     public function model(array $row)
     {
-        return new Country([
+        return new PaymentType([
             'name' =>$row['name'],
         ]);
     }
@@ -32,9 +33,8 @@ class CountryImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidatio
     public function rules(): array
     {
         return [
-            '*.name'=>['required','string','unique:countries,name'],
+            '*.name'=>['required','string','unique:payment_types,name'],
 
         ];
     }
-
 }

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Imports;
-use App\Models\Country;
+
+use App\Models\Area;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
@@ -11,7 +12,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class CountryImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,SkipsOnFailure
+class AreaImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,SkipsOnFailure
 {
     use Importable,SkipsErrors,SkipsFailures;
     /**
@@ -19,22 +20,20 @@ class CountryImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidatio
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
-
-
-
     public function model(array $row)
     {
-        return new Country([
-            'name' =>$row['name'],
+        return new Area([
+            'name'=>$row['name'],
+            'city_id'=>$row['city_code'],
         ]);
     }
 
     public function rules(): array
     {
         return [
-            '*.name'=>['required','string','unique:countries,name'],
+            '*.name'=>['required','string'],
+            '*.city_code'=>['required','exists:cities,id'],
 
         ];
     }
-
 }

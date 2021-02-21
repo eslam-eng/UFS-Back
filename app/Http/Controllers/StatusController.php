@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\StatusImport;
 use App\Models\Status;
 use Illuminate\Http\Request;
 
@@ -58,6 +59,30 @@ class StatusController extends Controller
         }
 
     }
+
+
+
+    //    import excel file into data base
+
+    public function statusImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->getMessages(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $statusfile = new StatusImport();
+            $statusfile->import($file);
+            if ($statusfile->failures()->isNotEmpty())
+                return responseJson(0, $statusfile->failures(), "");
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
+        }
+
+    }
+
 
 
     public function rules($id=null)

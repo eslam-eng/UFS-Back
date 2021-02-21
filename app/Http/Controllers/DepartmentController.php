@@ -64,7 +64,7 @@ class DepartmentController extends Controller
     {
         return [
             'name'=>'required|string',
-            'company_id'=>'required',
+            'company_id'=>'required|exists:companies,id',
         ];
     }
 }
