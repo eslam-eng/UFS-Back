@@ -10,6 +10,10 @@ class CourierSheet extends Model
     use HasFactory;
 
     protected $fillable = ['courier_id','user_id','date'];
+    
+    protected $appends = [
+        'awb_number'
+    ];
 
     public function courier()
     {

@@ -26,7 +26,7 @@ class Awb extends Model
         'collection' //now its temporary after it will calc automaticlly depends on city an area price
     ];
 
-    public function sheetDetails()
+    public function details()
     {
         return $this->hasOne('App\Models\CourierSheetDetail','awb_id');
     }
@@ -34,51 +34,51 @@ class Awb extends Model
 
     public function company()
     {
-        return $this->belongsTo('App\Models\Company','company_id');
+        return $this->belongsTo('App\Models\Company','company_id')->select('id', 'name', 'logo');
     }
 
     public function branch()
     {
-        return $this->belongsTo('App\Models\Branch','branch_id');
+        return $this->belongsTo('App\Models\Branch','branch_id')->select('id', 'name');
     }
 
     public function receiver()
     {
-        return $this->belongsTo('App\Models\Receiver','receiver_id');
+        return $this->belongsTo('App\Models\Receiver','receiver_id')->select('id', 'name');
     }
 
     public function payment()
     {
-        return $this->belongsTo('App\Models\PaymentType','Payment_type_id');
+        return $this->belongsTo('App\Models\PaymentType','Payment_type_id')->select('id', 'name');
     }
 
     public function service()
     {
-        return $this->belongsTo('App\Models\Service','service_id');
+        return $this->belongsTo('App\Models\Service','service_id')->select('id', 'name');
     }
 
     public function status()
     {
-        return $this->belongsTo('App\Models\Status','status_id');
+        return $this->belongsTo('App\Models\Status','status_id')->select('id', 'name');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User','user_id')->select('id', 'name');
     }
 
     public function city()
     {
-        return $this->belongsTo('App\Models\City','city_id');
+        return $this->belongsTo('App\Models\City','city_id')->select('id', 'name');
     }
 
     public function area()
     {
-        return $this->belongsTo('App\Models\Area','area_id');
+        return $this->belongsTo('App\Models\Area','area_id')->select('id', 'name');
     }
 
     public function awbHistory()
     {
-        return $this->hasMany('App\Models\AwbHistory','awb_id');
+        return $this->hasMany('App\Models\AwbHistory','awb_id')->select('id', 'name');
     }
 }

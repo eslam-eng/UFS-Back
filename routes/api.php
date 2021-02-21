@@ -24,6 +24,13 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 
     Route::post('auth/login', 'AuthController@login');
 
+//  awbs start
+
+    Route::get('awbs', 'AwbController@index');
+    Route::post('awbs/store', 'AwbController@store');
+    Route::post('awbs/update/{resource}', 'AwbController@update');
+    Route::post('awbs/destroy/{resource}', 'AwbController@destroy');
+
 //  areas start
 
     Route::get('areas', 'AreaController@index');

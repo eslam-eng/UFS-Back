@@ -10,8 +10,30 @@ class AwbController extends Controller
 
     public function index()
     {
-        $query = Awb::latest()->get();
-        return $query;
+        $query = Awb::with(['company', 'branch', 'receiver', 'payment', 'service', 'status', 'city', 'area', 'user'])->latest();
+        
+        if (request()->company_id > 0)
+            $query->where('company_id', request()->company_id);
+         
+        if (request()->branch_id > 0)
+            $query->where('branch_id', request()->branch_id);
+         
+        if (request()->city_id > 0)
+            $query->where('city_id', request()->city_id);
+         
+        if (request()->area_id > 0)
+            $query->where('area_id', request()->area_id);
+         
+        if (request()->department_id > 0)
+            $query->where('department_id', request()->department_id);
+         
+        if (request()->code > 0)
+            $query->where('code', "like", "%".request()->code."%");
+         
+        if (request()->date_from & request()->date_to)
+            $query->whereBetween('date', [request()->date_from, request()->date_to]);
+        
+        return $query->get();
     }
 
 
