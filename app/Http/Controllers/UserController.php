@@ -87,7 +87,7 @@ class UserController extends Controller {
             $role = Role::find($resource->role_id);
             if ($role)
                 $resource->detachRole($role);
-            
+
             watch(__('delete user') . $resource->name, 'fa fa-trash');
             $resource->delete();
             return responseJson(1, __('done'));
@@ -102,7 +102,7 @@ class UserController extends Controller {
             'username' => 'required',
             'photo' => 'nullable|string',
             'phone' => 'required|string',
-            'email' => 'nullable|string',
+            'email' => 'nullable|string|email',
             'address' => 'required|string',
             'notes' => 'nullable|string',
             'active' => 'required',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CityImport;
 use App\Models\City;
 use Illuminate\Http\Request;
 
@@ -66,6 +67,29 @@ class CityController extends Controller
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
+        }
+
+    }
+
+
+
+//    import excel file into data base
+
+    public function cityImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->getMessages(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $cityfile = new CityImport();
+            $cityfile->import($file);
+            if ($cityfile->failures()->isNotEmpty())
+                return responseJson(0, $cityfile->failures(), "");
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
         }
 
     }
