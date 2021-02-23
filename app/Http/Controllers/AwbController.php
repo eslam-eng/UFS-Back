@@ -3,104 +3,173 @@
 namespace App\Http\Controllers;
 
 use App\Models\Awb;
+use App\Models\AwbHistory;
+use App\Models\AwbDetail;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
-class AwbController extends Controller
-{
+class AwbController extends Controller {
 
-    public function index()
-    {
-        $query = Awb::with(['company', 'branch', 'receiver', 'payment', 'service', 'status', 'city', 'area', 'user'])->latest();
-        
+    public function index() {
+        $query = Awb::with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory'])->latest();
+
         if (request()->company_id > 0)
             $query->where('company_id', request()->company_id);
-         
+
         if (request()->branch_id > 0)
             $query->where('branch_id', request()->branch_id);
-         
+
         if (request()->city_id > 0)
             $query->where('city_id', request()->city_id);
-         
+
         if (request()->area_id > 0)
             $query->where('area_id', request()->area_id);
-         
+
         if (request()->department_id > 0)
             $query->where('department_id', request()->department_id);
-         
+
         if (request()->code > 0)
-            $query->where('code', "like", "%".request()->code."%");
-         
+            $query->where('code', "like", "%" . request()->code . "%");
+
         if (request()->date_from & request()->date_to)
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
-        
+
         return $query->get();
     }
 
+    public function load($resource) {
+        $query = Awb::with(['details', 'company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user']);
 
-    public function store(Request $request)
-    {
-        $validator = validator($request->all(),$this->rules());
+        return $query->where('id', $resource)->first();
+    }
+
+    public function changeStatus(Awb $resource, Request $request) {
+        $oldStatus = $resource->status->name;
+        $validator = validator($request->all(), ['status_id' => 'required']);
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            $resource = Awb::create($request->all());
-            watch(__('add awb').$resource->code,'fa fa-file-alt');
-            return responseJson(1, __('done'), $resource);
-        }catch (\Exception $th) {
+            // store awb status
+            $resource->update([
+                'status_id' => $request->status_id
+            ]);
+            AwbHistory::create([
+                'awb_id' => $resource->id,
+                'user_id' => $request->user()->id,
+                'status_id' => $request->status_id
+            ]);
+            watch(__('The shipment ') . $resource->code . ' status has changed from ' . $oldStatus . ' to ' . $resource->status->name, 'fa fa-newspaper-o');
+            return responseJson(1, __('done'), $resource->awbHistory()->get());
+        } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
 
+    public function print(Awb $resource) {
+        return view('awb', compact("resource"));
+    }
 
-    public function update(Request $request, Awb $resource)
-    {
-        $validator = validator($request->all(),$this->rules());
+    public function printSelected(Request $request) {
+        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        $string = view('awbs', compact("awbs"));
+        return $string;
+    }
+
+    public function store(Request $request) {
+        $validator = validator($request->all(), $this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
+
+        if (Status::count() <= 0)
+            return responseJson(0, __('there is not status exists'));
+
         try {
-            $resource->update($request->all());
-            watch(__('update awb').$resource->code,'fa fa-file-alt');
+            $data = $request->all();
+            $data['status_id'] = optional(Status::first())->id;
+            $data['user_id'] = $request->user()->id;
+            $data['date'] = date('Y-m-d');
+
+            // store awb object
+            $resource = Awb::create($data);
+
+            // generate awb code
+            $resource->update([
+                "code" => date('Y') . date('m') . date('d') . $resource->id
+            ]);
+
+            // store history 
+            AwbHistory::create([
+                'awb_id' => $resource->id,
+                'user_id' => $request->user()->id,
+                'status_id' => $resource->status_id
+            ]);
+
+            // store details of awb
+            foreach ($data['details'] as $row) {
+                $row['awb_id'] = $resource->id;
+                AwbDetail::create($row);
+            }
+
+            watch(__('create awb with code ') . $resource->code, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
     }
 
-
-    public function destroy(Awb $resource)
-    {
+    public function update(Request $request, Awb $resource) {
+        $validator = validator($request->all(), $this->rules());
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), "");
+        }
         try {
+            $data = $request->all();
+
+            // store awb object
+            $resource->update($data);
+
+            // delete old 
+            $resource->details()->delete();
+
+            // store new details of awb
+            foreach ($data['details'] as $row) {
+                $row['awb_id'] = $resource->id;
+                AwbDetail::create($row);
+            }
+
+            watch(__('update awb with code ') . $resource->code, 'fa fa-newspaper-o');
+            return responseJson(1, __('done'), $resource);
+        } catch (\Exception $th) {
+            return responseJson(0, $th->getMessage());
+        }
+    }
+
+    public function destroy(Awb $resource) {
+        try {
+            watch(__('delete awb with code ') . $resource->code, 'fa fa-trash');
             $resource->delete();
-            watch(__('delete awb').$resource->code,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
-
     }
 
-
-    public function rules()
-    {
-        return
-            [
-                'code',
-                'collection'=>'required|numeric',
-                'company_id'=>'required|integer|exists:companies,id',
-                'branch_id'=>'required|integer|exists:branches,id',
-                'department_id'=>'required|exists:departments,id',
-                'receiver_id'=>'required|exists:receivers,id',
-                'Payment_type_id'=>'required|exists:payment_types,id',
-                'service_id'=>'required|exists:services,id',
-                'status_id'=>'required|exists:statuses,id',
-                'user_id'=>'required|exists:users,id',
-                'city_id'=>'required|exists:cities,id',
-                'area_id'=>'required|exists:areas,id',
-                'date'=>'required',
-                'weight'=>'required',
-                'pieces'=>'required',
-            ];
+    public function rules() {
+        return [
+            'collection' => 'required|numeric',
+            'company_id' => 'required|integer|exists:companies,id',
+            'branch_id' => 'required|integer|exists:branches,id',
+            'department_id' => 'required|exists:departments,id',
+            'receiver_id' => 'required|exists:receivers,id',
+            'payment_type_id' => 'required|exists:payment_types,id',
+            'service_id' => 'required|exists:services,id',
+            'city_id' => 'required|exists:cities,id',
+            'area_id' => 'required|exists:areas,id',
+            'weight' => 'required',
+            'pieces' => 'required',
+        ];
     }
+
 }

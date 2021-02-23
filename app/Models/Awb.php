@@ -14,7 +14,7 @@ class Awb extends Model
         'department_id',
         'branch_id',
         'receiver_id',
-        'Payment_type_id',
+        'payment_type_id',
         'service_id',
         'status_id',
         'user_id',
@@ -23,10 +23,17 @@ class Awb extends Model
         'date',
         'weight',
         'pieces',
+        'type',
+        'notes',
         'collection' //now its temporary after it will calc automaticlly depends on city an area price
     ];
 
     public function details()
+    {
+        return $this->hasMany('App\Models\AwbDetail','awb_id');
+    }
+
+    public function courierSheet()
     {
         return $this->hasOne('App\Models\CourierSheetDetail','awb_id');
     }
@@ -34,7 +41,7 @@ class Awb extends Model
 
     public function company()
     {
-        return $this->belongsTo('App\Models\Company','company_id')->select('id', 'name', 'logo');
+        return $this->belongsTo('App\Models\Company','company_id');
     }
 
     public function branch()
@@ -42,14 +49,19 @@ class Awb extends Model
         return $this->belongsTo('App\Models\Branch','branch_id')->select('id', 'name');
     }
 
-    public function receiver()
+    public function department()
     {
-        return $this->belongsTo('App\Models\Receiver','receiver_id')->select('id', 'name');
+        return $this->belongsTo('App\Models\Department','department_id')->select('id', 'name');
     }
 
-    public function payment()
+    public function receiver()
     {
-        return $this->belongsTo('App\Models\PaymentType','Payment_type_id')->select('id', 'name');
+        return $this->belongsTo('App\Models\Receiver','receiver_id');
+    }
+
+    public function paymentType()
+    {
+        return $this->belongsTo('App\Models\PaymentType','payment_type_id')->select('id', 'name');
     }
 
     public function service()
@@ -79,6 +91,6 @@ class Awb extends Model
 
     public function awbHistory()
     {
-        return $this->hasMany('App\Models\AwbHistory','awb_id')->select('id', 'name');
+        return $this->hasMany('App\Models\AwbHistory','awb_id')->with(['status', 'user']);
     }
 }

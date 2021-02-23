@@ -15,7 +15,7 @@ class CreateAwbsTable extends Migration
     {
         Schema::create('awbs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
 
@@ -28,8 +28,8 @@ class CreateAwbsTable extends Migration
             $table->unsignedInteger('receiver_id');
             $table->foreign('receiver_id')->references('id')->on('receivers');
 
-            $table->unsignedInteger('Payment_type_id');
-            $table->foreign('Payment_type_id')->references('id')->on('payment_types');
+            $table->unsignedInteger('payment_type_id');
+            $table->foreign('payment_type_id')->references('id')->on('payment_types');
 
             $table->unsignedInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services');
@@ -50,6 +50,8 @@ class CreateAwbsTable extends Migration
             $table->double('weight');
             $table->double('pieces');
             $table->double('collection');
+            $table->string('notes')->nullable();
+            $table->enum('type', ['document', 'parcel'])->default('document')->nullable();
 
             $table->timestamps();
         });

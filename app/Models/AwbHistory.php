@@ -17,7 +17,7 @@ class AwbHistory extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User','user_id')->select('id', 'name');
     }
 
     public function status()

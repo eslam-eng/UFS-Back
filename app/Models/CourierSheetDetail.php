@@ -17,6 +17,6 @@ class CourierSheetDetail extends Model
 
     public function awb()
     {
-        return $this->belongsTo('App\Models\Awb','awb_id');
+        return $this->belongsTo('App\Models\Awb','awb_id')->with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user']);
     }
 }

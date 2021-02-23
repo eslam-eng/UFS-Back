@@ -27,8 +27,12 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 //  awbs start
 
     Route::get('awbs', 'AwbController@index');
+    Route::get('awbs/{resource}', 'AwbController@load');
+    Route::get('awbs/print/{resource}', 'AwbController@print');
+    Route::post('awbs/print-selected', 'AwbController@printSelected');
     Route::post('awbs/store', 'AwbController@store');
     Route::post('awbs/update/{resource}', 'AwbController@update');
+    Route::post('awbs/status/{resource}', 'AwbController@changeStatus');
     Route::post('awbs/destroy/{resource}', 'AwbController@destroy');
 
 //  areas start
@@ -74,6 +78,16 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('couriers/update/{resource}', 'CourierController@update');
     Route::post('couriers/destroy/{resource}', 'CourierController@destroy');
 
+    
+    //  courier Sheet start
+
+    Route::get('courier-sheets', 'CourierSheetController@index');
+    Route::get('courier-sheets/{resource}', 'CourierSheetController@load');
+    Route::post('courier-sheets/store', 'CourierSheetController@store');
+    Route::post('courier-sheets/update/{resource}', 'CourierSheetController@update');
+    Route::post('courier-sheets/destroy/{resource}', 'CourierSheetController@destroy');
+
+    
 
 //  department start
 

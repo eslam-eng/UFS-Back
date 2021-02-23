@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourierSheet;
+use App\Models\CourierSheetDetail;
 use Illuminate\Http\Request;
 
 class CourierSheetController extends Controller
@@ -10,7 +11,31 @@ class CourierSheetController extends Controller
 
     public function index()
     {
-        $query = CourierSheet::with('courier','user','sheetDetails')->latest()->get();
+        $query = CourierSheet::with('courier','user','sheetDetails')->latest();
+        
+        
+        if (request()->courier_id > 0)
+            $query->where('courier_id', request()->courier_id);
+
+        if (request()->search)
+            $query->where('date', "like", "%" . request()->search . "%");
+
+        if (request()->date_from)
+            $query->where('date', '>=', request()->date_from);
+
+        if (request()->date_to)
+            $query->where('date', '<=', request()->date_to);
+            
+        if (request()->date_from && request()->date_to)
+            $query->whereBetween('date', [request()->date_from, request()->date_to]);
+
+        
+        return $query->get();
+    }
+
+    public function load($resource)
+    {
+        $query = CourierSheet::with('courier','user','sheetDetails')->where('id', $resource)->first();
         return $query;
     }
 
@@ -18,10 +43,21 @@ class CourierSheetController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            $resource = CourierSheet::create($request->all());
+            $data = $request->all();
+            $data['user_id'] = $request->user()->id;
+            $resource = CourierSheet::create($data);
+            
+            // add new awb id
+            foreach($data['details'] as $awbId) {
+                CourierSheetDetail::create([
+                    "sheet_id" => $resource->id,
+                    "awb_id" => $awbId,
+                ]);
+            }
+            
             watch(__('add courierSheet').$resource->courier->name,'fa fa-file');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
@@ -34,10 +70,23 @@ class CourierSheetController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            $resource->update($request->all());
+            $data = $request->all();
+            $data['user_id'] = $request->user()->id;
+            $resource->update($data);
+            
+            // remove old
+            $resource->sheetDetails()->delete();
+            
+            // add new awb id
+            foreach($data['details'] as $awbId) {
+                CourierSheetDetail::create([
+                    "sheet_id" => $resource->id,
+                    "awb_id" => $awbId,
+                ]);
+            }
             watch(__('update courierSheet').$resource->courier->name,'fa fa-file');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
@@ -49,6 +98,7 @@ class CourierSheetController extends Controller
     public function destroy(CourierSheet $resource)
     {
         try {
+            $resource->sheetDetails()->delete();
             $resource->delete();
             watch(__('delete courierSheet').$resource->courier->name,'fa fa-trash');
             return responseJson(1, __('done'));
@@ -63,7 +113,6 @@ class CourierSheetController extends Controller
     {
         return [
             'courier_id'=>'required|integer|exists:couriers,id',
-            'user_id'=>'required|integer|exists:users,id',
             'date'=>'required',
 
         ];

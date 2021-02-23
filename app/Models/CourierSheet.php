@@ -12,8 +12,16 @@ class CourierSheet extends Model
     protected $fillable = ['courier_id','user_id','date'];
     
     protected $appends = [
-        'awb_number'
+        'awb_number', 'awb_codes'
     ];
+    
+    public function getAwbNumberAttribute() {
+        return $this->sheetDetails()->count();
+    }
+    
+    public function getAwbCodesAttribute() {
+        return implode(", ", $this->sheetDetails()->join('awbs', 'awbs.id', '=', 'awb_id')->pluck('awbs.code')->toArray());
+    }
 
     public function courier()
     {
@@ -25,6 +33,6 @@ class CourierSheet extends Model
     }
     public function sheetDetails()
     {
-        return $this->hasMany('App\Models\CourierSheetDetail','sheet_id');
+        return $this->hasMany('App\Models\CourierSheetDetail','sheet_id')->with(['awb']);
     }
 }
