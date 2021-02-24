@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
         $awbStatusChart = DB::table('statuses')
                 ->select(
-                    '*',
+                    'statuses.name',
                     DB::raw('(select count(awbs.id) from awbs where status_id=statuses.id) as status_count')
                 )->get(['code', 'status_count'])->toArray();
 

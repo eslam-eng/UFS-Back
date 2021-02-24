@@ -17,6 +17,7 @@ class CreateStatusesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description')->nullable();
+            $table->boolean('is_final')->nullable();
             
             $table->enum('steper', ['in_company', 'processing', 'hold', 'delivered'])->nullable();
             $table->timestamps();

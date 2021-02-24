@@ -124,6 +124,7 @@ class RoleController extends Controller
             'name'=>'required|string',
             'display_name'=>'required',
             'company_id'=>'required',
+            'company_id'=>'required',
         ];
     }
 }

@@ -18,7 +18,7 @@ class User extends Model
     ];
     
     protected $appends = [
-        'role', 'permissions'
+        'role', 'permissions', 'photo_url'
     ];
 
     protected $hidden = [
@@ -29,6 +29,10 @@ class User extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function getPhotoUrlAttribute() {
+        return $this->photo? url($this->photo) : null;
+    }
 
     public function getPermissionsAttribute() {
         $ids = DB::table('permission_role')->where('role_id', $this->role_id)->pluck('permission_id')->toArray();

@@ -71,7 +71,7 @@ class Awb extends Model
 
     public function status()
     {
-        return $this->belongsTo('App\Models\Status','status_id')->select('id', 'name');
+        return $this->belongsTo('App\Models\Status','status_id')->select('id', 'name', 'is_final');
     }
 
     public function user()

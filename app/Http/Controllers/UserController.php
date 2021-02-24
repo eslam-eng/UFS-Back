@@ -42,15 +42,27 @@ class UserController extends Controller {
     public function store(Request $request) {
         $validator = validator($request->all(), $this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            $resource = User::create($request->all());
+            $data = $request->all();
+            if (isset($data['photo']))
+                unset($data['photo']);
+            
+            
+            $resource = User::create($data);
 
             if ($request->role_id) {
                 $role = Role::find($request->role_id);
                 $resource->attachRole($role);
             }
+            
+            // upload img 
+            uploadImg($request->file('photo'), "/uploads/users/", function($filename) use ($resource) {
+                $resource->update([
+                    "photo" => $filename
+                ]);
+            });
 
             watch(__('add user') . $resource->name, 'fa fa-user');
             return responseJson(1, __('done'), $resource);
@@ -62,7 +74,7 @@ class UserController extends Controller {
     public function update(Request $request, User $resource) {
         $validator = validator($request->all(), $this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
@@ -78,6 +90,13 @@ class UserController extends Controller {
                 $resource->attachRole($role);
             }
 
+            // upload img 
+            uploadImg($request->file('photo'), "/uploads/users/", function($filename) use ($resource) {
+                $resource->update([
+                    "photo" => $filename
+                ]);
+            }, $resource->photo);
+            
             watch(__('update user') . $resource->name, 'fa fa-user');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
@@ -103,8 +122,7 @@ class UserController extends Controller {
     public function rules() {
         return [
             'name' => 'required|string',
-            'username' => 'required',
-            'photo' => 'nullable|string',
+            'username' => 'required', 
             'phone' => 'required|string',
             'email' => 'nullable|string|email',
             'address' => 'required|string',

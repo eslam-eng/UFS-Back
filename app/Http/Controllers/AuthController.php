@@ -27,10 +27,13 @@ class AuthController extends Controller
             $user = User::where("email", $request->email)
                 ->orWhere('phone', $request->email)
                 ->orWhere('username', $request->email)
-                ->where("password", $request->password)
+                //->where("password", $request->password)
                 ->first();
 
             if ($user) {
+                if ($user->password != $request->password)
+                    return responseJson(0, $error);
+                
                 if ($user->active == '0')
                     return responseJson(0, __('your account is not confirmed'));
 

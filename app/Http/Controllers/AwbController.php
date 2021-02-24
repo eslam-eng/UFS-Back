@@ -7,6 +7,7 @@ use App\Models\AwbHistory;
 use App\Models\AwbDetail;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use App\Models\CourierSheetDetail;
 
 class AwbController extends Controller {
 
@@ -33,7 +34,11 @@ class AwbController extends Controller {
 
         if (request()->date_from & request()->date_to)
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
-
+ 
+        if (request()->courier_sheet == 'active') {
+            $query->whereNotIn('id', $ids);
+        }
+        
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }

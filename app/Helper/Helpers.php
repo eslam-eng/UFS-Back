@@ -16,7 +16,8 @@ if (!function_exists('uploadImg')) {
                     unlink(public_path($oldPath));
                 }
             }
-            $action($filename);
+            $path = $folder . $filename;
+            $action($path);
         }
 
         return $filename;

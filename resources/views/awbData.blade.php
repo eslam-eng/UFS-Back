@@ -17,7 +17,7 @@
 </table>
 <table class="w3-table w3-table-bordered" >
     <tr >
-        <td style="width: 32%;padding: 0px"  >
+        <td style="width: 36%;padding: 0px;padding-left: 16px"  >
             <div class="w3-indigo w3-padding w3-center"   >
                 Sender
             </div>
@@ -77,12 +77,12 @@
                     </div>  
                 </div>
             </div>
-            <div class="w3-border w3-border-block w3-display-container w3-indigo" style="padding: 3px;" >
+            <div class="w3-border w3-border-block w3-display-container w3-indigo w3-padding" style="padding: 3px;" >
                 <span style="float: left" >Signature Of Sender</span>
                 <span style="float: right" >توقيع الراسل</span>
                 <br>
             </div>
-            <div class="w3-border w3-border-gray w3-display-container w3-row"  >
+            <div class="w3-border w3-border-gray w3-display-container w3-row w3-padding"  >
                 <div class="w3-display-container" style="padding-bottom: 10px" >
                     <span style="float: left" >Name</span>
                     <span style="float: right" >الاسم</span> 
@@ -129,7 +129,7 @@
 
         </td>
 
-        <td style="width: 32;padding: 0px" >
+        <td style="width: 36;padding: 0px" >
             <div class="w3-indigo w3-padding w3-center" >
                 Receiver
             </div>
@@ -166,7 +166,7 @@
                 {{ optional($resource->receiver)->phone }}
             </div>
             <div class="w3-border w3-border-block w3-display-container w3-row"  >
-                <div class="w3-col l6 m6 s6 w3-border w3-border-gray w3-display-container" >
+                <div class="w3-col l6 m6 s6 w3- w3-border-gray w3-display-container" >
                     <div class="w3-border w3-border-block w3- w3-display-container"  >
                         <span style="float: left" >Province</span>
                         <span class="w3-right" >الحى/المقاطعه</span>
@@ -176,7 +176,7 @@
                         {{ optional(optional($resource->receiver)->city)->name }}
                     </div>  
                 </div>
-                <div class="w3-col l6 m6 s6 w3-border w3-border-gray w3-display-container" >
+                <div class="w3-col l6 m6 s6 w3- w3-border-gray w3-display-container" >
                     <div class="w3-border w3-border-block w3- w3-display-container"  >
                         <span style="float: left;font-size: 10px" >Destination.</span>
                         <span style="float: right" >جهة المصدر</span>
@@ -187,12 +187,12 @@
                     </div>  
                 </div>
             </div>
-            <div class="w3-border w3-border-block w3-display-container w3-indigo" style="padding: 3px;" >
+            <div class="w3-border w3-border-block w3-display-container w3-indigo w3-padding" style="padding: 3px;" >
                 <span style="float: left" >Receiver Data.</span>
                 <span style="float: right" >بيانات المستلم</span>
                 <br>
             </div>
-            <div class="w3-border w3-border-gray w3-display-container w3-row"  >
+            <div class="w3-border w3-border-gray w3-display-container w3-row w3-padding"  >
                 <div class="w3-display-container" style="padding-bottom: 10px" >
                     <span style="float: left" >Name.</span>
                     <span style="float: right" >الاسم</span> 
@@ -266,7 +266,7 @@
             </div>
 
         </td>
-        <td style="width: 32%;padding-top: 0px"  > 
+        <td style="width: 24%;padding-top: 0px"  > 
 
             <div class="w3-indigo w3-center w3-border w3-border-gray w3-padding" >
                 <span style="float: left" >Payment Type.</span>
