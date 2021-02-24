@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 //autho login
 Route::post('auth/login', 'App\Http\Controllers\AuthController@login');
-    
+
 Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], function (){
 
+// dashboard apis
+
+    Route::get('dashboard', 'DashboardController@home');
 
 //  awbs start
+
 
     Route::get('awbs', 'AwbController@index');
     Route::get('awbs/{resource}', 'AwbController@load');
@@ -74,7 +78,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('couriers/update/{resource}', 'CourierController@update');
     Route::post('couriers/destroy/{resource}', 'CourierController@destroy');
 
-    
+
     //  courier Sheet start
 
     Route::get('courier-sheets', 'CourierSheetController@index');
@@ -83,7 +87,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('courier-sheets/update/{resource}', 'CourierSheetController@update');
     Route::post('courier-sheets/destroy/{resource}', 'CourierSheetController@destroy');
 
-    
+
 
 //  department start
 

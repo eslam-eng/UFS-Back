@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/test','App\Http\Controllers\CityController@cityImport')->name('test');
+Route::get('/test','App\Http\Controllers\DashboardController@home')->name('test');
 
 Route::get('login', function(){
 	return responseJson(0, __('login first'));
