@@ -41,6 +41,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('areas/store', 'AreaController@store');
     Route::post('areas/update/{resource}', 'AreaController@update');
     Route::post('areas/destroy/{resource}', 'AreaController@destroy');
+// route import area file
+    Route::post('areas/import', 'AreaController@areaImport');
 
 //  branch start
 
@@ -49,12 +51,17 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('branches/update/{resource}', 'BranchController@update');
     Route::post('branches/destroy/{resource}', 'BranchController@destroy');
 
+    // route import branch file
+    Route::post('branches/import', 'BranchController@branchImport');
+
 //   city start
 
     Route::get('cities', 'CityController@index');
     Route::post('cities/store', 'CityController@store');
     Route::post('cities/update/{resource}', 'CityController@update');
     Route::post('cities/destroy/{resource}', 'CityController@destroy');
+    // route import city file
+    Route::post('cities/import', 'CityController@cityImport');
 
 //  company start
 
@@ -62,6 +69,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('companies/store', 'CompanyController@store');
     Route::post('companies/update/{resource}', 'CompanyController@update');
     Route::post('companies/destroy/{resource}', 'CompanyController@destroy');
+    // route import country file
+    Route::post('companies/import', 'CompanyController@companyImport');
 
 //  country start
 
@@ -69,6 +78,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('countries/store', 'CountryController@store');
     Route::post('countries/update/{resource}', 'CountryController@update');
     Route::post('countries/destroy/{resource}', 'CountryController@destroy');
+    // route import country file
+    Route::post('countries/import', 'CountryController@countryImport');
 
 
 //  courier start
@@ -103,7 +114,10 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('payment-types/update/{resource}', 'PaymentTypeController@update');
     Route::post('payment-types/destroy/{resource}', 'PaymentTypeController@destroy');
 
-//  payment-type start
+    // route import payment type file
+    Route::post('payment-types/import', 'PaymentTypeController@paymentTypeImport');
+
+//  pickups start
 
     Route::get('pickups', 'PickupController@index');
     Route::post('pickups/store', 'PickupController@store');
@@ -123,6 +137,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('services/store', 'ServiceController@store');
     Route::post('services/update/{resource}', 'ServiceController@update');
     Route::post('services/destroy/{resource}', 'ServiceController@destroy');
+    // route import service file
+    Route::post('services/import', 'ServiceController@serviceImport');
 
 //  status start
 
@@ -130,6 +146,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('status/store', 'StatusController@store');
     Route::post('status/update/{resource}', 'StatusController@update');
     Route::post('status/destroy/{resource}', 'StatusController@destroy');
+    Route::post('status/import', 'StatusController@statusImport');
 
 //  users start
 
