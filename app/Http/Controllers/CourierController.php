@@ -34,6 +34,11 @@ class CourierController extends Controller
             $query->where('department_id', request()->department_id);
         } 
         
+        if (request()->user()->company_id != 1) {
+            $query->where('company_id', request()->user()->company_id);
+            //
+        }
+        
         return $query->get();
     }
 

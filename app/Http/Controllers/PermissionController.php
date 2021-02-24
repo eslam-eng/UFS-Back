@@ -9,7 +9,7 @@ class PermissionController extends Controller
 {
     public function index()
     {
-        $query = Permission::latest()->get();
+        $query = Permission::get();
         return $query;
     }
 
@@ -31,7 +31,7 @@ class PermissionController extends Controller
             $resource->display_name= $request->display_name;
             $resource->group_id= $request->group_id;
             $resource->save();
-            watch(__('add permission') . $resource->name, "fa fa-building");
+            watch(__('add permission ') . $resource->name, "fa fa-building");
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -57,7 +57,7 @@ class PermissionController extends Controller
             $resource->display_name= $request->display_name;
             $resource->group_id= $request->group_id;
             $resource->update();
-            watch(__('update permission') . $resource->name, "fa fa-building");
+            watch(__('update permission ') . $resource->name, "fa fa-building");
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -69,7 +69,7 @@ class PermissionController extends Controller
     {
         try {
             $resource->delete();
-            watch(__('delete permission') . $resource->name, "fa fa-trash");
+            watch(__('delete permission ') . $resource->name, "fa fa-trash");
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

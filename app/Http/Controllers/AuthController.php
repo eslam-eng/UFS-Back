@@ -18,7 +18,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             //$key = $validator->errors()->first();
             //return redirect($redirect . "?status=0&msg=" . $key);
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
 
         }
         $error = __("email or password error");
@@ -31,7 +31,7 @@ class AuthController extends Controller
                 ->first();
 
             if ($user) {
-                if ($user->active == 0)
+                if ($user->active == '0')
                     return responseJson(0, __('your account is not confirmed'));
 
                 //Auth::login($user);

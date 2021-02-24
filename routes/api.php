@@ -14,15 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+//autho login
+Route::post('auth/login', 'App\Http\Controllers\AuthController@login');
+    
 Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], function (){
 
-//autho login
-
-    Route::post('auth/login', 'AuthController@login');
 
 //  awbs start
 
@@ -155,6 +151,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('roles', 'roleController@index');
     Route::post('roles/store', 'roleController@store');
     Route::post('roles/update/{resource}', 'roleController@update');
+    Route::post('roles/permission/{resource}', 'roleController@updatePermissions');
     Route::post('roles/destroy/{resource}', 'roleController@destroy');
 
 //  status start

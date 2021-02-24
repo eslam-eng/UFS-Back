@@ -17,6 +17,7 @@ class CreatePermissionGroupsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('sort');
+            $table->boolean('is_admin')->nullable();
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laratrust\Traits\LaratrustUserTrait;
+use DB;
 
 class User extends Model
 {
@@ -13,26 +14,31 @@ class User extends Model
 
     protected $fillable = [
         'name',	'username','email','password','phone','address','photo','active',
-        'notes','company_id','branch_id','department_id','api_token'
+        'notes','company_id','branch_id','department_id','api_token', 'role_id'
     ];
     
     protected $appends = [
-        'role'
+        'role', 'permissions'
     ];
 
     protected $hidden = [
-        'password',
+       // 'password',
         'remember_token',
     ];
-
 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
+    public function getPermissionsAttribute() {
+        $ids = DB::table('permission_role')->where('role_id', $this->role_id)->pluck('permission_id')->toArray();
+
+        $permissions = Permission::whereIn('id', $ids)->pluck('id', 'name')->toArray();
+        return $permissions;//$this->permissions()->pluck('id', 'name')->toArray();
+    }
+    
     public function getRoleAttribute() {
-        $role = UserRole::where('user_id', $this->id)->first(); 
-        return Role::find(optional($role)->role_id);
+        return Role::find($this->role_id);
     }
     
     public function company()

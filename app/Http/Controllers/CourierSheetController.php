@@ -29,6 +29,9 @@ class CourierSheetController extends Controller
         if (request()->date_from && request()->date_to)
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
 
+        if (request()->user()->company_id != 1) {
+            $query->where('company_id', request()->user()->company_id);
+        }
         
         return $query->get();
     }

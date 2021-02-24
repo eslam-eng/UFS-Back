@@ -30,6 +30,10 @@ class ReceiverController extends Controller
             $query->where('company_id', request()->company_id);
         }
         
+        if (request()->user()->company_id != 1) {
+            $query->where('company_id', request()->user()->company_id);
+        }
+        
         return $query->get();
     }
 

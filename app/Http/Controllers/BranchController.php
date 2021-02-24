@@ -10,8 +10,13 @@ class BranchController extends Controller
 {
     public function index()
     {
-        $query = Branch::latest()->get();
-        return $query;
+        $query = Branch::latest();
+        
+        if (request()->user()->company_id != 1) {
+            $query->where('company_id', request()->user()->company_id);
+        }
+        
+        return $query->get();
     }
 
     /**

@@ -9,8 +9,13 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        $query = Department::latest()->get();
-        return $query;
+        $query = Department::latest();
+        
+        if (request()->user()->company_id != 1) {
+            $query->where('company_id', request()->user()->company_id);
+        }
+        
+        return $query->get();
     }
 
 

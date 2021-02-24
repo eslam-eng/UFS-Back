@@ -31,6 +31,10 @@ class CompanyController extends Controller
             $query->where('area_id', request()->area_id);
         }
 
+        if (request()->user()->company_id != 1) {
+            $query->where('id', request()->user()->company_id);
+        }
+        
         return $query->get();
     }
 

@@ -9,8 +9,13 @@ class PermissionGroupController extends Controller
 {
     public function index()
     {
-        $query = PermissionGroup::latest()->get();
-        return $query;
+        $query = PermissionGroup::with(['permissions'])->latest();
+        
+        if (request()->user()->company_id != 1) {
+            $query->where('is_admin', null);
+        }
+        
+        return $query->get();
     }
 
 

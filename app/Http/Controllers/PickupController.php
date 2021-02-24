@@ -35,6 +35,10 @@ class PickupController extends Controller
             $query->where('status_id', request()->status_id);
         } 
         
+        if (request()->user()->company_id != 1) {
+            $query->where('company_id', request()->user()->company_id);
+        }
+        
         return $query->get();
     }
 

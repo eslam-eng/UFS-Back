@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('address')->nullable();
             $table->string('photo')->nullable();
-            $table->enum('active',[0,1])->default(1);
+            $table->boolean('active')->default(true)->nullable();
             $table->string('notes')->nullable();
             $table->string('api_token')->nullable();
             $table->unsignedInteger('company_id');
@@ -31,6 +31,8 @@ class CreateUsersTable extends Migration
             $table->foreign('branch_id')->references('id')->on('branches');
             $table->unsignedInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
+            $table->unsignedInteger('role_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
