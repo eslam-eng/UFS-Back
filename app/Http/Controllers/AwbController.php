@@ -36,6 +36,7 @@ class AwbController extends Controller {
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
  
         if (request()->courier_sheet == 'active') {
+            $ids = CourierSheetDetail::select('awb_id')->pluck('awb_id')->toArray();
             $query->whereNotIn('id', $ids);
         }
         
