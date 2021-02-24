@@ -34,7 +34,7 @@ class CompanyController extends Controller
         if (request()->user()->company_id != 1) {
             $query->where('id', request()->user()->company_id);
         }
-        
+
         return $query->get();
     }
 
@@ -85,10 +85,9 @@ class CompanyController extends Controller
 
     }
 
-
     //    import excel file into data base
 
-    public function paymentTypeImport(Request $request)
+    public function companyImport(Request $request)
     {
         $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
         if ($validator->fails()) {

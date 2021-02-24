@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ReceiverImport;
 use App\Models\Receiver;
 use Illuminate\Http\Request;
 
@@ -10,30 +11,30 @@ class ReceiverController extends Controller
     public function index()
     {
         $query = Receiver::with(['city', 'area', 'company'])->latest();
-        
+
         if (request()->search) {
             $query
-                    ->where('name', 'like', '%'.request()->search.'%') 
-                    ->orWhere('phone', 'like', '%'.request()->search.'%') 
+                    ->where('name', 'like', '%'.request()->search.'%')
+                    ->orWhere('phone', 'like', '%'.request()->search.'%')
                     ->orWhere('address', 'like', '%'.request()->search.'%');
         }
-        
+
         if (request()->city_id > 0) {
             $query->where('city_id', request()->city_id);
         }
-        
+
         if (request()->area_id > 0) {
             $query->where('area_id', request()->area_id);
         }
-        
+
         if (request()->company_id > 0) {
             $query->where('company_id', request()->company_id);
         }
-        
+
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }
-        
+
         return $query->get();
     }
 
@@ -79,6 +80,30 @@ class ReceiverController extends Controller
             return responseJson(0, $th->getMessage());
         }
     }
+
+
+
+    //    import excel file into data base
+
+    public function receiverImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->getMessages(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $receiverfile = new ReceiverImport();
+            $receiverfile->import($file);
+            if ($receiverfile->failures()->isNotEmpty())
+                return responseJson(0, $receiverfile->failures(), "");
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
+        }
+
+    }
+
 
     public function rules()
     {
