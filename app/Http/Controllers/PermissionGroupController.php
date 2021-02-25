@@ -10,11 +10,11 @@ class PermissionGroupController extends Controller
     public function index()
     {
         $query = PermissionGroup::with(['permissions'])->latest();
-        
+
         if (request()->user()->company_id != 1) {
             $query->where('is_admin', null);
         }
-        
+
         return $query->get();
     }
 
@@ -23,12 +23,12 @@ class PermissionGroupController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = PermissionGroup::create($request->all());
-            watch(__('add permission group').$resource->name,'fa fa-credit-card');
-            return responseJson(1, __('done'), $resource);
+            watch(__('add permission group ').$resource->name,'fa fa-credit-card');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -44,7 +44,7 @@ class PermissionGroupController extends Controller
         }
         try {
             $resource->update($request->all());
-            watch(__('update permission group').$resource->name,'fa fa-credit-card');
+            watch(__('update permission group ').$resource->name,'fa fa-credit-card');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -55,11 +55,11 @@ class PermissionGroupController extends Controller
     public function destroy(PermissionGroup $resource)
     {
         try {
+            watch(__('delete permission group ').$resource->name,'fa fa-trash');
             $resource->delete();
-            watch(__('delete permission group').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }

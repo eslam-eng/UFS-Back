@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class AreaController extends Controller
 {
+    public $add_Icon = 'fa fa-building';
+    public $update_Icon = 'fa fa-building';
+    public $delete_Icon = 'fa fa-building';
     public function index()
     {
-        $query = Area::latest()->get();
+        $query = Area::get();
         return $query;
     }
 
@@ -24,12 +27,12 @@ class AreaController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = Area::create($request->all());
-            watch(__('add area ') . $resource->name, "fa fa-building");
-            return responseJson(1, __('done'), $resource);
+            watch(__('add area ') . $resource->name, $this->add_Icon);
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -47,11 +50,11 @@ class AreaController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update area ') . $resource->name, "fa fa-building");
+            watch(__('update area ') . $resource->name, $this->update_Icon);
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -62,11 +65,11 @@ class AreaController extends Controller
     public function destroy(Area $resource)
     {
         try {
+            watch(__('delete area ') . $resource->name, $this->delete_Icon);
             $resource->delete();
-            watch(__('delete area ') . $resource->name, "fa fa-trash");
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }
@@ -79,7 +82,7 @@ class AreaController extends Controller
     {
         $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $file = $request->file('file');
@@ -89,7 +92,7 @@ class AreaController extends Controller
                 return responseJson(0, $areafile->failures(), "");
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
-            return responseJson(0, $e->getMessage(), "");
+            return responseJson(0, __('this item cannot be deleted may be there relation to another'), $e->getMessage());
         }
 
     }

@@ -11,11 +11,11 @@ class BranchController extends Controller
     public function index()
     {
         $query = Branch::latest();
-        
+
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }
-        
+
         return $query->get();
     }
 
@@ -29,13 +29,13 @@ class BranchController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
 
             $resource = Branch::create($request->all());
-            watch(__('add branch').$resource->name,'fa fa-code-branch');
-            return responseJson(1, __('done'), $resource);
+            watch(__('add branch ').$resource->name,'fa fa-code-branch');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -53,11 +53,11 @@ class BranchController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update branch').$resource->name,'fa fa-code-branch');
+            watch(__('update branch ').$resource->name,'fa fa-code-branch');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -68,11 +68,11 @@ class BranchController extends Controller
     public function destroy(Branch $resource)
     {
         try {
-            watch(__('delete branch').$resource->name,'fa fa-trash');
+            watch(__('delete branch ').$resource->name,'fa fa-trash');
             $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }

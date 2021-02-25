@@ -35,7 +35,7 @@ class UserController extends Controller {
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }
-        
+
         return $query->get();
     }
 
@@ -48,16 +48,16 @@ class UserController extends Controller {
             $data = $request->all();
             if (isset($data['photo']))
                 unset($data['photo']);
-            
-            
+
+
             $resource = User::create($data);
 
             if ($request->role_id) {
                 $role = Role::find($request->role_id);
                 $resource->attachRole($role);
             }
-            
-            // upload img 
+
+            // upload img
             uploadImg($request->file('photo'), "/uploads/users/", function($filename) use ($resource) {
                 $resource->update([
                     "photo" => $filename
@@ -65,7 +65,7 @@ class UserController extends Controller {
             });
 
             watch(__('add user') . $resource->name, 'fa fa-user');
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource.refresh);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -90,14 +90,14 @@ class UserController extends Controller {
                 $resource->attachRole($role);
             }
 
-            // upload img 
+            // upload img
             uploadImg($request->file('photo'), "/uploads/users/", function($filename) use ($resource) {
                 $resource->update([
                     "photo" => $filename
                 ]);
             }, $resource->photo);
-            
-            watch(__('update user') . $resource->name, 'fa fa-user');
+
+            watch(__('update user ') . $resource->name, 'fa fa-user');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -111,18 +111,18 @@ class UserController extends Controller {
             if ($role)
                 $resource->detachRole($role);
 
-            watch(__('delete user') . $resource->name, 'fa fa-trash');
+            watch(__('delete user ') . $resource->name, 'fa fa-trash');
             $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
     }
 
     public function rules() {
         return [
             'name' => 'required|string',
-            'username' => 'required', 
+            'username' => 'required',
             'phone' => 'required|string',
             'email' => 'nullable|string|email',
             'address' => 'required|string',

@@ -28,8 +28,8 @@ class CityController extends Controller
         }
         try {
             $resource = City::create($request->all());
-            watch(__('add city').$resource->name,'fa fa-building');
-            return responseJson(1, __('done'), $resource);
+            watch(__('add city ').$resource->name,'fa fa-building');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -47,11 +47,11 @@ class CityController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update city').$resource->name,'fa fa-building');
+            watch(__('update city ').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -62,11 +62,11 @@ class CityController extends Controller
     public function destroy(City $resource)
     {
         try {
+            watch(__('delete city ').$resource->name,'fa fa-trash');
             $resource->delete();
-            watch(__('delete city').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }

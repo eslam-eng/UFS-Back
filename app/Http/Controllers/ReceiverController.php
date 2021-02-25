@@ -42,11 +42,11 @@ class ReceiverController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = Receiver::create($request->all());
-            watch(__('add receiver').$resource->code,'fa fa-people-carry');
+            watch(__('add receiver ').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -58,11 +58,11 @@ class ReceiverController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update receiver').$resource->code,'fa fa-people-carry');
+            watch(__('update receiver ').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -74,10 +74,10 @@ class ReceiverController extends Controller
     {
         try {
             $resource->delete();
-            watch(__('delete receiver').$resource->code,'fa fa-trash');
+            watch(__('delete receiver ').$resource->code,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
     }
 
@@ -89,7 +89,7 @@ class ReceiverController extends Controller
     {
         $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $file = $request->file('file');

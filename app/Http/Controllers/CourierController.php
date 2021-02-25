@@ -12,33 +12,33 @@ class CourierController extends Controller
     public function index()
     {
         $query = Courier::with(['company', 'branch', 'department'])->latest();
-        
+
         if (request()->search) {
             $query
-                    ->where('name', 'like', '%'.request()->search.'%') 
-                    ->orWhere('phone', 'like', '%'.request()->search.'%') 
-                    ->orWhere('email', 'like', '%'.request()->search.'%') 
-                    ->orWhere('notes', 'like', '%'.request()->search.'%')  
+                    ->where('name', 'like', '%'.request()->search.'%')
+                    ->orWhere('phone', 'like', '%'.request()->search.'%')
+                    ->orWhere('email', 'like', '%'.request()->search.'%')
+                    ->orWhere('notes', 'like', '%'.request()->search.'%')
                     ->orWhere('address', 'like', '%'.request()->search.'%');
         }
-        
+
         if (request()->company_id > 0) {
             $query->where('company_id', request()->company_id);
         }
-        
+
         if (request()->branch_id > 0) {
             $query->where('branch_id', request()->branch_id);
-        } 
-        
+        }
+
         if (request()->department_id > 0) {
             $query->where('department_id', request()->department_id);
-        } 
-        
+        }
+
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
             //
         }
-        
+
         return $query->get();
     }
 
@@ -46,11 +46,11 @@ class CourierController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = Courier::create($request->all());
-            watch(__('add courier').$resource->name,'fa fa-user');
+            watch(__('add courier ').$resource->name,'fa fa-user');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -62,11 +62,11 @@ class CourierController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update courier').$resource->name,'fa fa-user');
+            watch(__('update courier ').$resource->name,'fa fa-user');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -77,11 +77,11 @@ class CourierController extends Controller
     public function destroy(Courier $resource)
     {
         try {
-            watch(__('delete courier').$resource->name,'fa fa-trash');
+            watch(__('delete courier ').$resource->name,'fa fa-trash');
             $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0,__($this->exception_message) ,$th->getMessage());
         }
 
     }

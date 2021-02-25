@@ -34,16 +34,16 @@ class AwbController extends Controller {
 
         if (request()->date_from & request()->date_to)
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
- 
+
         if (request()->courier_sheet == 'active') {
             $ids = CourierSheetDetail::select('awb_id')->pluck('awb_id')->toArray();
             $query->whereNotIn('id', $ids);
         }
-        
+
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }
-        
+
         return $query->get();
     }
 
@@ -109,7 +109,7 @@ class AwbController extends Controller {
                 "code" => date('Y') . date('m') . date('d') . $resource->id
             ]);
 
-            // store history 
+            // store history
             AwbHistory::create([
                 'awb_id' => $resource->id,
                 'user_id' => $request->user()->id,
@@ -123,7 +123,7 @@ class AwbController extends Controller {
             }
 
             watch(__('create awb with code ') . $resource->code, 'fa fa-newspaper-o');
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource.refresh);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -140,7 +140,7 @@ class AwbController extends Controller {
             // store awb object
             $resource->update($data);
 
-            // delete old 
+            // delete old
             $resource->details()->delete();
 
             // store new details of awb
@@ -162,7 +162,7 @@ class AwbController extends Controller {
             $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
     }
 

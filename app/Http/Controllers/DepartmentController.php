@@ -10,11 +10,11 @@ class DepartmentController extends Controller
     public function index()
     {
         $query = Department::latest();
-        
+
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }
-        
+
         return $query->get();
     }
 
@@ -23,11 +23,11 @@ class DepartmentController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = Department::create($request->all());
-            watch(__('add department').$resource->name,'fa fa-codepen');
+            watch(__('add department ').$resource->name,'fa fa-codepen');
             return responseJson(1, __('done'), $resource);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -40,11 +40,11 @@ class DepartmentController extends Controller
     {
         $validator = validator($request->all(),$this->rules($request->id));
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update department').$resource->name,'fa fa-codepen');
+            watch(__('update department ').$resource->name,'fa fa-codepen');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -55,11 +55,11 @@ class DepartmentController extends Controller
     public function destroy(Department $resource)
     {
         try {
-            watch(__('delete department').$resource->name,'fa fa-trash');
+            watch(__('delete department ').$resource->name,'fa fa-trash');
             $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }

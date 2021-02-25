@@ -18,12 +18,12 @@ class ServiceController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = Service::create($request->all());
-            watch(__('add service').$resource->name,'fa fa-cubes');
-            return responseJson(1, __('done'), $resource);
+            watch(__('add service ').$resource->name,'fa fa-cubes');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -33,11 +33,11 @@ class ServiceController extends Controller
     {
         $validator = validator($request->all(),$this->rules($request->id));
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update service').$resource->name,'fa fa-cubes');
+            watch(__('update service ').$resource->name,'fa fa-cubes');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -47,11 +47,11 @@ class ServiceController extends Controller
     public function destroy(Service $resource)
     {
         try {
+            watch(__('delete service ').$resource->name,'fa fa-trash');
             $resource->delete();
-            watch(__('delete service').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }

@@ -19,12 +19,12 @@ class PaymentTypeController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = PaymentType::create($request->all());
-            watch(__('add payment').$resource->name,'fa fa-credit-card');
-            return responseJson(1, __('done'), $resource);
+            watch(__('add payment ').$resource->name,'fa fa-credit-card');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -36,11 +36,11 @@ class PaymentTypeController extends Controller
     {
         $validator = validator($request->all(),$this->rules($request->id));
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update payment').$resource->name,'fa fa-credit-card');
+            watch(__('update payment ').$resource->name,'fa fa-credit-card');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -51,11 +51,11 @@ class PaymentTypeController extends Controller
     public function destroy(PaymentType $resource)
     {
         try {
+            watch(__('delete payment ').$resource->name,'fa fa-trash');
             $resource->delete();
-            watch(__('delete payment').$resource->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }

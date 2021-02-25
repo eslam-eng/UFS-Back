@@ -42,15 +42,15 @@ class CompanyController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $data = $request->all();
             $data['type'] = "company";
 
             $resource = Company::create($data);
-            watch(__('add company').$resource->name,'fa fa-building');
-            return responseJson(1, __('done'), $resource);
+            watch(__('add company ').$resource->name,'fa fa-building');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -61,11 +61,11 @@ class CompanyController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update company').$resource->name,'fa fa-building');
+            watch(__('update company ').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -76,11 +76,11 @@ class CompanyController extends Controller
     public function destroy(Company $resource)
     {
         try {
-            watch(__('delete company').$resource->name,'fa fa-trash');
+            watch(__('delete company ').$resource->name,'fa fa-trash');
             $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }
@@ -91,7 +91,7 @@ class CompanyController extends Controller
     {
         $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $file = $request->file('file');

@@ -17,7 +17,7 @@ class CourierSheetDetailController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
           foreach ($request->awb_id as $awb)
@@ -26,7 +26,7 @@ class CourierSheetDetailController extends Controller
           }
           if ($resource)
           {
-              watch(__('add courierSheetDetail'),'fa fa-file');
+              watch(__('add courierSheetDetail '),'fa fa-file');
               return responseJson(1, __('done'), '');
           }else
               return responseJson(0, __('fail'), '');
@@ -41,11 +41,11 @@ class CourierSheetDetailController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update courierSheetDetail').$resource->sheet_id,'fa fa-file');
+            watch(__('update courierSheetDetail ').$resource->sheet_id,'fa fa-file');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -57,10 +57,10 @@ class CourierSheetDetailController extends Controller
     {
         try {
             $resource->delete();
-            watch(__('delete courierSheetDetail').$resource->sheet_id,'fa fa-trash');
+            watch(__('delete courierSheetDetail ').$resource->sheet_id,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0,__($this->exception_message),$th->getMessage());
         }
 
     }

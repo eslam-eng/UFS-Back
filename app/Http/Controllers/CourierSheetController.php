@@ -12,8 +12,8 @@ class CourierSheetController extends Controller
     public function index()
     {
         $query = CourierSheet::with('courier','user','sheetDetails')->latest();
-        
-        
+
+
         if (request()->courier_id > 0)
             $query->where('courier_id', request()->courier_id);
 
@@ -25,14 +25,14 @@ class CourierSheetController extends Controller
 
         if (request()->date_to)
             $query->where('date', '<=', request()->date_to);
-            
+
         if (request()->date_from && request()->date_to)
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }
-        
+
         return $query->get();
     }
 
@@ -52,7 +52,7 @@ class CourierSheetController extends Controller
             $data = $request->all();
             $data['user_id'] = $request->user()->id;
             $resource = CourierSheet::create($data);
-            
+
             // add new awb id
             foreach($data['details'] as $awbId) {
                 CourierSheetDetail::create([
@@ -60,9 +60,9 @@ class CourierSheetController extends Controller
                     "awb_id" => $awbId,
                 ]);
             }
-            
-            watch(__('add courierSheet').$resource->courier->name,'fa fa-file');
-            return responseJson(1, __('done'), $resource);
+
+            watch(__('add courierSheet ').$resource->courier->name,'fa fa-file');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -79,10 +79,10 @@ class CourierSheetController extends Controller
             $data = $request->all();
             $data['user_id'] = $request->user()->id;
             $resource->update($data);
-            
+
             // remove old
             $resource->sheetDetails()->delete();
-            
+
             // add new awb id
             foreach($data['details'] as $awbId) {
                 CourierSheetDetail::create([
@@ -90,7 +90,7 @@ class CourierSheetController extends Controller
                     "awb_id" => $awbId,
                 ]);
             }
-            watch(__('update courierSheet').$resource->courier->name,'fa fa-file');
+            watch(__('update courierSheet ').$resource->courier->name,'fa fa-file');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -102,11 +102,11 @@ class CourierSheetController extends Controller
     {
         try {
             $resource->sheetDetails()->delete();
+            watch(__('delete courierSheet ').$resource->courier->name,'fa fa-trash');
             $resource->delete();
-            watch(__('delete courierSheet').$resource->courier->name,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }

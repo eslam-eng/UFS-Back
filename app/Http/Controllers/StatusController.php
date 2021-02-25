@@ -19,12 +19,12 @@ class StatusController extends Controller
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource = Status::create($request->all());
-            watch(__('add status').$resource->code,'fa fa-stack-exchange');
-            return responseJson(1, __('done'), $resource);
+            watch(__('add status ').$resource->code,'fa fa-stack-exchange');
+            return responseJson(1, __('done'), $resource.refresh);
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -36,11 +36,11 @@ class StatusController extends Controller
     {
         $validator = validator($request->all(),$this->rules($request->id));
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $resource->update($request->all());
-            watch(__('update status').$resource->code,'fa fa-stack-exchange');
+            watch(__('update status ').$resource->code,'fa fa-stack-exchange');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -51,11 +51,11 @@ class StatusController extends Controller
     public function destroy(Status $resource)
     {
         try {
+            watch(__('delete status ').$resource->code,'fa fa-trash');
             $resource->delete();
-            watch(__('delete status').$resource->code,'fa fa-trash');
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __($this->exception_message),$th->getMessage());
         }
 
     }
