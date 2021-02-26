@@ -10,7 +10,7 @@ class PaymentTypeController extends Controller
 {
     public function index()
     {
-        $query = PaymentType::latest()->get();
+        $query = PaymentType::all();
         return $query;
     }
 
@@ -24,7 +24,7 @@ class PaymentTypeController extends Controller
         try {
             $resource = PaymentType::create($request->all());
             watch(__('add payment ').$resource->name,'fa fa-credit-card');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
