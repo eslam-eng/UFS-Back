@@ -11,7 +11,7 @@ class CourierController extends Controller
 
     public function index()
     {
-        $query = Courier::with(['company', 'branch', 'department'])->latest();
+        $query = Courier::query()->with(['company', 'branch', 'department']);
 
         if (request()->search) {
             $query
@@ -51,7 +51,7 @@ class CourierController extends Controller
         try {
             $resource = Courier::create($request->all());
             watch(__('add courier ').$resource->name,'fa fa-user');
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

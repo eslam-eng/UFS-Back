@@ -10,7 +10,7 @@ class StatusController extends Controller
 {
     public function index()
     {
-        $query = Status::latest()->get();
+        $query = Status::get();
         return $query;
     }
 
@@ -24,7 +24,7 @@ class StatusController extends Controller
         try {
             $resource = Status::create($request->all());
             watch(__('add status ').$resource->code,'fa fa-stack-exchange');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

@@ -9,7 +9,7 @@ class PickupController extends Controller
 {
     public function index()
     {
-        $query = Pickup::with(['company', 'status', 'courier', 'user'])->latest();
+        $query = Pickup::query()->with(['company', 'status', 'courier', 'user']);
 
         if (request()->search) {
             $query
@@ -62,7 +62,7 @@ class PickupController extends Controller
             ]);
 
             watch(__('add pickup ').$resource->code,'fa fa-people-carry');
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

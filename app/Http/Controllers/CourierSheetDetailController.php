@@ -9,7 +9,7 @@ class CourierSheetDetailController extends Controller
 {
     public function index()
     {
-        $query = CourierSheetDetail::with('sheet','awb')->latest()->get();
+        $query = CourierSheetDetail::with('sheet','awb')->get();
         return $query;
     }
 

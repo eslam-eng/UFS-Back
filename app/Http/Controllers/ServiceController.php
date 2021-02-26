@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $query = Service::latest()->get();
+        $query = Service::get();
         return $query;
     }
 
@@ -23,7 +23,7 @@ class ServiceController extends Controller
         try {
             $resource = Service::create($request->all());
             watch(__('add service ').$resource->name,'fa fa-cubes');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

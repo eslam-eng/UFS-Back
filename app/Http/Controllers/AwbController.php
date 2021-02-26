@@ -12,7 +12,7 @@ use App\Models\CourierSheetDetail;
 class AwbController extends Controller {
 
     public function index() {
-        $query = Awb::with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory'])->latest();
+        $query = Awb::query()->with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory']);
 
         if (request()->company_id > 0)
             $query->where('company_id', request()->company_id);
@@ -123,7 +123,7 @@ class AwbController extends Controller {
             }
 
             watch(__('create awb with code ') . $resource->code, 'fa fa-newspaper-o');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

@@ -10,7 +10,7 @@ class BranchController extends Controller
 {
     public function index()
     {
-        $query = Branch::latest();
+        $query = Branch::query();
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
@@ -35,7 +35,7 @@ class BranchController extends Controller
 
             $resource = Branch::create($request->all());
             watch(__('add branch ').$resource->name,'fa fa-code-branch');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

@@ -12,7 +12,7 @@ class NotificationController extends Controller
         $query = Notification::where('user_id', $user->id)
             ->where('seen', '0');
 
-        $notifications = $query->latest()->get();
+        $notifications = $query->get();
         $query->update(['seen' => 1]);
         return $notifications;
     }

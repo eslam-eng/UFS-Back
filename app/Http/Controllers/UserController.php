@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller {
 
     public function index() {
-        $query = User::with(['company', 'branch', 'department'])->latest();
+        $query = User::query()->with(['company', 'branch', 'department']);
 
         if (request()->search) {
             $query
@@ -65,7 +65,7 @@ class UserController extends Controller {
             });
 
             watch(__('add user') . $resource->name, 'fa fa-user');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

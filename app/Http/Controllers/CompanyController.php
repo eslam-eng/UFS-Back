@@ -11,7 +11,7 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $query = Company::with(['city', 'area'])->latest();
+        $query = Company::query()->with(['city', 'area']);
 
         if (request()->search) {
             $query
@@ -50,7 +50,7 @@ class CompanyController extends Controller
 
             $resource = Company::create($data);
             watch(__('add company ').$resource->name,'fa fa-building');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

@@ -9,7 +9,7 @@ class PermissionGroupController extends Controller
 {
     public function index()
     {
-        $query = PermissionGroup::with(['permissions'])->latest();
+        $query = PermissionGroup::query()->with(['permissions']);
 
         if (request()->user()->company_id != 1) {
             $query->where('is_admin', null);
@@ -28,7 +28,7 @@ class PermissionGroupController extends Controller
         try {
             $resource = PermissionGroup::create($request->all());
             watch(__('add permission group ').$resource->name,'fa fa-credit-card');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

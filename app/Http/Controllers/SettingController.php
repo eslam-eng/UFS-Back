@@ -10,7 +10,7 @@ class SettingController extends Controller
 
     public function index()
     {
-        $query = Setting::with('company')->latest()->get();
+        $query = Setting::with('company')->get();
         return $query;
     }
 
@@ -23,7 +23,7 @@ class SettingController extends Controller
         try {
             $resource = Setting::create($request->all());
             watch(__('add setting ').$resource->name,'fa fa-cogs');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

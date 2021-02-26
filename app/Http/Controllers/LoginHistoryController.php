@@ -9,7 +9,7 @@ class LoginHistoryController extends Controller
 {
     public function index()
     {
-        $query = LoginHistory::with('user')->latest()->get();
+        $query = LoginHistory::with('user')->get();
         return $query;
     }
 }

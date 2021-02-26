@@ -11,7 +11,7 @@ class CountryController extends Controller
 
     public function index()
     {
-        $query = Country::latest()->get();
+        $query = Country::get();
         return $query;
     }
 
@@ -26,7 +26,7 @@ class CountryController extends Controller
         try {
             $resource = Country::create($request->all());
             watch(__('add country ').$resource->name,'fa fa-building');
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

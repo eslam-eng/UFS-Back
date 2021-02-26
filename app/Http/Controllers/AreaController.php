@@ -32,7 +32,7 @@ class AreaController extends Controller
         try {
             $resource = Area::create($request->all());
             watch(__('add area ') . $resource->name, $this->add_Icon);
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

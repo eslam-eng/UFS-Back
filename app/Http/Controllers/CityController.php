@@ -10,7 +10,7 @@ class CityController extends Controller
 {
     public function index()
     {
-        $query = City::latest()->get();
+        $query = City::get();
         return $query;
     }
 
@@ -29,7 +29,7 @@ class CityController extends Controller
         try {
             $resource = City::create($request->all());
             watch(__('add city ').$resource->name,'fa fa-building');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

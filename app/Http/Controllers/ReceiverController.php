@@ -10,7 +10,7 @@ class ReceiverController extends Controller
 {
     public function index()
     {
-        $query = Receiver::with(['city', 'area', 'company'])->latest();
+        $query = Receiver::with(['city', 'area', 'company']);
 
         if (request()->search) {
             $query
@@ -47,7 +47,7 @@ class ReceiverController extends Controller
         try {
             $resource = Receiver::create($request->all());
             watch(__('add receiver ').$resource->code,'fa fa-people-carry');
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

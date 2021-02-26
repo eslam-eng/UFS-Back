@@ -11,7 +11,7 @@ class CourierSheetController extends Controller
 
     public function index()
     {
-        $query = CourierSheet::with('courier','user','sheetDetails')->latest();
+        $query = CourierSheet::query()->with('courier','user','sheetDetails');
 
 
         if (request()->courier_id > 0)
@@ -62,7 +62,7 @@ class CourierSheetController extends Controller
             }
 
             watch(__('add courierSheet ').$resource->courier->name,'fa fa-file');
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

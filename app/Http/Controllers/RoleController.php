@@ -41,7 +41,7 @@ class RoleController extends Controller
             $resource->company_id= $request->company_id;
             $resource->save();
             watch(__('add role') . $resource->name, "fa fa-building");
-            return responseJson(1, __('done'), $resource.refresh);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

@@ -9,7 +9,7 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        $query = Department::latest();
+        $query = Department::query();
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
@@ -28,7 +28,7 @@ class DepartmentController extends Controller
         try {
             $resource = Department::create($request->all());
             watch(__('add department ').$resource->name,'fa fa-codepen');
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }

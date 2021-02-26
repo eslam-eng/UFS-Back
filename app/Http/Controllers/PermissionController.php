@@ -32,7 +32,7 @@ class PermissionController extends Controller
             $resource->group_id= $request->group_id;
             $resource->save();
             watch(__('add permission ') . $resource->name, "fa fa-building");
-            return responseJson(1, __('done'), $resource);
+            return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
