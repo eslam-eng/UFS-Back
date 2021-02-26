@@ -21,7 +21,7 @@ class TranslateController extends Controller
      * @return Response
      */
     public function get() {
-        return Translation::latest()->paginate(60);
+        return Translation::latest()->paginate(1000);
     }
     /**
      * Store a newly created resource in storage.
