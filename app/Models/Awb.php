@@ -41,7 +41,7 @@ class Awb extends Model
 
     public function company()
     {
-        return $this->belongsTo('App\Models\Company','company_id');
+        return $this->belongsTo('App\Models\Company','company_id')->with(['city', 'area']);
     }
 
     public function branch()
@@ -56,7 +56,7 @@ class Awb extends Model
 
     public function receiver()
     {
-        return $this->belongsTo('App\Models\Receiver','receiver_id');
+        return $this->belongsTo('App\Models\Receiver','receiver_id')->with(['city', 'area']);
     }
 
     public function paymentType()

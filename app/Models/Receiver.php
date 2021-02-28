@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Receiver extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','address','phone','company_id','city_id','area_id'];
+    protected $fillable = ['name','address','phone','company_id','city_id','area_id', 'branch_id'];
 
     public function company()
     {

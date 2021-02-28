@@ -24,7 +24,7 @@ class AuthController extends Controller
         $error = __("email or password error");
 
         try {
-            $user = User::where("email", $request->email)
+            $user = User::with(['company'])->where("email", $request->email)
                 ->orWhere('phone', $request->email)
                 ->orWhere('username', $request->email)
                 //->where("password", $request->password)

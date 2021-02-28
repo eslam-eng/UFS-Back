@@ -5,17 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Awb;
+use App\Models\Status;
+
 
 class DashboardController extends Controller
 {
 
     public function home()
     {
-        $awb_count = DB::table('awbs')->count();
-        $receiver_count = DB::table('receivers')->count();
-        $courier_count = DB::table('couriers')->count();
-        $pickup_count = DB::table('pickups')->count();
-
+        $awbQuery = Awb::query();
+        
+        if (request()->user()->company_id != 1) {
+            $awbQuery->where('company_id', request()->user()->company_id);
+        }
+         
+        $stepers = ['in_company','processing','hold','delivered'];
+        $counts = [];
+        foreach ($stepers as $steper) {
+            $steperQuery = clone $awbQuery;
+            $statusIds = Status::where('steper', $steper)->pluck('id')->toArray();
+            $counts[$steper] = $steperQuery->whereIn('status_id', $statusIds)->count();
+        }
+        
         $awbStatusChart = DB::table('statuses')
                 ->select(
                     'statuses.name',
@@ -25,10 +37,7 @@ class DashboardController extends Controller
         $awbCollectionChart = DB::table('awbs')->get(['code', 'collection'])->toArray();
 
         $data =[
-            'awb_count'=>$awb_count,
-            'receiver_count'=>$receiver_count,
-            'courier_count'=>$courier_count,
-            'pickup_count'=>$pickup_count,
+            'counts'=>$counts, 
             'awb_status_chart'=>$awbStatusChart,
             'awb_collection_chart'=>$awbCollectionChart
         ];

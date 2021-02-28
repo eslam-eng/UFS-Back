@@ -22,6 +22,7 @@ class CreateCompaniesTable extends Migration
             $table->string('phone');
             $table->string('fax')->nullable();
             $table->string('email');
+            $table->boolean('show_dashboard')->nullable();
             $table->enum('active',[0,1])->default(1);
             $table->string('notes')->nullable();
             $table->string('commercial_number')->nullable();

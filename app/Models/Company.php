@@ -10,7 +10,7 @@ class Company extends Model
     use HasFactory;
     protected $fillable = [
         'name','logo','ceo','address','phone','fax','email'	,'active','notes',
-        'commercial_number','commercial_photo','type','city_id','area_id'
+        'commercial_number','commercial_photo','type','city_id','area_id', 'show_dashboard'
     ];
 
     public function city()

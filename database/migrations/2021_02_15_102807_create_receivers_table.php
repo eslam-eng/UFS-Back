@@ -22,8 +22,13 @@ class CreateReceiversTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
+            
             $table->unsignedInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
+            
+            $table->unsignedInteger('branch_id');
+            $table->foreign('branch_id')->references('id')->on('branches');
+            
             $table->timestamps();
         });
     }
