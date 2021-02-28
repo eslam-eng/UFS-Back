@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
+    public static $PATH='/uploads/company/';
     protected $fillable = [
         'name','logo','ceo','address','phone','fax','email'	,'active','notes',
         'commercial_number','commercial_photo','type','city_id','area_id', 'show_dashboard'

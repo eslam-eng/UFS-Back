@@ -35,6 +35,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('awbs/update/{resource}', 'AwbController@update');
     Route::post('awbs/status/{resource}', 'AwbController@changeStatus');
     Route::post('awbs/destroy/{resource}', 'AwbController@destroy');
+    Route::get('awbs/get-trash', 'AwbController@loadTrash');
 
 //  areas start
 

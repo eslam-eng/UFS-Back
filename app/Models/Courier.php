@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Courier extends Model
 {
     use HasFactory;
+    public static $PATH = "/uploads/courier/";
     protected $fillable = [
         'name','photo','phone',	'email','address','notes','active',
         'company_id','insurance_num ','national_id','work_area',

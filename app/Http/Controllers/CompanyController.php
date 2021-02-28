@@ -49,6 +49,18 @@ class CompanyController extends Controller
             $data['type'] = "company";
 
             $resource = Company::create($data);
+
+            uploadImg($request->file('logo'), Company::$PATH, function($filename) use ($resource) {
+                $resource->update([
+                    "logo" => $filename
+                ]);
+            });
+            uploadImg($request->file('commercial_photo'), Company::$PATH, function($filename) use ($resource) {
+                $resource->update([
+                    "commercial_photo" => $filename
+                ]);
+            });
+
             watch(__('add company ').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
@@ -65,6 +77,16 @@ class CompanyController extends Controller
         }
         try {
             $resource->update($request->all());
+            uploadImg($request->file('logo'), Company::$PATH, function($filename) use ($resource) {
+                $resource->update([
+                    "logo" => $filename
+                ]);
+            });
+            uploadImg($request->file('commercial_photo'), Company::$PATH, function($filename) use ($resource) {
+                $resource->update([
+                    "commercial_photo" => $filename
+                ]);
+            });
             watch(__('update company ').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {

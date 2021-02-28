@@ -51,6 +51,11 @@ class CourierController extends Controller
         }
         try {
             $resource = Courier::create($request->all());
+            uploadImg($request->file('photo'), Courier::$PATH, function($filename) use ($resource) {
+                $resource->update([
+                    "photo" => $filename
+                ]);
+            });
             watch(__('add courier ').$resource->name,'fa fa-user');
             return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
@@ -67,6 +72,11 @@ class CourierController extends Controller
         }
         try {
             $resource->update($request->all());
+            uploadImg($request->file('photo'), Courier::$PATH, function($filename) use ($resource) {
+                $resource->update([
+                    "photo" => $filename
+                ]);
+            });
             watch(__('update courier ').$resource->name,'fa fa-user');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {

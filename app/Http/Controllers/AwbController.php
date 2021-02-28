@@ -19,7 +19,7 @@ class AwbController extends Controller {
 
         if (request()->branch_id > 0)
             $query->where('branch_id', request()->branch_id);
- 
+
         if (request()->city_id > 0)
             $query->where('city_id', request()->city_id);
 
@@ -51,6 +51,11 @@ class AwbController extends Controller {
         $query = Awb::with(['details', 'company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user']);
 
         return $query->where('id', $resource)->first();
+    }
+
+    public function loadTrash()
+    {
+        return Awb::onlyTrashed();
     }
 
     public function changeStatus(Awb $resource, Request $request) {

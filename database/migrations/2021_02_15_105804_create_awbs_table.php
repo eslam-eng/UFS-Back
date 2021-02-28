@@ -54,6 +54,7 @@ class CreateAwbsTable extends Migration
             $table->enum('type', ['document', 'parcel'])->default('document')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
