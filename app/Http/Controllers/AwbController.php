@@ -19,7 +19,7 @@ class AwbController extends Controller {
 
         if (request()->branch_id > 0)
             $query->where('branch_id', request()->branch_id);
-
+ 
         if (request()->city_id > 0)
             $query->where('city_id', request()->city_id);
 
