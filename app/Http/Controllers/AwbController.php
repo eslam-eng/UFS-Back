@@ -53,9 +53,12 @@ class AwbController extends Controller {
         return $query->where('id', $resource)->first();
     }
 
-    public function loadTrash()
+    public function getTrash()
     {
-        return Awb::onlyTrashed();
+        return Awb::onlyTrashed()
+                ->with(['company', 'department', 'paymentType', 'branch', 
+                    'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory'])->get();
+
     }
 
     public function changeStatus(Awb $resource, Request $request) {
