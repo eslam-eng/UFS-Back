@@ -17,7 +17,7 @@ class CreateAwbHistoriesTable extends Migration
             $table->increments('id');
 
             $table->unsignedInteger('awb_id');
-            $table->foreign('awb_id')->references('id')->on('awbs');
+            $table->foreign('awb_id')->references('id')->on('awbs')->onDelete('cascade');
 
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -76,6 +76,12 @@ class AreaController extends Controller
 
 
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/provinces.xlsx'));
+    }
+
+
 //    import excel file into data base
 
     public function areaImport(Request $request)

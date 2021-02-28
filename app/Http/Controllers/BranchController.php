@@ -78,6 +78,11 @@ class BranchController extends Controller
     }
 
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/branches.xlsx'));
+    }
+
     //    import excel file into data base
 
     public function branchImport(Request $request)

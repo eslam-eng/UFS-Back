@@ -61,6 +61,10 @@ class PaymentTypeController extends Controller
     }
 
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/countryOrServiceOrPayment.xlsx'));
+    }
 
 //    import excel file into data base
 

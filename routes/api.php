@@ -27,6 +27,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 
 
     Route::get('awbs', 'AwbController@index');
+    Route::get('awbs/history', 'AwbController@awbHistory');
     Route::get('awbs/{resource}', 'AwbController@load');
     Route::get('awbs/print/{resource}', 'AwbController@print');
     Route::post('awbs/print-selected', 'AwbController@printSelected');
@@ -41,6 +42,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('areas/store', 'AreaController@store');
     Route::post('areas/update/{resource}', 'AreaController@update');
     Route::post('areas/destroy/{resource}', 'AreaController@destroy');
+
+    Route::post('areas/excel/download', 'AreaController@areaImport');
 // route import area file
     Route::post('areas/import', 'AreaController@areaImport');
 
@@ -51,6 +54,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('branches/update/{resource}', 'BranchController@update');
     Route::post('branches/destroy/{resource}', 'BranchController@destroy');
 
+    Route::post('branches/excel/download', 'BranchController@branchImport');
     // route import branch file
     Route::post('branches/import', 'BranchController@branchImport');
 
@@ -60,6 +64,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('cities/store', 'CityController@store');
     Route::post('cities/update/{resource}', 'CityController@update');
     Route::post('cities/destroy/{resource}', 'CityController@destroy');
+
+    Route::post('cities/excel/download', 'CityController@downloadExcel');
     // route import city file
     Route::post('cities/import', 'CityController@cityImport');
 
@@ -69,6 +75,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('companies/store', 'CompanyController@store');
     Route::post('companies/update/{resource}', 'CompanyController@update');
     Route::post('companies/destroy/{resource}', 'CompanyController@destroy');
+
+    Route::post('companies/excel/download', 'CompanyController@downloadExcel');
     // route import country file
     Route::post('companies/import', 'CompanyController@companyImport');
 
@@ -78,6 +86,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('countries/store', 'CountryController@store');
     Route::post('countries/update/{resource}', 'CountryController@update');
     Route::post('countries/destroy/{resource}', 'CountryController@destroy');
+
+    Route::post('countries/excel/download', 'CountryController@downloadExcel');
     // route import country file
     Route::post('countries/import', 'CountryController@countryImport');
 
@@ -88,7 +98,9 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('couriers/store', 'CourierController@store');
     Route::post('couriers/update/{resource}', 'CourierController@update');
     Route::post('couriers/destroy/{resource}', 'CourierController@destroy');
-
+    Route::post('couriers/excel/download', 'CourierController@downloadExcel');
+    // route import country file
+    Route::post('couriers/import', 'CourierController@countryImport');
 
     //  courier Sheet start
 
@@ -107,6 +119,12 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('departments/update/{resource}', 'DepartmentController@update');
     Route::post('departments/destroy/{resource}', 'DepartmentController@destroy');
 
+    Route::post('departments/excel/download', 'DepartmentController@downloadExcel');
+    // route import country file
+    Route::post('departments/import', 'DepartmentController@countryImport');
+
+
+
 //  payment-type start
 
     Route::get('payment-types', 'PaymentTypeController@index');
@@ -114,6 +132,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('payment-types/update/{resource}', 'PaymentTypeController@update');
     Route::post('payment-types/destroy/{resource}', 'PaymentTypeController@destroy');
 
+
+    Route::post('payment-types/excel/download', 'PaymentTypeController@downloadExcel');
     // route import payment type file
     Route::post('payment-types/import', 'PaymentTypeController@paymentTypeImport');
 
@@ -131,12 +151,19 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('receivers/update/{resource}', 'ReceiverController@update');
     Route::post('receivers/destroy/{resource}', 'ReceiverController@destroy');
 
+    Route::post('receivers/excel/download', 'ReceiverController@downloadExcel');
+    // route import payment type file
+    Route::post('receivers/import', 'PaymentTypeController@paymentTypeImport');
+
+
 //  service start
 
     Route::get('services', 'ServiceController@index');
     Route::post('services/store', 'ServiceController@store');
     Route::post('services/update/{resource}', 'ServiceController@update');
     Route::post('services/destroy/{resource}', 'ServiceController@destroy');
+
+    Route::post('services/excel/download', 'ServiceController@downloadExcel');
     // route import service file
     Route::post('services/import', 'ServiceController@serviceImport');
 
@@ -146,6 +173,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('status/store', 'StatusController@store');
     Route::post('status/update/{resource}', 'StatusController@update');
     Route::post('status/destroy/{resource}', 'StatusController@destroy');
+
+    Route::post('status/excel/download', 'StatusController@downloadExcel');
     Route::post('status/import', 'StatusController@statusImport');
 
 //  users start
@@ -169,11 +198,11 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 
 //  status start
 
-    Route::get('roles', 'roleController@index');
-    Route::post('roles/store', 'roleController@store');
-    Route::post('roles/update/{resource}', 'roleController@update');
-    Route::post('roles/permission/{resource}', 'roleController@updatePermissions');
-    Route::post('roles/destroy/{resource}', 'roleController@destroy');
+    Route::get('roles', 'RoleController@index');
+    Route::post('roles/store', 'RoleController@store');
+    Route::post('roles/update/{resource}', 'RoleController@update');
+    Route::post('roles/permission/{resource}', 'RoleController@updatePermissions');
+    Route::post('roles/destroy/{resource}', 'RoleController@destroy');
 
 //  status start
     Route::get('permissions', 'PermissionController@index');

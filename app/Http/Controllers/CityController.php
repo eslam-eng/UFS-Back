@@ -72,6 +72,10 @@ class CityController extends Controller
     }
 
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/city.xlsx'));
+    }
 
 //    import excel file into data base
 

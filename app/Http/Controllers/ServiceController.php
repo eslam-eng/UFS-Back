@@ -58,6 +58,11 @@ class ServiceController extends Controller
 
 
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/countryOrServiceOrPayment.xlsx'));
+    }
+
     //    import excel file into data base
 
     public function serviceTypeImport(Request $request)

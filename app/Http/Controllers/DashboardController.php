@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+
 
 class DashboardController extends Controller
 {
 
     public function home()
     {
-
         $awb_count = DB::table('awbs')->count();
         $receiver_count = DB::table('receivers')->count();
         $courier_count = DB::table('couriers')->count();

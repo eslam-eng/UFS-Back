@@ -10,10 +10,8 @@ class Courier extends Model
     use HasFactory;
     protected $fillable = [
         'name','photo','phone',	'email','address','notes','active',
-        'company_id',
-        'branch_id',
-        'department_id'
-    ];
+        'company_id','insurance_num ','national_id ','work_area',
+        'branch_id', 'department_id'];
 
 
     public function company()

@@ -59,12 +59,16 @@ class CountryController extends Controller
 
     }
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/countryOrServiceOrPayment.xlsx'));
+    }
 
     public function countryImport(Request $request)
     {
         $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
         if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->getMessages(), "");
+            return responseJson(0, $validator->errors()->first(), "");
         }
         try {
             $file = $request->file('file');

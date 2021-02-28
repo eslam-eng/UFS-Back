@@ -64,6 +64,33 @@ class DepartmentController extends Controller
 
     }
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/department.xlsx'));
+    }
+
+//    import excel file into data base
+
+    public function departmentImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->getMessages(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $paymentfile = new paymentTypeImport();
+            $paymentfile->import($file);
+            if ($paymentfile->failures()->isNotEmpty())
+                return responseJson(0, $paymentfile->failures(), "");
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
+        }
+
+    }
+
+
 
     public function rules($id=null)
     {

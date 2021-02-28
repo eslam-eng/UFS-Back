@@ -49,7 +49,7 @@ class CreateAwbsTable extends Migration
             $table->date('date');
             $table->double('weight');
             $table->double('pieces');
-            $table->double('collection');
+            $table->double('collection')->nullable();
             $table->string('notes')->nullable();
             $table->enum('type', ['document', 'parcel'])->default('document')->nullable();
 

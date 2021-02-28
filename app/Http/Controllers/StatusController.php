@@ -60,7 +60,10 @@ class StatusController extends Controller
 
     }
 
-
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/status.xlsx'));
+    }
 
     //    import excel file into data base
 

@@ -83,6 +83,12 @@ class ReceiverController extends Controller
 
 
 
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/receiver.xlsx'));
+    }
+
+
     //    import excel file into data base
 
     public function receiverImport(Request $request)

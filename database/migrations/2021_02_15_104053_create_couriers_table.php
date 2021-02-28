@@ -20,6 +20,9 @@ class CreateCouriersTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
+            $table->string('insurance_num')->nullable();
+            $table->string('national_id');
+            $table->string('work_area')->nullable();
             $table->string('notes')->nullable();
             $table->enum('active',[0,1])->default(1);
             $table->unsignedInteger('company_id');

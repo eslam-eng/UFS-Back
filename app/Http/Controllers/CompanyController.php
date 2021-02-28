@@ -85,6 +85,13 @@ class CompanyController extends Controller
 
     }
 
+
+
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/company.xlsx'));
+    }
+
     //    import excel file into data base
 
     public function companyImport(Request $request)

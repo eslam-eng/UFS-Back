@@ -108,16 +108,6 @@
             <div class="w3-border w3-border-gray w3-display-container w3-row" style="border-top: 0px"  >
                 <div class="w3-col l6 m6 s6 w3-border w3-border-gray w3-display-container" >
                     <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                        <span style="float: left" >Weight</span>
-                        <span class="w3-right" >الوزن</span>
-                        <br>
-                    </div>
-                    <div class="w3-border w3-border-block w3-padding w3-display-container w3-center"  >
-                        {{ $resource->weight }}
-                    </div>
-                </div>
-                <div class="w3-col l6 m6 s6 w3-border w3-border-gray w3-display-container" >
-                    <div class="w3-border w3-border-block w3-padding w3-display-container"  >
                         <span style="float: left" >Pieces</span>
                         <span style="float: right" >عدد القطع</span>
                         <br>
@@ -126,11 +116,21 @@
                         {{ $resource->pieces }}
                     </div>
                 </div>
+                <div class="w3-col l6 m6 s6 w3-border w3-border-gray w3-display-container" >
+                    <div class="w3-border w3-border-block w3-padding w3-display-container"  >
+                        <span style="float: left" >Weight</span>
+                        <span class="w3-right" >الوزن</span>
+                        <br>
+                    </div>
+                    <div class="w3-border w3-border-block w3-padding w3-display-container w3-center"  >
+                        {{ $resource->weight }}
+                    </div>
+                </div>
             </div>
 
         </td>
 
-        <td style="width: 36;padding: 0px" >
+        <td style="width: 36px;padding: 0px" >
             <div class="w3-indigo w3-padding w3-center" >
                 Receiver
             </div>

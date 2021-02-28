@@ -29,8 +29,8 @@ class AwbController extends Controller {
         if (request()->department_id > 0)
             $query->where('department_id', request()->department_id);
 
-        if (request()->code > 0)
-            $query->where('code', "like", "%" . request()->code . "%");
+        if (request()->search > 0)
+            $query->where('code', "like", "%" . request()->search . "%");
 
         if (request()->date_from & request()->date_to)
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
@@ -166,9 +166,18 @@ class AwbController extends Controller {
         }
     }
 
+
+    public function awbHistory()
+    {
+        $query = Awb::query()->with('awbHistory');
+        if (request()->code > 0)
+            $query->where('code', "like", "%" . request()->code . "%");
+        return $query->get();
+    }
+
     public function rules() {
         return [
-            'collection' => 'required|numeric',
+            'collection' => 'nullable|numeric',
             'company_id' => 'required|integer|exists:companies,id',
             'branch_id' => 'required|integer|exists:branches,id',
             'department_id' => 'required|exists:departments,id',

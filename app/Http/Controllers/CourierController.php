@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CourierImport;
 use App\Models\Courier;
 use Illuminate\Http\Request;
 
@@ -87,6 +88,33 @@ class CourierController extends Controller
     }
 
 
+
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/courier.xlsx'));
+    }
+
+    public function courierImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $courierfile = new CourierImport();
+            $courierfile->import($file);
+            if ($courierfile->failures()->isNotEmpty())
+                return responseJson(0, $courierfile->failures(), "");
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
+        }
+
+    }
+
+
+
     public function rules()
     {
         return [
@@ -95,10 +123,13 @@ class CourierController extends Controller
             'phone'=>'required|string',
             'email'=>'nullable|string',
             'address'=>'required|string',
+            'insurance_number'=>'nullable|numeric',
+            'national_id'=>'required|numeric',
+            'work_area'=>'nullable|string',
             'notes'=>'nullable|string',
             'active'=>'required',
-            'company_id'=>'required|integer|exists:companies,id',
-            'branch_id'=>'required|integer|exists:branches,id',
+            'company_id'=>'required|exists:companies,id',
+            'branch_id'=>'required|exists:branches,id',
             'department_id'=>'required|integer|exists:departments,id'
         ];
     }
