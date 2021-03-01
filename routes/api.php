@@ -45,7 +45,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('areas/update/{resource}', 'AreaController@update');
     Route::post('areas/destroy/{resource}', 'AreaController@destroy');
 
-    Route::post('areas/excel/download', 'AreaController@areaImport');
+    Route::get('areas/excel/download', 'AreaController@downloadExcel');
 // route import area file
     Route::post('areas/import', 'AreaController@areaImport');
 
@@ -56,7 +56,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('branches/update/{resource}', 'BranchController@update');
     Route::post('branches/destroy/{resource}', 'BranchController@destroy');
 
-    Route::post('branches/excel/download', 'BranchController@branchImport');
+    Route::get('branches/excel/download', 'BranchController@downloadExcel');
     // route import branch file
     Route::post('branches/import', 'BranchController@branchImport');
 
@@ -67,7 +67,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('cities/update/{resource}', 'CityController@update');
     Route::post('cities/destroy/{resource}', 'CityController@destroy');
 
-    Route::post('cities/excel/download', 'CityController@downloadExcel');
+    Route::get('cities/excel/download', 'CityController@downloadExcel');
     // route import city file
     Route::post('cities/import', 'CityController@cityImport');
 
@@ -78,7 +78,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('companies/update/{resource}', 'CompanyController@update');
     Route::post('companies/destroy/{resource}', 'CompanyController@destroy');
 
-    Route::post('companies/excel/download', 'CompanyController@downloadExcel');
+    Route::get('companies/excel/download', 'CompanyController@downloadExcel');
     // route import country file
     Route::post('companies/import', 'CompanyController@companyImport');
 
@@ -89,7 +89,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('countries/update/{resource}', 'CountryController@update');
     Route::post('countries/destroy/{resource}', 'CountryController@destroy');
 
-    Route::post('countries/excel/download', 'CountryController@downloadExcel');
+    Route::get('countries/excel/download', 'CountryController@downloadExcel');
     // route import country file
     Route::post('countries/import', 'CountryController@countryImport');
 
@@ -100,7 +100,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('couriers/store', 'CourierController@store');
     Route::post('couriers/update/{resource}', 'CourierController@update');
     Route::post('couriers/destroy/{resource}', 'CourierController@destroy');
-    Route::post('couriers/excel/download', 'CourierController@downloadExcel');
+    Route::get('couriers/excel/download', 'CourierController@downloadExcel');
     // route import country file
     Route::post('couriers/import', 'CourierController@countryImport');
 
@@ -121,7 +121,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('departments/update/{resource}', 'DepartmentController@update');
     Route::post('departments/destroy/{resource}', 'DepartmentController@destroy');
 
-    Route::post('departments/excel/download', 'DepartmentController@downloadExcel');
+    Route::get('departments/excel/download', 'DepartmentController@downloadExcel');
     // route import country file
     Route::post('departments/import', 'DepartmentController@countryImport');
 
@@ -135,7 +135,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('payment-types/destroy/{resource}', 'PaymentTypeController@destroy');
 
 
-    Route::post('payment-types/excel/download', 'PaymentTypeController@downloadExcel');
+    Route::get('payment-types/excel/download', 'PaymentTypeController@downloadExcel');
     // route import payment type file
     Route::post('payment-types/import', 'PaymentTypeController@paymentTypeImport');
 
@@ -153,7 +153,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('receivers/update/{resource}', 'ReceiverController@update');
     Route::post('receivers/destroy/{resource}', 'ReceiverController@destroy');
 
-    Route::post('receivers/excel/download', 'ReceiverController@downloadExcel');
+    Route::get('receivers/excel/download', 'ReceiverController@downloadExcel');
     // route import payment type file
     Route::post('receivers/import', 'PaymentTypeController@paymentTypeImport');
 
@@ -165,7 +165,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('services/update/{resource}', 'ServiceController@update');
     Route::post('services/destroy/{resource}', 'ServiceController@destroy');
 
-    Route::post('services/excel/download', 'ServiceController@downloadExcel');
+    Route::get('services/excel/download', 'ServiceController@downloadExcel');
     // route import service file
     Route::post('services/import', 'ServiceController@serviceImport');
 
@@ -176,7 +176,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('status/update/{resource}', 'StatusController@update');
     Route::post('status/destroy/{resource}', 'StatusController@destroy');
 
-    Route::post('status/excel/download', 'StatusController@downloadExcel');
+    Route::get('status/excel/download', 'StatusController@downloadExcel');
     Route::post('status/import', 'StatusController@statusImport');
 
 //  users start
