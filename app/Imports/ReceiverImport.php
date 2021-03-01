@@ -29,6 +29,7 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
             'company_id'=>$row['company_code'],
             'city_id'=>$row['city_code'],
             'area_id'=>$row['province_code'],
+            'branch_id'=>$row['branch_code'],
         ]);
     }
 
@@ -40,7 +41,8 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
             '*.phone'=>['required','string'],
             '*.company_code'=>['required','exists:companies,id'],
             '*.city_code'=>['required','exists:cities,id'],
-            '*.province_code'=>['required','exists:areas,id']
+            '*.province_code'=>['required','exists:areas,id'],
+            '*.branch_code'=>['required','exists:branches,id'],
 
         ];
     }
