@@ -53,8 +53,8 @@ class CreateAwbsTable extends Migration
             $table->string('notes')->nullable();
             $table->enum('type', ['document', 'parcel'])->default('document')->nullable();
 
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('user_trash_id')->nullable();
+            $table->foreign('user_trash_id')->references('id')->on('users');
 
             $table->timestamps();
             $table->softDeletes();
