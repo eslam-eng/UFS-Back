@@ -127,7 +127,7 @@ class CompanyController extends Controller
             $companyfile = new CompanyImport();
             $companyfile->import($file);
             if ($companyfile->failures()->isNotEmpty())
-                return responseJson(0, $companyfile->failures(), "");
+                return responseJson(0, "", $companyfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

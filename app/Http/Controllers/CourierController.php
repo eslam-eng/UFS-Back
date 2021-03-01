@@ -115,7 +115,7 @@ class CourierController extends Controller
             $courierfile = new CourierImport();
             $courierfile->import($file);
             if ($courierfile->failures()->isNotEmpty())
-                return responseJson(0, $courierfile->failures(), "");
+                return responseJson(0, "", $courierfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

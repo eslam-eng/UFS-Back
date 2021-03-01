@@ -76,7 +76,7 @@ class ServiceController extends Controller
             $servicefile = new ServiceImport();
             $servicefile->import($file);
             if ($servicefile->failures()->isNotEmpty())
-                return responseJson(0, $servicefile->failures(), "");
+                return responseJson(0, "", $servicefile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

@@ -96,7 +96,7 @@ class BranchController extends Controller
             $branchfile = new BranchImport();
             $branchfile->import($file);
             if ($branchfile->failures()->isNotEmpty())
-                return responseJson(0, $branchfile->failures(), "");
+                return responseJson(0, "", $branchfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

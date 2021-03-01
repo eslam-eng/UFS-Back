@@ -75,7 +75,7 @@ class CountryController extends Controller
             $countryfile = new CountryImport();
             $countryfile->import($file);
             if ($countryfile->failures()->isNotEmpty())
-                return responseJson(0, $countryfile->failures(), "");
+                return responseJson(0,"",  $countryfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

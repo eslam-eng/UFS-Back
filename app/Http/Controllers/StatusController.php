@@ -78,7 +78,7 @@ class StatusController extends Controller
             $statusfile = new StatusImport();
             $statusfile->import($file);
             if ($statusfile->failures()->isNotEmpty())
-                return responseJson(0, $statusfile->failures(), "");
+                return responseJson(0, "", $statusfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

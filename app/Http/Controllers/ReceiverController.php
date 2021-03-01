@@ -102,7 +102,7 @@ class ReceiverController extends Controller
             $receiverfile = new ReceiverImport();
             $receiverfile->import($file);
             if ($receiverfile->failures()->isNotEmpty())
-                return responseJson(0, $receiverfile->failures(), "");
+                return responseJson(0, "", $receiverfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

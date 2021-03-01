@@ -79,7 +79,7 @@ class PaymentTypeController extends Controller
             $paymentfile = new paymentTypeImport();
             $paymentfile->import($file);
             if ($paymentfile->failures()->isNotEmpty())
-                return responseJson(0, $paymentfile->failures(), "");
+                return responseJson(0, "", $paymentfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");

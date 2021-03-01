@@ -80,10 +80,10 @@ class DepartmentController extends Controller
         }
         try {
             $file = $request->file('file');
-            $paymentfile = new DepartmentImport();
-            $paymentfile->import($file);
-            if ($paymentfile->failures()->isNotEmpty())
-                return responseJson(0, "", $paymentfile->failures());
+            $departmentfile = new DepartmentImport();
+            $departmentfile->import($file);
+            if ($departmentfile->failures()->isNotEmpty())
+                return responseJson(0, "", $departmentfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");
