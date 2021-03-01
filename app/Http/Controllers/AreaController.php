@@ -95,7 +95,8 @@ class AreaController extends Controller
             $areafile = new AreaImport();
             $areafile->import($file);
             if ($areafile->failures()->isNotEmpty())
-                return responseJson(0, $areafile->failures(), "");
+                return responseJson(0, "", $areafile->failures());
+
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, __('this item cannot be deleted may be there relation to another'), $e->getMessage());

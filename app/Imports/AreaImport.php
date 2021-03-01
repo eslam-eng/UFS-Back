@@ -32,8 +32,7 @@ class AreaImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,S
     {
         return [
             '*.name'=>['required','string'],
-            '*.city_code'=>['required','exists:cities,id'],
-
+            '*.city_code'=>['required','exists:cities,id']
         ];
     }
 }

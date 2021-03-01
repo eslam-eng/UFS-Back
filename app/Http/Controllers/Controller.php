@@ -12,4 +12,14 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public $exception_message = 'this item cannot be deleted may be there a relation in another';
+
+
+    public function excelErrorToString($errors) {
+        $string = "";
+        foreach($errors as $error) {
+            $string .= implode(", ", $error->errors);
+        }
+
+        return $string;
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\AwbDetail;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use App\Models\CourierSheetDetail;
+use DB;
 
 class AwbController extends Controller {
 
@@ -164,10 +165,30 @@ class AwbController extends Controller {
         }
     }
 
-    public function destroy(Awb $resource) {
+    public function destroy($resource) {
         try {
+            $resource = DB::table('awbs')->find($resource);
+            
             watch(__('delete awb with code ') . $resource->code, 'fa fa-trash');
-            $resource->delete();
+            if ($resource->deleted_at) {
+                $resource = Awb::onlyTrashed()->find($resource->id);
+                $resource->forceDelete();
+            }
+            else {
+                $resource = Awb::find($resource->id);
+                $resource->delete();
+            }
+            return responseJson(1, __('done'));
+        } catch (\Exception $th) {
+            return responseJson(0, __($this->exception_message),$th->getMessage());
+        }
+    }
+
+    public function restore($resource) {
+        try {
+            $resource = Awb::onlyTrashed()->find($resource);
+            watch(__('restore awb with code ') . $resource->code, 'fa fa-reply');
+            $resource->restore();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, __($this->exception_message),$th->getMessage());
