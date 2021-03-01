@@ -123,7 +123,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 
     Route::get('departments/excel/download', 'DepartmentController@downloadExcel');
     // route import country file
-    Route::post('departments/import', 'DepartmentController@countryImport');
+    Route::post('departments/import', 'DepartmentController@departmentImport');
 
 
 

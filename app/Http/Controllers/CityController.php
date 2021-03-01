@@ -90,12 +90,11 @@ class CityController extends Controller
             $cityfile = new CityImport();
             $cityfile->import($file);
             if ($cityfile->failures()->isNotEmpty())
-                return responseJson(0, $cityfile->failures(), "");
+                return responseJson(0, "", $cityfile->failures());
             return responseJson(1, __('file imported'), "");
         }catch (\Exception $e){
             return responseJson(0, $e->getMessage(), "");
         }
-
     }
 
 

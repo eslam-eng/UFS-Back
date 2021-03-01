@@ -10,7 +10,7 @@ class ReceiverController extends Controller
 {
     public function index()
     {
-        $query = Receiver::with(['city', 'area', 'company']);
+        $query = Receiver::with(['city', 'area', 'company', 'branch']);
 
         if (request()->search) {
             $query
