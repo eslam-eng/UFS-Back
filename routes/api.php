@@ -102,7 +102,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('couriers/destroy/{resource}', 'CourierController@destroy');
     Route::get('couriers/excel/download', 'CourierController@downloadExcel');
     // route import country file
-    Route::post('couriers/import', 'CourierController@countryImport');
+    Route::post('couriers/import', 'CourierController@courierImport');
 
     //  courier Sheet start
 
@@ -155,7 +155,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 
     Route::get('receivers/excel/download', 'ReceiverController@downloadExcel');
     // route import payment type file
-    Route::post('receivers/import', 'PaymentTypeController@paymentTypeImport');
+    Route::post('receivers/import', 'ReceiverController@receiverImport');
 
 
 //  service start
