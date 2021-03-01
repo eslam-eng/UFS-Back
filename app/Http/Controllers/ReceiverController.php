@@ -117,9 +117,10 @@ class ReceiverController extends Controller
             'name'=>'required|string',
             'address'=>'required|string',
             'phone'=>'required|string',
-            'company_id'=>'required|integer|exists:companies,id',
-            'city_id'=>'required|integer|exists:cities,id',
-            'area_id'=>'required|integer|exists:areas,id'
+            'company_id'=>'required|exists:companies,id',
+            'city_id'=>'required|exists:cities,id',
+            'area_id'=>'required|exists:areas,id',
+            'branch_id'=>'required|exists:branches,id',
         ];
     }
 }
