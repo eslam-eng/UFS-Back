@@ -15,6 +15,11 @@ class Courier extends Model
         'branch_id', 'department_id'
     ];
 
+    protected $appends = ['photo_url'];
+
+    public function getPhotoUrlAttribute() {
+        return $this->photo? url($this->photo) : '';
+    }
 
     public function company()
     {

@@ -14,6 +14,16 @@ class Company extends Model
         'commercial_number','commercial_photo','type','city_id','area_id', 'show_dashboard'
     ];
 
+    protected $appends = ['logo_url', 'commercial_photo_url'];
+
+    public function getLogoUrlAttribute() {
+        return $this->logo? url($this->logo) : '';
+    }
+
+    public function getCommercialPhotoUrlAttribute() {
+        return $this->commercial_photo? url($this->commercial_photo) : '';
+    }
+
     public function city()
     {
         return $this->belongsTo('App\Models\City','city_id');
