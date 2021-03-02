@@ -76,7 +76,11 @@ class CompanyController extends Controller
             return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            $resource->update($request->all());
+            $data = $request->all();
+            $data['active'] = ($request->active)? '1' : '0';
+            $data['show_dashboard'] = ($request->show_dashboard)? '1' : '0';
+
+            $resource->update($data);
             uploadImg($request->file('logo'), Company::$PATH, function($filename) use ($resource) {
                 $resource->update([
                     "logo" => $filename
@@ -146,7 +150,6 @@ class CompanyController extends Controller
             'address'=>'required|string',
             'phone'=>'required|string',
             'fax'=>'nullable|string',
-            'email'=>'required|string|email',
             'notes'=>'nullable|string|max:180',
             'commercial_number'=>'nullable|string',
             'commercial_photo'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10000',

@@ -42,7 +42,7 @@ class CourierImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidatio
         return [
             '.*name'=>['required','string'],
             '.*phone'=>['required','string'],
-            '.*email'=>['required','string','email'],
+            '.*email'=>['nullable','string','email'],
             '.*address'=>['required','string'],
             '.*notes'=>['nullable','string'],
             '.*insurance_num'=>['nullable','string'],

@@ -131,7 +131,6 @@ class CourierController extends Controller
             'name'=>'required|string',
             'photo'=>'nullable',
             'phone'=>'required|string|unique:couriers,phone,'.request()->id,
-            'email'=>'required|string|unique:couriers,email,'.request()->id,
             'address'=>'required|string',
             'insurance_number'=>'nullable|numeric',
             'national_id'=>'required|size:14|unique:couriers,national_id,'.request()->id,

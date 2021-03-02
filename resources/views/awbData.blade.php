@@ -63,7 +63,7 @@
                         <br>
                     </div>
                     <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                        {{ optional(optional($resource->company)->area)->name }}
+                        {{ optional(optional($resource->company)->city)->name }}
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
                         <br>
                     </div>
                     <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                        {{ optional(optional($resource->company)->city)->name }}
+                        {{ optional(optional($resource->company)->area)->name }}
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                 <br>
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                {{ optional(optional($resource->receiver)->company)->name }}
+                {{ optional($resource->receiver)->company_name }} - {{ optional($resource->receiver)->branch_name }}
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container w3-light-gray"  >
                 <span style="float: left" >Address.</span>

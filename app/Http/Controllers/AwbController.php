@@ -33,6 +33,9 @@ class AwbController extends Controller {
         if (request()->search > 0)
             $query->where('code', "like", "%" . request()->search . "%");
 
+        if (request()->code)
+            $query->where('code', "like", "%" . request()->code . "%");
+
         if (request()->date_from & request()->date_to)
             $query->whereBetween('date', [request()->date_from, request()->date_to]);
 
@@ -57,7 +60,7 @@ class AwbController extends Controller {
     public function getTrash()
     {
         return Awb::onlyTrashed()
-                ->with(['company', 'department', 'paymentType', 'branch', 
+                ->with(['company', 'department', 'paymentType', 'branch',
                     'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory'])->get();
 
     }
@@ -168,7 +171,7 @@ class AwbController extends Controller {
     public function destroy($resource) {
         try {
             $resource = DB::table('awbs')->find($resource);
-            
+
             watch(__('delete awb with code ') . $resource->code, 'fa fa-trash');
             if ($resource->deleted_at) {
                 $resource = Awb::onlyTrashed()->find($resource->id);
