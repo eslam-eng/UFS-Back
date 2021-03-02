@@ -18,7 +18,7 @@ class CreateCouriersTable extends Migration
             $table->string('name');
             $table->string('photo')->nullable();
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('address');
             $table->string('insurance_num')->nullable();
             $table->string('national_id');

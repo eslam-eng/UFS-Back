@@ -18,17 +18,20 @@ class CreateReceiversTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone');
+            $table->string('address2')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('branch_name')->nullable();
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
-            
+
             $table->unsignedInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
-            
+
             $table->unsignedInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches');
-            
+
             $table->timestamps();
         });
     }
