@@ -34,8 +34,13 @@ class ReceiverController extends Controller
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
         }
+ 
+        $data = $query->paginate(20);
 
-        return $query->get();
+        if (request()->paging == 0)
+            $data = $query->get();
+
+        return $data;
     }
 
     public function store(Request $request)

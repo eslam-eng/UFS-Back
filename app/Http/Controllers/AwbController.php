@@ -36,8 +36,11 @@ class AwbController extends Controller {
         if (request()->code)
             $query->where('code', "like", "%" . request()->code . "%");
 
-        if (request()->date_from & request()->date_to)
-            $query->whereBetween('date', [request()->date_from, request()->date_to]);
+        if (request()->date_from)
+            $query->whereDate('date', '>=', request()->date_from);
+
+        if (request()->date_to)
+            $query->whereDate('date', '<=', request()->date_to);
 
         if (request()->courier_sheet == 'active') {
             $ids = CourierSheetDetail::select('awb_id')->pluck('awb_id')->toArray();
@@ -48,7 +51,12 @@ class AwbController extends Controller {
             $query->where('company_id', request()->user()->company_id);
         }
 
-        return $query->get();
+        if (request()->steper) {
+            $ids = Status::where('steper', request()->steper)->pluck('id')->toArray();
+            $query->whereIn('status_id', $ids);
+        }
+
+        return $query->paginate(60);
     }
 
     public function load($resource) {

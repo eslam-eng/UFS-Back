@@ -21,10 +21,24 @@
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceiverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiverController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Imports/ReceiverImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/ReceiverImport.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Receiver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Receiver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_15_102807_create_receivers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_15_102807_create_receivers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/excel/receiver.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/excel/receiver.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/awbData.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/awbData.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-Arxh1qviDGVwz6McrCZAORntAe0BtSiF.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-LvnT7agFGevqHmBLWLwRvg2Z7TuqivTy.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-OcdtwaHLh11RZK5lhoNq8qXYHnRlyDxA.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-PNNKTRLpIhMgIeLzTLAI07kuIups6R6c.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-XL7WLMSHgxR7jmhA3jI9d96CENeXDDNn.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-dgGPcoxulMWkmO2xdR6UXVuhSr7xViNQ.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-g9Oqtxpb8iAy077uwQR1FlfeH4eCyxsY.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-nbpiyNOKGDgUABaqSoR8uNaXECiw9743.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-pOvkxGZFL4aTIKqlZNeprzvBEBC9Ug86.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-qhGRlOONUcZ9sfWROEAvo4u4XpsgPXHi.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-wtP1NasY5K8lGK031wqwdkWmeOuiYpLI.tmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +225,7 @@
       <workItem from="1614384861890" duration="882000" />
       <workItem from="1614498900330" duration="14557000" />
       <workItem from="1614699903269" duration="5191000" />
-      <workItem from="1614867178786" duration="520000" />
+      <workItem from="1614867178786" duration="9725000" />
     </task>
     <servers />
   </component>

@@ -292,8 +292,12 @@
                 <span style="float: right" >المطلوب تحصيله</span>
                 <br>
             </div>
-            <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px" >
-                {{ optional($resource)->collection }}
+            <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px;" >
+                @if($resource->collection)
+                    {{ optional($resource)->collection }}
+                @else
+                    <br>
+                @endif
             </div>
 
             <div class="w3-indigo w3-center w3-border w3-border-gray" style="padding: 3px"  >
@@ -302,7 +306,7 @@
                 <br>
             </div>
             <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px" >
-              <br>
+                <br>
             </div>
 
             <div class="w3-indigo w3- w3-center w3-border w3-border-gray" style="padding: 3px" >
@@ -311,7 +315,11 @@
                 <br>
             </div>
             <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px" >
-                1
+                @if($resource->returned)
+                    {{ optional($resource)->returned }}
+                @else
+                    <br>
+                @endif
             </div>
 
 
