@@ -20,6 +20,7 @@ class CreateReceiversTable extends Migration
             $table->string('phone');
             $table->string('address2')->nullable();
             $table->string('company_name')->nullable();
+            $table->string('referance')->nullable();
             $table->string('branch_name')->nullable();
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');

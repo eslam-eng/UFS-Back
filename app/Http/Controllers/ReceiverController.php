@@ -118,6 +118,7 @@ class ReceiverController extends Controller
             'address'=>'required|string',
             'phone'=>'required|string',
             'company_id'=>'required|exists:companies,id',
+            'referance'=>'nullable|string',
             'city_id'=>'required|exists:cities,id',
             'area_id'=>'required|exists:areas,id',
             'branch_id'=>'required|exists:branches,id',

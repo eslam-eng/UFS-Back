@@ -24,10 +24,11 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
     {
         return new Receiver([
             'name'=>$row['name'],
-            'address'=>$row['company_code'],
+            'address'=>$row['address'],
             'phone'=>$row['phone'],
             'email'=>$row['email'],
             'company_name'=>$row['company_name'],
+            'referance'=>$row['referance'],
             'branch_name'=>$row['branch_name'],
             'company_id'=>$row['company_code'],
             'address2'=>$row['address2'],
@@ -42,11 +43,12 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
         return [
             '*.name'=>['required','string'],
             '*.address'=>['required','string'],
-            '*.phone'=>['required','string'],
+            '*.phone'=>['nullable','string'],
             '*.email'=>['nullable','email'],
             '*.company_name'=>['nullable','string'],
             '*.branch_name'=>['nullable','string'],
             '*.address2'=>['nullable','string'],
+            '*.referance'=>['nullable','string'],
             '*.company_code'=>['required','exists:companies,id'],
             '*.city_code'=>['required','exists:cities,id'],
             '*.province_code'=>['required','exists:areas,id'],

@@ -10,7 +10,7 @@ class Receiver extends Model
     use HasFactory;
     protected $fillable = [
         'name','address','phone','company_id','city_id','area_id',
-        'branch_id', 'company_name', 'branch_name', 'address2'
+        'branch_id', 'company_name', 'branch_name', 'address2','referance'
     ];
 
     public function company()
