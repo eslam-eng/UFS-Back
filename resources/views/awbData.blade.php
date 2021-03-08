@@ -139,7 +139,7 @@
                 <span class="w3-right" >الشخص المرسل اليه</span>
                 <br>
             </div>
-            <div class="w3-border w3-border-block w3-padding w3-display-container"  >
+            <div class="w3-border w3-border-block w3-padding w3-display-container" contentEditable="true"  >
                 {{ optional($resource->receiver)->name }}
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container w3-light-gray"  >
@@ -163,7 +163,7 @@
                 <span style="float: right" >التليفون/الفاكس</span>
                 <br>
             </div>
-            <div class="w3-border w3-border-block w3-padding w3-display-container"  >
+            <div class="w3-border w3-border-block w3-padding w3-display-container" contentEditable="true"  >
                 {{ optional($resource->receiver)->phone }}
             </div>
             <div class="w3-border w3-border-block w3-display-container w3-row"  >
@@ -294,9 +294,9 @@
             </div>
             <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px;" >
                 @if($resource->collection)
-                    {{ optional($resource)->collection }}
+                {{ optional($resource)->collection }}
                 @else
-                    <br>
+                <br>
                 @endif
             </div>
 
@@ -306,7 +306,7 @@
                 <br>
             </div>
             <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px" >
-                <br>
+              <br>
             </div>
 
             <div class="w3-indigo w3- w3-center w3-border w3-border-gray" style="padding: 3px" >
@@ -316,19 +316,31 @@
             </div>
             <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px" >
                 @if($resource->returned)
-                    {{ optional($resource)->returned }}
+                {{ optional($resource)->returned }}
                 @else
-                    <br>
+                <br>
                 @endif
             </div>
 
+            <div class="w3-indigo w3- w3-center w3-border w3-border-gray" style="padding: 3px" >
+                <span style="float: left" >Department.</span>
+                <span style="float: right;font-size:10px" >اسم القسم</span>
+                <br>
+            </div>
+            <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px" >
+                @if($resource->department)
+                {{ optional($resource->department)->name }}
+                @else
+                <br>
+                @endif
+            </div>
 
             <div class="w3-indigo w3-center w3-border w3-border-gray " style="padding: 3px" >
                 <span style="float: left" >Remarks.</span>
                 <span style="float: right" >ملاحظات</span>
                 <br>
             </div>
-            <div class="w3- w3-border w3-border-gray" style="padding: 3px;height: 341px" >
+            <div class="w3- w3-border w3-border-gray" style="padding: 3px;height: 287px" >
                 {{ optional($resource)->notes }}
             </div>
 

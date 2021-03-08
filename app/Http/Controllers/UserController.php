@@ -50,6 +50,7 @@ class UserController extends Controller {
                 unset($data['photo']);
 
 
+            $data['active'] = $request->active? '1' : '0';
             $resource = User::create($data);
 
             if ($request->role_id) {
@@ -77,7 +78,9 @@ class UserController extends Controller {
             return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            $resource->update($request->all());
+            $data = $request->all();
+            $data['active'] = $request->active? '1' : '0';
+            $resource->update($data);
 
             if ($request->role_id) {
                 // remove old role
@@ -127,7 +130,6 @@ class UserController extends Controller {
             'email' => 'nullable|string|email',
             'address' => 'required|string',
             'notes' => 'nullable|string',
-            'active' => 'required',
             'company_id' => 'required|exists:companies,id',
             'branch_id' => 'required|exists:branches,id',
             'department_id' => 'required|exists:departments,id'
