@@ -38,6 +38,13 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('awbs-trash', 'AwbController@getTrash');
     Route::post('awbs-restore/{resource}', 'AwbController@restore');
 
+//Awb Category
+
+    Route::get('awb-categories', 'AwbCategoryController@index');
+    Route::post('awb-categories/store', 'AwbCategoryController@store');
+    Route::post('awb-categories/update/{resource}', 'AwbCategoryController@update');
+    Route::post('awb-categories/destroy/{resource}', 'AwbCategoryController@destroy');
+
 //  areas start
 
     Route::get('areas', 'AreaController@index');

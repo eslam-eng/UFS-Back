@@ -21,24 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceiverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiverController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Imports/ReceiverImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/ReceiverImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Receiver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Receiver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/excel/receiver.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/excel/receiver.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/awbData.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/awbData.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-Arxh1qviDGVwz6McrCZAORntAe0BtSiF.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-LvnT7agFGevqHmBLWLwRvg2Z7TuqivTy.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-OcdtwaHLh11RZK5lhoNq8qXYHnRlyDxA.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-PNNKTRLpIhMgIeLzTLAI07kuIups6R6c.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-XL7WLMSHgxR7jmhA3jI9d96CENeXDDNn.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-dgGPcoxulMWkmO2xdR6UXVuhSr7xViNQ.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-g9Oqtxpb8iAy077uwQR1FlfeH4eCyxsY.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-nbpiyNOKGDgUABaqSoR8uNaXECiw9743.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-pOvkxGZFL4aTIKqlZNeprzvBEBC9Ug86.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-qhGRlOONUcZ9sfWROEAvo4u4XpsgPXHi.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/laravel-excel/laravel-excel-wtP1NasY5K8lGK031wqwdkWmeOuiYpLI.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Awb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Awb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_15_105804_create_awbs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_15_105804_create_awbs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,6 +213,7 @@
       <workItem from="1614498900330" duration="14557000" />
       <workItem from="1614699903269" duration="5191000" />
       <workItem from="1614867178786" duration="9725000" />
+      <workItem from="1615238148488" duration="1629000" />
     </task>
     <servers />
   </component>
@@ -245,10 +233,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614546203066">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615238744432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1614546203066" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615238744432" />
     <state x="555" y="311" key="git4idea.ui.GitStashDialog" timestamp="1614545779834">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -51,7 +51,8 @@ class CreateAwbsTable extends Migration
             $table->double('pieces');
             $table->double('collection')->nullable();
             $table->string('notes')->nullable();
-            $table->enum('type', ['document', 'parcel'])->default('document')->nullable();
+
+            $table->boolean('is_return')->default(false);
 
             $table->unsignedInteger('user_trash_id')->nullable();
             $table->foreign('user_trash_id')->references('id')->on('users');

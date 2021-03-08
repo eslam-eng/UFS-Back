@@ -24,8 +24,9 @@ class Awb extends Model
         'date',
         'weight',
         'pieces',
-        'type',
+        'category_id',
         'notes',
+        'is_return',
         'collection' //now its temporary after it will calc automaticlly depends on city an area price
     ];
 
@@ -93,5 +94,10 @@ class Awb extends Model
     public function awbHistory()
     {
         return $this->hasMany('App\Models\AwbHistory','awb_id')->with(['status', 'user']);
+    }
+
+    public function awbCategory()
+    {
+        return $this->belongsTo('App\Models\AwbCategory','category_id');
     }
 }
