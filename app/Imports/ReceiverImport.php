@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use App\Models\Area;
 
 class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,SkipsOnFailure
 {
@@ -22,6 +23,11 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
     */
     public function model(array $row)
     {
+        $area = Area::find($row['province_code']); 
+        
+        if (!$area)
+            return null;
+        
         return new Receiver([
             'name'=>$row['name'],
             'address'=>$row['address'],
@@ -33,7 +39,7 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
             'branch_name'=>$row['branch_name'],
             'company_id'=>$row['company_code'],
             'address2'=>$row['address2'],
-            'city_id'=>$row['city_code'],
+            'city_id'=> optional($area)->city_id,
             'area_id'=>$row['province_code'],
             'branch_id'=>$row['branch_code'],
         ]);
@@ -50,8 +56,7 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
             '*.branch_name'=>['nullable','string'],
             '*.address2'=>['nullable','string'],
             '*.referance'=>['nullable','string'],
-            '*.company_code'=>['required','exists:companies,id'],
-            '*.city_code'=>['required','exists:cities,id'],
+            '*.company_code'=>['required','exists:companies,id'], 
             '*.province_code'=>['required','exists:areas,id'],
             '*.branch_code'=>['required','exists:branches,id'],
 

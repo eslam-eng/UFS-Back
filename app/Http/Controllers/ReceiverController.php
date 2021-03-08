@@ -12,11 +12,19 @@ class ReceiverController extends Controller
     {
         $query = Receiver::with(['city', 'area', 'company', 'branch']);
 
+        if (request()->user()->company_id != 1) {
+            $query->where('company_id', request()->user()->company_id);
+        }
+
+        if (request()->company_id > 0) {
+            $query->where('company_id', request()->company_id);
+        }
+        
         if (request()->search) {
             $query
-                    ->where('name', 'like', '%'.request()->search.'%')
-                    ->orWhere('phone', 'like', '%'.request()->search.'%')
-                    ->orWhere('address', 'like', '%'.request()->search.'%');
+                    ->where('name', 'like', '%'.request()->search.'%');
+                    //->orWhere('phone', 'like', '%'.request()->search.'%')
+                    //->orWhere('address', 'like', '%'.request()->search.'%');
         }
 
         if (request()->city_id > 0) {
@@ -27,17 +35,9 @@ class ReceiverController extends Controller
             $query->where('area_id', request()->area_id);
         }
 
-        if (request()->company_id > 0) {
-            $query->where('company_id', request()->company_id);
-        }
-
-        if (request()->user()->company_id != 1) {
-            $query->where('company_id', request()->user()->company_id);
-        }
- 
         $data = $query->paginate(20);
 
-        if (request()->paging == 0)
+        if (request()->paging == '0')
             $data = $query->get();
 
         return $data;
