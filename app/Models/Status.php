@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','description', 'steper', 'is_final'];
+    protected $fillable = [
+        'name','description', 'steper', 'is_final',
+        'sms', 'is_paid', 'is_non_paid', 'is_customer_paid', 'is_closed', 'type'
+        ];
 
     public function pickupInfo()
     {
