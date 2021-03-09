@@ -30,8 +30,8 @@ class CreateStatusesTable extends Migration
             $table->enum('steper', ['in_company', 'processing', 'hold', 'delivered'])->nullable();
 
             $table->string('sms')->nullable();
-            $table->boolean('is_paid')->nullable();
-            $table->boolean('is_non_paid')->nullable();
+            $table->boolean('is_paid_return')->nullable();
+            $table->boolean('is_non_paid_return')->nullable();
             $table->boolean('is_customer_paid')->nullable();
             $table->boolean('is_closed')->nullable();
             $table->enum('type',['awb','pickup'])->default('awb');

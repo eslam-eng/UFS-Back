@@ -21,9 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Awb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Awb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Status.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PriceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PriceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_15_095531_create_statuses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_15_095531_create_statuses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_15_102843_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_15_102843_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_18_122719_laratrust_setup_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_18_122719_laratrust_setup_tables.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +173,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/uploads/excel" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/dgvvbghj_new_database (4).sql" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -212,7 +213,7 @@
       <workItem from="1614699903269" duration="5191000" />
       <workItem from="1614867178786" duration="9725000" />
       <workItem from="1615238148488" duration="1872000" />
-      <workItem from="1615295720510" duration="6920000" />
+      <workItem from="1615295720510" duration="12727000" />
     </task>
     <servers />
   </component>
@@ -236,6 +237,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615300956260" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1615315145134">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615315145134" />
     <state x="555" y="311" key="git4idea.ui.GitStashDialog" timestamp="1614545779834">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

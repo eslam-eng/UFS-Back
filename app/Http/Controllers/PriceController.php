@@ -77,8 +77,6 @@ class PriceController extends Controller
 
             'date_from'=>'date|nullable',
             'date_to'=>"date|after:date_from",
-//            'model_id',
-//            'model_type',
             'area_from'=>'nullable|exists:areas,id',
             'area_to'=>'nullable|exists:areas,id',
             'city_from'=>'required|exists:cities,id',

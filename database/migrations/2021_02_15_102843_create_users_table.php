@@ -31,8 +31,6 @@ class CreateUsersTable extends Migration
             $table->foreign('branch_id')->references('id')->on('branches');
             $table->unsignedInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
-            $table->unsignedInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
