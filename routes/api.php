@@ -149,6 +149,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 //  pickups start
 
     Route::get('pickups', 'PickupController@index');
+    Route::get('pickups/history', 'PickupController@pickupHistory');
     Route::post('pickups/store', 'PickupController@store');
     Route::post('pickups/update/{resource}', 'PickupController@update');
     Route::post('pickups/destroy/{resource}', 'PickupController@destroy');
@@ -227,4 +228,29 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 
 //    start notification
     Route::get("notifications", "NotificationController@getNotifications");
+
+
+//    accounting Routes
+    Route::get('price-tables', 'PriceTableController@index');
+    Route::post('price-tables/store', 'PriceTableController@store');
+    Route::post('price-tables/update/{resource}', 'PriceTableController@update');
+    Route::post('price-tables/destroy/{resource}', 'PriceTableController@destroy');
+
+    Route::get('expense-types', 'ExpenseTypeController@index');
+    Route::post('expense-types/store', 'ExpenseTypeController@store');
+    Route::post('expense-types/update/{resource}', 'ExpenseTypeController@update');
+    Route::post('expense-types/destroy/{resource}', 'ExpenseTypeController@destroy');
+
+    Route::get('stores', 'StoreController@index');
+    Route::post('stores/store', 'StoreController@store');
+    Route::post('stores/update/{resource}', 'StoreController@update');
+    Route::post('stores/destroy/{resource}', 'StoreController@destroy');
+
+
+    Route::get('receipts', 'ReceiptController@index');
+    Route::post('receipts/store', 'ReceiptController@store');
+    Route::post('receipts/update/{resource}', 'ReceiptController@update');
+    Route::post('receipts/destroy/{resource}', 'ReceiptController@destroy');
+
+
 });

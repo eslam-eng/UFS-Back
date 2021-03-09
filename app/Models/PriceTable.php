@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Price extends Model
+class PriceTable extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-	'date_from', 'date_to', 'model_id', 'model_type', 'area_from',
-	'area_to', 'city_from','city_to', 'country_from',
-	'country_to', 'price', 'basic_kg', 'additional_kg_price'
+        'date_from', 'date_to', 'model_id', 'model_type', 'area_from',
+        'area_to', 'city_from','city_to', 'country_from',
+        'country_to', 'price', 'basic_kg', 'additional_kg_price'
     ];
 
     public function cityFrom()

@@ -4,19 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePricesTable extends Migration
+class CreatePriceTablesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-//    'date_from', 'date_to', 'model_id', 'model_type', 'area_from',
-//	'area_to', 'city_from','city_to', 'country_from',
-//	'country_to', 'price', 'basic_kg', 'additional_kg_price'
     public function up()
     {
-        Schema::create('prices', function (Blueprint $table) {
+        Schema::create('price_tables', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date_from');
             $table->date('date_to');
@@ -56,6 +53,6 @@ class CreatePricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prices');
+        Schema::dropIfExists('price_tables');
     }
 }

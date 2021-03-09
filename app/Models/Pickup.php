@@ -15,8 +15,8 @@ class Pickup extends Model
         'status_id',
         'user_id',
         'time_from',
-        'time_to', 
-        'courier_id', 
+        'time_to',
+        'courier_id',
         'notes'
     ];
 
@@ -38,5 +38,10 @@ class Pickup extends Model
     public function courier()
     {
         return $this->belongsTo('App\Models\Courier','courier_id')->select('id', 'name', 'photo');
+    }
+
+    public function pickupHistory()
+    {
+        return $this->hasMany('App\Models\PickupHistory','pickup_id');
     }
 }

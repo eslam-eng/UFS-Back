@@ -97,6 +97,11 @@ class PickupController extends Controller
 
     }
 
+    public function pickupHistory()
+    {
+        $query = Pickup::query()->with('pickupHistory')->get();
+        return $query;
+    }
 
     public function rules()
     {

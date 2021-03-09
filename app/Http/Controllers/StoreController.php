@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Price;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
-class PriceController extends Controller
+class StoreController extends Controller
 {
     public function index()
     {
-        $query = Price::with('cityFrom','cityTo','areaFrom','areaTo')->get();
+        $query = Store::get();
         return $query;
     }
 
@@ -26,8 +26,8 @@ class PriceController extends Controller
             return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            $resource = Price::create($request->all());
-            watch(__('add price ').$resource->name,'fa fa-money-bill-alt');
+            $resource = Store::create($request->all());
+            watch(__('add coffer ').$resource->name,'fa  fa-money-bill-alt');
             return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -42,7 +42,7 @@ class PriceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Price $resource)
+    public function update(Request $request, Store $resource)
     {
         $validator = validator($request->all(),$this->rules());
         if ($validator->fails()) {
@@ -50,7 +50,7 @@ class PriceController extends Controller
         }
         try {
             $resource->update($request->all());
-            watch(__('update price ').$resource->name,'fa fa-money-bill-alt');
+            watch(__('update coffer ').$resource->name,'fa fa-building');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -58,10 +58,10 @@ class PriceController extends Controller
     }
 
 
-    public function destroy(Price $resource)
+    public function destroy(Store $resource)
     {
         try {
-            watch(__('delete price ').$resource->name,'fa fa-trash');
+            watch(__('delete coffer ').$resource->name,'fa fa-trash');
             $resource->delete();
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
@@ -71,21 +71,13 @@ class PriceController extends Controller
     }
 
 
+
     public function rules()
     {
         return [
-
-            'date_from'=>'date|nullable',
-            'date_to'=>"date|after:date_from",
-            'area_from'=>'nullable|exists:areas,id',
-            'area_to'=>'nullable|exists:areas,id',
-            'city_from'=>'required|exists:cities,id',
-            'city_to'=>'required|exists:cities,id',
-            'country_from'=>'nullable|exists:countries,id',
-            'country_to'=>'nullable|exists:countries,id',
-            'price'=>'required|numeric',
-            'basic_kg'=>'required',
-            'additional_kg_price'=>'required'
+            'name'=>'required|string',
+            'init_value'=>'required',
+            'value'=>'required',
         ];
     }
 }
