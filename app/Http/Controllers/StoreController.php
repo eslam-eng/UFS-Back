@@ -76,8 +76,8 @@ class StoreController extends Controller
     {
         return [
             'name'=>'required|string',
-            'init_value'=>'required',
-            'value'=>'required',
+            'init_value'=>'required|numeric',
+            'value'=>'required|numeric',
         ];
     }
 }
