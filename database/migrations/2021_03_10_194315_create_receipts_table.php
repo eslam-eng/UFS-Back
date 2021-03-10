@@ -11,14 +11,6 @@ class CreateReceiptsTable extends Migration
      *
      * @return void
      */
-//    date
-//	store_id
-//	model_id
-//	model_type [company]
-//	expense_type_id
-//	notes
-//	value
-//	type [in, out]
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
@@ -29,6 +21,9 @@ class CreateReceiptsTable extends Migration
             $table->integer('value');
             $table->string('notes')->nullable();
             $table->enum('receipt_type',['in','out'])->nullable();
+            $table->unsignedInteger('store_id');
+            $table->foreign('store_id')->references('id')->on('stores');
+
             $table->timestamps();
         });
     }
@@ -40,6 +35,6 @@ class CreateReceiptsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receipts');
+        Schema::dropIfExists('receipt');
     }
 }

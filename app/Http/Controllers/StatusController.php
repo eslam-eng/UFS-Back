@@ -92,7 +92,7 @@ class StatusController extends Controller
     {
         return [
             'name'=>'required|string|unique:statuses,name,'.$id,
-            'description'=>'nullable|string',
+            'type'=>'required'
         ];
     }
 }
