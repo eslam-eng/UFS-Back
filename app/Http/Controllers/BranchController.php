@@ -10,7 +10,7 @@ class BranchController extends Controller
 {
     public function index()
     {
-        $query = Branch::with('company','city','area')->query();
+        $query = Branch::with('company','city','area');
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
