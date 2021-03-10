@@ -24,7 +24,11 @@ class BranchImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation
     {
         return new Branch([
             'name'=>$row['name'],
+            'phone'=>$row['phone'],
+            'address'=>$row['address'],
             'company_id'=>$row['company_code'],
+            'city_id'=>$row['city_code'],
+            'area_id'=>$row['area_code'],
         ]);
     }
 
@@ -33,6 +37,8 @@ class BranchImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation
         return [
             '*.name'=>['required','string'],
             '*.company_code'=>['required','exists:companies,id'],
+            '*.city_code'=>['required','exists:cities,id'],
+            '*.area_code'=>['required','exists:areas,id'],
 
         ];
     }
