@@ -12,11 +12,14 @@ class User extends Model
     use LaratrustUserTrait;
     use HasFactory;
 
+    // default avatar image for user
+    public static $DEFAULIMAGE =  '/uploads/images/avatar.png';
+
     protected $fillable = [
         'name',	'username','email','password','phone','address','photo','active',
         'notes','company_id','branch_id','department_id','api_token', 'role_id'
     ];
-    
+
     protected $appends = [
         'role', 'permissions', 'photo_url'
     ];
@@ -29,9 +32,9 @@ class User extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function getPhotoUrlAttribute() {
-        return $this->photo? url($this->photo) : null;
+        return $this->photo && file_exists(public_path($this->photo))? url($this->photo) : url(self::$DEFAULIMAGE);
     }
 
     public function getPermissionsAttribute() {
@@ -40,11 +43,11 @@ class User extends Model
         $permissions = Permission::whereIn('id', $ids)->pluck('id', 'name')->toArray();
         return $permissions;//$this->permissions()->pluck('id', 'name')->toArray();
     }
-    
+
     public function getRoleAttribute() {
         return Role::find($this->role_id);
     }
-    
+
     public function company()
     {
         return $this->belongsTo('App\Models\Company','company_id');
@@ -89,5 +92,5 @@ class User extends Model
     {
         return $this->hasMany('App\Models\AwbHistory','user_id');
     }
-     
+
 }

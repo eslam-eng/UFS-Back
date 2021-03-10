@@ -15,22 +15,22 @@ class PriceTable extends Model
         'country_to', 'price', 'basic_kg', 'additional_kg_price'
     ];
 
-    public function cityFrom()
+    public function cityFromObject()
     {
         return $this->belongsTo('App\Models\City','city_from');
     }
 
-    public function cityTo()
+    public function cityToObject()
     {
         return $this->belongsTo('App\Models\City','city_to');
     }
 
-    public function areaFrom()
+    public function areaFromObject()
     {
         return $this->belongsTo('App\Models\Area','area_from');
     }
 
-    public function areaTo()
+    public function areaToObject()
     {
         return $this->belongsTo('App\Models\Area','area_to');
     }

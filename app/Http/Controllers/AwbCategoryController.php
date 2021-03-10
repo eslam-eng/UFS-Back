@@ -75,9 +75,7 @@ class AwbCategoryController extends Controller
     public function rules()
     {
         return [
-            'name'=>'required|string',
-            'fixed'=>'required',
-            'has_many'=>'required',
+            'name'=>'required|string'
         ];
     }
 

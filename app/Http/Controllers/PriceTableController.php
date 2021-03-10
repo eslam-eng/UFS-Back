@@ -9,8 +9,11 @@ class PriceTableController extends Controller
 {
     public function index()
     {
-        $query = PriceTable::with('cityFrom','cityTo','areaFrom','areaTo')->get();
-        return $query;
+        $query = PriceTable::with('cityFromObject','cityToObject','areaFromObject','areaToObject');
+
+        $query->where('model_id', request()->model_id);
+
+        return $query->get();
     }
 
     /**
@@ -74,9 +77,6 @@ class PriceTableController extends Controller
     public function rules()
     {
         return [
-
-            'date_from'=>'date|nullable',
-            'date_to'=>"date|after:date_from",
             'area_from'=>'nullable|exists:areas,id',
             'area_to'=>'nullable|exists:areas,id',
             'city_from'=>'required|exists:cities,id',
@@ -84,6 +84,7 @@ class PriceTableController extends Controller
             'country_from'=>'nullable|exists:countries,id',
             'country_to'=>'nullable|exists:countries,id',
             'price'=>'required|numeric',
+            'model_id'=>'required',
             'basic_kg'=>'required',
             'additional_kg_price'=>'required'
         ];

@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 //autho login
 Route::post('auth/login', 'App\Http\Controllers\AuthController@login');
 
+//  translation start
+Route::get('translation', 'App\Http\Controllers\TranslateController@index');
+Route::get('translation/get', 'App\Http\Controllers\TranslateController@get');
+
 Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], function (){
 
 // dashboard apis
@@ -195,8 +199,6 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('users/destroy/{resource}', 'UserController@destroy');
 
 //  translation start
-    Route::get('translation', 'TranslateController@index');
-    Route::get('translation/get', 'TranslateController@get');
     Route::post('translation/update', 'TranslateController@update');
 
 //  notification start
