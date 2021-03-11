@@ -15,12 +15,14 @@ class CreateReceiptsTable extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('date');
+            $table->unsignedInteger('model_id');
             $table->enum('model_type',['company'])->default('company');
             $table->unsignedInteger('expense_type_id');
             $table->foreign('expense_type_id')->references('id')->on('expense_types');
             $table->integer('value');
             $table->string('notes')->nullable();
-            $table->enum('receipt_type',['in','out'])->nullable();
+            $table->enum('type',['in','out'])->nullable();
             $table->unsignedInteger('store_id');
             $table->foreign('store_id')->references('id')->on('stores');
 

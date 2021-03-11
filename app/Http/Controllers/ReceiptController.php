@@ -9,8 +9,27 @@ class ReceiptController extends Controller
 {
     public function index()
     {
-        $query = Receipt::get();
-        return $query;
+        $query = Receipt::query()->with(['store','company','expenseType']);
+
+        if (request()->date > 0) {
+            $query
+                ->where('date', request()->date);
+        }
+
+        if (request()->type > 0) {
+            $query->where('type',request()->type);
+        }
+
+        if (request()->company_id > 0) {
+            $query->where('model_id',request()->company_id)->where('model_type', 'company');
+        }
+
+        if (request()->expense_type_id) {
+            $query->where('expense_type_id',request()->expense_type_id);
+        }
+
+        return $query->get();
+
     }
 
     /**
@@ -70,16 +89,21 @@ class ReceiptController extends Controller
 
     }
 
+    public function makeTransation($store_id)
+    {
 
-    public function rules($id=null)
+    }
+
+    public function rules()
     {
         return [
+
+        'date'=>'required',
         'expense_type_id'=>'required|exists:expense_types,id',
         'value'=>'required',
         'notes'=>'nullable|string',
-        'receipt_type'=>'required',
+        'type'=>'required',
         'store_id'=>'required|exists:stores,id'
-
         ];
     }
 }

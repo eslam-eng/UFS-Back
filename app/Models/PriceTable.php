@@ -9,6 +9,8 @@ class PriceTable extends Model
 {
     use HasFactory;
 
+    //model_id=>
+    //model_id=>
     protected $fillable = [
         'date_from', 'date_to', 'model_id', 'model_type', 'area_from',
         'area_to', 'city_from','city_to', 'country_from',

@@ -16,7 +16,7 @@ class CreateAwbCategoriesTable extends Migration
         Schema::create('awb_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->double('fixed');
+            $table->double('fixed')->nullable();
             $table->boolean('has_many')->default(false);
             $table->timestamps();
         });

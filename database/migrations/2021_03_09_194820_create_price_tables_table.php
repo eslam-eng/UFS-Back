@@ -15,16 +15,16 @@ class CreatePriceTablesTable extends Migration
     {
         Schema::create('price_tables', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date_from');
-            $table->date('date_to');
+            $table->date('date_from')->nullable();
+            $table->date('date_to')->nullable();
             $table->unsignedInteger('model_id');
 
             $table->enum('model_type',['admin', 'company', 'courier'])->default('company');
 
-            $table->unsignedInteger('country_from');
+            $table->unsignedInteger('country_from')->nullable();
             $table->foreign('country_from')->references('id')->on('countries');
 
-            $table->unsignedInteger('country_to');
+            $table->unsignedInteger('country_to')->nullable();
             $table->foreign('country_to')->references('id')->on('countries');
 
             $table->unsignedInteger('city_from');

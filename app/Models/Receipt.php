@@ -9,7 +9,7 @@ class Receipt extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date,','store_id','model_id','model_type',
+        'date','store_id','model_id','model_type',
 	    'expense_type_id','notes','value', 'type'
     ];
 
@@ -17,5 +17,18 @@ class Receipt extends Model
     public function expenseType()
     {
         return $this->belongsTo('App\Models\ExpenseType','expense_type_id');
+    }
+
+    public function store()
+    {
+        return $this->belongsTo('App\Models\Store','store_id');
+    }
+
+
+    public function company()
+    {
+
+        return $this->belongsTo('App\Models\Company','model_id');
+
     }
 }

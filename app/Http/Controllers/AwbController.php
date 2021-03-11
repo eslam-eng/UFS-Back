@@ -8,7 +8,7 @@ use App\Models\AwbDetail;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use App\Models\CourierSheetDetail;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AwbController extends Controller {
 
@@ -142,6 +142,10 @@ class AwbController extends Controller {
                 AwbDetail::create($row);
             }
 
+            // calculate awb shipment price
+            $calAwbShipmentPrice = new CalculatorShipmentPriceController();
+            $calAwbShipmentPrice->getShipmentPrice($resource->refresh());
+
             watch(__('create awb with code ') . $resource->code, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource->refresh());
         } catch (\Exception $th) {
@@ -168,6 +172,10 @@ class AwbController extends Controller {
                 $row['awb_id'] = $resource->id;
                 AwbDetail::create($row);
             }
+
+            // calculate awb shipment price
+            $calAwbShipmentPrice = new CalculatorShipmentPriceController();
+            $calAwbShipmentPrice->getShipmentPrice($resource->refresh());
 
             watch(__('update awb with code ') . $resource->code, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource);
@@ -215,11 +223,13 @@ class AwbController extends Controller {
         return $query->get();
     }
 
+
+
     public function rules() {
         return [
             'collection' => 'nullable|numeric',
-            'company_id' => 'required|integer|exists:companies,id',
-            'branch_id' => 'required|integer|exists:branches,id',
+            'company_id' => 'required|exists:companies,id',
+            'branch_id' => 'required|exists:branches,id',
             'department_id' => 'required|exists:departments,id',
             'receiver_id' => 'required|exists:receivers,id',
             'payment_type_id' => 'required|exists:payment_types,id',
