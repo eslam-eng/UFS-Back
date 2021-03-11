@@ -21,13 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PriceTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PriceTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Receipt.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Receipt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_08_212106_create_awb_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_08_212106_create_awb_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_09_194820_create_price_tables_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_09_194820_create_price_tables_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_10_194315_create_receipts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_10_194315_create_receipts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PriceTableController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PriceTableController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -220,7 +214,7 @@
       <workItem from="1614867178786" duration="9725000" />
       <workItem from="1615238148488" duration="1872000" />
       <workItem from="1615295720510" duration="25473000" />
-      <workItem from="1615452667345" duration="10602000" />
+      <workItem from="1615452667345" duration="12534000" />
     </task>
     <servers />
   </component>

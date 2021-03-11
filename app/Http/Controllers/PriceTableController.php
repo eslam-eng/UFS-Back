@@ -10,6 +10,9 @@ class PriceTableController extends Controller
     public function index()
     {
         $query = PriceTable::with('cityFromObject','cityToObject','areaFromObject','areaToObject');
+        if (request()->show_offer > 0) {
+            $query->where('date_to','!=',null);
+        }
 
         $query->where('model_id', request()->model_id);
 

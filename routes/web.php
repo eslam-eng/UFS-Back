@@ -22,8 +22,3 @@ Route::get('/test','App\Http\Controllers\DashboardController@home')->name('test'
 Route::get('login', function(){
 	return responseJson(0, __('login first'));
 })->name('login');
-
-
-Route::get('price/table',function (){
-    return view('welcome');
-});
