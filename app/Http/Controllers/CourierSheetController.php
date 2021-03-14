@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CourierSheet;
 use App\Models\CourierSheetDetail;
 use Illuminate\Http\Request;
+use App\Models\Company;
 
 class CourierSheetController extends Controller
 {
@@ -34,6 +35,11 @@ class CourierSheetController extends Controller
         }
 
         return $query->get();
+    }
+
+    public function print(CourierSheet $resource) {
+        $company = Company::admin();
+        return view("courier_sheet", compact("resource", "company"));
     }
 
     public function load($resource)

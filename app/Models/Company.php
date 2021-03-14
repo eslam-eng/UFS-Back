@@ -68,4 +68,8 @@ class Company extends Model
     {
         return $this->hasMany('App\Models\Awb','company_id');
     }
+
+    public static function admin() {
+        return Company::find(1);
+    }
 }

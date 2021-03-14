@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\DB;
 class AwbController extends Controller {
 
     public function index() {
-        $query = Awb::query()->with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory']);
+        $referanceCol = "(select referance from receivers where receivers.id = receiver_id)";
+        $query = Awb::query()
+        ->with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory'])
+        ->select('*', DB::raw($referanceCol . ' as referance'));
 
         if (request()->company_id > 0) {
             $query->where('company_id', request()->company_id);
@@ -32,7 +35,13 @@ class AwbController extends Controller {
             $query->where('department_id', request()->department_id);
 
         if (request()->search > 0)
-            $query->where('code', "like", "%" . request()->search . "%");
+            $query->where(function($q){
+                $q->where('code', "like", "%" . request()->search . "%");
+            });
+
+        if (request()->referance) {
+            $query->having('referance', request()->referance);
+        }
 
         if (request()->code)
             $query->where('code', "like", "%" . request()->code . "%");
@@ -99,11 +108,55 @@ class AwbController extends Controller {
     }
 
     public function print(Awb $resource) {
+        if ($resource->is_return) {
+            $receiver = $resource->receiver;
+            $company = $resource->company;
+
+
+            // replace main info
+            $resource->receiver = $company;
+            $resource->company = $receiver;
+
+            // replace city and area
+            $resource->receiver->city = $company->city;
+            $resource->receiver->area = $company->area;
+
+            $resource->company->city = $receiver->city;
+            $resource->company->area = $receiver->area;
+
+            //
+            optional($resource->company)->branch->address = $receiver->address;
+            optional($resource->company)->branch->phone = $receiver->phone;
+        }
+
         return view('awb', compact("resource"));
     }
 
     public function printSelected(Request $request) {
         $awbs = Awb::whereIn('id', $request->awbs)->get();
+        foreach($awbs as $resource) {
+            if ($resource->is_return) {
+                $receiver = $resource->receiver;
+                $company = $resource->company;
+
+
+                // replace main info
+                $resource->receiver = $company;
+                $resource->company = $receiver;
+
+                // replace city and area
+                $resource->receiver->city = optional($company->branch)->city;
+                $resource->receiver->area = optional($company->branch)->area;
+
+                //optional($resource->company->branch)->city = $receiver->city;
+                //optional($resource->company->branch)->area = $receiver->area;
+
+                //
+                $resource->company->branch->address = $receiver->address;
+                $resource->company->branch->phone = $receiver->phone;
+            }
+        }
+
         $string = view('awbs', compact("awbs"));
         return $string;
     }
@@ -126,9 +179,16 @@ class AwbController extends Controller {
             // store awb object
             $resource = Awb::create($data);
 
+            // awb code
+            $code = date('Y') . date('m') . date('d') . $resource->id;
+
+            // check if is return
+            if ($resource->is_return)
+                $code = "R-" . $code;
+
             // generate awb code
             $resource->update([
-                "code" => date('Y') . date('m') . date('d') . $resource->id
+                "code" => $code
             ]);
 
             // store history

@@ -334,13 +334,25 @@
                 <br>
                 @endif
             </div>
+            <div class="w3-indigo w3- w3-center w3-border w3-border-gray" style="padding: 3px" >
+                <span style="float: left" >Shipment Type.</span>
+                <span style="float: right;font-size:10px" >نوع الشحنة</span>
+                <br>
+            </div>
+            <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px" >
+                @if($resource->awbCategory)
+                {{ optional($resource->awbCategory)->name }}
+                @else
+                <br>
+                @endif
+            </div>
 
             <div class="w3-indigo w3-center w3-border w3-border-gray " style="padding: 3px" >
                 <span style="float: left" >Remarks.</span>
                 <span style="float: right" >ملاحظات</span>
                 <br>
             </div>
-            <div class="w3- w3-border w3-border-gray" style="padding: 3px;height: 287px" >
+            <div class="w3- w3-border w3-border-gray" style="padding: 3px;height: 230px" >
                 {{ optional($resource)->notes }}
             </div>
 

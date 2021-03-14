@@ -122,6 +122,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('courier-sheets/store', 'CourierSheetController@store');
     Route::post('courier-sheets/update/{resource}', 'CourierSheetController@update');
     Route::post('courier-sheets/destroy/{resource}', 'CourierSheetController@destroy');
+    Route::get('courier-sheets/print/{resource}', 'CourierSheetController@print');
 
 
 
@@ -237,11 +238,15 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('price-tables/store', 'PriceTableController@store');
     Route::post('price-tables/update/{resource}', 'PriceTableController@update');
     Route::post('price-tables/destroy/{resource}', 'PriceTableController@destroy');
+    Route::get('price-tables/excel/download', 'PriceTableController@downloadExcel');
+    Route::post('price-tables/import', 'PriceTableController@import');
 
     Route::get('expense-types', 'ExpenseTypeController@index');
     Route::post('expense-types/store', 'ExpenseTypeController@store');
     Route::post('expense-types/update/{resource}', 'ExpenseTypeController@update');
     Route::post('expense-types/destroy/{resource}', 'ExpenseTypeController@destroy');
+    Route::get('expense-types/excel/download', 'ExpenseTypeController@downloadExcel');
+    Route::post('expense-types/import', 'ExpenseTypeController@import');
 
     Route::get('stores', 'StoreController@index');
     Route::post('stores/store', 'StoreController@store');

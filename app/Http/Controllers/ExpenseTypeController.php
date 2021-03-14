@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ExpenseType;
 use Illuminate\Http\Request;
+use App\Imports\ExpenseTypeImport;
 
 class ExpenseTypeController extends Controller
 {
@@ -55,6 +56,30 @@ class ExpenseTypeController extends Controller
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
+    }
+
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/expenseType.xlsx'));
+    }
+
+    public function import(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $expensefile = new ExpenseTypeImport();
+            $expensefile->import($file);
+            if ($expensefile->failures()->isNotEmpty())
+                return responseJson(0,"",  $expensefile->failures());
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, $e->getMessage(), "");
+        }
+
     }
 
 

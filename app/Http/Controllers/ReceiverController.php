@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Imports\ReceiverImport;
 use App\Models\Receiver;
 use Illuminate\Http\Request;
+use DB;
 
 class ReceiverController extends Controller
 {
     public function index()
     {
-        $query = Receiver::with(['city', 'area', 'company', 'branch']);
+        $query = Receiver::with(['city', 'area', 'company', 'branch'])
+        ->select('*', DB::raw('CONCAT(name, "-", company_name) as search'));
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
@@ -19,10 +21,14 @@ class ReceiverController extends Controller
         if (request()->company_id > 0) {
             $query->where('company_id', request()->company_id);
         }
-        
+
         if (request()->search) {
             $query
-                    ->where('name', 'like', '%'.request()->search.'%');
+                    ->where(function($q) {
+                        $q->where('name', 'like', '%'.request()->search.'%')
+                            ->orWhere('company_name', 'like', '%'.request()->search.'%');
+                    });
+                    //->where('name', 'like', '%'.request()->search.'%');
                     //->orWhere('phone', 'like', '%'.request()->search.'%')
                     //->orWhere('address', 'like', '%'.request()->search.'%');
         }
@@ -35,7 +41,12 @@ class ReceiverController extends Controller
             $query->where('area_id', request()->area_id);
         }
 
-        $data = $query->paginate(20);
+        $pageLength = 20;
+
+        if (request()->page_length > 0)
+            $pageLength = request()->page_length;
+
+        $data = $query->paginate($pageLength);
 
         if (request()->paging == '0')
             $data = $query->get();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PriceTable;
 use Illuminate\Http\Request;
+use App\Imports\PriceTableImport;
 
 class PriceTableController extends Controller
 {
@@ -72,6 +73,34 @@ class PriceTableController extends Controller
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, __($this->exception_message),$th->getMessage());
+        }
+
+    }
+
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/price_table.xlsx'));
+    }
+
+
+//    import excel file into data base
+
+    public function import(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $priceFile = new PriceTableImport();
+            $priceFile->import($file);
+            if ($priceFile->failures()->isNotEmpty())
+                return responseJson(0, "", $priceFile->failures());
+
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, __('this item cannot be deleted may be there relation to another'), $e->getMessage());
         }
 
     }
