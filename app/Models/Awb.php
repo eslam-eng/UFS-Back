@@ -34,7 +34,7 @@ class Awb extends Model
 
     public function branch()
     {
-        return $this->belongsTo('App\Models\Branch','branch_id')->select('id', 'name');
+        return $this->belongsTo('App\Models\Branch','branch_id');
     }
 
     public function department()

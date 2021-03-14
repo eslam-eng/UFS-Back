@@ -19,8 +19,8 @@ class CalculatorShipmentPriceController extends Controller
             //->orWhere('area_from', $resource->area_id)
 
             // destination to
-            ->where('city_from', optional($resource->receiver)->city_id);
-            //->orWhere('area_from', optional($resource->receiver)->area_id);
+            ->where('city_to', optional($resource->receiver)->city_id);
+            //->orWhere('area_to', optional($resource->receiver)->area_id);
 
         return $query;
     }
@@ -58,7 +58,11 @@ class CalculatorShipmentPriceController extends Controller
         $additionalPrice = $additionalWeight * $resource->additional_kg_price;
         $shipingPrice = $additionalPrice + $zprice;
         $additionKgPrice = $resource->additional_kg_price;
-        $netPrice = $awb->collection - $shipingPrice;
+
+        $netPrice = 0;
+
+        if ($awb->collection)
+            $netPrice = $awb->collection - $shipingPrice;
 
         $awb->update([
             "zprice" => $zprice,

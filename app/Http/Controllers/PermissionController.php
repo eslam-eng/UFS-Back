@@ -9,7 +9,7 @@ class PermissionController extends Controller
 {
     public function index()
     {
-        $query = Permission::get();
+        $query = Permission::latest()->get();
         return $query;
     }
 

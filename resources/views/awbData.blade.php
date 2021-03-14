@@ -44,7 +44,7 @@
                 <br>
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container" style="height: 70px!important"  >
-                {{ optional($resource->company)->address }}
+                {{ optional($resource->branch)->address }}
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container w3-light-gray"  >
                 <span style="float: left" >Tel&Fax</span>
@@ -52,7 +52,7 @@
                 <br>
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                {{ optional($resource->company)->phone }}
+                {{ optional($resource->branch)->phone }}
             </div>
             <div class="w3-display-container w3-row"  >
 
@@ -63,7 +63,7 @@
                         <br>
                     </div>
                     <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                        {{ optional(optional($resource->company)->city)->name }}
+                        {{ optional(optional($resource->branch)->city)->name }}
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
                         <br>
                     </div>
                     <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                        {{ optional(optional($resource->company)->area)->name }}
+                        {{ optional(optional($resource->branch)->area)->name }}
                     </div>
                 </div>
             </div>

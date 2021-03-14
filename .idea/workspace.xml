@@ -21,8 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PriceTableController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PriceTableController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CalculatorShipmentPriceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CalculatorShipmentPriceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Awb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Awb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/awbData.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/awbData.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,7 +217,7 @@
       <workItem from="1614867178786" duration="9725000" />
       <workItem from="1615238148488" duration="1872000" />
       <workItem from="1615295720510" duration="25473000" />
-      <workItem from="1615452667345" duration="12534000" />
+      <workItem from="1615452667345" duration="18544000" />
     </task>
     <servers />
   </component>
@@ -254,6 +257,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="555" y="311" key="git4idea.ui.GitStashDialog/0.0.1536.824@0.0.1536.824" timestamp="1614545779834" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1615476774822">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1615476774822" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1614181103644">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
