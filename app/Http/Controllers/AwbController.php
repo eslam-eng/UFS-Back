@@ -15,8 +15,9 @@ class AwbController extends Controller {
     public function index() {
         $query = Awb::query()->with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory']);
 
-        if (request()->company_id > 0)
+        if (request()->company_id > 0) {
             $query->where('company_id', request()->company_id);
+        }
 
         if (request()->branch_id > 0)
             $query->where('branch_id', request()->branch_id);
@@ -49,6 +50,7 @@ class AwbController extends Controller {
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
+            $query->where('branch_id', request()->user()->branch_id);
         }
 
         if (request()->steper) {
