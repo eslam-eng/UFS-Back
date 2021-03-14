@@ -144,10 +144,10 @@ class AwbController extends Controller {
 
             // calculate awb shipment price
             $calAwbShipmentPrice = new CalculatorShipmentPriceController();
-            $calAwbShipmentPrice->getShipmentPrice($resource->refresh());
+            $calAwbShipmentPrice->getShipmentPrice($resource->fresh());
 
             watch(__('create awb with code ') . $resource->code, 'fa fa-newspaper-o');
-            return responseJson(1, __('done'), $resource->refresh());
+            return responseJson(1, __('done'), $resource->fresh());
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
