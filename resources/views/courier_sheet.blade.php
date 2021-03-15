@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html>
-<title>courier sheet {{ optional($resource->courier)->name }}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+@extends("master")
 
-<style>
-    * {
-        direction: rtl;
-    }
 
-    .text-center, .text-center td {
-        text-align: center!important;
-    }
-</style>
-<body>
-
-	<div class="w3-padding">
-        <div class="w3-block w3-round" style="border: 2px dashed gray;padding: 5px" >
-            <table class="w3-table">
-                <tr style="text-align: right" >
-                    <td style="width: 100px" >
-                        <img src="/logo.png" style="width: 100px" >
-                    </td>
-                    <td  style="text-align: right" >
-                        <b>{{ optional($company)->name }}</b> <br>
-                        {{ optional($company)->address }} <br>
-                        {{ optional(optional($company)->city)->name }} <br>
-                        {{ optional(optional($company)->area)->name }} <br>
-                        ت: {{ optional($company)->phone }} <br>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <br>
+@section("content")
+<br>
         <div class="w3-center w3-large">
             <b>Daily Report Sheet</b>
         </div>
@@ -99,9 +69,5 @@
                 </td>
             </tr>
         </table>
-    </div>
-    @include("ask_print")
-</body>
-</html>
-
+@endsection
 

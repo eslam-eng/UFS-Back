@@ -100,6 +100,11 @@ class AwbController extends Controller {
                 'user_id' => $request->user()->id,
                 'status_id' => $request->status_id
             ]);
+
+            // calculate awb shipment price
+            $calAwbShipmentPrice = new CalculatorShipmentPriceController();
+            $calAwbShipmentPrice->getShipmentPrice($resource->fresh());
+
             watch(__('The shipment ') . $resource->code . ' status has changed from ' . $oldStatus . ' to ' . $resource->status->name, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource->awbHistory()->get());
         } catch (\Exception $th) {
@@ -108,55 +113,11 @@ class AwbController extends Controller {
     }
 
     public function print(Awb $resource) {
-        if ($resource->is_return) {
-            $receiver = $resource->receiver;
-            $company = $resource->company;
-
-
-            // replace main info
-            $resource->receiver = $company;
-            $resource->company = $receiver;
-
-            // replace city and area
-            $resource->receiver->city = $company->city;
-            $resource->receiver->area = $company->area;
-
-            $resource->company->city = $receiver->city;
-            $resource->company->area = $receiver->area;
-
-            //
-            optional($resource->company)->branch->address = $receiver->address;
-            optional($resource->company)->branch->phone = $receiver->phone;
-        }
-
         return view('awb', compact("resource"));
     }
 
     public function printSelected(Request $request) {
         $awbs = Awb::whereIn('id', $request->awbs)->get();
-        foreach($awbs as $resource) {
-            if ($resource->is_return) {
-                $receiver = $resource->receiver;
-                $company = $resource->company;
-
-
-                // replace main info
-                $resource->receiver = $company;
-                $resource->company = $receiver;
-
-                // replace city and area
-                $resource->receiver->city = optional($company->branch)->city;
-                $resource->receiver->area = optional($company->branch)->area;
-
-                //optional($resource->company->branch)->city = $receiver->city;
-                //optional($resource->company->branch)->area = $receiver->area;
-
-                //
-                $resource->company->branch->address = $receiver->address;
-                $resource->company->branch->phone = $receiver->phone;
-            }
-        }
-
         $string = view('awbs', compact("awbs"));
         return $string;
     }

@@ -15,6 +15,9 @@ class CourierSheetController extends Controller
         $query = CourierSheet::query()->with('courier','user','sheetDetails');
 
 
+        if (request()->id > 0)
+            $query->where('id', request()->id);
+
         if (request()->courier_id > 0)
             $query->where('courier_id', request()->courier_id);
 

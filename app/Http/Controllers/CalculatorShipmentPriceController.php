@@ -58,11 +58,17 @@ class CalculatorShipmentPriceController extends Controller
         $additionalPrice = $additionalWeight * $resource->additional_kg_price;
         $shipingPrice = $additionalPrice + $zprice;
         $additionKgPrice = $resource->additional_kg_price;
-
+        $collected = $awb->collection;
         $netPrice = 0;
 
+        if (optional($awb->status)->code == 4)
+            $shipingPrice = 0;
+
+        if (optional($awb->status)->code == 4 || optional($awb->status)->code == 3)
+            $collected = 0;
+
         if ($awb->collection)
-            $netPrice = $awb->collection - $shipingPrice;
+            $netPrice = $collected - $shipingPrice;
 
         $awb->update([
             "zprice" => $zprice,

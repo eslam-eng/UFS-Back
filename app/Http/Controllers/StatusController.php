@@ -10,7 +10,7 @@ class StatusController extends Controller
 {
     public function index()
     {
-        $query = Status::get();
+        $query = Status::orderBy('code')->get();
         return $query;
     }
 
@@ -92,6 +92,7 @@ class StatusController extends Controller
     {
         return [
             'name'=>'required|string|unique:statuses,name,'.$id,
+            'code'=>'required|unique:statuses,code,'.$id,
             'type'=>'required'
         ];
     }

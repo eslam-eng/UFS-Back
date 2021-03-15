@@ -9,9 +9,11 @@ class Status extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name','description', 'steper', 'is_final',
-        'sms', 'is_paid_return', 'is_non_paid_return', 'is_customer_paid', 'is_closed', 'type'
+        'name','description',
+        'steper', 'is_final',
+        'sms', 'type', 'code'
         ];
+    //  'is_paid_return', 'is_non_paid_return', 'is_customer_paid', 'is_closed',
 
     public function pickupInfo()
     {

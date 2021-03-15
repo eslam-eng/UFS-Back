@@ -254,10 +254,18 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('stores/destroy/{resource}', 'StoreController@destroy');
 
 
-    Route::get('receipts', 'ReceiptController@index');
-    Route::post('receipts/store', 'ReceiptController@store');
-    Route::post('receipts/update/{resource}', 'ReceiptController@update');
-    Route::post('receipts/destroy/{resource}', 'ReceiptController@destroy');
+    Route::get('inreceipts', 'InReceiptController@index');
+    Route::post('inreceipts/store', 'InReceiptController@store');
+    Route::post('inreceipts/update/{resource}', 'InReceiptController@update');
+    Route::post('inreceipts/destroy/{resource}', 'InReceiptController@destroy');
 
+    Route::get('outreceipts', 'OutReceiptController@index');
+    Route::post('outreceipts/store', 'OutReceiptController@store');
+    Route::post('outreceipts/update/{resource}', 'OutReceiptController@update');
+    Route::post('outreceipts/destroy/{resource}', 'OutReceiptController@destroy');
+
+    // reports
+    Route::get('report/awb-prices', 'ReportController@awbPrices');
+    Route::get('report/store-transactions', 'ReportController@storeTransactions');
 
 });

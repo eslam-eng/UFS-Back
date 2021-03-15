@@ -242,11 +242,6 @@
         <script src="{{ url('/js/JsBarcode.all.min.js') }}" ></script>
         <script src="{{ url('/js/qrcode.min.js') }}" ></script>
 
-    <script >
-        window.onload = function(){
-            window.print();
-        };
-    </script>
 
     <style>
         * {
@@ -254,6 +249,13 @@
         }
     </style>
     <body>
+        @if ($resource->is_return)
+        {!! view('awbRData', compact('resource')) !!}
+        @else
         {!! view('awbData', compact('resource')) !!}
+        @endif
+
+        @include("ask_print")
     </body>
+
 </html>
