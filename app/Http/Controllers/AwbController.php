@@ -14,7 +14,7 @@ class AwbController extends Controller {
 
     public function index() {
         $referanceCol = "(select referance from receivers where receivers.id = receiver_id)";
-        $query = Awb::query()
+        $query = Awb::latest()
         ->with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory'])
         ->select('*', DB::raw($referanceCol . ' as referance'));
 
