@@ -41,6 +41,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('awbs/destroy/{resource}', 'AwbController@destroy');
     Route::get('awbs-trash', 'AwbController@getTrash');
     Route::post('awbs-restore/{resource}', 'AwbController@restore');
+    Route::post('awbs-history/destroy/{resource}', 'AwbHistoryController@destroy');
 
 //Awb Category
 
