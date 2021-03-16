@@ -111,7 +111,7 @@ class PickupController extends Controller
             'status_id'=>'required|integer|exists:statuses,id',
             'time_from'=>'required',
             'time_to'=>'required',
-            'courier_id'=>'required|integer|exists:couriers,id'
+            'courier_id'=>'nullable|exists:couriers,id'
         ];
     }
 }
