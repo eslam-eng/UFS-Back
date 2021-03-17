@@ -51,6 +51,8 @@ class CreateAwbsTable extends Migration
             $table->double('pieces');
             $table->double('collection')->nullable();
             $table->string('notes')->nullable();
+            $table->string('receiver_name')->nullable();
+            $table->string('receiver_title')->nullable();
 
             $table->boolean('is_return')->default(false);
 

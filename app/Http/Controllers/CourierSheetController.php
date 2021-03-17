@@ -121,6 +121,29 @@ class CourierSheetController extends Controller
     }
 
 
+    public function sheetTransfer(Request $request)
+    {
+        //sheet_id,awb_id
+        $validator = validator($request->all(),['sheet_id'=>'required|exists:courier_sheets,id','awb_id'=>'required|exists:awbs,id']);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), "");
+        }
+        //delete awb from old sheet
+        CourierSheetDetail::where('awb_id',$request->awb_id)->delete();
+
+        //transfer awb
+        CourierSheetDetail::create($request->all());
+        watch(__('awb transfer to sheet').$request->sheet_id,'fa fa-file');
+        return responseJson(1, __('done'));
+
+
+
+
+
+
+
+    }
+
     public function rules()
     {
         return [
