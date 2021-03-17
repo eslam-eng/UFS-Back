@@ -20,6 +20,7 @@ Route::post('auth/login', 'App\Http\Controllers\AuthController@login');
 //  translation start
 Route::get('translation', 'App\Http\Controllers\TranslateController@index');
 Route::get('translation/get', 'App\Http\Controllers\TranslateController@get');
+Route::post('courier/report', 'App\Http\Controllers\CourierReportController@courierAwbReport');
 
 Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], function (){
 

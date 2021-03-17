@@ -9,8 +9,16 @@ class CourierCommissionController extends Controller
 {
     public function index()
     {
-        $query = CourierCommission::with('courier','service')->get();
-        return $query;
+        $query = CourierCommission::with('courier','service');
+        if (request()->courier_id > 0)
+        {
+            $query->where('courier_id',request()->courier_id);
+        }
+        if (request()->service_id > 0)
+        {
+            $query->where('service_id',request()->service_id);
+        }
+        return $query->get();
     }
 
     /**
