@@ -17,8 +17,8 @@ class CreateReceiptsTable extends Migration
             $table->increments('id');
             $table->date('date');
             $table->unsignedInteger('model_id');
-            $table->enum('model_type',['company'])->default('company');
-            $table->unsignedInteger('expense_type_id');
+            $table->enum('model_type',['company','awb'])->default('company');
+            $table->unsignedInteger('expense_type_id')->nullable();
             $table->foreign('expense_type_id')->references('id')->on('expense_types');
             $table->integer('value');
             $table->string('notes')->nullable();

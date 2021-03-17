@@ -36,7 +36,7 @@ class CreateStatusesTable extends Migration
             $table->boolean('is_non_paid_return')->nullable();
             $table->boolean('is_customer_paid')->nullable();
             $table->boolean('is_closed')->nullable();
-            /*
+            */
             $table->enum('type',['awb','pickup'])->default('awb');
 
             $table->timestamps();

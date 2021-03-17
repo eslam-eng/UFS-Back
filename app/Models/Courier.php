@@ -45,4 +45,9 @@ class Courier extends Model
     {
         return $this->hasMany('App\Models\Pickup','courier_id');
     }
+
+    public function courierCommission()
+    {
+        return $this->hasMany('App\Models\CourierCommission','courier_id');
+    }
 }

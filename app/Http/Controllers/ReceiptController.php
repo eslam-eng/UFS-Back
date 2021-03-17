@@ -12,7 +12,7 @@ class ReceiptController extends Controller
     public function makeTransation($storeId, $value)
     {
         $store = Store::find($storeId);
-        $store->increment('value', $value);
+        $store->makeTransation($value);
     }
 
     public function rules()

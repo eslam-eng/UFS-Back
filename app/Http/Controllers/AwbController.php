@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Awb;
 use App\Models\AwbHistory;
 use App\Models\AwbDetail;
+use App\Models\Receipt;
 use App\Models\Status;
+use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Models\CourierSheetDetail;
 use Illuminate\Support\Facades\DB;
@@ -101,6 +103,8 @@ class AwbController extends Controller {
                 'user_id' => $request->user()->id,
                 'status_id' => $request->status_id
             ]);
+
+            $this->makeTransactionForCollectedStatus($resource);
 
             // calculate awb shipment price
             $calAwbShipmentPrice = new CalculatorShipmentPriceController();
@@ -250,6 +254,24 @@ class AwbController extends Controller {
     }
 
 
+    public function makeTransactionForCollectedStatus(Awb $awb)
+    {
+        if (optional($awb->status)->code ==7)
+        {
+            $value = $awb->shiping_price+$awb->collection;
+            $store = Store::first();
+            $inReceipt = Receipt::create([
+                'date'=>date('Y-m-d'),
+                'store_id'=>optional($store)->id,
+                'model_id'=>$awb->id,
+                'model_type'=>'awb',
+                'notes'=>__('تم التحصيل من بوليصه رقم ').$awb->id,
+                'value'=>$value,
+                'type'=>'in'
+                ]);
+        }
+        $store->makeTransation($value);
+    }
 
     public function rules() {
         return [

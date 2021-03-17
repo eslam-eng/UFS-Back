@@ -127,6 +127,12 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('courier-sheets/transfer', 'CourierSheetController@sheetTransfer');
 
 
+    Route::get('courier-commissions', 'CourierCommissionController@index');
+    Route::post('courier-commissions/store', 'CourierCommissionController@store');
+    Route::post('courier-commissions/update/{resource}', 'CourierCommissionController@update');
+    Route::post('courier-commissions/destroy/{resource}', 'CourierCommissionController@destroy');
+
+
 
 //  department start
 

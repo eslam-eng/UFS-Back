@@ -30,12 +30,14 @@ Route::get('login', function(){
 Route::get('/test_m', function () {
 
     // Create table for storing permissions
-    Schema::create('permissions', function (Blueprint $table) {
-        $table->bigIncrements('id');
-        $table->string('name')->unique();
-        $table->string('display_name')->nullable();
-        $table->string('description')->nullable();
-        $table->integer('group_id');
+    Schema::create('courier_dailies', function (Blueprint $table) {
+        $table->increments('id');
+        $table->unsignedInteger('courier_id');
+        $table->double('discount')->nullable();
+        $table->double('additional')->nullable();
+        $table->double('commission')->nullable();
+        $table->double('salary')->nullable();
+        $table->date('date');
         $table->timestamps();
     });
 });

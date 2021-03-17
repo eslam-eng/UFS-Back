@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class CourierDaily extends Model
+{
+    use HasFactory;
+    protected $fillable = ['courier_id', 'discount', 'date', 'additional', 'commission', 'salary'];
+
+    public function courier()
+    {
+        return $this->belongsTo('App\Models\Courier','courier_id');
+    }
+}
