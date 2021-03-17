@@ -26,7 +26,6 @@ class AwbReportController extends Controller
 
         $company_awbs = $query->get();
         return $company_awbs;
-
     }
 
     public function undeliverdAwbReport()
