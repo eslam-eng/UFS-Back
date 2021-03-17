@@ -141,13 +141,6 @@ class CourierSheetController extends Controller
         }
         watch(__('awb transfer to sheet').$request->sheet_id,'fa fa-file');
         return responseJson(1, __('done'));
-
-
-
-
-
-
-
     }
 
     public function rules()
