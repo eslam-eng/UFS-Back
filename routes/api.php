@@ -20,7 +20,6 @@ Route::post('auth/login', 'App\Http\Controllers\AuthController@login');
 //  translation start
 Route::get('translation', 'App\Http\Controllers\TranslateController@index');
 Route::get('translation/get', 'App\Http\Controllers\TranslateController@get');
-Route::post('courier/report', 'App\Http\Controllers\CourierReportController@courierAwbReport');
 
 Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], function (){
 
@@ -133,6 +132,11 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('courier-commissions/update/{resource}', 'CourierCommissionController@update');
     Route::post('courier-commissions/destroy/{resource}', 'CourierCommissionController@destroy');
 
+
+    Route::get('courier-dailies', 'CourierDailyController@index');
+    Route::post('courier-dailies/store', 'CourierDailyController@store');
+    Route::post('courier-dailies/update/{resource}', 'CourierDailyController@update');
+    Route::post('courier-dailies/destroy/{resource}', 'CourierDailyController@destroy');
 
 
 //  department start

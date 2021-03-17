@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CourierCommissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CourierCommissionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Courier.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Courier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_15_104053_create_couriers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_15_104053_create_couriers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/asm89/stack-cors/" />
     <ignored path="$PROJECT_DIR$/vendor/brick/math/" />
@@ -164,15 +163,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/CourierSheetDetail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/Courier.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
@@ -193,10 +183,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierReportController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            <state relative-caret-position="65">
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="27" selection-end-column="9" />
               <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
+                <element signature="e#40#59#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AwbReportController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+              <folding>
+                <element signature="e#40#59#0#PHP" expanded="true" />
+                <element signature="e#225#337#0#PHP" />
+                <element signature="e#346#459#0#PHP" />
+                <element signature="e#469#578#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -214,11 +219,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierCommissionController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="63" column="143" selection-start-line="63" selection-start-column="143" selection-end-line="63" selection-end-column="143" />
+              <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
               <folding>
                 <element signature="e#40#73#0#PHP" expanded="true" />
               </folding>
@@ -241,17 +246,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="22" column="92" selection-start-line="22" selection-start-column="92" selection-end-line="22" selection-end-column="92" />
+            <state relative-caret-position="263">
+              <caret line="135" column="31" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/CourierSheet.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierDailyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="33" column="32" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="32" />
+            <state relative-caret-position="-44">
+              <caret line="7" column="28" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="28" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -295,11 +303,13 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_03_17_124651_create_courier_dailies_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CourierSheetController.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Models/Courier.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_02_15_104053_create_couriers_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CourierReportController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CourierCommissionController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CompanyReportController.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AwbReportController.php" />
       </list>
     </option>
   </component>
@@ -565,7 +575,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17059000" />
+    <option name="totallyTimeSpent" value="18560000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -585,7 +595,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.36685553" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.36685553" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -789,18 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierDailyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="29" column="61" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="61" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-            <element signature="e#225#384#0#PHP" />
-            <element signature="e#934#1116#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2021_03_17_120215_create_courier_commisions_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -864,13 +862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="22" column="92" selection-start-line="22" selection-start-column="92" selection-end-line="22" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AwbController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1129">
@@ -905,22 +896,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierCommissionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
+          <folding>
+            <element signature="e#40#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierReportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="65">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="e#40#59#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierDailyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="28" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CourierCommissionController.php">
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="63" column="143" selection-start-line="63" selection-start-column="143" selection-end-line="63" selection-end-column="143" />
+        <state relative-caret-position="263">
+          <caret line="135" column="31" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AwbReportController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
           <folding>
-            <element signature="e#40#73#0#PHP" expanded="true" />
+            <element signature="e#40#59#0#PHP" expanded="true" />
+            <element signature="e#225#337#0#PHP" />
+            <element signature="e#346#459#0#PHP" />
+            <element signature="e#469#578#0#PHP" />
           </folding>
         </state>
       </provider>
