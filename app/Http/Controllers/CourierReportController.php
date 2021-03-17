@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Awb;
 use App\Models\CourierSheet;
+use App\Models\CourierSheetDetail;
 use Illuminate\Http\Request;
 
 class CourierReportController extends Controller
 {
     public function courierAwbReport()
     {
-        $query = CourierSheet::with('sheetDetails');
+        $query = CourierSheet::query();
+
         if (request()->courier_id >0)
         {
             $query->where('courier_id',request()->courier_id);
@@ -23,8 +26,11 @@ class CourierReportController extends Controller
         {
             $query->whereDate('date','<=',request()->date_to);
         }
-        $courierAwbs = $query->get();
 
-        return $courierAwbs;
+        $ids = $query->pluck('id')->toArray();
+        $detailsIds = CourierSheetDetail::whereIn('sheet_id', $ids)->pluck('awb_id')->toArray();
+        $awbs = Awb::whereIn('id', $detailsIds)->get();
+
+        return $awbs;
     }
 }

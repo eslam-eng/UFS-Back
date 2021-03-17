@@ -61,9 +61,17 @@ class CourierCommissionController extends Controller
             return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            if(CourierCommission::where('courier_id',$request->courier_id)->where('service_id',$request->service_id)->where('id','!=',$resource)->exists()) {
+            $condition = CourierCommission::query()
+            ->where('courier_id',$request->courier_id)
+            ->where('service_id',$request->service_id)
+            ->exists() &&
+            ($request->courier_id != $resource->courier_id ||
+            $request->service_id != $resource->service_id);
+
+            if($condition) {
                 return responseJson(0, __('data already exists'));
             }
+
             $resource->update($request->all());
             watch(__('update Courier Commission '),'fa fa-building');
             return responseJson(1, __('done'), $resource);
