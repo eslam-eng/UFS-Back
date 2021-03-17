@@ -91,10 +91,11 @@ class AwbController extends Controller {
             return responseJson(0, $validator->errors()->first(), "");
         }
         try {
+
+
             // store awb status
-            $resource->update([
-                'status_id' => $request->status_id
-            ]);
+            $resource->update($request->all());
+
             AwbHistory::create([
                 'awb_id' => $resource->id,
                 'user_id' => $request->user()->id,
