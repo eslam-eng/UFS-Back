@@ -24,6 +24,7 @@ class CreateCouriersTable extends Migration
             $table->string('national_id');
             $table->string('work_area')->nullable();
             $table->string('notes')->nullable();
+            $table->double('salary')->nullable();
             $table->boolean('active');
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');

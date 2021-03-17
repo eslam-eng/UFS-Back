@@ -12,7 +12,7 @@ class Courier extends Model
     protected $fillable = [
         'name','photo','phone',	'email','address','notes','active',
         'company_id','insurance_num ','national_id','work_area',
-        'branch_id', 'department_id'
+        'branch_id', 'department_id','salary'
     ];
 
     protected $appends = ['photo_url'];
