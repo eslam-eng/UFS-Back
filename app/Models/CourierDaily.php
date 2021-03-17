@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CourierDaily extends Model
 {
     use HasFactory;
-    protected $fillable = ['courier_id', 'discount', 'date', 'additional', 'commission', 'salary'];
+    protected $fillable = ['courier_id', 'discount', 'date', 'additional', 'commission', 'salary', 'notes'];
 
     public function courier()
     {
