@@ -187,13 +187,15 @@ class AwbController extends Controller {
             // store awb object
             $resource->update($data);
 
-            // delete old
-            $resource->details()->delete();
+            if (isset($data['details'])) {
+                // delete old
+                $resource->details()->delete();
 
-            // store new details of awb
-            foreach ($data['details'] as $row) {
-                $row['awb_id'] = $resource->id;
-                AwbDetail::create($row);
+                // store new details of awb
+                foreach ($data['details'] as $row) {
+                    $row['awb_id'] = $resource->id;
+                    AwbDetail::create($row);
+                }
             }
 
             // calculate awb shipment price
