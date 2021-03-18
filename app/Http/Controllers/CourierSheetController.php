@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\StatusCode;
+use App\Models\Awb;
 use App\Models\CourierSheet;
 use App\Models\CourierSheetDetail;
 use Illuminate\Http\Request;
@@ -141,6 +143,16 @@ class CourierSheetController extends Controller
         }
         watch(__('awb transfer to sheet').$request->sheet_id,'fa fa-file');
         return responseJson(1, __('done'));
+    }
+
+
+    public function sheetPendding()
+    {
+        $query = Awb::query();
+        $undeliverdAwbs = $query->where('status_id','!=',StatusCode::$DELIVERED)->pluck('id')->toArray();
+        $sheetdetailsIds = CourierSheetDetail::whereIn('awb_id', $undeliverdAwbs)->pluck('sheet_id')->toArray();
+        $sheets = CourierSheet::with('courier')->whereIn('id', $sheetdetailsIds)->get();
+        return $sheets;
     }
 
     public function rules()

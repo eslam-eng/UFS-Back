@@ -125,6 +125,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('courier-sheets/destroy/{resource}', 'CourierSheetController@destroy');
     Route::get('courier-sheets/print/{resource}', 'CourierSheetController@print');
     Route::post('courier-sheets/transfer', 'CourierSheetController@sheetTransfer');
+    Route::get('courier-sheets/pendding', 'CourierSheetController@sheetPendding');
 
 
     Route::get('courier-commissions', 'CourierCommissionController@index');

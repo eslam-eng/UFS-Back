@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Database\Migrations\Migration;
@@ -29,15 +30,22 @@ Route::get('login', function(){
 
 Route::get('/test_m', function () {
 
+    $awbStatusChart = DB::table('statuses')
+        ->select(
+            'statuses.name',
+            DB::raw('(select count(awbs.id) from awbs where status_id=statuses.id) as status_count')
+        )->get(['code', 'status_count'])->toArray();
+
+    return $awbStatusChart ;
     // Create table for storing permissions
-    Schema::create('courier_dailies', function (Blueprint $table) {
-        $table->increments('id');
-        $table->unsignedInteger('courier_id');
-        $table->double('discount')->nullable();
-        $table->double('additional')->nullable();
-        $table->double('commission')->nullable();
-        $table->double('salary')->nullable();
-        $table->date('date');
-        $table->timestamps();
-    });
+//    Schema::create('courier_dailies', function (Blueprint $table) {
+//        $table->increments('id');
+//        $table->unsignedInteger('courier_id');
+//        $table->double('discount')->nullable();
+//        $table->double('additional')->nullable();
+//        $table->double('commission')->nullable();
+//        $table->double('salary')->nullable();
+//        $table->date('date');
+//        $table->timestamps();
+//    });
 });
