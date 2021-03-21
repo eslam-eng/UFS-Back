@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Schema;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "App\Http\Controllers\website\WebsiteController@home");
+Route::get('/about', "App\Http\Controllers\website\WebsiteController@about");
+Route::get('/services', "App\Http\Controllers\website\WebsiteController@services");
+
+
 
 Route::get('/test','App\Http\Controllers\DashboardController@home')->name('test');
 

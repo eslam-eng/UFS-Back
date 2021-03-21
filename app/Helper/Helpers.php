@@ -55,6 +55,7 @@ if (!function_exists('trans')) {
                 App\Models\Translation::create([
                     "key" => $key,
                     "name_en" => $word,
+                    "name_ar" => $word
                 ]);
             }
         } catch (\Exception $exc) {
@@ -89,6 +90,23 @@ if (!function_exists('__')) {
 
 }
 
+if (!function_exists('___')) {
+
+    /**
+     * Translate the given message.
+     *
+     * @param  string  $key
+     * @param  array  $replace
+     * @param  string|null  $locale
+     * @return string|array|null
+     */
+    function ___($key, $replace = [], $locale = null) {
+        $newKey = "site." . $key;
+        return trans($newKey, $replace, $locale);
+        //return app('translator')->getFromJson($key, $replace, $locale);
+    }
+
+}
 
 /**
  * Translate the given message.

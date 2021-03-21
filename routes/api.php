@@ -281,5 +281,10 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     // reports
     Route::get('report/awb-prices', 'ReportController@awbPrices');
     Route::get('report/store-transactions', 'ReportController@storeTransactions');
+    Route::get('report/companies-awb', 'ReportController@companyAwbs');
+    Route::get('report/one-company-awb-status', 'ReportController@oneCompanyAwbStatus');
+    Route::get('report/one-company-awb-city', 'ReportController@oneCompanyAwbCity');
 
+    Route::get('website/get', 'WebsiteSettingController@get');
+    Route::post('website/update', 'WebsiteSettingController@update');
 });

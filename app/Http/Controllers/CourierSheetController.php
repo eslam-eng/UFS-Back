@@ -8,6 +8,7 @@ use App\Models\CourierSheet;
 use App\Models\CourierSheetDetail;
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\Status;
 
 class CourierSheetController extends Controller
 {
@@ -37,6 +38,10 @@ class CourierSheetController extends Controller
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);
+        }
+
+        if (request()->is_pending == 1) {
+            $query->whereIn('id', $this->sheetPendding());
         }
 
         return $query->get();
@@ -148,11 +153,11 @@ class CourierSheetController extends Controller
 
     public function sheetPendding()
     {
+        $statusIds = Status::whereIn('code', [StatusCode::$DELIVERED, StatusCode::$PAID_TO_CUSTOMER])->pluck('id')->toArray();
         $query = Awb::query();
-        $undeliverdAwbs = $query->where('status_id','!=',StatusCode::$DELIVERED)->pluck('id')->toArray();
+        $undeliverdAwbs = $query->whereNotIn('status_id', $statusIds)->pluck('id')->toArray();
         $sheetdetailsIds = CourierSheetDetail::whereIn('awb_id', $undeliverdAwbs)->pluck('sheet_id')->toArray();
-        $sheets = CourierSheet::with('courier')->whereIn('id', $sheetdetailsIds)->get();
-        return $sheets;
+        return $sheetdetailsIds;
     }
 
     public function rules()

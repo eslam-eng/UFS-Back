@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Imports\AreaImport;
 use Illuminate\Http\Request;
 use App\Models\Awb;
+use App\Models\City;
 use App\Models\Company;
 use App\Models\Receipt;
 use App\Models\Status;
 use App\Models\Store;
+use DB;
 
 class ReportController extends Controller
 {
@@ -54,4 +56,72 @@ class ReportController extends Controller
         return view('reports.store_transaction', compact('resources', 'store'));
     }
 
+    public function companyAwbs() {
+        $data = Company::all();
+        foreach($data as $item) {
+            $awbQuery = Awb::where('company_id', $item->id);
+
+            if (request()->date_from)
+                $awbQuery->whereDate('date', '>=', request()->date_from);
+
+            if (request()->date_to)
+                $awbQuery->whereDate('date', '<=', request()->date_to);
+
+            $countQuery = clone $awbQuery;
+            $wQuery = clone $awbQuery;
+            $pQuery = clone $awbQuery;
+
+            $item->awb_count = $countQuery->count();
+            $item->awb_weight = $wQuery->sum('weight');
+            $item->awb_pieces = $pQuery->sum('pieces');
+        }
+
+        return $data;
+    }
+
+    public function oneCompanyAwbStatus() {
+        $data = Status::all();
+        foreach($data as $item) {
+            $awbQuery = Awb::where('status_id', $item->id)->where('company_id', request()->company_id);
+
+            if (request()->date_from)
+                $awbQuery->whereDate('date', '>=', request()->date_from);
+
+            if (request()->date_to)
+                $awbQuery->whereDate('date', '<=', request()->date_to);
+
+            $countQuery = clone $awbQuery;
+            $wQuery = clone $awbQuery;
+            $pQuery = clone $awbQuery;
+
+            $item->awb_count = $countQuery->count();
+            $item->awb_weight = $wQuery->sum('weight');
+            $item->awb_pieces = $pQuery->sum('pieces');
+        }
+
+        return $data;
+    }
+
+    public function oneCompanyAwbCity() {
+        $data = City::all();
+        foreach($data as $item) {
+            $awbQuery = Awb::where('city_id', $item->id)->where('company_id', request()->company_id);
+
+            if (request()->date_from)
+                $awbQuery->whereDate('date', '>=', request()->date_from);
+
+            if (request()->date_to)
+                $awbQuery->whereDate('date', '<=', request()->date_to);
+
+            $countQuery = clone $awbQuery;
+            $wQuery = clone $awbQuery;
+            $pQuery = clone $awbQuery;
+
+            $item->awb_count = $countQuery->count();
+            $item->awb_weight = $wQuery->sum('weight');
+            $item->awb_pieces = $pQuery->sum('pieces');
+        }
+
+        return $data;
+    }
 }

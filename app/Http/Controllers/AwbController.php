@@ -269,8 +269,9 @@ class AwbController extends Controller {
                 'value'=>$value,
                 'type'=>'in'
                 ]);
+
+            $store->makeTransation($value);
         }
-        $store->makeTransation($value);
     }
 
     public function rules() {
