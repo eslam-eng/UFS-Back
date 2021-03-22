@@ -28,9 +28,8 @@ Route::post('/contact', "App\Http\Controllers\website\MailBoxController@store");
 Route::get('/request-pickup', "App\Http\Controllers\website\WebsiteController@requestPickup");
 Route::post('/request-pickup', "App\Http\Controllers\website\PickupController@store");
 
+Route::get('/track-awb','App\Http\Controllers\website\AwbTrackController@index')->name('trackAwb');
 
-
-Route::post('/test','App\Http\Controllers\website\PickupHistoryController@index')->name('test');
 
 Route::get('login', function(){
 	return responseJson(0, __('login first'));

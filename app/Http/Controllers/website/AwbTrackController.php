@@ -12,8 +12,20 @@ class AwbTrackController extends Controller
 
     public function index()
     {
-
         $resource = Awb::where('code',request()->track_number)->first();
-        return view('website.pickup_history',compact('resource'));
+        if(!$resource)
+            return back()->with('fail',__('this code doesnot exists'));
+
+        $awbStepers = [];
+
+        $steppers = ['in_company', 'processing', 'hold', 'delivered'];
+
+        foreach($resource->awbHistory()->get() as $item) {
+            if (!isset($awbStepers[optional($item->status)->stepper])) {
+                $awbStepers[optional($item->status)->stepper] = 1;
+            }
+        }
+
+        return view('website.awb_track',compact('resource', 'steppers', 'awbStepers'));
     }
 }
