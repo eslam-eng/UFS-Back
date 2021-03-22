@@ -11,14 +11,10 @@ class PickupController extends Controller
 {
     public function store(Request $request)
     {
-        $validator = validator($request->all(),$this->rules());
-        if ($validator->fails()) {
-            return responseJson(0, $validator->errors()->first(), "");
-        }
+
+        $data = $this->validate($request,$this->rules());
         try {
-            $data = $request->all();
             $data['code'] = time();
-            $data['user_id'] = $request->user()->id;
 
             $resource = Pickup::create($data);
             $code = date('d') . date('m') . $resource->id;
@@ -30,12 +26,11 @@ class PickupController extends Controller
             // store first status
             PickupHistory::create([
                 'pickup_id' => $resource->id,
-                'user_id' => $request->user()->id,
                 'status_id' => $request->status_id
             ]);
 
             watch(__('add pickup ').$resource->code,'fa fa-people-carry');
-            return back();
+            return back()->with('done',__('pickup sent successfully'));
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -46,10 +41,12 @@ class PickupController extends Controller
     {
         return [
             'date'=>'required',
-            'company_id'=>'required|integer|exists:companies,id',
-            'status_id'=>'required|integer|exists:statuses,id',
+            'company_id'=>'required|exists:companies,id',
+            'status_id'=>'required|exists:statuses,id',
+            'trans_type_id'=>'required|exists:trans_type,id',
             'time_from'=>'required',
             'time_to'=>'required',
+            'shipment_number'=>'required|numeric',
             'courier_id'=>'nullable|exists:couriers,id'
         ];
     }

@@ -19,9 +19,9 @@ class CreateMailBoxesTable extends Migration
             $table->string('name');
             $table->string('company');
             $table->string('phone');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->string('email');
-            $table->string('message');
+            $table->longText('message');
             $table->enum('type',['inbox','sent','trash']);
             $table->timestamps();
         });

@@ -21,7 +21,7 @@ class CreatePickupsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedInteger('status_id')->nullable();
             $table->foreign('status_id')->references('id')->on('statuses');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->time('time_from');
             $table->time('time_to');

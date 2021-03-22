@@ -20,34 +20,63 @@
 @section('content')
 <div class="container">
     <div class="container">
-
+        @if(session()->has('done'))
+            <div class="alert alert-success alert-dismissible col-md-8" id="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{session('done')}}
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div>
                     <h1 class="serv">{{ ___('Contact Form') }} :</h1>
-                    <form action="contact.php" id="contact" method="post">
+                    <form action="/contact" id="contact" method="post">
+                        {{csrf_field()}}
                        <label>{{ ___('Name') }}: *</label>
-                       <input type="text" class="form-control" required name="name" id="name">
-                       <br>
+                       <input type="text" class="form-control" value="{{old('name')}}" required name="name" id="name">
+
+                        @if($errors->has('name'))
+                            <p class="text-danger">
+                                <b>{{$errors->first('name')}}</b>
+                            </p>
+                        @endif
+                        <br>
 
                        <label>{{ ___('Company') }}: *</label>
-                       <input type="text" class="form-control" required name="company" id="name">
+                       <input type="text" class="form-control" value="{{old('company')}}" required name="company" id="name">
+
+                        @if($errors->has('company'))
+                            <p class="text-danger">
+                                <b>{{$errors->first('company')}}</b>
+                            </p>
+                        @endif
                        <br>
 
                        <label>{{ ___('Tel-Mobile') }}: *</label>
-                       <input type="text" class="form-control" required name="phone" id="name">
+                       <input type="text" class="form-control" value="{{old('phone')}}" required name="phone" id="name">
+                        @if($errors->has('phone'))
+                            <p class="text-danger">
+                                <b>{{$errors->first('phone')}}</b>
+                            </p>
+                        @endif
+
                        <br>
 
-                       <label>{{ ___('Website') }}: *</label>
-                       <input type="text" class="form-control" required name="website" id="name">
+                       <label>{{ ___('Website') }}:</label>
+                       <input type="text" class="form-control" value="{{old('website')}}" name="website" id="name">
                        <br>
 
                        <label>{{ ___('E-mail') }}: *</label>
-                       <input type="text" class="form-control" required name="email" id="name">
-                       <br>
+                       <input type="text" class="form-control" value="{{old('email')}}" required name="email" id="name">
+                        @if($errors->has('email'))
+                            <p class="text-danger">
+                                <b>{{$errors->first('email')}}</b>
+                            </p>
+                        @endif
+                        <br>
 
                        <label>{{ ___('Message') }}: *</label>
-                       <textarea name="msg" class="form-control" required rows="5" wrap="virtual" id="message"></textarea>
+                       <textarea name="message" class="form-control" required rows="5" wrap="virtual" id="message">{{old('message')}}</textarea>
                        <br>
 
                        <label></label>

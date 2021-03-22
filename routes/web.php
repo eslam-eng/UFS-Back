@@ -21,14 +21,16 @@ use Illuminate\Support\Facades\Schema;
 Route::get('/', "App\Http\Controllers\website\WebsiteController@home");
 Route::get('/about', "App\Http\Controllers\website\WebsiteController@about");
 Route::get('/services', "App\Http\Controllers\website\WebsiteController@services");
+
 Route::get('/contact', "App\Http\Controllers\website\WebsiteController@contact");
 Route::post('/contact', "App\Http\Controllers\website\MailBoxController@store");
+
 Route::get('/request-pickup', "App\Http\Controllers\website\WebsiteController@requestPickup");
-Route::post('/request-pickup', "App\Http\Controllers\website\WebsiteController@storePickup");
+Route::post('/request-pickup', "App\Http\Controllers\website\PickupController@store");
 
 
 
-Route::get('/test','App\Http\Controllers\DashboardController@home')->name('test');
+Route::post('/test','App\Http\Controllers\website\PickupHistoryController@index')->name('test');
 
 Route::get('login', function(){
 	return responseJson(0, __('login first'));

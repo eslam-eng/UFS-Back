@@ -106,7 +106,8 @@
                                 <div class="top_search_form">
                                     <p>For more detailed tracking and status information, sign in or contact your local
                                         BestLogistic representative for access.</p>
-                                    <form>
+                                    <form action="/test" method="post">
+                                        @csrf
                                         <input type="text" placeholder="Enter Reference number" value=""
                                             name="track_number">
                                         <button type="submit"><i class="stm-arrow-next"></i></button>

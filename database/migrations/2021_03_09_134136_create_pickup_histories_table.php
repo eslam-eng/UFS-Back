@@ -19,7 +19,7 @@ class CreatePickupHistoriesTable extends Migration
             $table->unsignedInteger('pickup_id');
             $table->foreign('pickup_id')->references('id')->on('pickups');
 
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->unsignedInteger('status_id');
