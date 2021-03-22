@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Awb;
 use App\Models\City;
 use App\Models\Company;
+use App\Models\Courier;
+use App\Models\CourierDaily;
+use App\Models\CourierSheet;
+use App\Models\CourierSheetDetail;
 use App\Models\Receipt;
 use App\Models\Status;
 use App\Models\Store;
@@ -120,6 +124,64 @@ class ReportController extends Controller
             $item->awb_count = $countQuery->count();
             $item->awb_weight = $wQuery->sum('weight');
             $item->awb_pieces = $pQuery->sum('pieces');
+        }
+
+        return $data;
+    }
+
+    public function courierCommission() {
+        $data = Courier::where(function($q){
+            if (request()->courier_id > 0) {
+                $q->where('id', request()->courier_id);
+            }
+        })->get();
+
+        foreach($data as $item) {
+            $courierDailyQuery = CourierDaily::where('courier_id', $item->id);
+
+            if (request()->date_from)
+                $courierDailyQuery->whereDate('date', '>=', request()->date_from);
+
+            if (request()->date_to)
+                $courierDailyQuery->whereDate('date', '<=', request()->date_to);
+
+
+            $discountQuery = clone $courierDailyQuery;
+            $additionalQuery = clone $courierDailyQuery;
+            $courierCommission = $item->calculateCommission(request()->date_from, request()->date_to);
+
+
+            $item->discount = $discountQuery->sum('discount');
+            $item->additional = $additionalQuery->sum('additional');
+            $item->commission = $courierCommission;
+            $item->net_salary = ($item->salary + $item->additional + $item->commission) - ($item->discount);
+        }
+
+        return $data;
+    }
+
+
+    public function oneCourierAwbStatus() {
+        $courierSheetQuery = CourierSheet::where('courier_id', request()->courier_id);
+
+        if (request()->date_from)
+            $courierSheetQuery->whereDate('date', '>=', request()->date_from);
+
+        if (request()->date_to)
+            $courierSheetQuery->whereDate('date', '<=', request()->date_to);
+
+
+        $courierSheetIds = $courierSheetQuery->pluck('id')->toArray();
+
+        $awbIds = CourierSheetDetail::whereIn('sheet_id', $courierSheetIds)->pluck('awb_id')->toArray();
+        $awbQuery = Awb::whereIn('id', $awbIds);
+
+
+        $data = Status::all();
+
+        foreach($data as $item) {
+            $statusQuery = clone $awbQuery;
+            $item->awb_count = $statusQuery->where('status_id', $item->id)->count();
         }
 
         return $data;

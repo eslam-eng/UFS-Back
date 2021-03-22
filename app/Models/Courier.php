@@ -50,4 +50,34 @@ class Courier extends Model
     {
         return $this->hasMany('App\Models\CourierCommission','courier_id');
     }
+
+    public function calculateCommission($dateFrom=null, $dateTo=null) {
+        $courierSheetQuery = CourierSheet::where('courier_id', $this->id);
+
+        if ($dateFrom)
+            $courierSheetQuery->whereDate('date', '>=', $dateFrom);
+
+        if ($dateTo)
+            $courierSheetQuery->whereDate('date', '<=', $dateTo);
+
+        $courierSheetIds = $courierSheetQuery->pluck('id')->toArray();
+        $awbIds = CourierSheetDetail::whereIn('sheet_id', $courierSheetIds)->pluck('awb_id')->toArray();
+        $awbQuery = Awb::whereIn('id', $awbIds);
+
+
+        if ($dateFrom)
+            $awbQuery->whereDate('date', '>=', $dateFrom);
+
+        if ($dateTo)
+            $awbQuery->whereDate('date', '<=', $dateTo);
+
+        $courierCommissions = CourierCommission::where('courier_id', $this->id)->get();
+        $totalCommission = 0;
+        foreach($courierCommissions as $item) {
+            $statusClone = clone $awbQuery;
+            $totalCommission += $item->commission * $statusClone->where('service_id', $item->service_id)->count();
+        }
+
+        return $totalCommission;
+    }
 }

@@ -292,6 +292,8 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('report/companies-awb', 'ReportController@companyAwbs');
     Route::get('report/one-company-awb-status', 'ReportController@oneCompanyAwbStatus');
     Route::get('report/one-company-awb-city', 'ReportController@oneCompanyAwbCity');
+    Route::get('report/one-courier-awb-status', 'ReportController@oneCourierAwbStatus');
+    Route::get('report/courier-commissions', 'ReportController@courierCommission');
 
     Route::get('website/get', 'website\WebsiteSettingController@get');
     Route::post('website/update', 'website\WebsiteSettingController@update');
