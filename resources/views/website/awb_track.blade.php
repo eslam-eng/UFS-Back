@@ -227,13 +227,13 @@
 
         <div class="table-responsive w3-white text-center" style="height: 200px;" >
             <table class="table table-bordered text-center">
-                <tr class="w3-dark-gray"  style="background-color: #616161!important;" >
-                    <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ "#" }}</th>
-                    <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ __('awb')  }}</th>
-                    <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{__('sender')  }}</th>
-                    <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ __('status')  }}</th>
-                    <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ __('user')   }}</th>
-                    <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ __('datetime') }}</th>
+                <tr style="background-color: #616161!important;" >
+                    <th class="w3-dark-gray"  style="color: #fff; background-color: #616161!important;" >{{ "#" }}</th>
+                    <th class="w3-dark-gray"  style="color: #fff; background-color: #616161!important;" >{{ __('awb')  }}</th>
+                    <th class="w3-dark-gray"  style="color: #fff; background-color: #616161!important;" >{{__('sender')  }}</th>
+                    <th class="w3-dark-gray"  style="color: #fff; background-color: #616161!important;" >{{ __('status')  }}</th>
+                    <th class="w3-dark-gray"  style="color: #fff; background-color: #616161!important;" >{{ __('user')   }}</th>
+                    <th class="w3-dark-gray"  style="color: #fff; background-color: #616161!important;" >{{ __('datetime') }}</th>
                 </tr>
 
                 @foreach($resource->awbHistory()->get() as $item)
@@ -243,7 +243,7 @@
                     <td>{{ $resource->company? $resource->company->name : '' }}</td>
                     <td>{{ $item->status? $item->status->name : '' }}</td>
                     <td>{{ $item->user? $item->user->name : '' }}</td>
-                    <td>{{ $item->created_at }}</td>
+                    <td>{{ date("Y-m-d g:iA", strtotime($item->created_at)) }}</td>
                 </tr>
                 @endforeach
             </table>
