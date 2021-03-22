@@ -22,6 +22,7 @@ Route::get('/', "App\Http\Controllers\website\WebsiteController@home");
 Route::get('/about', "App\Http\Controllers\website\WebsiteController@about");
 Route::get('/services', "App\Http\Controllers\website\WebsiteController@services");
 Route::get('/contact', "App\Http\Controllers\website\WebsiteController@contact");
+Route::post('/contact', "App\Http\Controllers\website\MailBoxController@store");
 Route::get('/request-pickup', "App\Http\Controllers\website\WebsiteController@requestPickup");
 Route::post('/request-pickup', "App\Http\Controllers\website\WebsiteController@storePickup");
 
@@ -35,9 +36,15 @@ Route::get('login', function(){
 
 Route::get('/test_m', function () {
 
-    Schema::create('trans_type', function (Blueprint $table) {
-        $table->id();
+    Schema::create('mail_boxes', function (Blueprint $table) {
+        $table->increments('id');
         $table->string('name');
+        $table->string('company');
+        $table->string('phone');
+        $table->string('website');
+        $table->string('email');
+        $table->string('message');
+        $table->enum('type',['inbox','sent','trash']);
         $table->timestamps();
     });
 });
