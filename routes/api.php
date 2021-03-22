@@ -171,6 +171,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('pickups/history', 'PickupController@pickupHistory');
     Route::post('pickups/store', 'PickupController@store');
     Route::post('pickups/update/{resource}', 'PickupController@update');
+    Route::post('pickups/status/{resource}', 'PickupController@changeStatus');
     Route::post('pickups/destroy/{resource}', 'PickupController@destroy');
 
 //  receiver start
@@ -277,6 +278,12 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('outreceipts/store', 'OutReceiptController@store');
     Route::post('outreceipts/update/{resource}', 'OutReceiptController@update');
     Route::post('outreceipts/destroy/{resource}', 'OutReceiptController@destroy');
+
+    Route::get('trans-types', 'TransTypeController@index');
+    Route::post('trans-types/store', 'TransTypeController@store');
+    Route::post('trans-types/update/{resource}', 'TransTypeController@update');
+    Route::post('trans-types/destroy/{resource}', 'TransTypeController@destroy');
+
 
     // reports
     Route::get('report/awb-prices', 'ReportController@awbPrices');

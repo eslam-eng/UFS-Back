@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Schema;
 Route::get('/', "App\Http\Controllers\website\WebsiteController@home");
 Route::get('/about', "App\Http\Controllers\website\WebsiteController@about");
 Route::get('/services', "App\Http\Controllers\website\WebsiteController@services");
+Route::get('/contact', "App\Http\Controllers\website\WebsiteController@contact");
+Route::get('/request-pickup', "App\Http\Controllers\website\WebsiteController@requestPickup");
+Route::post('/request-pickup', "App\Http\Controllers\website\WebsiteController@storePickup");
 
 
 
@@ -32,22 +35,9 @@ Route::get('login', function(){
 
 Route::get('/test_m', function () {
 
-    $awbStatusChart = DB::table('statuses')
-        ->select(
-            'statuses.name',
-            DB::raw('(select count(awbs.id) from awbs where status_id=statuses.id) as status_count')
-        )->get(['code', 'status_count'])->toArray();
-
-    return $awbStatusChart ;
-    // Create table for storing permissions
-//    Schema::create('courier_dailies', function (Blueprint $table) {
-//        $table->increments('id');
-//        $table->unsignedInteger('courier_id');
-//        $table->double('discount')->nullable();
-//        $table->double('additional')->nullable();
-//        $table->double('commission')->nullable();
-//        $table->double('salary')->nullable();
-//        $table->date('date');
-//        $table->timestamps();
-//    });
+    Schema::create('trans_type', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->timestamps();
+    });
 });

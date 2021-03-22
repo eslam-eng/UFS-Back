@@ -1,5 +1,12 @@
 @extends('website.master', ['title' => ''])
 
+@section('styles')
+<style>
+    .page_title {
+        display: none!important;
+    }
+</style>
+@endsection
 
 @section('content')
     <article id="post-2" class="post-2 page type-page status-publish hentry">

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pickup;
+use App\Models\PickupHistory;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class PickupController extends Controller
 {
     public function index()
     {
-        $query = Pickup::query()->with(['company', 'status', 'courier', 'user']);
+        $query = Pickup::query()->with(['company', 'status', 'courier', 'user', 'transType', 'pickupHistory']);
 
         if (request()->search) {
             $query
@@ -42,6 +44,32 @@ class PickupController extends Controller
         return $query->get();
     }
 
+    public function changeStatus(Pickup $resource, Request $request) {
+        $oldStatus = $resource->status->name;
+        $validator = validator($request->all(), ['status_id' => 'required']);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), "");
+        }
+        try {
+
+
+            // store pickup status
+            $resource->update($request->all());
+
+            PickupHistory::create([
+                'pickup_id' => $resource->id,
+                'user_id' => $request->user()->id,
+                'status_id' => $request->status_id
+            ]);
+
+
+
+            watch(__('The pickup ') . $resource->code . ' status has changed from ' . $oldStatus . ' to ' . $resource->status->name, 'fa fa-newspaper-o');
+            return responseJson(1, __('done'), $resource->pickupHistory()->get());
+        } catch (\Exception $th) {
+            return responseJson(0, $th->getMessage());
+        }
+    }
 
     public function store(Request $request)
     {
@@ -61,6 +89,13 @@ class PickupController extends Controller
                 "code" => $code
             ]);
 
+            // store first status
+            PickupHistory::create([
+                'pickup_id' => $resource->id,
+                'user_id' => $request->user()->id,
+                'status_id' => $request->status_id
+            ]);
+
             watch(__('add pickup ').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
@@ -77,6 +112,14 @@ class PickupController extends Controller
         }
         try {
             $resource->update($request->all());
+
+            // record status
+            PickupHistory::create([
+                'pickup_id' => $resource->id,
+                'user_id' => $request->user()->id,
+                'status_id' => $request->status_id
+            ]);
+
             watch(__('update pickup ').$resource->code,'fa fa-people-carry');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {

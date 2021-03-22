@@ -25,7 +25,9 @@ class CreatePickupsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->time('time_from');
             $table->time('time_to');
-            $table->string('notes')->nullable();
+            $table->enum('shipment_type', ['domestic', 'international'])->nullable();
+            $table->float('shipment_number')->nullable();
+            $table->integer('trans_type_id')->nullable();
             $table->unsignedInteger('courier_id')->nullable();
             $table->foreign('courier_id')->references('id')->on('couriers');
             $table->timestamps();

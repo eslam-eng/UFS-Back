@@ -17,7 +17,10 @@ class Pickup extends Model
         'time_from',
         'time_to',
         'courier_id',
-        'notes'
+        'notes',
+        'shipment_type',
+        'shipment_number',
+        'trans_type_id'
     ];
 
     public function company()
@@ -28,6 +31,11 @@ class Pickup extends Model
     public function status()
     {
         return $this->belongsTo('App\Models\Status','status_id');
+    }
+
+    public function transType()
+    {
+        return $this->belongsTo('App\Models\transType','trans_type_id');
     }
 
     public function user()
@@ -42,6 +50,6 @@ class Pickup extends Model
 
     public function pickupHistory()
     {
-        return $this->hasMany('App\Models\PickupHistory','pickup_id');
+        return $this->hasMany('App\Models\PickupHistory','pickup_id')->with(['user', 'status']);
     }
 }
