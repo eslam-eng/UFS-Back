@@ -10,21 +10,15 @@ class MailboxController extends Controller
 {
     public function index()
     {
-        $query = MailBox::query();
+        $query = MailBox::where('type',request()->type);
 
-        if (request()->type)
+
+        if (request()->search)
         {
-            $query->where('type',request()->type);
-
-        }
-
-        if (request()->serch)
-        {
-            $query->where('name',"like", "%" . request()->serch . "%")
-                  ->orWhere('company',"like", "%" . request()->serch . "%")
-                  ->orWhere('message',"like", "%" . request()->serch . "%")
-                  ->orWhere('phone',"like", "%" . request()->serch . "%")
-            ;
+            $query->where('name',"like", "%" . request()->search . "%")
+                  ->orWhere('company',"like", "%" . request()->search . "%")
+                  ->orWhere('message',"like", "%" . request()->search . "%")
+                  ->orWhere('phone',"like", "%" . request()->search . "%");
 
         }
         return $query->get();
@@ -42,9 +36,15 @@ class MailboxController extends Controller
             return responseJson(0, $validator->errors()->first(), "");
         }
         try {
-            Mail::to("$request->email")->send(new \App\Mail\MailBox($request->all()));
-//            watch(__('some one send mail ').$resource->company,'fa fa-building');
-            return back();
+            $data = $request->all();
+            $data['type'] = "sent";
+            $resource = MailBox::create($data);
+
+            // send email
+            sendMail($request->email, "New Message From " . $request->user()->email, view("mail", compact("resource")));
+
+
+            return responseJson(1, __('Message has Been Sent'));
         }catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
@@ -70,7 +70,7 @@ class MailboxController extends Controller
             'phone'=>'required|string',
             'website'=>'nullable|string|max:50',
             'email'=>'required|email',
-            'message'=>'required|string|max:200',
+            'message'=>'required',
         ];
     }
 }

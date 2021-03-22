@@ -324,3 +324,40 @@ if (!function_exists('randToken')) {
         return $b->mac;
     }
 }
+
+
+/**
+     * send email api
+     *
+     * @param String $to       destination email
+     * @param String $message  the message of the email
+     * @param String $subject  the subject of the email
+     * @param String $from     the emai will send the message
+     * @return boolean         true if sent, false if not
+     */
+     function sendMail($to, $subject, $message, $from = "tamer.gomaa@ufs-eg.com") {
+        $response = null;
+        try {
+            $message = str_replace("\n", "\r", $message);
+            $subject = str_replace("\n", "\r", $subject);
+
+
+            ini_set("SMTP", "aspmx.l.google.com");
+            ini_set("sendmail_from", "admin@gmail.com");
+
+
+            $headers = array(
+                'From' => $from,
+                'To' => $to,
+                'Subject' => $subject,
+                'MIME-Version' => '1.0',
+                'Content-Type' => "text/html; charset=ISO-8859-1"
+            );
+
+            $response = mail($to, $subject, $message, $headers);
+        } catch (\Exception $exc) {
+
+        }
+
+        return $response;
+    }
