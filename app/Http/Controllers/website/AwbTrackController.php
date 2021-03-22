@@ -20,8 +20,9 @@ class AwbTrackController extends Controller
         $steppers = ['in_company', 'processing', 'hold', 'delivered'];
 
         foreach($resource->awbHistory()->get() as $item) {
-            if (!isset($awbStepers[optional($item->status)->stepper])) {
-                $awbStepers[optional($item->status)->stepper] = 1;
+            //return optional($item->status)->steper;
+            if (!isset($awbStepers[optional($item->status)->steper])) {
+                $awbStepers[optional($item->status)->steper] = 1;
             }
         }
 

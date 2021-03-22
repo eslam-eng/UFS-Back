@@ -237,8 +237,7 @@
                 </tr>
 
                 @foreach($resource->awbHistory()->get() as $item)
-                <tr   >
-                    <td>{{ $item->iteration + 1 }}</td>
+                <tr>
                     <td>{{ $resource->code }}</td>
                     <td>{{ $resource->company? $resource->company->name : '' }}</td>
                     <td>{{ $item->status? $item->status->name : '' }}</td>

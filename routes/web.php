@@ -28,7 +28,7 @@ Route::post('/contact', "App\Http\Controllers\website\MailBoxController@store");
 Route::get('/request-pickup', "App\Http\Controllers\website\WebsiteController@requestPickup");
 Route::post('/request-pickup', "App\Http\Controllers\website\PickupController@store");
 
-Route::post('/track-awb','App\Http\Controllers\website\AwbTrackController@index')->name('trackAwb');
+Route::get('/track-awb','App\Http\Controllers\website\AwbTrackController@index')->name('trackAwb');
 
 
 Route::get('login', function(){

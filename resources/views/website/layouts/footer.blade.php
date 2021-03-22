@@ -161,9 +161,10 @@ $company = App\Models\Company::admin();
                     </ul>
                 </div>
                 <div class="copyright">
-                    Copyright © 2012-2020 Logistics Theme by <a href="http://stylemixthemes.com/" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">Stylemix Themes</a>. All
-                    rights reserved </div>
+                    Copyright © 2020-2021 Logistics Theme by <a href="http://dtcesolutions.com/" target="_blank"
+                        data-wpel-link="external" rel="nofollow external noopener noreferrer">DTC ESolutions</a>. All
+                    rights reserved
+                </div>
             </div>
         </div>
     </div>
