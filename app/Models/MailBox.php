@@ -9,5 +9,5 @@ class MailBox extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','company','phone','website','email','message'];
+    protected $fillable = ['name','company','phone','website','email','message', 'type'];
 }
