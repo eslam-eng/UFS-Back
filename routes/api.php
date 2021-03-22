@@ -21,6 +21,7 @@ Route::post('auth/login', 'App\Http\Controllers\AuthController@login');
 Route::get('translation', 'App\Http\Controllers\TranslateController@index');
 Route::get('translation/get', 'App\Http\Controllers\TranslateController@get');
 
+
 Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], function (){
 
 // dashboard apis
@@ -292,6 +293,13 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('report/one-company-awb-status', 'ReportController@oneCompanyAwbStatus');
     Route::get('report/one-company-awb-city', 'ReportController@oneCompanyAwbCity');
 
-    Route::get('website/get', 'WebsiteSettingController@get');
-    Route::post('website/update', 'WebsiteSettingController@update');
+    Route::get('website/get', 'website\WebsiteSettingController@get');
+    Route::post('website/update', 'website\WebsiteSettingController@update');
+
+    Route::get('mailboxs', 'MailBoxController@index');
+    Route::post('mailboxs/store', 'MailBoxController@store');
+    Route::post('mailboxs/destroy/{resource}', 'MailBoxController@destroy');
+
+
+
 });
