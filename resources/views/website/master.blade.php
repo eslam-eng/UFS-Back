@@ -29,6 +29,12 @@
             @include('website.layouts.scripts')
 
             @yield('scripts')
+
+            @if($errors->has('failed'))
+                <script>
+                    alert("{{ $errors->first() }}");
+                </script>
+            @endif
         </div>
     </div>
 

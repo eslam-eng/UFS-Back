@@ -14,7 +14,7 @@ class AwbTrackController extends Controller
     {
         $resource = Awb::where('code',request()->track_number)->first();
         if(!$resource)
-            return back()->with('fail',__('this code doesnot exists'));
+            return back()->with('failed', [__('this code doesnot exists')]);
 
         $awbStepers = [];
 
