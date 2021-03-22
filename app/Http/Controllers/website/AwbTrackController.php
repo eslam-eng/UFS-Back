@@ -10,11 +10,10 @@ use Illuminate\Http\Request;
 class AwbTrackController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $resource = Awb::where('code',request()->track_number)->first();
-        if(!$resource)
-            return back()->with('failed', [__('this code doesnot exists')]);
+        $data = $this->validate($request,['track_number'=>'required|exists:awbs,code']);
+        $resource = Awb::where('code',$request->track_number)->first();
 
         $awbStepers = [];
 

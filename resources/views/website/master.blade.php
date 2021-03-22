@@ -30,9 +30,10 @@
 
             @yield('scripts')
 
-            @if($errors->has('failed'))
+            @if($errors->has('track_number'))
+
                 <script>
-                    alert("{{ $errors->first() }}");
+                    alert("{{$errors->first('track_number')}}")
                 </script>
             @endif
         </div>
