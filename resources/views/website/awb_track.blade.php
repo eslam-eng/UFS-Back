@@ -228,7 +228,6 @@
         <div class="table-responsive w3-white text-center" style="height: 200px;" >
             <table class="table table-bordered text-center">
                 <tr class="w3-dark-gray"  style="background-color: #616161!important;" >
-                    <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ "#" }}</th>
                     <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ __('awb')  }}</th>
                     <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{__('sender')  }}</th>
                     <th class="w3-dark-gray"  style="background-color: #616161!important;" >{{ __('status')  }}</th>
@@ -238,7 +237,6 @@
 
                 @foreach($resource->awbHistory()->get() as $item)
                 <tr   >
-                    <td>{{ $item->iteration + 1 }}</td>
                     <td>{{ $resource->code }}</td>
                     <td>{{ $resource->company? $resource->company->name : '' }}</td>
                     <td>{{ $item->status? $item->status->name : '' }}</td>
