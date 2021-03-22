@@ -54,7 +54,11 @@ class MailboxController extends Controller
     {
         try {
             watch(__('delete Mail ').$resource->company,'fa fa-trash');
-            $resource->delete();
+
+            if ($resource->type == 'trash')
+                $resource->delete();
+            else
+                $resource->update([ "type" => "trash" ]);
             return responseJson(1, __('done'));
         } catch (\Exception $th) {
             return responseJson(0, __($this->exception_message),$th->getMessage());
