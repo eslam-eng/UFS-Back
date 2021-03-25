@@ -88,7 +88,7 @@
                       <label>{{ __("company") }} *</label>
                       <select class="form-control input-sm w3-round"  name="company_id"  >
                         @foreach ($companies as $item)
-                        <option  value="{{ $item->id }}">{{ $item->name }}</option>
+                        <option  value="{{ $item->id }}">{{ $item->id }}</option>
                         @endforeach
                       </select>
 

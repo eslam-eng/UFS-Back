@@ -69,7 +69,7 @@ class AwbController extends Controller {
             $query->whereIn('status_id', $ids);
         }
 
-        return $query->paginate(60);
+        return $query->latest()->paginate(60);
     }
 
     public function load($resource) {
@@ -138,7 +138,7 @@ class AwbController extends Controller {
 
         try {
             $data = $request->all();
-            $data['status_id'] = optional(Status::first())->id;
+            $data['status_id'] = optional(Status::where('type', 'awb')->first())->id;
             $data['user_id'] = $request->user()->id;
             $data['date'] = date('Y-m-d');
 
@@ -177,7 +177,7 @@ class AwbController extends Controller {
             watch(__('create awb with code ') . $resource->code, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource->fresh());
         } catch (\Exception $th) {
-            return responseJson(0, $th->getMessage());
+            return responseJson(0, __('please fill all inputs'));
         }
     }
 
