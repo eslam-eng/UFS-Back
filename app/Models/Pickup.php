@@ -35,7 +35,7 @@ class Pickup extends Model
 
     public function transType()
     {
-        return $this->belongsTo('App\Models\transType','trans_type_id');
+        return $this->belongsTo('App\Models\TransType','trans_type_id');
     }
 
     public function user()
