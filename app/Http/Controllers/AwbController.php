@@ -174,10 +174,13 @@ class AwbController extends Controller {
             $calAwbShipmentPrice = new CalculatorShipmentPriceController();
             $calAwbShipmentPrice->getShipmentPrice($resource->fresh());
 
+            // make transationc
+            $this->makeTransactionForCollectedStatus($resource->refresh());
+
             watch(__('create awb with code ') . $resource->code, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource->fresh());
         } catch (\Exception $th) {
-            return responseJson(0, __('please fill all inputs'));
+        return responseJson(0, $th->getMessage()/*__('please fill all inputs')*/);
         }
     }
 
@@ -206,6 +209,7 @@ class AwbController extends Controller {
             // calculate awb shipment price
             $calAwbShipmentPrice = new CalculatorShipmentPriceController();
             $calAwbShipmentPrice->getShipmentPrice($resource->refresh());
+
 
             watch(__('update awb with code ') . $resource->code, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource);
@@ -256,7 +260,7 @@ class AwbController extends Controller {
 
     public function makeTransactionForCollectedStatus(Awb $awb)
     {
-        if (optional($awb->status)->code ==7)
+        if ((optional($awb->status)->code == 7 && $awb->payment_type_id != 1) || ($awb->payment_type_id == 1 && optional($awb->status)->code != 8))
         {
             $value = $awb->shiping_price+$awb->collection;
             $store = Store::first();

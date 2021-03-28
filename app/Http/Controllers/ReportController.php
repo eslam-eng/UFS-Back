@@ -26,12 +26,13 @@ class ReportController extends Controller
         $statusPaidToCustomer = Status::where('code', '8')->first();
 
 
-        return $statusPaidToCustomer;
         $query = Awb::query()
-       // ->whereIn('status_id', $status)
-        ->whereRaw('(status_id != "'.optional($statusPaidToCustomer)->id.'" && payment_type_id = "'.optional(PaymentType::first())->id.'") or (status_id in ('.$status.'))');
-       // ->orWhereRaw('(status_id != "'.optional($statusPaidToCustomer)->id.'" && payment_type_id = "'.optional(PaymentType::first())->id.'")');
-            /*->orWhere(function($q) use ($statusPaidToCustomer) {
+        ->where(function($q) use($status, $statusPaidToCustomer) {
+            $q->whereIn('status_id', $status)
+                ->orWhereRaw('(status_id != "'.optional($statusPaidToCustomer)->id.'" && payment_type_id = "'.optional(PaymentType::first())->id.'")');
+        });
+
+        /*->orWhere(function($q) use ($statusPaidToCustomer) {
                 $q->where('status_id', '!=', optional($statusPaidToCustomer)->id)
                 ->where('payment_type_id', optional(PaymentType::first())->id);
             });*/
