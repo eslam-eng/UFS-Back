@@ -25,6 +25,8 @@ class ReportController extends Controller
         $status = Status::whereIn('code', ['7', '3'])->pluck('id')->toArray();
         $statusPaidToCustomer = Status::where('code', '8')->first();
 
+
+        return $statusPaidToCustomer;
         $query = Awb::query()
        // ->whereIn('status_id', $status)
         ->whereRaw('(status_id != "'.optional($statusPaidToCustomer)->id.'" && payment_type_id = "'.optional(PaymentType::first())->id.'") or (status_id in ('.$status.'))');
