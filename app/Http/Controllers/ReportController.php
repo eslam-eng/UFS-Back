@@ -11,6 +11,7 @@ use App\Models\Courier;
 use App\Models\CourierDaily;
 use App\Models\CourierSheet;
 use App\Models\CourierSheetDetail;
+use App\Models\PaymentType;
 use App\Models\Receipt;
 use App\Models\Status;
 use App\Models\Store;
@@ -22,7 +23,14 @@ class ReportController extends Controller
     public function awbPrices()
     {
         $status = Status::whereIn('code', ['7', '3'])->pluck('id')->toArray();
-        $query = Awb::whereIn('status_id', $status);
+        $statusPaidToCustomer = Status::where('code', '8')->first();
+
+        $query = Awb::whereIn('status_id', $status)
+            ->orWhere(function($q) use ($statusPaidToCustomer) {
+                $q->where('status_id', optional($statusPaidToCustomer)->id)
+                ->where('payment_type_id', optional(PaymentType::first())->id);
+            });
+
 
         if (request()->company_id > 0) {
             $query->where('company_id', request()->company_id);
