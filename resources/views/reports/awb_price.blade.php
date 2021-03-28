@@ -20,7 +20,7 @@
         </tr>
     </table>
     <br>
-    <table class="w3-table w3-bordered">
+    <table class="w3-table w3-bordered table-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
             <th>code</th>
@@ -83,7 +83,56 @@
                 <td>
                     {{ $totalNet }}
                 </td>
+                <td></td>
             </tr>
+            @if (request()->discount > 0)
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td class="w3-text-red" >
+                    {{ __('discount') }} : {{ request()->discount }}
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    {{ __('net after discount') }} : {{ $totalNet - request()->discount }}
+                </td>
+                <td></td>
+            </tr>
+            @endif
     </table>
     <br>
     <table class="w3-table text-center w3-large">

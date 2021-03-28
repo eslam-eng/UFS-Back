@@ -298,9 +298,9 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('website/get', 'website\WebsiteSettingController@get');
     Route::post('website/update', 'website\WebsiteSettingController@update');
 
-    Route::get('mailboxs', 'MailBoxController@index');
-    Route::post('mailboxs/store', 'MailBoxController@store');
-    Route::post('mailboxs/destroy/{resource}', 'MailBoxController@destroy');
+    Route::get('mailboxs', 'MailboxController@index');
+    Route::post('mailboxs/store', 'MailboxController@store');
+    Route::post('mailboxs/destroy/{resource}', 'MailboxController@destroy');
 
 
 

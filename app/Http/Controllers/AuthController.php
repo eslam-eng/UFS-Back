@@ -24,7 +24,7 @@ class AuthController extends Controller
         $error = __("email or password error");
 
         try {
-            $user = User::with(['company'])->where("email", $request->email)
+            $user = User::with(['company', 'branch', 'department'])->where("email", $request->email)
                 ->orWhere('phone', $request->email)
                 ->orWhere('username', $request->email)
                 //->where("password", $request->password)
@@ -33,7 +33,7 @@ class AuthController extends Controller
             if ($user) {
                 if ($user->password != $request->password)
                     return responseJson(0, $error);
-                
+
                 if ($user->active == '0')
                     return responseJson(0, __('your account is not confirmed'));
 

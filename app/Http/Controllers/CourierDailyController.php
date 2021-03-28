@@ -10,7 +10,7 @@ class CourierDailyController extends Controller
 
     public function index()
     {
-        $query = CourierDaily::with('courier')->get();
+        $query = CourierDaily::with('courier', 'discountExpense', 'additionalExpense')->get();
         return $query;
     }
 
