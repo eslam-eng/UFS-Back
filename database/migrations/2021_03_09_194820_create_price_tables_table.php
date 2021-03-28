@@ -41,6 +41,7 @@ class CreatePriceTablesTable extends Migration
 
             $table->double('price');
             $table->double('basic_kg');
+            $table->double('return_price')->nullable();
             $table->double('additional_kg_price');
             $table->timestamps();
         });
