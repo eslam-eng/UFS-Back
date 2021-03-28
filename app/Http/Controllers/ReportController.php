@@ -27,7 +27,7 @@ class ReportController extends Controller
 
         $query = Awb::whereIn('status_id', $status)
             ->orWhere(function($q) use ($statusPaidToCustomer) {
-                $q->where('status_id', optional($statusPaidToCustomer)->id)
+                $q->where('status_id', '!=', optional($statusPaidToCustomer)->id)
                 ->where('payment_type_id', optional(PaymentType::first())->id);
             });
 
