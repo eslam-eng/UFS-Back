@@ -104,11 +104,11 @@ class AwbController extends Controller {
                 'status_id' => $request->status_id
             ]);
 
-            $this->makeTransactionForCollectedStatus($resource);
-
             // calculate awb shipment price
             $calAwbShipmentPrice = new CalculatorShipmentPriceController();
             $calAwbShipmentPrice->getShipmentPrice($resource->fresh());
+
+            $this->makeTransactionForCollectedStatus($resource->fresh());
 
             watch(__('The shipment ') . $resource->code . ' status has changed from ' . $oldStatus . ' to ' . $resource->status->name, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource->awbHistory()->get());
