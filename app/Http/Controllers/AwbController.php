@@ -269,7 +269,7 @@ class AwbController extends Controller {
                 'store_id'=>optional($store)->id,
                 'model_id'=>$awb->id,
                 'model_type'=>'awb',
-                'notes'=>__('تم التحصيل من بوليصه رقم ').$awb->id,
+                'notes'=>__('تم التحصيل من بوليصه رقم ').$awb->code,
                 'value'=>$value,
                 'type'=>'in'
                 ]);
