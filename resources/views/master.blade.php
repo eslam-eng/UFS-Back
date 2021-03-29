@@ -6,7 +6,7 @@
 
 <style>
     * {
-        direction: rtl;
+        direction: ltr;
     }
 
     .text-center, .text-center td {

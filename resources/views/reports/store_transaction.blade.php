@@ -48,8 +48,8 @@
                 <td class="{{ $item->type == 'out'? 'w3-text-red' : 'w3-text-green' }}" >
                     {{ $item->type == 'out'? '-' : '+' }}{{ $item->value }}
                 </td>
-                <td>{{ $item->expenseType->name }}</td>
-                <td>{{ $item->company->name }}</td>
+                <td>{{ optional($item->expenseType)->name }}</td>
+                <td>{{ optional($item->company)->name }}</td>
                 <td>{{ $item->type == 'out'? 'مدين' : 'دائن' }}</td>
                 <td>{{ $item->notes }}</td>
             </tr>

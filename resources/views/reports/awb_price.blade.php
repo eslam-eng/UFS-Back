@@ -5,6 +5,9 @@
     $totalAmount = 0;
     $totalComm = 0;
     $totalNet = 0;
+    $finalTotal = 0;
+    $discount = 0;
+    $fuelCharge = 0;
 @endphp
 
 @section('content')
@@ -23,43 +26,39 @@
     <table class="w3-table w3-bordered table-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
-            <th>code</th>
-            <th>date</th>
-            <th>Ref</th>
-            <th>Name</th>
-            <th>Area</th>
-            <th>Zone</th>
-            <th>zprice</th>
-            <th>w</th>
-            <th>AKP</th>
-            <th>w price</th>
-            <th>Amount</th>
-            <th>Comm</th>
-            <th>Net</th>
-            <th>Status</th>
+            <th>{{ __('awb code') }}</th>
+            <th>{{ __('date') }}</th>
+            <th>{{ __('origin') }}</th>
+            <th>{{ __('destination') }}</th>
+            <th>{{ __('pieces') }}</th>
+            <th>{{ __('weight') }}</th>
+            <th>{{ __('net_price') }}</th>
+            <th>{{ __('postal_fees') }}</th>
+            <th>{{ __('vat_tax') }}</th>
+            <th>{{ __('total') }}</th>
         </tr>
         @foreach ($awbs as $item)
             @php
                 $totalAmount += $item->collection;
                 $totalComm += $item->shiping_price;
                 $totalNet += $item->net_price;
+                $postalFees = $item->net_price * request()->postal_fees; // 0.10
+                $vetFax = ($item->net_price + $postalFees) * request()->vet_fax; // 0.14
+                $total = $item->net_price + $vetFax + $postalFees;
+                $finalTotal += $total;
             @endphp
             <tr>
                 <td>{{ $loop->iteration + 1 }}</td>
                 <td>{{ $item->code }}</td>
                 <td>{{ $item->date }}</td>
-                <td>{{ optional($item->receiver)->referance }}</td>
-                <td>{{ optional($item->receiver)->name }}</td>
-                <td>{{ optional(optional($item->receiver)->area)->name }}</td>
+                <td>{{ optional($item->city)->name }}</td>
                 <td>{{ optional(optional($item->receiver)->city)->name }}</td>
-                <td>{{ $item->zprice }}</td>
+                <td>{{ $item->pieces }}</td>
                 <td>{{ $item->weight }}</td>
-                <td>{{ $item->additional_kg_price }}</td>
-                <td>{{ $item->additional_price }}</td>
-                <td>{{ $item->collection }}</td>
-                <td>{{ $item->shiping_price }}</td>
                 <td>{{ $item->net_price }}</td>
-                <td>{{ optional($item->status)->name }}</td>
+                <td>{{ $postalFees }}</td>
+                <td>{{ $vetFax }}</td>
+                <td>{{ $total }}</td>
             </tr>
         @endforeach
             <tr>
@@ -73,19 +72,14 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td>
-                    {{ $totalAmount }}
+                    {{ $finalTotal }}
                 </td>
-                <td>
-                    {{ $totalComm }}
-                </td>
-                <td>
-                    {{ $totalNet }}
-                </td>
-                <td></td>
             </tr>
             @if (request()->discount > 0)
+            @php
+                $discount = $finalTotal - ($finalTotal * (request()->discount / 100));
+            @endphp
             <tr>
                 <td></td>
                 <td></td>
@@ -97,17 +91,9 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td>
-
-                </td>
-                <td>
-
-                </td>
                 <td class="w3-text-red" >
-                    {{ __('discount') }} : {{ request()->discount }}
+                    {{ __('discount') }} : {{ request()->discount }} %
                 </td>
-                <td></td>
             </tr>
             <tr>
                 <td></td>
@@ -120,17 +106,48 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td>
+                    {{ __('total after discount') }} : {{ $discount }}
+                </td>
+            </tr>
+            @else
+            @php
+                $discount = $finalTotal;
+            @endphp
+            @endif
+            @if (request()->fuel_charge > 0)
+            @php
+                $fuelCharge = $discount + ($discount * (request()->fuel_charge / 100));
+            @endphp
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="w3-text-green" >
+                    {{ __('fuel charge') }} : {{ request()->fuel_charge }} %
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td>
-
+                    {{ __('total after fuel charge') }} : {{ $fuelCharge }}
                 </td>
-                <td>
-
-                </td>
-                <td>
-                    {{ __('net after discount') }} : {{ $totalNet - request()->discount }}
-                </td>
-                <td></td>
             </tr>
             @endif
     </table>
@@ -138,19 +155,7 @@
     <table class="w3-table text-center w3-large">
         <tr>
             <td class="w3-large">
-                <b>اسم المستلم</b>
-                <br>
-                <div class="w3-block" style="border: 2px dashed gray"></div>
-            </td>
-            <td class="w3-large">
-                <b>التوقيع</b>
-                <br>
-                <div class="w3-block" style="border: 2px dashed gray"></div>
-            </td>
-            <td class="w3-large">
-                <b>التاريخ</b>
-                <br>
-                <div class="w3-block" style="border: 2px dashed gray"></div>
+                <b{{ __('footer of bill') }}</b>
             </td>
         </tr>
     </table>
