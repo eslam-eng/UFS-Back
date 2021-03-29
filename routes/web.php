@@ -30,6 +30,7 @@ Route::get('/request-pickup', "App\Http\Controllers\website\WebsiteController@re
 Route::post('/request-pickup', "App\Http\Controllers\website\PickupController@store");
 
 Route::get('/track-awb','App\Http\Controllers\website\AwbTrackController@index')->name('trackAwb');
+Route::get('/track-more','App\Http\Controllers\website\AwbTrackController@trackMore')->name('trackMore');
 
 
 Route::get('login', function(){

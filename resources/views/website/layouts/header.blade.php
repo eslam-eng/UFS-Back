@@ -434,4 +434,5 @@ $company = App\Models\Company::admin();
     </script>
     <script src="../rum-static.pingdom.net/pa-5f967c2b5eacee001500024b.js" async></script>
     <script async src='{{ url("/") }}/cdn-cgi/bm/cv/669835187/api.js'></script>
+    @yield('script')
 </head>

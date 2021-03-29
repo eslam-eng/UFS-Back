@@ -28,4 +28,9 @@ class AwbTrackController extends Controller
 
         return view('website.awb_track',compact('resource', 'steppers', 'awbStepers'));
     }
+
+    public function trackMore()
+    {
+        return view('website.trackmore');
+    }
 }

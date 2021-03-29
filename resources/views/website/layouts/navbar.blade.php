@@ -96,7 +96,6 @@
                                             {{ ___('Request A Pickup') }}
                                         </a>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -106,6 +105,11 @@
                                 <div class="top_search_form">
                                     <p>For more detailed tracking and status information, sign in or contact your local
                                         BestLogistic representative for access.</p>
+                                   <h4>
+                                       <a role="button" href="{{ route('trackMore') }}" aria-current="page" data-wpel-link="internal">
+                                           <span style="color: #ff4a00">{{ ___('track more') }}</span>
+                                       </a>
+                                   </h4>
                                     <form action="{{ route('trackAwb') }}" method="get">
                                         @csrf
                                         <input type="text" placeholder="Enter Reference number" value=""
