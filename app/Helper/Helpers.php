@@ -58,7 +58,56 @@ if (!function_exists('trans')) {
                     "name_ar" => $word
                 ]);
             }
-        } catch (\Exception $exc) {
+        } catch (Exception $exc) {
+            //
+        }
+
+        return $word;
+
+//        if (is_null($key)) {
+        //            return app('translator');
+        //        }
+        //
+        //        return app('translator')->trans($key, $replace, $locale);
+    }
+
+}
+
+if (!function_exists('trans2')) {
+
+    /**
+     * Translate the given message.
+     *
+     * @param  string|null  $key
+     * @param  array   $replace
+     * @param  string|null  $locale
+     * @return \Illuminate\Contracts\Translation\Translator|string|array|null
+     */
+    //tarnslations from database
+    function trans2($key = null, $replace = [], $locale = null) {
+        $word = $key;
+        // prepare key
+        $key = strtolower($key);
+        $key = str_replace(" ", "_", $key);
+
+        // my code for translation
+        try {
+            $translation = App\Models\Translation::where('key', $key)->first();
+
+            if ($translation) {
+                $translate = $translation->word_en;
+
+                if ($translate) {
+                    return $translate;
+                }
+            } else {
+                App\Models\Translation::create([
+                    "key" => $key,
+                    "name_en" => $word,
+                    "name_ar" => $word
+                ]);
+            }
+        } catch (Exception $exc) {
             //
         }
 
@@ -84,7 +133,7 @@ if (!function_exists('__')) {
      * @return string|array|null
      */
     function __($key, $replace = [], $locale = null) {
-        return trans($key, $replace, $locale);
+        return trans2($key, $replace, $locale);
         //return app('translator')->getFromJson($key, $replace, $locale);
     }
 
@@ -102,7 +151,7 @@ if (!function_exists('___')) {
      */
     function ___($key, $replace = [], $locale = null) {
         $newKey = "site." . $key;
-        return trans($newKey, $replace, $locale);
+        return trans2($newKey, $replace, $locale);
         //return app('translator')->getFromJson($key, $replace, $locale);
     }
 
