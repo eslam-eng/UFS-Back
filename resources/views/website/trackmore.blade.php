@@ -14,6 +14,10 @@
             z-index: 50!important;
             margin: 0 0 37px!important;
         }
+        .TM_my_search_button_style  {
+            height: 38px!important;
+            background-color: #005a87!important;
+        }
     </style>
 @endsection
 
