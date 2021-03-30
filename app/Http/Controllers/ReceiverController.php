@@ -11,8 +11,7 @@ class ReceiverController extends Controller
 {
     public function index()
     {
-        $query = Receiver::with(['city', 'area', 'company', 'branch'])
-        ->select('*', DB::raw('CONCAT(name, "-", company_name) as search'));
+        $query = Receiver::with(['city', 'area', 'company', 'branch']);
 
         if (request()->user()->company_id != 1) {
             $query->where('company_id', request()->user()->company_id);

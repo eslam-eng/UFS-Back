@@ -13,6 +13,14 @@ class Receiver extends Model
         'branch_id', 'company_name', 'branch_name', 'address2','referance', 'title'
     ];
 
+    protected $appends = [
+        'search'
+    ];
+
+    public function getSearchAttribute() {
+        return $this->name . "-" . $this->company_name;
+    }
+
     public function company()
     {
         return $this->belongsTo('App\Models\Company','company_id')->select('id', 'name', 'logo');

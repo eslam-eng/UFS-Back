@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helper\StatusCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,6 +29,11 @@ class Status extends Model
     public function awbHistory()
     {
         return $this->hasMany('App\Models\AwbHistory','status_id');
+    }
+
+    public static function delivered() {
+        $deliveredCode = StatusCode::$DELIVERED;
+        return Status::where('code', $deliveredCode)->first();
     }
 }
 

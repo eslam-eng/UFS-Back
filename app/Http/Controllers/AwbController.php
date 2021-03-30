@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\StatusCode;
 use App\Models\Awb;
 use App\Models\AwbHistory;
 use App\Models\AwbDetail;
@@ -88,6 +89,13 @@ class AwbController extends Controller {
 
     public function changeStatus(Awb $resource, Request $request) {
         $oldStatus = $resource->status->name;
+
+        if (optional($resource->status)->code == StatusCode::$DELIVERED && $request->status_id == optional(Status::delivered())->id) {
+
+            return responseJson(0, __('the shipment already delivered'));
+
+        }
+
         $validator = validator($request->all(), ['status_id' => 'required']);
         if ($validator->fails()) {
             return responseJson(0, $validator->errors()->first(), "");
