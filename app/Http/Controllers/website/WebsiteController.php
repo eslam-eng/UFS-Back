@@ -28,11 +28,21 @@ class WebsiteController extends Controller
         return view('website.about', compact('company', 'data'));
     }
 
-    public function services()
+//    public function services()
+//    {
+//        $data = DB::table('website_setting')->find(2);
+//        $company = Company::admin();
+//        return view('website.service', compact('company', 'data'));
+//    }
+
+    public function domesticService()
     {
-        $data = DB::table('website_setting')->find(2);
-        $company = Company::admin();
-        return view('website.service', compact('company', 'data'));
+        return view('website.deomestic_serveice');
+    }
+
+    public function internationalService()
+    {
+        return view('website.international_service');
     }
 
     public function contact()

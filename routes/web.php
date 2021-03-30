@@ -19,19 +19,18 @@ use Illuminate\Support\Facades\Schema;
 |
 */
 
-Route::get('/', "App\Http\Controllers\website\WebsiteController@home");
-Route::get('/about', "App\Http\Controllers\website\WebsiteController@about");
-Route::get('/services', "App\Http\Controllers\website\WebsiteController@services");
-
-Route::get('/contact', "App\Http\Controllers\website\WebsiteController@contact");
-Route::post('/contact', "App\Http\Controllers\website\MailBoxController@store");
-
-Route::get('/request-pickup', "App\Http\Controllers\website\WebsiteController@requestPickup");
-Route::post('/request-pickup', "App\Http\Controllers\website\PickupController@store");
-
-Route::get('/track-awb','App\Http\Controllers\website\AwbTrackController@index')->name('trackAwb');
-Route::get('/track-more','App\Http\Controllers\website\AwbTrackController@trackMore')->name('trackMore');
-
+Route::group(['namespace'=>'App\Http\Controllers\website'],function (){
+    Route::get('/', "WebsiteController@home");
+    Route::get('/about', "WebsiteController@about");
+    Route::get('/domestic-services', "WebsiteController@domesticService");
+    Route::get('/international-services', "WebsiteController@internationalService");
+    Route::get('/contact', "WebsiteController@contact");
+    Route::post('/contact', "MailBoxController@store");
+    Route::get('/request-pickup', "WebsiteController@requestPickup");
+    Route::post('/request-pickup', "PickupController@store");
+    Route::get('/track-awb','AwbTrackController@index')->name('trackAwb');
+    Route::get('/track-more','AwbTrackController@trackMore')->name('trackMore');
+});
 
 Route::get('login', function(){
 	return responseJson(0, __('login first'));

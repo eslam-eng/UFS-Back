@@ -81,11 +81,18 @@
                                             {{ ___('About Us') }}
                                         </a>
                                     </li>
-                                    <li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="{{ url('/services') }}" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('Our Services') }}
-                                        </a>
+
+
+
+                                    <li id="menu-item-641" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-641"><a href="#">{{__('services')}}</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-688"><a href="{{ url('/international-services') }}" data-wpel-link="internal">{{__('International Services')}}</a></li>
+                                            <li id="menu-item-645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-645"><a href="{{ url('/domestic-services') }}" data-wpel-link="internal">{{__('Domestic Services')}}</a></li>
+
+                                        </ul>
                                     </li>
+
+
                                     <li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
                                         <a href="{{ url('/contact') }}" aria-current="page" data-wpel-link="internal">
                                             {{ ___('Contact Us') }}
