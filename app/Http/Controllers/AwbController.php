@@ -279,8 +279,10 @@ class AwbController extends Controller {
 
             $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'in')->first();
             if ($receipt) {
-                $store->makeTransation($receipt->value * -1);
-                $receipt->delete();
+                if ($receipt->value != $value) {
+                    $store->makeTransation($receipt->value * -1);
+                    $receipt->delete();
+                }
             }
 
             $inReceipt = Receipt::create([
@@ -306,8 +308,10 @@ class AwbController extends Controller {
 
             $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'out')->first();
             if ($receipt) {
-                $store->makeTransation($receipt->value);
-                $receipt->delete();
+                if ($receipt->value != $value) {
+                    $store->makeTransation($receipt->value);
+                    $receipt->delete();
+                }
             }
 
             $inReceipt = Receipt::create([
