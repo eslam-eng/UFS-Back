@@ -294,7 +294,7 @@
             </div>
             <div class="w3- w3-border w3-border-gray w3-center" style="padding: 3px;margin-bottom:5px;" >
                 @if($resource->collection)
-                {{ optional($resource)->collection }}
+                {{ optional($resource)->collection + optional($resource)->shiping_price }}
                 @else
                 <br>
                 @endif
