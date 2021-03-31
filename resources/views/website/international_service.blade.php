@@ -1,4 +1,4 @@
-@extends('website.master', ["title" => "International service"])
+@extends('website.master', ["title" => "International Service"])
 
 @section('styles')
     <style>

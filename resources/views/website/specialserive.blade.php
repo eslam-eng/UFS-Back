@@ -1,4 +1,4 @@
-@extends('website.master', ["title" => "Domestic Services"])
+@extends('website.master', ["title" => "Special Services"])
 @section('styles')
     <style>
         #header {
