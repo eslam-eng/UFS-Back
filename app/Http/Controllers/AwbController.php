@@ -282,7 +282,8 @@ class AwbController extends Controller {
                 if ($receipt->value != $value) {
                     $store->makeTransation($receipt->value * -1);
                     $receipt->delete();
-                }
+                } else
+                    return;
             }
 
             $inReceipt = Receipt::create([
@@ -311,7 +312,8 @@ class AwbController extends Controller {
                 if ($receipt->value != $value) {
                     $store->makeTransation($receipt->value);
                     $receipt->delete();
-                }
+                } else
+                    return;
             }
 
             $inReceipt = Receipt::create([
