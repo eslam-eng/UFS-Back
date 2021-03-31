@@ -84,7 +84,6 @@ class CourierSheetController extends Controller
                     'status_id'=>$outForDeliveryStatus,
                 ]);
             }
-
             watch(__('add courierSheet ').$resource->courier->name,'fa fa-file');
             return responseJson(1, __('done'), $resource->refresh());
         }catch (\Exception $th) {
