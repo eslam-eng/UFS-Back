@@ -68,7 +68,7 @@ class CalculatorShipmentPriceController extends Controller
             $collected = 0;
 
         if ($awb->collection)
-            $netPrice = $collected - $shipingPrice;
+            $netPrice = $collected;
 
         if (optional($awb->status)->code == 3) {
             $netPrice = -1 * $resource->return_price;

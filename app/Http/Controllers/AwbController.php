@@ -116,7 +116,11 @@ class AwbController extends Controller {
             $calAwbShipmentPrice = new CalculatorShipmentPriceController();
             $calAwbShipmentPrice->getShipmentPrice($resource->fresh());
 
+            // make transaction on treasury in case of collected status
             $this->makeTransactionForCollectedStatus($resource->fresh());
+
+            // make transaction on treasury in case of paid to sender status
+            $this->makeTransactionForPaidToSenderStatus($resource->fresh());
 
             watch(__('The shipment ') . $resource->code . ' status has changed from ' . $oldStatus . ' to ' . $resource->status->name, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource->awbHistory()->get());
@@ -274,8 +278,10 @@ class AwbController extends Controller {
             $store = Store::first();
 
             $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'in')->first();
-            if ($receipt)
-                return;
+            if ($receipt) {
+                $store->makeTransation($receipt->value * -1);
+                $receipt->delete();
+            }
 
             $inReceipt = Receipt::create([
                 'date'=>date('Y-m-d'),
@@ -288,6 +294,33 @@ class AwbController extends Controller {
             ]);
 
             $store->makeTransation($value);
+        }
+    }
+
+    public function makeTransactionForPaidToSenderStatus(Awb $awb)
+    {
+        if (optional($awb->status)->code == 8)
+        {
+            $value = $awb->net_price;
+            $store = Store::first();
+
+            $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'out')->first();
+            if ($receipt) {
+                $store->makeTransation($receipt->value);
+                $receipt->delete();
+            }
+
+            $inReceipt = Receipt::create([
+                'date'=>date('Y-m-d'),
+                'store_id'=>optional($store)->id,
+                'model_id'=>$awb->id,
+                'model_type'=>'awb',
+                'notes'=>__('تم التوريد من البوليصه رقم ').$awb->code,
+                'value'=>$value,
+                'type'=>'out'
+            ]);
+
+            $store->makeTransation($value * -1);
         }
     }
 
