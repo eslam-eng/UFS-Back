@@ -57,7 +57,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    {{ $finalTotal }}
+                    {{ $totalNet }}
                 </td>
             </tr>
     </table>
