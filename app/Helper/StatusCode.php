@@ -11,6 +11,7 @@ class StatusCode
     public static    $RETURN_WITH_CHARGE = 3;
     public static    $RETURN_WITHOUT_CHARGE = 4;
     public static    $CLOSED = 5;
+    public static    $OUT_FOR_DELIVERY = 6;
     public static    $COLLECTED = 7;
     public static    $PAID_TO_CUSTOMER = 8;
 

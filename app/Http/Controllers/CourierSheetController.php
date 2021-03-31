@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Helper\StatusCode;
 use App\Models\Awb;
+use App\Models\AwbHistory;
 use App\Models\CourierSheet;
 use App\Models\CourierSheetDetail;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Status;
+use Illuminate\Support\Facades\DB;
 
 class CourierSheetController extends Controller
 {
@@ -68,12 +70,18 @@ class CourierSheetController extends Controller
             $data = $request->all();
             $data['user_id'] = $request->user()->id;
             $resource = CourierSheet::create($data);
-
+            $outForDeliveryStatus = Status::where('code',StatusCode::$OUT_FOR_DELIVERY)->first()->id;
             // add new awb id
             foreach($data['details'] as $awbId) {
                 CourierSheetDetail::create([
                     "sheet_id" => $resource->id,
                     "awb_id" => $awbId,
+                ]);
+                Awb::where('id',$awbId)->update(['status_id'=>$outForDeliveryStatus]);
+                AwbHistory::create([
+                    'awb_id'=>$awbId,
+                    'user_id'=>$request->user()->id,
+                    'status_id'=>$outForDeliveryStatus,
                 ]);
             }
 
