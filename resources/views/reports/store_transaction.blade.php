@@ -45,8 +45,8 @@
                 <td>{{ $loop->iteration + 1 }}</td>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->date }}</td>
-                <td class="{{ $item->type == 'out'? 'w3-text-red' : 'w3-text-green' }}" >
-                    {{ $item->type == 'out'? '-' : '+' }}{{ $item->value }}
+                <td class="{{ $item->type == 'out' && $item->value > 0? 'w3-text-red' : 'w3-text-green' }}" >
+                    {{ $item->type == 'out' && $item->value > 0? '-' : '+' }}{{ $item->value }}
                 </td>
                 <td>{{ optional($item->expenseType)->name }}</td>
                 <td>{{ optional($item->company)->name }}</td>
