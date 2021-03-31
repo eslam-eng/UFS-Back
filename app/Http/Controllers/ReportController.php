@@ -53,6 +53,39 @@ class ReportController extends Controller
         return view('reports.awb_price', compact('company', 'awbs'));
     }
 
+    public function awbPrices2()
+    {
+        $status = Status::whereIn('code', ['7', '3', '4'])->pluck('id')->toArray();
+        $statusPaidToCustomer = Status::where('code', '8')->first();
+
+        $query = Awb::query()
+        ->where(function($q) use($status, $statusPaidToCustomer) {
+            $q->whereIn('status_id', $status)
+                ->orWhereRaw('(status_id != "'.optional($statusPaidToCustomer)->id.'" && payment_type_id = "'.optional(PaymentType::first())->id.'")');
+        });
+
+        /*->orWhere(function($q) use ($statusPaidToCustomer) {
+                $q->where('status_id', '!=', optional($statusPaidToCustomer)->id)
+                ->where('payment_type_id', optional(PaymentType::first())->id);
+            });*/
+
+
+        if (request()->company_id > 0) {
+            $query->where('company_id', request()->company_id);
+        }
+
+        if (request()->date_from)
+            $query->whereDate('date', '>=', request()->date_from);
+
+        if (request()->date_to)
+            $query->whereDate('date', '<=', request()->date_to);
+
+        $awbs = $query->get();
+        $company = Company::find(request()->company_id);
+
+        return view('reports.awb_price2', compact('company', 'awbs'));
+    }
+
     public function storeTransactions()
     {
         $query = Receipt::query();
