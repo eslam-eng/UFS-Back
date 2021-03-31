@@ -280,6 +280,9 @@ class AwbController extends Controller {
             $value = $awb->shiping_price;
             $store = Store::first();
 
+            if ($value == 0) {
+                return;
+            }
             $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'in')->first();
             if ($receipt) {
                 if ($receipt->value != $value) {
@@ -310,6 +313,9 @@ class AwbController extends Controller {
             $value = $awb->shiping_price+$awb->collection;
             $store = Store::first();
 
+            if ($value == 0) {
+                return;
+            }
             $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'in')->first();
             if ($receipt) {
                 if ($receipt->value != $value) {
@@ -339,6 +345,10 @@ class AwbController extends Controller {
         {
             $value = $awb->net_price;
             $store = Store::first();
+
+            if ($value == 0) {
+                return;
+            }
 
             $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'out')->first();
             if ($receipt) {
