@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\StatusCode;
 use App\Models\Awb;
 use App\Models\PriceTable;
 use App\Models\Receiver;
@@ -53,6 +54,13 @@ class CalculatorShipmentPriceController extends Controller
     }
 
     private function calculateShipingPrice(Awb $awb, PriceTable $resource) {
+        if (
+            optional($awb->status)->code == StatusCode::$PAID_TO_CUSTOMER ||
+            optional($awb->status)->code == StatusCode::$COLLECTED
+        ) {
+            return;
+        }
+
         $zprice = $resource->price;
         $additionalWeight = ($awb->weight - $resource->basic_kg) > 0? $awb->weight - $resource->basic_kg : 0;
         $additionalPrice = $additionalWeight * $resource->additional_kg_price;
