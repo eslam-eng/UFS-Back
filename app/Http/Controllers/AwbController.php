@@ -272,6 +272,11 @@ class AwbController extends Controller {
         {
             $value = $awb->shiping_price+$awb->collection;
             $store = Store::first();
+
+            $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'in')->first();
+            if ($receipt)
+                return;
+
             $inReceipt = Receipt::create([
                 'date'=>date('Y-m-d'),
                 'store_id'=>optional($store)->id,
@@ -280,7 +285,7 @@ class AwbController extends Controller {
                 'notes'=>__('تم التحصيل من بوليصه رقم ').$awb->code,
                 'value'=>$value,
                 'type'=>'in'
-                ]);
+            ]);
 
             $store->makeTransation($value);
         }
