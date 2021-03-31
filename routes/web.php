@@ -24,6 +24,9 @@ Route::group(['namespace'=>'App\Http\Controllers\website'],function (){
     Route::get('/about', "WebsiteController@about");
     Route::get('/domestic-services', "WebsiteController@domesticService");
     Route::get('/international-services', "WebsiteController@internationalService");
+    Route::get('/services', "WebsiteController@service");
+    Route::get('/special-services', "WebsiteController@specialService");
+    Route::get('/additional-services', "WebsiteController@additionalService");
     Route::get('/contact', "WebsiteController@contact");
     Route::post('/contact', "MailBoxController@store");
     Route::get('/request-pickup', "WebsiteController@requestPickup");

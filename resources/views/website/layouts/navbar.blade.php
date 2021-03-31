@@ -84,12 +84,8 @@
 
 
 
-                                    <li id="menu-item-641" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-641"><a href="#">{{__('services')}}</a>
-                                        <ul class="sub-menu">
-                                            <li id="menu-item-688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-688"><a href="{{ url('/international-services') }}" data-wpel-link="internal">{{__('International Services')}}</a></li>
-                                            <li id="menu-item-645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-645"><a href="{{ url('/domestic-services') }}" data-wpel-link="internal">{{__('Domestic Services')}}</a></li>
+                                    <li id="menu-item-641" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-641"><a href="{{url('/services')}}">{{__('services')}}</a>
 
-                                        </ul>
                                     </li>
 
 

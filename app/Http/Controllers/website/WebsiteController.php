@@ -45,6 +45,22 @@ class WebsiteController extends Controller
         return view('website.international_service');
     }
 
+    public function service()
+    {
+        return view('website.service');
+    }
+
+
+    public function specialService()
+    {
+        return view('website.specialserive');
+    }
+
+    public function additionalService()
+    {
+        return view('website.additional_service');
+    }
+
     public function contact()
     {
         $company = Company::admin();
