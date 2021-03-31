@@ -122,6 +122,9 @@ class AwbController extends Controller {
             // make transaction on treasury in case of paid to sender status
             $this->makeTransactionForPaidToSenderStatus($resource->fresh());
 
+            // make transaction on treasury in case of Return With Paid Status
+            $this->makeTransactionForReturnWithChargeStatus($resource->fresh());
+
             watch(__('The shipment ') . $resource->code . ' status has changed from ' . $oldStatus . ' to ' . $resource->status->name, 'fa fa-newspaper-o');
             return responseJson(1, __('done'), $resource->awbHistory()->get());
         } catch (\Exception $th) {
@@ -269,6 +272,36 @@ class AwbController extends Controller {
         return $query->get();
     }
 
+
+    public function makeTransactionForReturnWithChargeStatus(Awb $awb)
+    {
+        if (optional($awb->status)->code == 3 && $awb->payment_type_id != 1)
+        {
+            $value = $awb->shiping_price;
+            $store = Store::first();
+
+            $receipt = Receipt::where('model_id', $awb->id)->where('model_type', 'awb')->where('type', 'in')->first();
+            if ($receipt) {
+                if ($receipt->value != $value) {
+                    $store->makeTransation($receipt->value * -1);
+                    $receipt->delete();
+                } else
+                    return;
+            }
+
+            $inReceipt = Receipt::create([
+                'date'=>date('Y-m-d'),
+                'store_id'=>optional($store)->id,
+                'model_id'=>$awb->id,
+                'model_type'=>'awb',
+                'notes'=>__('تم التحصيل من بوليصه رقم ').$awb->code,
+                'value'=>$value,
+                'type'=>'in'
+            ]);
+
+            $store->makeTransation($value);
+        }
+    }
 
     public function makeTransactionForCollectedStatus(Awb $awb)
     {
