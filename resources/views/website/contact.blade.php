@@ -74,6 +74,34 @@
                             </p>
                         @endif
                         <br>
+                        <label>{{ ___('Monthly Orders') }}</label>
+                        <div class="selectdiv">
+                            <select class="get-started--field select" aria-label="monthly order" name="monthly_order" id="shipments-field-head">
+
+                                <option value="" disabled="" selected="" data-i18n="monthlyOrder">Monthly Orders</option>
+                                <option value="Not Started">Not Started</option>
+                                <option value="0 - 100">0 - 100</option>
+                                <option value="100 - 500">100 - 500</option>
+                                <option value="500 - 1000">500 - 1000</option>
+                                <option value="1000 - 3000">1000 - 3000</option>
+                                <option value="3000+">3000+</option>
+                            </select>
+                        </div>
+                        <br>
+
+                        <label>{{ ___('Industry') }}</label>
+                        <div class="selectdiv">
+                            <select class="get-started--field select" aria-label="industry" name="industryType" id="industry-field-head">
+                                <option data-i18n="Industry" value="" disabled="" selected="">Industry</option>
+                                <option data-i18n="Fashion" value="Fashion">Fashion</option>
+                                <option data-i18n="Cosmetics" value="Cosmetics">Cosmetics</option>
+                                <option data-i18n="Food/Drinks" value="Food/Drinks">Food/Drinks</option>
+                                <option data-i18n="Electronics/Home Products" value="Electronics/Home Products">Electronics/Home Products</option>
+                                <option data-i18n="Furniture" value="Furniture">Furniture</option>
+                                <option data-i18n="Others" value="Others">Others</option>
+                            </select>
+                        </div>
+                        <br>
 
                        <label>{{ ___('Message') }}: *</label>
                        <textarea name="message" class="form-control" required rows="5" wrap="virtual" id="message">{{old('message')}}</textarea>
