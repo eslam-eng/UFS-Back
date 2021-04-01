@@ -14,12 +14,23 @@
         z-index: 50!important;
         margin: 0 0 37px!important;
     }
+    #contactus
+    {
+        border-radius: 7px;
+        box-shadow: 1px 1px 16px rgb(0 0 0 /30%);
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+    #contactimg
+    {
+        background-image: url("/uplodas/images/contacts");
+    }
 </style>
 @endsection
 
 @section('content')
 <div class="container">
-    <div class="container">
+    <div id="contactimg" class="container">
         @if(session()->has('done'))
             <div class="alert alert-success alert-dismissible col-md-8" id="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -27,7 +38,7 @@
             </div>
         @endif
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="contactus" class="col-lg-6 col-md-6 col-sm-12">
                 <div>
                     <h1 class="serv">{{ ___('Contact Form') }} :</h1>
                     <form action="/contact" id="contact" method="post">
@@ -120,6 +131,5 @@
         </div>
 
     </div>
-
 </div>
 @endsection
