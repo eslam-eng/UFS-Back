@@ -17,6 +17,12 @@ class PriceTableController extends Controller
 
         $query->where('model_id', request()->model_id);
 
+        if (request()->city_from > 0)
+            $query->where('city_from', request()->city_from);
+
+        if (request()->city_to > 0)
+            $query->where('city_to', request()->city_to);
+
         return $query->get();
     }
 

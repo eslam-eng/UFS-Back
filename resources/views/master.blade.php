@@ -12,13 +12,19 @@
     .text-center, .text-center td {
         text-align: center!important;
     }
+
+    .report-content table td, .report-content table th {
+        text-align: center!important;
+    }
 </style>
 <body>
 
 	<div class="w3-padding">
         @include('header')
 
-        @yield("content")
+        <div class="report-content">
+            @yield("content")
+        </div>
     </div>
 
     @if(!isset($nonPrint))
