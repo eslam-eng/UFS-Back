@@ -1,14 +1,11 @@
 @extends('master')
 
 
-@php
-    $total = $store->init_value;
-@endphp
 
 @section('content')
     <br>
     <div class="w3-center w3-large">
-        <b>Store Transactions Report</b>
+        <b>Pricetable Report</b>
     </div>
     <br>
     <table class="w3-table w3-bordered">
