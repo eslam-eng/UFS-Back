@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Imports\AreaImport;
+use App\Models\PriceTable;
 use Illuminate\Http\Request;
 use App\Models\Awb;
 use App\Models\City;
@@ -206,7 +207,6 @@ class ReportController extends Controller
         return $data;
     }
 
-
     public function oneCourierAwbStatus() {
         $courierSheetQuery = CourierSheet::where('courier_id', request()->courier_id);
 
@@ -231,5 +231,27 @@ class ReportController extends Controller
         }
 
         return $data;
+    }
+
+    public function priceTable()
+    {
+
+        $query = PriceTable::query();
+
+        if (request()->company_id > 0)
+            $query->where('model_id', request()->company_id)->where('model_type','company');
+
+        if (request()->city_from > 0)
+            $query->where('city_from', request()->city_from);
+
+        if (request()->city_to > 0)
+            $query->where('city_to', request()->city_to);
+
+
+        $resources = $query->get();
+
+        $string = view('reports.price_table', compact('resources'));
+
+        return $string;
     }
 }

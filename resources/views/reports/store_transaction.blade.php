@@ -14,13 +14,13 @@
     <table class="w3-table w3-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
-            <th>code</th>
-            <th>date</th>
-            <th>value</th>
-            <th>Expense Type</th>
-            <th>Customer Name</th>
-            <th>Type</th>
-            <th>Notes</th>
+            <th>{{__('code')}}</th>
+            <th>{{__('date')}}</th>
+            <th>{{__('value')}}</th>
+            <th>{{__('Expense Type')}}</th>
+            <th>{{__('Customer Name')}}</th>
+            <th>{{__('Type')}}</th>
+            <th>{{__('Type')}}</th>
         </tr>
         <tr>
             <td></td>
@@ -29,7 +29,7 @@
             <td class="w3-text-green" >
                 +{{ $store->init_value }}
             </td>
-            <td>رصيد افتتاحى</td>
+            <td>{{__('رصيد افتتاحى')}}</td>
             <td></td>
             <td></td>
             <td></td>
@@ -50,7 +50,7 @@
                 </td>
                 <td>{{ optional($item->expenseType)->name }}</td>
                 <td>{{ optional($item->company)->name }}</td>
-                <td>{{ $item->type == 'out' && $item->value > 0? 'مدين' : 'دائن' }}</td>
+                <td>{{ $item->type == 'out' && $item->value > 0? __('مدين') : __('دائن') }}</td>
                 <td>{{ $item->notes }}</td>
             </tr>
         @endforeach

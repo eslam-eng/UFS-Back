@@ -15,7 +15,7 @@
     <table class="w3-table">
         <tr>
             <td>
-               Account Name : {{ $company->name }}
+               {{__('Account Name')}} : {{ $company->name }}
             </td>
         </tr>
     </table>
@@ -65,7 +65,7 @@
     <table class="w3-table text-center w3-large">
         <tr>
             <td class="w3-large">
-                <b{{ __('footer of bill') }}</b>
+                <b>{{ __('footer of bill') }}</b>
             </td>
         </tr>
     </table>

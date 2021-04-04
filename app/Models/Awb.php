@@ -16,6 +16,13 @@ class Awb extends Model
         'zprice', 'shiping_price', 'additional_kg_price', 'additional_price', 'net_price'
     ];
 
+    protected $appends =['sheet_id'];
+
+    public function getSheetIdAttribute()
+    {
+        return optional($this->courierSheet)->sheet_id;
+    }
+
     public function details()
     {
         return $this->hasMany('App\Models\AwbDetail','awb_id');
