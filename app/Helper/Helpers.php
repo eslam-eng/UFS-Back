@@ -46,7 +46,7 @@ if (!function_exists('trans')) {
             $translation = App\Models\Translation::where('key', $key)->first();
 
             if ($translation) {
-                $translate = $translation->word_en;
+                $translate = $translation->name_en;
 
                 if ($translate) {
                     return $translate;
@@ -95,7 +95,7 @@ if (!function_exists('trans2')) {
             $translation = App\Models\Translation::where('key', $key)->first();
 
             if ($translation) {
-                $translate = $translation->word_en;
+                $translate = $translation->name_en;
 
                 if ($translate) {
                     return $translate;
