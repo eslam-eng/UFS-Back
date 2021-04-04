@@ -8,6 +8,15 @@
     $finalTotal = 0;
     $discount = 0;
     $fuelCharge = 0;
+
+    $vetTaxTotal = 0;
+    $postFeesTotal = 0;
+    $totalPriceTotal = 0;
+    $netPriceTotal = 0;
+    $piecesTotal = 0;
+    $weightTotal = 0;
+    $fuelChargeTotal = 0;
+    $discountTotal = 0;
 @endphp
 
 @section('content')
@@ -33,6 +42,9 @@
             <th>{{ __('pieces') }}</th>
             <th>{{ __('weight') }}</th>
             <th>{{ __('net_price') }}</th>
+            <th>{{ __('fuelCharge_value') }}</th>
+            <th>{{ __('discount_value') }}</th>
+            <th>{{ __('total_price') }}</th>
             <th>{{ __('postal_fees') }}</th>
             <th>{{ __('vat_tax') }}</th>
             <th>{{ __('total') }}</th>
@@ -42,10 +54,27 @@
                 $totalAmount += $item->collection;
                 $totalComm += $item->shiping_price;
                 $totalNet += $item->net_price;
-                $postalFees = $item->net_price * request()->postal_fees; // 0.10
-                $vetFax = ($item->net_price + $postalFees) * request()->vet_fax; // 0.14
-                $total = $item->net_price + $vetFax + $postalFees;
+
+                $discountValue = $item->net_price * (request()->discount / 100);
+                $fuelChargeValue = $item->net_price * (request()->fuel_charge / 100);
+                $otherValue = $item->net_price * (request()->other / 100);
+
+                $totalPrice = ($item->net_price + $fuelChargeValue + $otherValue) - $discountValue;
+
+                $postalFees = $totalPrice * request()->postal_fees; // 0.10
+                $vetFax = ($totalPrice + $postalFees) * request()->vet_fax; // 0.14
+
+                $total = $totalPrice + $vetFax + $postalFees;
+
                 $finalTotal += $total;
+                $vetTaxTotal += $vetFax;
+                $postFeesTotal += $postalFees;
+                $totalPriceTotal += $totalPrice;
+                $netPriceTotal += $item->net_price;
+                $piecesTotal += $item->pieces;
+                $weightTotal += $item->weight;
+                $fuelChargeTotal += $fuelChargeValue;
+                $discountTotal += $discountValue;
             @endphp
             <tr>
                 <td>{{ $loop->iteration + 1 }}</td>
@@ -56,6 +85,9 @@
                 <td>{{ $item->pieces }}</td>
                 <td>{{ $item->weight }}</td>
                 <td>{{ $item->net_price }}</td>
+                <td>{{ $fuelChargeValue }}</td>
+                <td>{{ $discountValue }}</td>
+                <td>{{ $totalPrice }}</td>
                 <td>{{ $postalFees }}</td>
                 <td>{{ $vetFax }}</td>
                 <td>{{ $total }}</td>
@@ -67,89 +99,16 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    {{ $finalTotal }}
-                </td>
+                <td>{{ $piecesTotal }}</td>
+                <td>{{ $weightTotal }}</td>
+                <td>{{ $netPriceTotal }}</td>
+                <td>{{ $fuelChargeTotal }}</td>
+                <td>{{ $discountTotal }}</td>
+                <td>{{ $totalPriceTotal }}</td>
+                <td>{{ $postFeesTotal }}</td>
+                <td>{{ $vetTaxTotal }}</td>
+                <td>{{ $finalTotal }}</td>
             </tr>
-            @if (request()->discount > 0)
-            @php
-                $discount = $finalTotal - ($finalTotal * (request()->discount / 100));
-            @endphp
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="w3-text-red" >
-                    {{ __('discount') }} : {{ request()->discount }} %
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    {{ __('total after discount') }} : {{ $discount }}
-                </td>
-            </tr>
-            @else
-            @php
-                $discount = $finalTotal;
-            @endphp
-            @endif
-            @if (request()->fuel_charge > 0)
-            @php
-                $fuelCharge = $discount + ($discount * (request()->fuel_charge / 100));
-            @endphp
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="w3-text-green" >
-                    {{ __('fuel charge') }} : {{ request()->fuel_charge }} %
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    {{ __('total after fuel charge') }} : {{ $fuelCharge }}
-                </td>
-            </tr>
-            @endif
     </table>
     <br>
     <table class="w3-table text-center w3-large">
