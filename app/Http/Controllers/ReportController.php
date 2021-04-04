@@ -249,9 +249,6 @@ class ReportController extends Controller
 
 
         $resources = $query->get();
-
-        $string = view('reports.price_table', compact('resources'));
-
-        return $string;
+        return view('reports.price_table', compact('resources'));
     }
 }
