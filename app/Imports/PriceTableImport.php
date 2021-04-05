@@ -32,7 +32,8 @@ class PriceTableImport implements ToModel,SkipsOnError,WithHeadingRow,WithValida
             'model_type'=> $modelType,
             'price'=>$row['price'],
             'basic_kg'=>$row['basic_kg'],
-            'additional_kg_price'=>$row['additional_kg_price']
+            'additional_kg_price'=>$row['additional_kg_price'],
+            'return_price'=>$row['return_price'],
         ]);
     }
 

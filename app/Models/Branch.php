@@ -16,7 +16,7 @@ class Branch extends Model
     }
     public function city()
     {
-        return $this->belongsTo('App\Models\City','city_id');
+        return $this->belongsTo('App\Models\City','city_id')->with('country');
     }
     public function area()
     {

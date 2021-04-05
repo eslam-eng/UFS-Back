@@ -252,7 +252,6 @@
         <iframe src="{{ url('/api/awbs/print/67') }}?api_token={{ request()->api_token }}" style="width: 50%"
             onload="this.style.height=window.innerHeight+'px'" ></iframe>
 
-
         @include("ask_print")
     </body>
 </html>

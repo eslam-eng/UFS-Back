@@ -21,8 +21,8 @@
         @foreach ($resources as $item)
             <tr>
                 <td>{{ $loop->iteration + 1 }}</td>
-                <td>{{ $item->city_from }}</td>
-                <td>{{ $item->city_to }}</td>
+                <td>{{ $item->cityFromObject->name }}</td>
+                <td>{{ $item->cityToObject->name}}</td>
                 <td>{{ $item->price }}</td>
                 <td>{{ $item->return_price }}</td>
                 <td>{{ $item->basic_kg}}</td>
