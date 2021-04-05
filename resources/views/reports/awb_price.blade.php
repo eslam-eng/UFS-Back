@@ -17,6 +17,7 @@
     $weightTotal = 0;
     $fuelChargeTotal = 0;
     $discountTotal = 0;
+    $otherTotal = 0;
 @endphp
 
 @section('content')
@@ -44,6 +45,7 @@
             <th>{{ __('net_price') }}</th>
             <th>{{ __('fuelCharge_value') }}</th>
             <th>{{ __('discount_value') }}</th>
+            <th>{{ __('other_value') }}</th>
             <th>{{ __('total_price') }}</th>
             <th>{{ __('postal_fees') }}</th>
             <th>{{ __('vat_tax') }}</th>
@@ -75,6 +77,7 @@
                 $weightTotal += $item->weight;
                 $fuelChargeTotal += $fuelChargeValue;
                 $discountTotal += $discountValue;
+                $otherTotal += $otherValue;
             @endphp
             <tr>
                 <td>{{ $loop->iteration + 1 }}</td>
@@ -87,6 +90,7 @@
                 <td>{{ $item->net_price }}</td>
                 <td>{{ $fuelChargeValue }}</td>
                 <td>{{ $discountValue }}</td>
+                <td>{{ $otherValue }}</td>
                 <td>{{ $totalPrice }}</td>
                 <td>{{ $postalFees }}</td>
                 <td>{{ $vetFax }}</td>
@@ -104,6 +108,7 @@
                 <td>{{ $netPriceTotal }}</td>
                 <td>{{ $fuelChargeTotal }}</td>
                 <td>{{ $discountTotal }}</td>
+                <td>{{ $otherTotal }}</td>
                 <td>{{ $totalPriceTotal }}</td>
                 <td>{{ $postFeesTotal }}</td>
                 <td>{{ $vetTaxTotal }}</td>

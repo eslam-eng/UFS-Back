@@ -5,6 +5,9 @@
     $totalAmount = 0;
     $totalComm = 0;
     $totalNet = 0;
+
+    $totalPercent = 0;
+    $totalFinalTotal = 0;
 @endphp
 
 @section('content')
@@ -30,12 +33,20 @@
             <th>{{ __('pieces') }}</th>
             <th>{{ __('weight') }}</th>
             <th>{{ __('net_price') }}</th>
+            <th>{{ __('collection_percent') }}</th>
+            <th>{{ __('final_total') }}</th>
         </tr>
         @foreach ($awbs as $item)
             @php
                 $totalAmount += $item->collection;
                 $totalComm += $item->shiping_price;
                 $totalNet += $item->net_price;
+
+                $collectionPercent = $item->net_price * (request()->collection_percent / 100);
+                $finalTotal = $item->net_price + $collectionPercent;
+
+                $totalPercent += $collectionPercent;
+                $totalFinalTotal += $finalTotal;
             @endphp
             <tr>
                 <td>{{ $loop->iteration + 1 }}</td>
@@ -46,6 +57,8 @@
                 <td>{{ $item->pieces }}</td>
                 <td>{{ $item->weight }}</td>
                 <td>{{ $item->net_price }}</td>
+                <td>{{ $collectionPercent }}</td>
+                <td>{{ $finalTotal }}</td>
             </tr>
         @endforeach
             <tr>
@@ -59,6 +72,8 @@
                 <td>
                     {{ $totalNet }}
                 </td>
+                <td>{{ $totalPercent }}</td>
+                <td>{{ $totalFinalTotal }}</td>
             </tr>
     </table>
     <br>

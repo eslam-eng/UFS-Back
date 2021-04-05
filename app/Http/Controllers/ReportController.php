@@ -42,6 +42,10 @@ class ReportController extends Controller
             $query->where('company_id', request()->company_id);
         }
 
+        if (request()->service_id > 0) {
+            $query->where('service_id', request()->service_id);
+        }
+
         if (request()->date_from)
             $query->whereDate('date', '>=', request()->date_from);
 
