@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\StatusCode;
+use App\Imports\AwbImport;
 use App\Models\Awb;
 use App\Models\AwbHistory;
 use App\Models\AwbDetail;
@@ -274,6 +275,34 @@ class AwbController extends Controller {
         if (request()->code > 0)
             $query->where('code', "like", "%" . request()->code . "%");
         return $query->get();
+    }
+
+
+    public function downloadExcel()
+    {
+        return response()->download(public_path('/uploads/excel/awb.xlsx'));
+    }
+
+//    import excel file into data base
+
+    public function awbImport(Request $request)
+    {
+        $validator = validator($request->all(),['file'=>'required|mimes:xls,xlsx',]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), "");
+        }
+        try {
+            $file = $request->file('file');
+            $awbfile = new AwbImport();
+            $awbfile->import($file);
+            if ($awbfile->failures()->isNotEmpty())
+                return responseJson(0, "", $awbfile->failures());
+
+            return responseJson(1, __('file imported'), "");
+        }catch (\Exception $e){
+            return responseJson(0, __('this item cannot be deleted may be there relation to another'), $e->getMessage());
+        }
+
     }
 
 

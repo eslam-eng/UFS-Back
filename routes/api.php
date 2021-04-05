@@ -45,6 +45,12 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('awbs-restore/{resource}', 'AwbController@restore');
     Route::post('awbs-history/destroy/{resource}', 'AwbHistoryController@destroy');
 
+
+    Route::get('awbs/excel/download', 'AwbController@downloadExcel');
+// route import area file
+    Route::post('awbs/import', 'AwbController@awbImport');
+
+
 //Awb Category
 
     Route::get('awb-categories', 'AwbCategoryController@index');
