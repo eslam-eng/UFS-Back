@@ -63,7 +63,7 @@
                         <br>
                     </div>
                     <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                        {{ optional(optional($resource->receiver)->city)->name }}
+                        {{ optional(optional(optional($resource->receiver)->city)->country)->name }} - {{ optional(optional($resource->receiver)->city)->name }}
                     </div>
                 </div>
 
@@ -174,7 +174,7 @@
                         <br>
                     </div>
                     <div class="w3-border w3-border-block w3-padding w3-display-container"  >
-                        {{ optional(optional($resource->company)->city)->name }}
+                        {{ optional(optional(optional($resource->company)->city)->country)->name }} - {{ optional(optional($resource->company)->city)->name }}
                     </div>
                 </div>
                 <div class="w3-col l6 m6 s6 w3- w3-border-gray w3-display-container" >
