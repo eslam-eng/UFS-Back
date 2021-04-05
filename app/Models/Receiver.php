@@ -18,7 +18,7 @@ class Receiver extends Model
     ];
 
     public function getSearchAttribute() {
-        return $this->name . "-" . $this->company_name;
+        return $this->name . "-" . $this->company_name . "-" . $this->referance;
     }
 
     public function company()

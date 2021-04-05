@@ -35,7 +35,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('awbs/history', 'AwbController@awbHistory');
     Route::get('awbs/{resource}', 'AwbController@load');
     Route::get('awbs/print/{resource}', 'AwbController@print');
-    Route::get('awbs-printtwo', 'AwbController@printTwo');
+    Route::post('awbs/printthree', 'AwbController@printThree');
     Route::post('awbs/print-selected', 'AwbController@printSelected');
     Route::post('awbs/store', 'AwbController@store');
     Route::post('awbs/update/{resource}', 'AwbController@update');
@@ -296,6 +296,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     // reports
     Route::get('report/awb-prices', 'ReportController@awbPrices');
     Route::get('report/awb-prices2', 'ReportController@awbPrices2');
+    Route::get('report/awb-prices3', 'ReportController@awbPrices3');
     Route::get('report/price-table', 'ReportController@priceTable');
     Route::get('report/store-transactions', 'ReportController@storeTransactions');
     Route::get('report/companies-awb', 'ReportController@companyAwbs');

@@ -25,7 +25,8 @@ class ReceiverController extends Controller
             $query
                     ->where(function($q) {
                         $q->where('name', 'like', '%'.request()->search.'%')
-                            ->orWhere('company_name', 'like', '%'.request()->search.'%');
+                            ->orWhere('company_name', 'like', '%'.request()->search.'%')
+                            ->orWhere('referance', 'like', '%'.request()->search.'%');
                     });
                     //->where('name', 'like', '%'.request()->search.'%');
                     //->orWhere('phone', 'like', '%'.request()->search.'%')

@@ -137,8 +137,9 @@ class AwbController extends Controller {
         return view('awb', compact("resource"));
     }
 
-    public function printTwo() {
-        return view('twoAwb');
+    public function printThree(Request $request) {
+        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        return view('threeAwbs', compact('awbs'));
     }
 
     public function printSelected(Request $request) {
