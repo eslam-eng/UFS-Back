@@ -242,7 +242,7 @@
 
 <style>
     * {
-        font-size: 12px;
+        font-size: 11px;
     }
     table {
         border-collapse: collapse!important;
@@ -260,7 +260,7 @@
     .label-height p {
         padding-left: 2px;
         padding-right: 2px;
-        margin-top: -2px;
+        margin-top: -3px;
     }
 </style>
 
