@@ -143,8 +143,8 @@ class AwbController extends Controller {
     }
 
     public function printTwentySeven(Request $request) {
-       // $awbs = Awb::whereIn('id', $request->awbs)->get();
-        $awbs = Awb::take(21)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->get();
+       // $awbs = Awb::take(21)->get();
         return view('twentysevenAwbs', compact('awbs'));
     }
 
