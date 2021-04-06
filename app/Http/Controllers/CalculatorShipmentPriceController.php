@@ -82,6 +82,10 @@ class CalculatorShipmentPriceController extends Controller
             $netPrice = -1 * $resource->return_price;
         }
 
+        if ($awb->payment_type_id == 1) {
+            $netPrice = $shipingPrice;
+        }
+
         $awb->update([
             "zprice" => $zprice,
             "shiping_price" => $shipingPrice,
