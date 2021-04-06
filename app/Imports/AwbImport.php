@@ -25,27 +25,30 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
 
     public function model(array $row)
     {
+        $request = request();
 
-        $request= request();
-        return new Awb([
-        $request->company_id= $row['company_code'],
-        $request->department_id= $row['department_code'],
-        $request->branch_id= $row['branch_code'],
-        $request->receiver_id= $row['receiver_code'],
-        $request->payment_type_id= $row['payment_type_code'],
-        $request->service_id= $row['service_code'],
-        $request->city_id= $row['city_code'],
-        $request->area_id= $row['area_code'],
-        $request->weight= $row['weight'],
-        $request->pieces= $row['pieces'],
-        $request->category_id= $row['category_code'],
-        $request->notes= $row['notes'],
-        $request->is_return= $row['is_return'],
-        $request->collection= $row['collection'],
-        $awbInstanceController = new AwbController(),
-        $awbInstanceController->store($request)
+        $request->merge([
+            "company_id" => $row['company_code'],
+            "department_id" => $row['department_code'],
+            "branch_id" => $row['branch_code'],
+            "receiver_id" => $row['receiver_code'],
+            "payment_type_id" => $row['payment_type_code'],
+            "service_id" => $row['service_code'],
+            "city_id" => $row['city_code'],
+            "area_id" => $row['area_code'],
+            "weight" => $row['weight'],
+            "pieces" => $row['pieces'],
+            "category_id" => $row['category_code'],
+            "notes" => $row['notes'],
+            "is_return" => $row['is_return'],
+            "collection" => $row['collection']
         ]);
 
+        $awbInstanceController = new AwbController();
+        $res = $awbInstanceController->store($request);
+
+        file_put_contents("import_log.txt", $res);
+        return null;
     }
 
     public function rules(): array

@@ -186,6 +186,7 @@ class AwbController extends Controller {
             ]);
 
             // store details of awb
+            if (isset($data['details']))
             foreach ($data['details'] as $row) {
                 $row['awb_id'] = $resource->id;
                 AwbDetail::create($row);
