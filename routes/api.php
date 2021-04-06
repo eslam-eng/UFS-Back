@@ -37,6 +37,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('awbs/print/{resource}', 'AwbController@print');
     Route::post('awbs/printthree', 'AwbController@printThree');
     Route::post('awbs/print-selected', 'AwbController@printSelected');
+    Route::post('awbs/awb-twenty','AwbController@printTwentySeven');
     Route::post('awbs/store', 'AwbController@store');
     Route::post('awbs/update/{resource}', 'AwbController@update');
     Route::post('awbs/status/{resource}', 'AwbController@changeStatus');

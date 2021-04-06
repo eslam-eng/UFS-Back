@@ -249,19 +249,32 @@
         width: 100%!important;
         border-bottom: 3px dotted !important;
     }
-    td:first-child { width: 33% ;}
-    /*table.dotted{border-style: hidden hidden dotted hidden;}*/
 
-    /*.custom-table td, .custom-table th {*/
-    /*    border: 1px solid #ddd!important;*/
-    /*    padding: 3px!important;*/
-    /*}*/
+    .label-height {
+        text-overflow: ellipsis;
+        height: 160px;
+        border: 1px dashed gray;
+        overflow: hidden;
+    }
+
+    .label-height p {
+        padding-left: 2px;
+        padding-right: 2px;
+        margin-top: -2px;
+    }
 </style>
 
+
+<script src="{{ url('/js/JsBarcode.all.min.js') }}" ></script>
+<script src="{{ url('/js/qrcode.min.js') }}" ></script>
 <body>
-@foreach ($awbs as $awb)
-    @include('labelAwb')
-@endforeach
+<div class="w3-row">
+    @foreach ($awbs as $resource)
+        <div class="w3-col l4 m4 s4">
+            @include('labelAwb', ["resource" => $resource])
+        </div>
+    @endforeach
+</div>
 
 @include("ask_print")
 </body>
