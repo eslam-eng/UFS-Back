@@ -172,7 +172,7 @@ class AwbController extends Controller {
             $resource = Awb::create($data);
 
             // awb code
-            $code = date('Y') . date('m') . date('d') . $resource->id;
+            $code = date('y') . date('m') . date('d') . $resource->id;
 
             // check if is return
             if ($resource->is_return)
