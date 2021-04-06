@@ -35,6 +35,9 @@ Route::group(['namespace'=>'App\Http\Controllers\website'],function (){
     Route::get('/track-more','AwbTrackController@trackMore')->name('trackMore');
 });
 
+Route::get('/awb-twenty','App\Http\Controllers\AwbController@printTwentySeven');
+
+
 Route::get('login', function(){
 	return responseJson(0, __('login first'));
 })->name('login');

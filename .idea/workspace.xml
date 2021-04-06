@@ -23,9 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/asm89/stack-cors/" />
     <ignored path="$PROJECT_DIR$/vendor/brick/math/" />
@@ -158,10 +157,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/api.php">
+        <entry file="file://$PROJECT_DIR$/app/Imports/AwbImport.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="-154">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -169,71 +168,76 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AwbController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="279" selection-start-line="279" selection-end-line="279" />
+            <state relative-caret-position="259">
+              <caret line="144" column="36" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="36" />
               <folding>
                 <element signature="e#40#66#0#PHP" expanded="true" />
-                <element signature="e#2929#4746#0#PHP" />
-                <element signature="e#8250#8915#0#PHP" />
-                <element signature="e#8921#9331#0#PHP" />
-                <element signature="e#9338#9564#0#PHP" />
-                <element signature="e#9602#9728#0#PHP" />
-                <element signature="e#9571#10662#0#PHP" />
-                <element signature="e#10668#11840#0#PHP" />
-                <element signature="e#11846#12904#0#PHP" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Imports/AwbImport.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/twentysevenAwbs.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="229">
+              <caret line="251" column="34" selection-start-line="251" selection-start-column="34" selection-end-line="251" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/threeAwbs.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5852">
+              <caret line="266" column="23" selection-start-line="266" selection-start-column="23" selection-end-line="266" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/twoAwb.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="253" selection-start-line="253" selection-end-line="253" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/labelAwb.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
               <folding>
-                <element signature="e#31#70#0#PHP" expanded="true" />
+                <element signature="n#tr#0;n#table#0;n#!!top" />
+                <element signature="n#style#0;n#span#1;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#td#1;n#tr#0;n#table#0;n#!!top" />
+                <element signature="n#style#0;n#span#1;n#td#1;n#tr#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#td#2;n#tr#0;n#table#0;n#!!top" />
+                <element signature="n#style#0;n#span#1;n#td#2;n#tr#0;n#table#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Imports/BranchImport.php">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+            <state relative-caret-position="220">
+              <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AreaController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/smallAwb.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="6" selection-end-column="28" />
+            <state relative-caret-position="-409">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
               <folding>
-                <element signature="e#2200#2326#0#PHP" />
-                <element signature="e#2373#3116#0#PHP" />
+                <element signature="n#div#0;n#!!top" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Awb.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="16" column="2" selection-start-line="12" selection-start-column="8" selection-end-line="16" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/awb.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="249" column="12" selection-start-line="249" selection-start-column="12" selection-end-line="249" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -241,12 +245,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/awbData.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1078">
+            <state relative-caret-position="3872">
               <caret line="176" column="80" selection-start-line="176" selection-start-column="80" selection-end-line="176" selection-end-column="80" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#9;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#9;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -295,8 +295,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/website/WebsiteSettingController.php" />
-        <option value="$PROJECT_DIR$/resources/views/mail/mail.blade.php" />
         <option value="$PROJECT_DIR$/app/Mail/MailBox.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MailboxController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_03_09_134136_create_pickup_histories_table.php" />
@@ -322,7 +320,6 @@
         <option value="$PROJECT_DIR$/resources/views/website/layouts/serviceStyle.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/layouts/navbar.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/website/WebsiteController.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/public/wp-content/cache/autoptimize/css/autoptimize_e8b5e2d7462247d83eebce4ca368d1e0.css" />
         <option value="$PROJECT_DIR$/resources/views/website/deomestic_serveice.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/website/service.blade.php" />
@@ -344,8 +341,11 @@
         <option value="$PROJECT_DIR$/resources/views/awbData.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" />
         <option value="$PROJECT_DIR$/app/Imports/AwbImport.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AwbController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/labelAwb.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/twentysevenAwbs.blade.php" />
       </list>
     </option>
   </component>
@@ -470,9 +470,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="686" />
+    <option name="x" value="685" />
     <option name="y" value="25" />
-    <option name="width" value="1149" />
+    <option name="width" value="1150" />
     <option name="height" value="980" />
   </component>
   <component name="ProjectId" id="1oVrig5mtDhOFKGOEt1TCHV189S" />
@@ -510,19 +510,18 @@
             <path>
               <item name="UFS-Back" type="b2602c69:ProjectViewProjectNode" />
               <item name="UFS-Back" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Imports" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UFS-Back" type="b2602c69:ProjectViewProjectNode" />
               <item name="UFS-Back" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UFS-Back" type="b2602c69:ProjectViewProjectNode" />
               <item name="UFS-Back" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="uploads" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -619,17 +618,18 @@
       <workItem from="1617538746026" duration="2203000" />
       <workItem from="1617613687195" duration="68000" />
       <workItem from="1617621834705" duration="9156000" />
+      <workItem from="1617699405919" duration="1934000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110816000" />
+    <option name="totallyTimeSpent" value="112750000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2671141" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27114093" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -643,7 +643,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.13739377" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.26487252" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -733,56 +733,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/website/service.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="40" selection-start-column="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/international_service.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#82421#0#Blade" />
-            <element signature="e#0#82421#0#Blade" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2021_03_22_111401_create_mail_boxes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="41" />
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/website/MailBoxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
-          <folding>
-            <element signature="e#48#84#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/contact.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/website/deomestic_serveice.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/website/additional_service.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -959,13 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/twoAwb.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="253" selection-start-line="253" selection-end-line="253" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/City.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -984,24 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="18" column="75" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/awbData.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1078">
-          <caret line="176" column="80" selection-start-line="176" selection-start-column="80" selection-end-line="176" selection-end-column="80" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#9;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#9;n#td#0;n#tr#0;n#table#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/awb.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="249" column="12" selection-start-line="249" selection-start-column="12" selection-end-line="249" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1046,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Awb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="16" column="2" selection-start-line="12" selection-start-column="8" selection-end-line="16" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1062,8 +980,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
+        <state relative-caret-position="1166">
           <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Imports/BranchImport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1078,38 +1003,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Imports/BranchImport.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Awb.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
-          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <caret line="16" column="2" selection-start-line="12" selection-start-column="8" selection-end-line="16" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AwbController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/awb.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="279" selection-start-line="279" selection-end-line="279" />
-          <folding>
-            <element signature="e#40#66#0#PHP" expanded="true" />
-            <element signature="e#2929#4746#0#PHP" />
-            <element signature="e#8250#8915#0#PHP" />
-            <element signature="e#8921#9331#0#PHP" />
-            <element signature="e#9338#9564#0#PHP" />
-            <element signature="e#9602#9728#0#PHP" />
-            <element signature="e#9571#10662#0#PHP" />
-            <element signature="e#10668#11840#0#PHP" />
-            <element signature="e#11846#12904#0#PHP" />
-          </folding>
+        <state relative-caret-position="5478">
+          <caret line="249" column="12" selection-start-line="249" selection-start-column="12" selection-end-line="249" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/awbData.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3872">
+          <caret line="176" column="80" selection-start-line="176" selection-start-column="80" selection-end-line="176" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Imports/AwbImport.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="-154">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/twoAwb.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="253" selection-start-line="253" selection-end-line="253" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AwbController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="144" column="36" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="36" />
           <folding>
-            <element signature="e#31#70#0#PHP" expanded="true" />
+            <element signature="e#40#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/smallAwb.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-409">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/ask_print.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/threeAwbs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5852">
+          <caret line="266" column="23" selection-start-line="266" selection-start-column="23" selection-end-line="266" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/labelAwb.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="n#tr#0;n#table#0;n#!!top" />
+            <element signature="n#style#0;n#span#1;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#td#1;n#tr#0;n#table#0;n#!!top" />
+            <element signature="n#style#0;n#span#1;n#td#1;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#td#2;n#tr#0;n#table#0;n#!!top" />
+            <element signature="n#style#0;n#span#1;n#td#2;n#tr#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/twentysevenAwbs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="251" column="34" selection-start-line="251" selection-start-column="34" selection-end-line="251" selection-end-column="34" />
         </state>
       </provider>
     </entry>
