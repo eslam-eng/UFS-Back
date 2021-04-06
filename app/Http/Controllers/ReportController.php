@@ -60,7 +60,7 @@ class ReportController extends Controller
 
     public function awbPrices2()
     {
-        $status = Status::whereIn('code', ['7', '3', '4'])->pluck('id')->toArray();
+        $status = Status::whereIn('code', ['7', '3', '4', '5'])->pluck('id')->toArray();
         $statusPaidToCustomer = Status::where('code', '8')->first();
 
         $query = Awb::query()
