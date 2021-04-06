@@ -59,14 +59,14 @@ class ReportController extends Controller
     }
 
     public function awbPrices2()
-    {
-        $status = Status::whereIn('code', ['7', '3', '4', '5'])->pluck('id')->toArray();
+    {// 7,
+        $status = Status::whereIn('code', ['7', '3', '4'])->pluck('id')->toArray();
         $statusPaidToCustomer = Status::where('code', '8')->first();
 
         $query = Awb::query()
         ->where(function($q) use($status, $statusPaidToCustomer) {
             $q->whereIn('status_id', $status)
-                ->orWhereRaw('(status_id != "'.optional($statusPaidToCustomer)->id.'" && payment_type_id = "'.optional(PaymentType::first())->id.'")');
+                ->where('payment_type_id', 6);
         });
 
         /*->orWhere(function($q) use ($statusPaidToCustomer) {
