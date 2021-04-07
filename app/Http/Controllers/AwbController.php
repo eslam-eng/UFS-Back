@@ -316,7 +316,10 @@ class AwbController extends Controller {
 
     public function makeTransactionForReturnWithChargeStatus(Awb $awb)
     {
-        if (optional($awb->status)->code == 3 && $awb->payment_type_id != 1)
+        if (
+            (optional($awb->status)->code == StatusCode::$RETURN_WITH_CHARGE || optional($awb->status)->code == StatusCode::$RETURN_WITHOUT_CHARGE) &&
+            $awb->payment_type_id != 1
+            )
         {
             $value = $awb->shiping_price;
             $store = Store::first();
