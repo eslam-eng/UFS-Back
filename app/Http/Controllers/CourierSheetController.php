@@ -67,10 +67,15 @@ class CourierSheetController extends Controller
             return responseJson(0, $validator->errors()->first(), "");
         }
         try {
+            $outForDeliveryStatus = optional(Status::where('code',StatusCode::$OUT_FOR_DELIVERY)->first())->id;
+
+            if (!$outForDeliveryStatus)
+                return responseJson(0, __('please add Out For Delivery Status With Code 6 First'));
+   
             $data = $request->all();
             $data['user_id'] = $request->user()->id;
             $resource = CourierSheet::create($data);
-            $outForDeliveryStatus = Status::where('code',StatusCode::$OUT_FOR_DELIVERY)->first()->id;
+            
             // add new awb id
             foreach($data['details'] as $awbId) {
                 CourierSheetDetail::create([
@@ -113,6 +118,9 @@ class CourierSheetController extends Controller
                     "awb_id" => $awbId,
                 ]);
             }
+
+            $details = $resource->sheetDetails;
+
             watch(__('update courierSheet ').$resource->courier->name,'fa fa-file');
             return responseJson(1, __('done'), $resource);
         } catch (\Exception $th) {
