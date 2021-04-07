@@ -34,10 +34,6 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('awbs', 'AwbController@index');
     Route::get('awbs/history', 'AwbController@awbHistory');
     Route::get('awbs/{resource}', 'AwbController@load');
-    Route::get('awbs/print/{resource}', 'AwbController@print');
-    Route::post('awbs/printthree', 'AwbController@printThree');
-    Route::post('awbs/print-selected', 'AwbController@printSelected');
-    Route::post('awbs/awb-twenty','AwbController@printTwentySeven');
     Route::post('awbs/store', 'AwbController@store');
     Route::post('awbs/update/{resource}', 'AwbController@update');
     Route::post('awbs/status/{resource}', 'AwbController@changeStatus');
@@ -45,12 +41,19 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::get('awbs-trash', 'AwbController@getTrash');
     Route::post('awbs-restore/{resource}', 'AwbController@restore');
     Route::post('awbs-history/destroy/{resource}', 'AwbHistoryController@destroy');
-
-
     Route::get('awbs/excel/download', 'AwbController@downloadExcel');
-// route import area file
     Route::post('awbs/import', 'AwbController@awbImport');
 
+
+    Route::get('awbs/print/{resource}', 'AwbPrinterController@printA4');
+    Route::post('awbs/print-selected', 'AwbPrinterController@printA4s');
+    Route::post('awbs/printthree', 'AwbPrinterController@print1x3');
+    Route::post('awbs/awb-twenty','AwbPrinterController@print3x7');
+
+    Route::get('awbs/3x7awb','AwbPrinterController@print3x7');
+    Route::get('awbs/3x8awb','AwbPrinterController@print3x8');
+    Route::get('awbs/3x9awb','AwbPrinterController@print3x9');
+    Route::get('awbs/3x10awb','AwbPrinterController@print3x10');
 
 //Awb Category
 

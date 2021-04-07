@@ -133,27 +133,6 @@ class AwbController extends Controller {
         }
     }
 
-    public function print(Awb $resource) {
-        return view('awb', compact("resource"));
-    }
-
-    public function printThree(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
-        return view('threeAwbs', compact('awbs'));
-    }
-
-    public function printTwentySeven(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
-       // $awbs = Awb::take(21)->get();
-        return view('twentysevenAwbs', compact('awbs'));
-    }
-
-    public function printSelected(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
-        $string = view('awbs', compact("awbs"));
-        return $string;
-    }
-
     public function store(Request $request) {
         $validator = validator($request->all(), $this->rules());
         if ($validator->fails()) {

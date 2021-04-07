@@ -1,6 +1,7 @@
+
 <!DOCTYPE html>
 <html>
-    <title>{{ $resource->code }}</title>
+    <title>awbs</title>
     <style>
         /* W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
         html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
@@ -239,23 +240,27 @@
         .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
     </style>
 
-        <script src="{{ url('/js/JsBarcode.all.min.js') }}" ></script>
-        <script src="{{ url('/js/qrcode.min.js') }}" ></script>
-
-
     <style>
         * {
             font-size: 12px;
         }
     </style>
+
+        <script src="{{ url('/js/JsBarcode.all.min.js') }}" ></script>
+        <script src="{{ url('/js/qrcode.min.js') }}" ></script>
+
     <body>
-        @if ($resource->is_return)
-        {!! view('awbRData', compact('resource')) !!}
+
+    @foreach($awbs as $awb)
+    <div style="overflow: auto" >
+        @if ($awb->is_return)
+        {!! view('awb_print.awbRData', ["resource" => $awb]) !!}
         @else
-        {!! view('awbData', compact('resource')) !!}
+        {!! view('awb_print.awbData', ["resource" => $awb]) !!}
         @endif
+    </div>
+    @endforeach
 
         @include("ask_print")
     </body>
-
 </html>

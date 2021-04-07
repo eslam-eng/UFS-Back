@@ -261,7 +261,7 @@
     <body>
 
         @foreach ($awbs as $awb)
-            @include('smallAwb', ["resource" => $awb])
+            @include('awb_print.smallAwb', ["resource" => $awb])
         @endforeach
 
         @include("ask_print")

@@ -242,7 +242,7 @@
 
 <style>
     * {
-        font-size: 11px;
+        font-size: 9px;
     }
     table {
         border-collapse: collapse!important;
@@ -252,7 +252,7 @@
 
     .label-height {
         text-overflow: ellipsis;
-        height: 160px;
+        height: 112px;
         border: 1px dashed gray;
         overflow: hidden;
     }
@@ -260,7 +260,7 @@
     .label-height p {
         padding-left: 2px;
         padding-right: 2px;
-        margin-top: -3px;
+        margin-top: -14px;
     }
 </style>
 
@@ -271,7 +271,7 @@
 <div class="w3-row">
     @foreach ($awbs as $resource)
         <div class="w3-col l4 m4 s4">
-            @include('labelAwb', ["resource" => $resource])
+            @include('awb_print.labelAwb', ["resource" => $resource, "barcodeHeight" => 20])
         </div>
     @endforeach
 </div>
