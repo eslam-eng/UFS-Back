@@ -96,7 +96,7 @@ class AwbPrinterController extends Controller {
      *
      */
     public function print3x10(Request $request) {
-        //$awbs = Awb::whereIn('id', $request->awbs)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->get();
 
         // Test Mode
         //$awbs = Awb::take(31)->get();

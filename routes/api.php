@@ -50,10 +50,10 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('awbs/printthree', 'AwbPrinterController@print1x3');
     Route::post('awbs/awb-twenty','AwbPrinterController@print3x7');
 
-    Route::get('awbs/3x7awb','AwbPrinterController@print3x7');
-    Route::get('awbs/3x8awb','AwbPrinterController@print3x8');
-    Route::get('awbs/3x9awb','AwbPrinterController@print3x9');
-    Route::get('awbs/3x10awb','AwbPrinterController@print3x10');
+    Route::post('awbs/3x7awb','AwbPrinterController@print3x7');
+    Route::post('awbs/3x8awb','AwbPrinterController@print3x8');
+    Route::post('awbs/3x9awb','AwbPrinterController@print3x9');
+    Route::post('awbs/3x10awb','AwbPrinterController@print3x10');
 
 //Awb Category
 
