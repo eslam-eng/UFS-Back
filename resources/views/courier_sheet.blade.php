@@ -4,7 +4,7 @@
 <style>
 
     .custom-table td, .custom-table th {
-        border: 1px solid #ddd!important;
+        border: 1px solid black!important;
         padding: 3px!important;
       }
 </style>
@@ -30,7 +30,7 @@
         </table>
         <br>
         <table class="w3-table w3-border w3-border-black custom-table">
-            <tr class="w3-light-gray" >
+            <tr class="w3-dark-gray" >
                 <th>م</th>
                 <th>رقم البوليصة</th>
                 <th>اسم المرسل اليه</th>
