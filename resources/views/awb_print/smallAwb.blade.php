@@ -105,7 +105,7 @@
                 </b>
 
                 <span class="w3-right">
-                    {{ substr(optional($resource->branch)->address, 0, 50) }}
+                    {{ optional($resource->branch)->address }}
                 </span>
             </td>
 
@@ -115,7 +115,7 @@
                 </b>
 
                 <span class="w3-right">
-                    {{ substr(optional($resource->receiver)->address, 0, 50) }}
+                    {{ optional($resource->receiver)->address }}
                 </span>
             </td>
         </tr>
