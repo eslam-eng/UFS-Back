@@ -16,7 +16,10 @@
     .report-content table td, .report-content table th {
         text-align: center!important;
     }
+
 </style>
+
+@yield('styles')
 <body>
 
 	<div class="w3-padding">

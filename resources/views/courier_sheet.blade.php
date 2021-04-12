@@ -1,5 +1,14 @@
 @extends("master")
 
+@section("styles")
+<style>
+
+    .custom-table td, .custom-table th {
+        border: 1px solid #ddd!important;
+        padding: 3px!important;
+      }
+</style>
+@endsection
 
 @section("content")
 <br>
@@ -20,7 +29,7 @@
             </tr>
         </table>
         <br>
-        <table class="w3-table w3-border w3-border-black">
+        <table class="w3-table w3-border w3-border-black custom-table">
             <tr class="w3-light-gray" >
                 <th>م</th>
                 <th>رقم البوليصة</th>
@@ -33,8 +42,7 @@
                 <th>ملاحظات</th>
                 <th>اسم المستلم</th>
                 <th>صفته</th>
-                <th>الوقت</th>
-                <th>التاريخ</th>
+                <th>الوقت و التاريخ</th>
             </tr>
 
             @php
@@ -52,7 +60,6 @@
                 <td>{{ optional(optional($item->awb)->company)->name }}</td>
                 <td>{{ optional($item->awb)->collection }}</td>
                 <td>{{ optional($item->awb)->notes }}</td>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -75,7 +82,6 @@
                     {{ $collectionTotal }}
                 </td>
 
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
