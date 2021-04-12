@@ -51,7 +51,7 @@
             @endphp
             @foreach($resource->sheetDetails()->get() as $item)
             <tr>
-                <td>{{ $loop->iteration + 1 }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ optional($item->awb)->code }}</td>
                 <td>{{ optional(optional($item->awb)->receiver)->name }}</td>
                 <td>{{ optional(optional($item->awb)->branch)->address }}</td>
