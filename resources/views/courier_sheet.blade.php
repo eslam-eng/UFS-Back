@@ -20,7 +20,7 @@
             </tr>
         </table>
         <br>
-        <table class="w3-table w3-bordered">
+        <table class="w3-table w3-border w3-border-black">
             <tr class="w3-light-gray" >
                 <th>م</th>
                 <th>رقم البوليصة</th>
@@ -30,10 +30,17 @@
                 <th>رقم التلفون</th>
                 <th>اسم الراسل</th>
                 <th>المبلغ</th>
-                <th>الحالة</th>
                 <th>ملاحظات</th>
+                <th>اسم المستلم</th>
+                <th>صفته</th>
+                <th>الوقت</th>
+                <th>التاريخ</th>
             </tr>
 
+            @php
+
+                $collectionTotal = 0;
+            @endphp
             @foreach($resource->sheetDetails()->get() as $item)
             <tr>
                 <td>{{ $loop->iteration + 1 }}</td>
@@ -44,10 +51,45 @@
                 <td>{{ optional(optional($item->awb)->branch)->phone }}</td>
                 <td>{{ optional(optional($item->awb)->company)->name }}</td>
                 <td>{{ optional($item->awb)->collection }}</td>
-                <td>{{ optional(optional($item->awb)->status)->name }}</td>
                 <td>{{ optional($item->awb)->notes }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
+            @php
+
+                $collectionTotal += optional($item->awb)->collection;
+            @endphp
             @endforeach
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+                <td>
+                    {{ $collectionTotal }}
+                </td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <br>
+        <table class="w3-table text-center w3-large">
+            <tr>
+                <td>
+                    عدد البوالص : {{ $resource->sheetDetails()->count() }}
+                </td>
+            </tr>
         </table>
         <br>
         <table class="w3-table text-center w3-large">

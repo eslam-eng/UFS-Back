@@ -25,7 +25,7 @@
 </table>
 
 <div class="w3-padding">
-    <table class="w3-table w3-bordered w3-border-gray custom-table">
+    <table class="w3-table w3-bordered w3-border-black custom-table">
         <tr>
             <th class="w3-indigo w3-center" colspan="2">Shipper Name</th>
             <th class="w3-indigo w3-center" colspan="2">Contact Name</th>
