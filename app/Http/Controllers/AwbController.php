@@ -44,7 +44,7 @@ class AwbController extends Controller {
             });
 
         if (request()->referance) {
-            $query->having('referance', request()->referance);
+            $query->whereRaw($referanceCol . " = ? ", [request()->referance]);
         }
 
         if (request()->code)
@@ -71,7 +71,12 @@ class AwbController extends Controller {
             $query->whereIn('status_id', $ids);
         }
 
-        return $query->latest()->paginate(60);
+        $pageLength = 60;
+
+        if (request()->page_length > 0)
+            $pageLength = request()->page_length;
+
+        return $query->latest()->paginate($pageLength);
     }
 
     public function load($resource) {

@@ -4,6 +4,8 @@ namespace App\Imports;
 
 use App\Http\Controllers\AwbController;
 use App\Models\Awb;
+use App\Models\Branch;
+use App\Models\Receiver;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
@@ -27,15 +29,25 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
     {
         $request = request();
 
+        $receiver = Receiver::where('referance', $row['receiver_code'])->first();
+        $branch = Branch::where('id', $row['branch_code'])->first();
+
+        if (!$branch || !$receiver) {
+            return null;
+        }
+
         $request->merge([
-            "company_id" => $row['company_code'],
+            "company_id" => $branch->company_id,
             "department_id" => $row['department_code'],
             "branch_id" => $row['branch_code'],
-            "receiver_id" => $row['receiver_code'],
+            "receiver_id" => $receiver->id,
+
+            // from receiver
+            "city_id" => $receiver->city_id,
+            "area_id" => $receiver->area_id,
+
             "payment_type_id" => $row['payment_type_code'],
             "service_id" => $row['service_code'],
-            "city_id" => $row['city_code'],
-            "area_id" => $row['area_code'],
             "weight" => $row['weight'],
             "pieces" => $row['pieces'],
             "category_id" => $row['category_code'],
@@ -57,7 +69,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
             '*.company_code'=>['required','exists:companies,id'],
             '*.department_code'=>['required','exists:departments,id'],
             '*.branch_code'=>['required','exists:branches,id'],
-            '*.receiver_code'=>['required','exists:receivers,id'],
+            '*.receiver_code'=>['required','exists:receivers,referance'],
             '*.payment_type_code'=>['required','exists:payment_types,id'],
             '*.service_code'=>['required','exists:services,id'],
             '*.city_code'=>['required','exists:cities,id'],
