@@ -66,18 +66,18 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
     public function rules(): array
     {
         return [
-            '*.company_code'=>['required','exists:companies,id'],
+            //'*.company_code'=>['required','exists:companies,id'],
             '*.department_code'=>['required','exists:departments,id'],
             '*.branch_code'=>['required','exists:branches,id'],
             '*.receiver_code'=>['required','exists:receivers,referance'],
             '*.payment_type_code'=>['required','exists:payment_types,id'],
             '*.service_code'=>['required','exists:services,id'],
-            '*.city_code'=>['required','exists:cities,id'],
-            '*.area_code'=>['required','exists:areas,id'],
+            //'*.city_code'=>['required','exists:cities,id'],
+            //'*.area_code'=>['required','exists:areas,id'],
             '*.category_code'=>['required','exists:awb_categories,id'],
             '*.weight'=>['required','numeric'],
             '*.pieces'=>['required','numeric'],
-            '*.is_return'=>['nullable','boolean'],
+            //'*.is_return'=>['nullable','boolean'],
         ];
     }
 }
