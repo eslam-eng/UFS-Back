@@ -70,7 +70,10 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
     {
         //$data['email'] = $data['email'] ?? $this->myOtherWayOfFindingTheEmail($data);
 
-        return $data['referance'] . "";
+        if ($data['receiver_code'] == $data['receiver_code']) {
+            $data['receiver_code'] = $data['receiver_code'] . "";
+        }
+        return $data;
     }
 
     public function rules(): array
