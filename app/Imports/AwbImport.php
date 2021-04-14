@@ -25,6 +25,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
      * @return \Illuminate\Database\Eloquent\Model|null
      */
 
+
     public function model(array $row)
     {
         $request = request();
@@ -63,6 +64,13 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
 
         file_put_contents("import_log.txt", $res);
         return null;
+    }
+
+    public function prepareForValidation($data, $index)
+    {
+        //$data['email'] = $data['email'] ?? $this->myOtherWayOfFindingTheEmail($data);
+
+        return $data['referance'] . "";
     }
 
     public function rules(): array
