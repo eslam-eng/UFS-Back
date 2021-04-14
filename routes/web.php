@@ -35,10 +35,11 @@ Route::group(['namespace'=>'App\Http\Controllers\website'],function (){
     Route::get('/track-more','AwbTrackController@trackMore')->name('trackMore');
 });
 
+//Route::get('/1x3awb','App\Http\Controllers\AwbPrinterController@print1x3');
 /*
 Route::get('/A4awb','App\Http\Controllers\AwbPrinterController@printA4');
 Route::get('/A4sawb','App\Http\Controllers\AwbPrinterController@printA4s');
-Route::get('/1x3awb','App\Http\Controllers\AwbPrinterController@print1x3');
+
 Route::get('/3x7awb','App\Http\Controllers\AwbPrinterController@print3x7');
 Route::get('/3x8awb','App\Http\Controllers\AwbPrinterController@print3x8');
 Route::get('/3x9awb','App\Http\Controllers\AwbPrinterController@print3x9');

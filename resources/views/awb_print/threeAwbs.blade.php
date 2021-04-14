@@ -242,7 +242,7 @@
 
     <style>
         * {
-            font-size: 12px;
+            font-size: 10px;
         }
         table {
             border-collapse: collapse!important;
@@ -252,6 +252,10 @@
           .custom-table td, .custom-table th {
             border: 1px solid #ddd!important;
             padding: 3px!important;
+          }
+
+          .awb-item {
+            height: 373px
           }
     </style>
 
