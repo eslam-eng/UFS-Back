@@ -34,7 +34,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
         $receiver = Receiver::where('referance', $referance)->first();
         $branch = Branch::where('id', $branchCode)->first();
 
-        if (!$branch || !$receiver) {
+        if (!$branch || !$receiver || !is_numeric($row['branch_code'])) {
             return null;
         }
 
