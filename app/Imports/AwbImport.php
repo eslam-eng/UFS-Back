@@ -52,7 +52,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
             "pieces" => $row['pieces'],
             "category_id" => $row['category_code'],
             "notes" => $row['notes'],
-            "is_return" => $row['is_return'],
+            "is_return" => isset($row['is_return'])? $row['is_return'] : 0,
             "collection" => $row['collection']
         ]);
 
