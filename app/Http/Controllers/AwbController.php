@@ -152,7 +152,11 @@ class AwbController extends Controller {
             $data = $request->all();
             $data['status_id'] = optional(Status::where('type', 'awb')->first())->id;
             $data['user_id'] = $request->user()->id;
-            $data['date'] = date('Y-m-d');
+
+            if ($request->date)
+                $data['date'] = $request->date;
+            else
+                $data['date'] = date('Y-m-d');
 
             // store awb object
             $resource = Awb::create($data);

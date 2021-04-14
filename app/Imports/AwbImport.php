@@ -31,6 +31,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
         $request = request();
         $referance = str_replace(" ", "", $row['receiver_code']);
         $branchCode = str_replace(" ", "", $row['branch_code']);
+        $time = str_replace(" ", "", $row['time']);
 
         $receiver = Receiver::where('referance', $referance)->first();
         $branch = Branch::where('id', $branchCode)->first();
@@ -38,6 +39,8 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
         if (!$branch || !$receiver || !is_numeric($row['branch_code'])) {
             return null;
         }
+
+        $date = date('Y-m-d') . " " . $time;
 
         $request->merge([
             "company_id" => $branch->company_id,
@@ -56,7 +59,8 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
             "category_id" => $row['category_code'],
             "notes" => $row['notes'],
             "is_return" => isset($row['is_return'])? $row['is_return'] : 0,
-            "collection" => $row['collection']
+            "collection" => $row['collection'],
+            "date" => $date
         ]);
 
         $awbInstanceController = new AwbController();
@@ -90,6 +94,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
             '*.category_code'=>['required','exists:awb_categories,id'],
             '*.weight'=>['required','numeric'],
             '*.pieces'=>['required','numeric'],
+            '*.time'=>['required'],
             //'*.is_return'=>['nullable','boolean'],
         ];
     }
