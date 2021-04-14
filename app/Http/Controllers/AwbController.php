@@ -40,7 +40,8 @@ class AwbController extends Controller {
 
         if (request()->search > 0)
             $query->where(function($q){
-                $q->where('code', "like", "%" . request()->search . "%");
+                $q->where('code', "like", "%" . request()->search . "%")
+                ->orWhere('notes', "like", "%" . request()->search . "%");
             });
 
         if (request()->referance) {
