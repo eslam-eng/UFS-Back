@@ -28,9 +28,11 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
     public function model(array $row)
     {
         $request = request();
+        $referance = str_replace(" ", "", $row['receiver_code']);
+        $branchCode = str_replace(" ", "", $row['branch_code']);
 
-        $receiver = Receiver::where('referance', $row['receiver_code'])->first();
-        $branch = Branch::where('id', $row['branch_code'])->first();
+        $receiver = Receiver::where('referance', $referance)->first();
+        $branch = Branch::where('id', $branchCode)->first();
 
         if (!$branch || !$receiver) {
             return null;
