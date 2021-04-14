@@ -40,7 +40,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
             return null;
         }
 
-        $date = date('Y-m-d') . " " . $time;
+        $date = date('Y-m-d') . " " . date('H:i:s', strtotime($time));
 
         $request->merge([
             "company_id" => $branch->company_id,
