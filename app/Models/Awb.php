@@ -13,7 +13,7 @@ class Awb extends Model
         'code', 'company_id', 'department_id',
         'branch_id', 'receiver_id', 'payment_type_id', 'service_id', 'status_id', 'user_id', 'city_id',
         'area_id','receiver_name','receiver_title', 'date', 'weight', 'pieces', 'category_id', 'notes', 'is_return', 'collection', //now its temporary after it will calc automaticlly depends on city an area price
-        'zprice', 'shiping_price', 'additional_kg_price', 'additional_price', 'net_price'
+        'zprice', 'shiping_price', 'additional_kg_price', 'additional_price', 'net_price', 'created_at'
     ];
 
     protected $appends =['sheet_id'];

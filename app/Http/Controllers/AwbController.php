@@ -173,6 +173,12 @@ class AwbController extends Controller {
                 "code" => $code
             ]);
 
+            if ($request->created_at) {
+                $resource->update([
+                    "created_at" => $request->created_at
+                ]);
+            }
+
             // store history
             AwbHistory::create([
                 'awb_id' => $resource->id,

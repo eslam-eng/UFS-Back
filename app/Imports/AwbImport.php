@@ -60,7 +60,7 @@ class AwbImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation,Sk
             "notes" => $row['notes'],
             "is_return" => isset($row['is_return'])? $row['is_return'] : 0,
             "collection" => $row['collection'],
-            "date" => $date
+            "created_at" => $date
         ]);
 
         $awbInstanceController = new AwbController();
