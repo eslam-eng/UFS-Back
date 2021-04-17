@@ -19,7 +19,7 @@
                 <svg id="barcode{{ $resource->id }}" class="w3-block"></svg>
             </td>
 
-            <td style="width: 25%;padding: 20px" class="w3-display-container">
+            <td style="width: 25%;padding: 20px" class="w3-display-container w3-padding">
                 <div id="qrcode{{ $resource->id }}" class="w3-block"></div>
             </td>
         </tr>
@@ -223,7 +223,6 @@
             </tr>
         </table>
 
-        <div class="w3-block w3-padding" style="border-bottom: 2px dashed black" ></div>
 
     </div>
 

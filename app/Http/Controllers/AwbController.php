@@ -18,7 +18,7 @@ class AwbController extends Controller {
 
     public function index() {
         $referanceCol = "(select referance from receivers where receivers.id = receiver_id)";
-        $query = Awb::latest()
+        $query = Awb::query()
         ->with(['company', 'department', 'paymentType', 'branch', 'receiver', 'service', 'status', 'city', 'area', 'user', 'awbHistory'])
         ->select('*', DB::raw($referanceCol . ' as referance'));
 
@@ -77,7 +77,7 @@ class AwbController extends Controller {
         if (request()->page_length > 0)
             $pageLength = request()->page_length;
 
-        return $query->latest()->paginate($pageLength);
+        return $query->orderBy('id', "DESC")->paginate($pageLength);
     }
 
     public function load($resource) {

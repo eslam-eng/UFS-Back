@@ -32,7 +32,7 @@ class AwbPrinterController extends Controller {
      *
      */
     public function printA4s(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->orderBy('id', "DESC")->get();
 
         // Test Mode
         //$awbs = Awb::take(2)->get();
@@ -44,10 +44,10 @@ class AwbPrinterController extends Controller {
      *
      */
     public function print1x3(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->orderBy('id', "DESC")->get();
 
         // Test Mode
-        //$awbs = Awb::take(3)->get();
+        //$awbs = Awb::take(150)->get();
         return view('awb_print.threeAwbs', compact('awbs'));
     }
 
@@ -57,7 +57,7 @@ class AwbPrinterController extends Controller {
      *
      */
     public function print3x7(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->orderBy('id', "DESC")->get();
 
         // Test Mode
         //$awbs = Awb::take(21)->get();
@@ -70,7 +70,7 @@ class AwbPrinterController extends Controller {
      *
      */
     public function print3x8(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->orderBy('id', "DESC")->get();
 
         // Test Mode
         //$awbs = Awb::take(24)->get();
@@ -83,7 +83,7 @@ class AwbPrinterController extends Controller {
      *
      */
     public function print3x9(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->orderBy('id', "DESC")->get();
 
         // Test Mode
         //$awbs = Awb::take(27)->get();
@@ -96,7 +96,7 @@ class AwbPrinterController extends Controller {
      *
      */
     public function print3x10(Request $request) {
-        $awbs = Awb::whereIn('id', $request->awbs)->get();
+        $awbs = Awb::whereIn('id', $request->awbs)->orderBy('id', "DESC")->get();
 
         // Test Mode
         //$awbs = Awb::take(31)->get();

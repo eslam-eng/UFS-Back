@@ -255,7 +255,8 @@
           }
 
           .awb-item {
-            height: 373px
+            height: 98.9mm;
+            border-bottom: 2px dashed gray;
           }
     </style>
 
