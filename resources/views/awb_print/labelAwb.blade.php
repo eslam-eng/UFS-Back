@@ -1,5 +1,12 @@
 <div class="w3-display-container w3-center label-height" >
-    <svg id="barcode{{ $resource->id }}" class="w3-block w3-text-indigo"></svg>
+    <div class="" style="width: 70%" >
+        <svg id="barcode{{ $resource->id }}" class="w3-text-indigo"></svg>
+    </div>
+
+    <span class="w3-tiny w3-display-topright w3-padding" style="top: 2%;width: 30%" >
+        {{ optional(optional($resource->receiver)->area)->name }}
+    </span>
+
     <p style="margin-top: -2px" ><b>{{ optional($resource->receiver)->name }}</b></p>
     <p class="margin-top" >{{ optional($resource->receiver)->company_name }}</p>
     <p class="margin-top" >{{ optional($resource->receiver)->title }}</p>

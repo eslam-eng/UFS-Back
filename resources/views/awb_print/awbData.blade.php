@@ -62,7 +62,7 @@
                         <span style="float: right" >جهة المصدر</span>
                         <br>
                     </div>
-                    <div class="w3-border w3-border-block w3-padding w3-display-container"  >
+                    <div class="w3-border w3-border-block w3-padding w3-display-container" style="font-size: 6px"  >
                         {{ optional(optional($resource->branch)->city->country)->name }}  - {{ optional(optional($resource->branch)->city)->name }}
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                 <span style="float: right" >الشركة المرسل اليها</span>
                 <br>
             </div>
-            <div class="w3-border w3-border-block w3-padding w3-display-container"  >
+            <div class="w3-border w3-border-block w3-padding w3-display-container" style="font-size: 8px"  >
                 {{ optional($resource->receiver)->company_name }} - {{ optional($resource->receiver)->branch_name }}
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container w3-light-gray"  >
@@ -173,7 +173,7 @@
                         <span style="float: right" >جهة المصدر</span>
                         <br>
                     </div>
-                    <div class="w3-border w3-border-block w3-padding w3-display-container"  >
+                    <div class="w3-border w3-border-block w3-padding w3-display-container" style="font-size: 6px"  >
                         {{ optional(optional($resource->receiver)->city->country)->name }} - {{ optional(optional($resource->receiver)->city)->name }}
                     </div>
                 </div>
