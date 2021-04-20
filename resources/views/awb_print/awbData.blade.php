@@ -35,7 +35,7 @@
                 <span style="float: right" >اسم العميل</span>
                 <br>
             </div>
-            <div class="w3-border w3-border-block w3-padding w3-display-container" style="font-size: 6px"  >
+            <div class="w3-border w3-border-block w3-padding w3-display-container" style="font-size: 8px"  >
                 {{ optional($resource->company)->name }}
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container w3-light-gray"  >
