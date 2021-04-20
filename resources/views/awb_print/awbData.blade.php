@@ -52,7 +52,11 @@
                 <br>
             </div>
             <div class="w3-border w3-border-block w3-padding w3-display-container"  >
+                @if (optional($resource->branch)->phone)
                 {{ optional($resource->branch)->phone }}
+                @else
+                -
+                @endif
             </div>
             <div class="w3-display-container w3-row"  >
 
