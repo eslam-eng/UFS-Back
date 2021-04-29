@@ -91,7 +91,7 @@ if (!function_exists('trans2')) {
         $key = str_replace(" ", "_", $key);
 
         // my code for translation
-        try {
+        //try {
             $translation = App\Models\Translation::where('key', $key)->first();
 
             if ($translation) {
@@ -107,9 +107,9 @@ if (!function_exists('trans2')) {
                     "name_ar" => $word
                 ]);
             }
-        } catch (Exception $exc) {
+        //} catch (Exception $exc) {
             //
-        }
+        //}
 
         return $word;
 
