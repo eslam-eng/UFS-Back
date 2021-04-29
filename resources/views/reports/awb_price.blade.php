@@ -23,12 +23,12 @@
 @section('content')
     <br>
     <div class="w3-center w3-large">
-        <b>{{___('Daily Report Sheet')}}</b>
+        <b>{{trans2('Daily Report Sheet')}}</b>
     </div>
     <table class="w3-table">
         <tr>
             <td>
-               {{___('Account Name')}} : {{ $company->name }}
+               {{trans2('Account Name')}} : {{ $company->name }}
             </td>
         </tr>
     </table>
@@ -36,20 +36,20 @@
     <table class="w3-table w3-bordered table-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
-            <th>{{ ___('awb code') }}</th>
-            <th>{{ ___('date') }}</th>
-            <th>{{ ___('origin') }}</th>
-            <th>{{ ___('destination') }}</th>
-            <th>{{ ___('pieces') }}</th>
-            <th>{{ ___('weight') }}</th>
-            <th>{{ ___('net_price') }}</th>
-            <th>{{ ___('fuelCharge_value') }}</th>
-            <th>{{ ___('discount_value') }}</th>
-            <th>{{ ___('other_value') }}</th>
-            <th>{{ ___('total_price') }}</th>
-            <th>{{ ___('postal_fees') }}</th>
-            <th>{{ ___('vat_tax') }}</th>
-            <th>{{ ___('total') }}</th>
+            <th>{{ trans2('awb code') }}</th>
+            <th>{{ trans2('date') }}</th>
+            <th>{{ trans2('origin') }}</th>
+            <th>{{ trans2('destination') }}</th>
+            <th>{{ trans2('pieces') }}</th>
+            <th>{{ trans2('weight') }}</th>
+            <th>{{ trans2('net_price') }}</th>
+            <th>{{ trans2('fuelCharge_value') }}</th>
+            <th>{{ trans2('discount_value') }}</th>
+            <th>{{ trans2('other_value') }}</th>
+            <th>{{ trans2('total_price') }}</th>
+            <th>{{ trans2('postal_fees') }}</th>
+            <th>{{ trans2('vat_tax') }}</th>
+            <th>{{ trans2('total') }}</th>
         </tr>
         @foreach ($awbs as $item)
             @php
@@ -119,7 +119,7 @@
     <table class="w3-table text-center w3-large">
         <tr>
             <td class="w3-large">
-                <b>{{ ___('footer of bill') }}</b>
+                <b>{{ trans2('footer of bill') }}</b>
             </td>
         </tr>
     </table>

@@ -14,13 +14,13 @@
     <table class="w3-table w3-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
-            <th>{{___('code')}}</th>
-            <th>{{___('date')}}</th>
-            <th>{{___('value')}}</th>
-            <th>{{___('Expense Type')}}</th>
-            <th>{{___('Customer Name')}}</th>
-            <th>{{___('Type')}}</th>
-            <th>{{___('Type')}}</th>
+            <th>{{trans2('code')}}</th>
+            <th>{{trans2('date')}}</th>
+            <th>{{trans2('value')}}</th>
+            <th>{{trans2('Expense Type')}}</th>
+            <th>{{trans2('Customer Name')}}</th>
+            <th>{{trans2('Type')}}</th>
+            <th>{{trans2('Type')}}</th>
         </tr>
         <tr>
             <td></td>
@@ -29,7 +29,7 @@
             <td class="w3-text-green" >
                 +{{ $store->init_value }}
             </td>
-            <td>{{___('رصيد افتتاحى')}}</td>
+            <td>{{trans2('رصيد افتتاحى')}}</td>
             <td></td>
             <td></td>
             <td></td>
@@ -50,7 +50,7 @@
                 </td>
                 <td>{{ optional($item->expenseType)->name }}</td>
                 <td>{{ optional($item->company)->name }}</td>
-                <td>{{ $item->type == 'out' && $item->value > 0? ___('مدين') : ___('دائن') }}</td>
+                <td>{{ $item->type == 'out' && $item->value > 0? trans2('مدين') : trans2('دائن') }}</td>
                 <td>{{ $item->notes }}</td>
             </tr>
         @endforeach

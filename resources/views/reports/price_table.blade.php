@@ -11,12 +11,12 @@
     <table class="w3-table w3-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
-            <th>{{___('Origin')}}</th>
-            <th>{{___('Destionation')}}</th>
-            <th>{{___('price')}}</th>
-            <th>{{___('return_price')}}</th>
-            <th>{{___('First KG')}}</th>
-            <th>{{___('Additional KG	')}}</th>
+            <th>{{trans2('Origin')}}</th>
+            <th>{{trans2('Destionation')}}</th>
+            <th>{{trans2('price')}}</th>
+            <th>{{trans2('return_price')}}</th>
+            <th>{{trans2('First KG')}}</th>
+            <th>{{trans2('Additional KG	')}}</th>
         </tr>
         @foreach ($resources as $item)
             <tr>

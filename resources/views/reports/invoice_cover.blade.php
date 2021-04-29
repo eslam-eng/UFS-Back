@@ -54,54 +54,54 @@
     <table class="w3-table">
         <tr>
             <td>
-                <b>{{ ___('Customer Data') }}</b>
+                <b>{{ trans2('Customer Data') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-block">
-                        <b>{{ ___("Account No") }}</b> : {{ $company->id }}
+                        <b>{{ trans2("Account No") }}</b> : {{ $company->id }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("Customer Name") }}</b> : {{ $company->name }}
+                        <b>{{ trans2("Customer Name") }}</b> : {{ $company->name }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("Contact Name") }}</b> : {{ $company->name }}
+                        <b>{{ trans2("Contact Name") }}</b> : {{ $company->name }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("Tel") }}</b> : {{ $company->phone }}
+                        <b>{{ trans2("Tel") }}</b> : {{ $company->phone }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("Email") }}</b> : {{ $company->email }}
+                        <b>{{ trans2("Email") }}</b> : {{ $company->email }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("Address") }}</b> : {{ $company->address }}
+                        <b>{{ trans2("Address") }}</b> : {{ $company->address }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("city") }}</b> : {{ optional($company->city)->name }}
+                        <b>{{ trans2("city") }}</b> : {{ optional($company->city)->name }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("area") }}</b> : {{ optional($company->area)->name }}
+                        <b>{{ trans2("area") }}</b> : {{ optional($company->area)->name }}
                     </div>
                 </div>
             </td>
 
             <td>
-                <b>{{ ___('Total Amount') }}</b>
+                <b>{{ trans2('Total Amount') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-block">
-                        <b>{{ ___("Currency Type") }}</b> : EGP
+                        <b>{{ trans2("Currency Type") }}</b> : EGP
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("Total Amound") }}</b> : {{ $total }}
+                        <b>{{ trans2("Total Amound") }}</b> : {{ $total }}
                     </div>
                 </div>
                 <br>
 
-                <b>{{ ___('Invoice Detail') }}</b>
+                <b>{{ trans2('Invoice Detail') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-block">
-                        <b>{{ ___("Invoice No") }}</b> :
+                        <b>{{ trans2("Invoice No") }}</b> :
                     </div>
                     <div class="w3-block">
-                        <b>{{ ___("Date") }} </b>: {{ date('Y-m-d') }}
+                        <b>{{ trans2("Date") }} </b>: {{ date('Y-m-d') }}
                     </div>
                 </div>
             </td>
@@ -111,7 +111,7 @@
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-row">
                         <div class="w3-col l6 m6 s6" style="text-align: left" >
-                            <b class="w3-left"> {{ ___('Total Shipment') }}</b>
+                            <b class="w3-left"> {{ trans2('Total Shipment') }}</b>
                         </div>
                         <div class="w3-col l6 m6 s6" style="text-align: right" >
                             <b class="w3-right"> {{ $finalTotal }}</b>
@@ -123,42 +123,42 @@
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Total Weight') }}</b>
+                        <b class="w3-left"> {{ trans2('Total Weight') }}</b>
                         <b class="w3-right"> {{ $weightTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Fuel Charge') }}</b>
+                        <b class="w3-left"> {{ trans2('Fuel Charge') }}</b>
                         <b class="w3-right"> {{ $fuelChargeTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Other Charge') }}</b>
+                        <b class="w3-left"> {{ trans2('Other Charge') }}</b>
                         <b class="w3-right"> {{ $otherTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Discount') }}</b>
+                        <b class="w3-left"> {{ trans2('Discount') }}</b>
                         <b class="w3-right"> {{ $discountTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Total Price') }}</b>
+                        <b class="w3-left"> {{ trans2('Total Price') }}</b>
                         <b class="w3-right"> {{ $netPriceTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Postal Fee') }}</b>
+                        <b class="w3-left"> {{ trans2('Postal Fee') }}</b>
                         <b class="w3-right"> {{ $postFeesTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Vat Tax') }}</b>
+                        <b class="w3-left"> {{ trans2('Vat Tax') }}</b>
                         <b class="w3-right"> {{ $vetTaxTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ ___('Total Amound') }}</b>
+                        <b class="w3-left"> {{ trans2('Total Amound') }}</b>
                         <b class="w3-right"> {{ $finalTotal }}</b>
                     </div>
 
@@ -169,12 +169,12 @@
     </table>
 
     <div class="w3-center w3-large">
-        <p>{{ ___('footer1 invoice') }}</p>
+        <p>{{ trans2('footer1 invoice') }}</p>
         <br>
         <br>
 
 
-        <p>{{ ___('footer2 invoice') }}</p>
+        <p>{{ trans2('footer2 invoice') }}</p>
         <br>
     </div>
     <br>
