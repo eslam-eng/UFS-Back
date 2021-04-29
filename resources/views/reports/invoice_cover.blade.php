@@ -54,54 +54,54 @@
     <table class="w3-table">
         <tr>
             <td>
-                <b>{{ __('Customer Data') }}</b>
+                <b>{{ ___('Customer Data') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-block">
-                        <b>{{ __("Account No") }}</b> : {{ $company->id }}
+                        <b>{{ ___("Account No") }}</b> : {{ $company->id }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("Customer Name") }}</b> : {{ $company->name }}
+                        <b>{{ ___("Customer Name") }}</b> : {{ $company->name }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("Contact Name") }}</b> : {{ $company->name }}
+                        <b>{{ ___("Contact Name") }}</b> : {{ $company->name }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("Tel") }}</b> : {{ $company->phone }}
+                        <b>{{ ___("Tel") }}</b> : {{ $company->phone }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("Email") }}</b> : {{ $company->email }}
+                        <b>{{ ___("Email") }}</b> : {{ $company->email }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("Address") }}</b> : {{ $company->address }}
+                        <b>{{ ___("Address") }}</b> : {{ $company->address }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("city") }}</b> : {{ optional($company->city)->name }}
+                        <b>{{ ___("city") }}</b> : {{ optional($company->city)->name }}
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("area") }}</b> : {{ optional($company->area)->name }}
+                        <b>{{ ___("area") }}</b> : {{ optional($company->area)->name }}
                     </div>
                 </div>
             </td>
 
             <td>
-                <b>{{ __('Total Amount') }}</b>
+                <b>{{ ___('Total Amount') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-block">
-                        <b>{{ __("Currency Type") }}</b> : EGP
+                        <b>{{ ___("Currency Type") }}</b> : EGP
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("Total Amound") }}</b> : {{ $total }}
+                        <b>{{ ___("Total Amound") }}</b> : {{ $total }}
                     </div>
                 </div>
                 <br>
 
-                <b>{{ __('Invoice Detail') }}</b>
+                <b>{{ ___('Invoice Detail') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-block">
-                        <b>{{ __("Invoice No") }}</b> :
+                        <b>{{ ___("Invoice No") }}</b> :
                     </div>
                     <div class="w3-block">
-                        <b>{{ __("Date") }} </b>: {{ date('Y-m-d') }}
+                        <b>{{ ___("Date") }} </b>: {{ date('Y-m-d') }}
                     </div>
                 </div>
             </td>
@@ -111,7 +111,7 @@
                 <div class="w3-border w3-padding w3-border-gray">
                     <div class="w3-row">
                         <div class="w3-col l6 m6 s6" style="text-align: left" >
-                            <b class="w3-left"> {{ __('Total Shipment') }}</b>
+                            <b class="w3-left"> {{ ___('Total Shipment') }}</b>
                         </div>
                         <div class="w3-col l6 m6 s6" style="text-align: right" >
                             <b class="w3-right"> {{ $finalTotal }}</b>
@@ -123,42 +123,42 @@
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Total Weight') }}</b>
+                        <b class="w3-left"> {{ ___('Total Weight') }}</b>
                         <b class="w3-right"> {{ $weightTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Fuel Charge') }}</b>
+                        <b class="w3-left"> {{ ___('Fuel Charge') }}</b>
                         <b class="w3-right"> {{ $fuelChargeTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Other Charge') }}</b>
+                        <b class="w3-left"> {{ ___('Other Charge') }}</b>
                         <b class="w3-right"> {{ $otherTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Discount') }}</b>
+                        <b class="w3-left"> {{ ___('Discount') }}</b>
                         <b class="w3-right"> {{ $discountTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Total Price') }}</b>
+                        <b class="w3-left"> {{ ___('Total Price') }}</b>
                         <b class="w3-right"> {{ $netPriceTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Postal Fee') }}</b>
+                        <b class="w3-left"> {{ ___('Postal Fee') }}</b>
                         <b class="w3-right"> {{ $postFeesTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Vat Tax') }}</b>
+                        <b class="w3-left"> {{ ___('Vat Tax') }}</b>
                         <b class="w3-right"> {{ $vetTaxTotal }}</b>
                     </div>
 
                     <div class="w3-block w3-display-container w3-row">
-                        <b class="w3-left"> {{ __('Total Amound') }}</b>
+                        <b class="w3-left"> {{ ___('Total Amound') }}</b>
                         <b class="w3-right"> {{ $finalTotal }}</b>
                     </div>
 
@@ -169,12 +169,12 @@
     </table>
 
     <div class="w3-center w3-large">
-        <p>{{ __('footer1 invoice') }}</p>
+        <p>{{ ___('footer1 invoice') }}</p>
         <br>
         <br>
 
 
-        <p>{{ __('footer2 invoice') }}</p>
+        <p>{{ ___('footer2 invoice') }}</p>
         <br>
     </div>
     <br>

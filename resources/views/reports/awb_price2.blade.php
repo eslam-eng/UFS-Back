@@ -18,7 +18,7 @@
     <table class="w3-table">
         <tr>
             <td>
-               {{__('Account Name')}} : {{ $company->name }}
+               {{___('Account Name')}} : {{ $company->name }}
             </td>
         </tr>
     </table>
@@ -26,15 +26,15 @@
     <table class="w3-table w3-bordered table-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
-            <th>{{ __('awb code') }}</th>
-            <th>{{ __('date') }}</th>
-            <th>{{ __('origin') }}</th>
-            <th>{{ __('destination') }}</th>
-            <th>{{ __('pieces') }}</th>
-            <th>{{ __('weight') }}</th>
-            <th>{{ __('net_price') }}</th>
-            <th>{{ __('collection_percent') }}</th>
-            <th>{{ __('final_total') }}</th>
+            <th>{{ ___('awb code') }}</th>
+            <th>{{ ___('date') }}</th>
+            <th>{{ ___('origin') }}</th>
+            <th>{{ ___('destination') }}</th>
+            <th>{{ ___('pieces') }}</th>
+            <th>{{ ___('weight') }}</th>
+            <th>{{ ___('net_price') }}</th>
+            <th>{{ ___('collection_percent') }}</th>
+            <th>{{ ___('final_total') }}</th>
         </tr>
         @foreach ($awbs as $item)
             @php
@@ -80,7 +80,7 @@
     <table class="w3-table text-center w3-large">
         <tr>
             <td class="w3-large">
-                <b>{{ __('footer of bill') }}</b>
+                <b>{{ ___('footer of bill') }}</b>
             </td>
         </tr>
     </table>

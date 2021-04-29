@@ -3,14 +3,14 @@
 @section('content')
     <br>
     <div class="w3-center w3-large">
-        <b>{{__('status Awb Count Report')}}</b>
+        <b>{{___('status Awb Count Report')}}</b>
     </div>
     <br>
     <table class="w3-table w3-bordered">
         <tr class="w3-light-gray">
             <th>#</th>
-            <th>{{__('status')}}</th>
-            <th>{{__('count')}}</th>
+            <th>{{___('status')}}</th>
+            <th>{{___('count')}}</th>
         </tr>
         @foreach ($awb_status_count as $key=>$count)
             <tr>
