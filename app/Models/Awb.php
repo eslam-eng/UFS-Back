@@ -16,11 +16,19 @@ class Awb extends Model
         'zprice', 'shiping_price', 'additional_kg_price', 'additional_price', 'net_price', 'created_at'
     ];
 
-    protected $appends =['sheet_id'];
+    protected $appends =['sheet_id', 'receiver_city', 'receiver_area'];
 
     public function getSheetIdAttribute()
     {
         return optional($this->courierSheet)->sheet_id;
+    }
+
+    public function getReceiverCityAttribute() {
+        return optional(optional($this->receiver)->city)->name;
+    }
+
+    public function getReceiverAreaAttribute() {
+        return optional(optional($this->receiver)->area)->name;
     }
 
     public function details()

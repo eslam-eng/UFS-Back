@@ -17,6 +17,18 @@
         text-align: center!important;
     }
 
+    table {
+        border-collapse: collapse!important;
+        width: 100%!important;
+      }
+
+      .w3-bordered td, .w3-bordered th {
+        border: 1px solid darkgray!important;
+      }
+
+      .w3-bordered tr, .w3-table-all tr {
+        border-bottom: 1px solid darkgray;
+    }
 </style>
 
 @yield('styles')
