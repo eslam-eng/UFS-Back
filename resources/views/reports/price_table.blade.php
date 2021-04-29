@@ -10,7 +10,6 @@
     <br>
     <table class="w3-table w3-bordered">
         <tr class="w3-light-gray">
-            <th>#</th>
             <th>{{trans2('Origin')}}</th>
             <th>{{trans2('Destionation')}}</th>
             <th>{{trans2('price')}}</th>
@@ -20,7 +19,6 @@
         </tr>
         @foreach ($resources as $item)
             <tr>
-                <td>{{ $loop->iteration + 1 }}</td>
                 <td>{{ $item->cityFromObject->name }}</td>
                 <td>{{ $item->cityToObject->name}}</td>
                 <td>{{ $item->price }}</td>

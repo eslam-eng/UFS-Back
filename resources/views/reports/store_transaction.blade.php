@@ -13,7 +13,6 @@
     <br>
     <table class="w3-table w3-bordered">
         <tr class="w3-light-gray">
-            <th>#</th>
             <th>{{trans2('code')}}</th>
             <th>{{trans2('date')}}</th>
             <th>{{trans2('value')}}</th>
@@ -23,7 +22,6 @@
             <th>{{trans2('Type')}}</th>
         </tr>
         <tr>
-            <td></td>
             <td></td>
             <td></td>
             <td class="w3-text-green" >
@@ -42,7 +40,6 @@
                     $total -= $item->value;
             @endphp
             <tr>
-                <td>{{ $loop->iteration + 1 }}</td>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->date }}</td>
                 <td class="{{ $item->type == 'out' && $item->value > 0? 'w3-text-red' : 'w3-text-green' }}" >
@@ -55,7 +52,6 @@
             </tr>
         @endforeach
             <tr>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td>

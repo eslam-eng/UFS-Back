@@ -35,7 +35,6 @@
     <br>
     <table class="w3-table w3-bordered table-bordered">
         <tr class="w3-light-gray">
-            <th>#</th>
             <th>{{ trans2('awb code') }}</th>
             <th>{{ trans2('date') }}</th>
             <th>{{ trans2('origin') }}</th>
@@ -80,7 +79,6 @@
                 $otherTotal += $otherValue;
             @endphp
             <tr>
-                <td>{{ $loop->iteration + 1 }}</td>
                 <td>{{ $item->code }}</td>
                 <td>{{ $item->date }}</td>
                 <td>{{ optional($item->city)->name }}</td>
@@ -98,7 +96,6 @@
             </tr>
         @endforeach
             <tr>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
