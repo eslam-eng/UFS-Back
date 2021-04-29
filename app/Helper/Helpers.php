@@ -91,7 +91,7 @@ if (!function_exists('trans2')) {
         $key = str_replace(" ", "_", $key);
 
         // my code for translation
-        //try {
+        try {
             $translation = App\Models\Translation::where('key', $key)->first();
 
             if ($translation) {
@@ -107,17 +107,11 @@ if (!function_exists('trans2')) {
                     "name_ar" => $word
                 ]);
             }
-        //} catch (Exception $exc) {
+        } catch (Exception $exc) {
             //
-        //}
+        }
 
         return $word;
-
-//        if (is_null($key)) {
-        //            return app('translator');
-        //        }
-        //
-        //        return app('translator')->trans($key, $replace, $locale);
     }
 
 }
@@ -133,8 +127,33 @@ if (!function_exists('__')) {
      * @return string|array|null
      */
     function __($key, $replace = [], $locale = null) {
-        return trans2($key, $replace, $locale);
-        //return app('translator')->getFromJson($key, $replace, $locale);
+        $word = $key;
+        // prepare key
+        $key = strtolower($key);
+        $key = str_replace(" ", "_", $key);
+
+        // my code for translation
+        try {
+            $translation = App\Models\Translation::where('key', $key)->first();
+
+            if ($translation) {
+                $translate = $translation->name_en;
+
+                if ($translate) {
+                    return $translate;
+                }
+            } else {
+                App\Models\Translation::create([
+                    "key" => $key,
+                    "name_en" => $word,
+                    "name_ar" => $word
+                ]);
+            }
+        } catch (Exception $exc) {
+            //
+        }
+
+        return $word;
     }
 
 }
