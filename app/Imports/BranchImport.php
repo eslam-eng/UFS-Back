@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Area;
 use App\Models\Branch;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
@@ -22,13 +23,15 @@ class BranchImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation
      */
     public function model(array $row)
     {
+        $area = Area::find($row['area_code']);
+
         return new Branch([
             'name'=>$row['name'],
             'phone'=>$row['phone'],
             'address'=>$row['address'],
             'company_id'=>$row['company_code'],
-            'city_id'=>$row['city_code'],
             'area_id'=>$row['area_code'],
+            'city_id'=>optional($area)->city_id,
         ]);
     }
 
@@ -37,9 +40,8 @@ class BranchImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidation
         return [
             '*.name'=>['required','string'],
             '*.company_code'=>['required','exists:companies,id'],
-            '*.city_code'=>['required','exists:cities,id'],
+            //'*.city_code'=>['required','exists:cities,id'],
             '*.area_code'=>['required','exists:areas,id'],
-
         ];
     }
 }

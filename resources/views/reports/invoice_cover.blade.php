@@ -56,6 +56,9 @@
             <td>
                 <b>{{ trans2('Customer Data') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
+                    <div class="w3-block hidden">
+                        <b>{{ trans2("Invoice No") }}</b> :
+                    </div>
                     <div class="w3-block">
                         <b>{{ trans2("Account No") }}</b> : {{ $company->id }}
                     </div>
@@ -90,7 +93,7 @@
                         <b>{{ trans2("Currency Type") }}</b> : EGP
                     </div>
                     <div class="w3-block">
-                        <b>{{ trans2("Total Amound") }}</b> : {{ $total }}
+                        <b>{{ trans2("Total Amound") }}</b> : {{ $finalTotal }}
                     </div>
                 </div>
                 <br>
