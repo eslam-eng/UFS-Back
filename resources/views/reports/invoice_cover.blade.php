@@ -1,4 +1,4 @@
-@extends('master')
+@extends('master', ['is_center'  => true])
 
 @php
     $totalAmount = 0;
@@ -51,7 +51,7 @@
 
 @section('content')
     <br>
-    <table class="w3-table">
+    <table class="w3-table text-left">
         <tr>
             <td>
                 <b>{{ trans2('Customer Data') }}</b>
@@ -100,7 +100,7 @@
 
                 <b>{{ trans2('Invoice Detail') }}</b>
                 <div class="w3-border w3-padding w3-border-gray">
-                    <div class="w3-block">
+                    <div class="w3-block invoice-no" contenteditable="true" >
                         <b>{{ trans2("Invoice No") }}</b> :
                     </div>
                     <div class="w3-block">

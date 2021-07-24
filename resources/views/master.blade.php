@@ -9,6 +9,7 @@
         direction: ltr;
     }
 
+    @if(!isset($is_center))
     .text-center, .text-center td {
         text-align: center!important;
     }
@@ -16,6 +17,7 @@
     .report-content table td, .report-content table th {
         text-align: center!important;
     }
+    @endif
 
     table {
         border-collapse: collapse!important;
