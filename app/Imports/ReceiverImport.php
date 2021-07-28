@@ -30,7 +30,7 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
             return null;
 
         if ($exists) {
-            $this->errors()->add('referance', 'Referance And Branch Name exists');
+            $this->failures()->add('referance', 'Referance And Branch Name exists');
             return null;
         }
 
