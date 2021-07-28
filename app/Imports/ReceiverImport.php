@@ -23,11 +23,18 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
     */
     public function model(array $row)
     {
-        $area = Area::find($row['province_code']); 
-        
+        $area = Area::find($row['province_code']);
+        $exists = Receiver::where('branch_name', $row['branch_name'])->where('referance', $row['reference'])->exists();
+
         if (!$area)
             return null;
-        
+
+        if ($exists) {
+            $this->errors()->add('referance', 'Referance And Branch Name exists');
+            return null;
+        }
+
+
         return new Receiver([
             'name'=>$row['name'],
             'address'=>$row['address'],
@@ -56,7 +63,7 @@ class ReceiverImport implements ToModel,SkipsOnError,WithHeadingRow,WithValidati
             '*.branch_name'=>['nullable','string'],
             '*.address2'=>['nullable','string'],
             '*.referance'=>['nullable','string'],
-            '*.company_code'=>['required','exists:companies,id'], 
+            '*.company_code'=>['required','exists:companies,id'],
             '*.province_code'=>['required','exists:areas,id'],
             '*.branch_code'=>['required','exists:branches,id'],
 
