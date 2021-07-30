@@ -374,6 +374,11 @@ $company = App\Models\Company::admin();
             padding-left: 40px !important;
         }
 
+        #header .page_title h1
+        {
+            padding: 30px 0 !important;
+        }
+
     </style>
     <noscript>
         <style>

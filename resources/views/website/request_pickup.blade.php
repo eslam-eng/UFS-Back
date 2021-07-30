@@ -148,7 +148,7 @@
 
                     <div class="col-lg-12 w3-padding">
                         <label></label>
-                        <button class="btn btn-primary" >{{ __('send') }}</button>
+                        <button class="btn btn-primary btn-lg" >{{ __('send') }}</button>
                       </div>
 
                   </div>

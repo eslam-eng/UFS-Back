@@ -22,13 +22,16 @@ use Illuminate\Support\Facades\Schema;
 Route::group(['namespace'=>'App\Http\Controllers\website'],function (){
     Route::get('/', "WebsiteController@home");
     Route::get('/about', "WebsiteController@about");
-    Route::get('/domestic-services', "WebsiteController@domesticService");
-    Route::get('/international-services', "WebsiteController@internationalService");
+    Route::get('/domestic-services', "WebsiteController@domesticService")->name('domestic-shipment');
+    Route::get('/export-shipments', "WebsiteController@exportShipmentService")->name('export-shipments');
+    Route::get('/import-shipments', "WebsiteController@importShipmentService")->name('import-shipments');
     Route::get('/services', "WebsiteController@service");
     Route::get('/special-services', "WebsiteController@specialService");
     Route::get('/additional-services', "WebsiteController@additionalService");
     Route::get('/contact', "WebsiteController@contact");
     Route::post('/contact', "MailBoxController@store");
+    Route::get('/career', "CareerController@career");
+    Route::post('/career', "CareerController@store")->name('career');
     Route::get('/request-pickup', "WebsiteController@requestPickup");
     Route::post('/request-pickup', "PickupController@store");
     Route::get('/track-awb','AwbTrackController@index')->name('trackAwb');

@@ -84,7 +84,7 @@ $company = App\Models\Company::admin();
                                 <li>
                                     <div class="icon"><i class="stm-email"></i></div>
                                     <div class="text">
-                                        <p><a href="mailto:{{ $company->email }}">{{ $company->email }}</a></p>
+                                        <p><a href="mailto:Customer.Service@ufs-eg.com">Customer.Service@ufs-eg.com</a></p>
                                     </div>
                                 </li>
                                 <li>
