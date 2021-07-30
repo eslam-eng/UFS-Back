@@ -23,26 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/website/exportshipment.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/UFS-BackEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UFS-BackEnd.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/website/WebsiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/website/WebsiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/about.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/additional_service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/additional_service.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/deomestic_serveice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/deomestic_serveice.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/international_service.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/request_pickup.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/request_pickup.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/service.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/specialserive.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/specialserive.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +40,7 @@
       <list>
         <option value="composer.json" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -339,7 +322,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -347,6 +330,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eslam\Documents\GitHub\UFS-Back\public\js" />
       <recent name="C:\Users\Eslam\Documents\GitHub\UFS-Back\public\uploads\excel" />
       <recent name="C:\Users\Eslam\Documents\GitHub\UFS-Back\app\Helper" />
     </key>
@@ -410,7 +394,7 @@
       <workItem from="1617699405919" duration="1934000" />
       <workItem from="1627411982191" duration="35360000" />
       <workItem from="1627579672701" duration="7764000" />
-      <workItem from="1627643085787" duration="12683000" />
+      <workItem from="1627643085787" duration="15269000" />
     </task>
     <servers />
   </component>

@@ -118,11 +118,10 @@
 
     </div>
     <hr>
-    <div id="triggerpos"></div>
     <div class="pageSection section">
         <div class="container">
             <ul class="timeline">
-                <li class="fade-in-left">
+                <li class="timeline-list">
                     <div class="timeline-badge"><i class="fa fa-star"></i></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -134,7 +133,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="timeline-inverted fadein">
+                <li class="timeline-inverted">
                     <div class="timeline-badge warning"><i class="fa fa-book"></i></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -145,7 +144,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="fade-in-left">
+                <li class="timeline-list">
                     <div class="timeline-badge danger"><i class="fa fa-handshake-o"></i></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -287,5 +286,37 @@
     </div>
 
 </div>
+@endsection
+@section('script')
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script>
+        $(document).ready(function (){
+            $(window).on('scroll',function (){
+
+                var scrollhight = $(window).scrollTop();
+
+                if (scrollhight>300)
+                {
+                    $('.pageSection .container .timeline .timeline-list').addClass('fade-in-left')
+                    $('.pageSection .container .timeline .timeline-inverted').addClass('fadein')
+                }
+                else
+                {
+                    $('.pageSection .container .timeline .timeline-list').removeClass('fade-in-left')
+                    $('.pageSection .container .timeline .timeline-inverted').removeClass('fadein')
+                }
+
+                if (scrollhight>900)
+                {
+                    $('.container .row .main-timeline .timeline').addClass('fade-in-left')
+                }
+                else
+                {
+                    $('.container .row .main-timeline .timeline').removeClass('fade-in-left')
+                }
+            })
+
+        });
+    </script>
 @endsection
 
