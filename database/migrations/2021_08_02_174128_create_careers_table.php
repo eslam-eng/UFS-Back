@@ -4,27 +4,28 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailBoxesTable extends Migration
+class CreateCareersTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    //'name','company','phone','website','email','message'
     public function up()
     {
-        Schema::create('mail_boxes', function (Blueprint $table) {
+        Schema::create('careers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('company');
             $table->string('phone');
-            $table->string('website')->nullable();
-            $table->string('email');
-//            $table->string('monthly_order ')->nullable();
+            $table->string('email')->unique();
+            $table->string('address');
+            $table->string('qualification');
+            $table->string('collage')->nullable();
+            $table->string('degree')->nullable();
             $table->string('industry')->nullable();
-            $table->longText('message');
-            $table->enum('type',['inbox','sent','trash']);
+            $table->string('skills')->nullable();
+            $table->string('experiance')->nullable();
+            $table->string('cv')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +37,6 @@ class CreateMailBoxesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mail_boxes');
+        Schema::dropIfExists('careers');
     }
 }

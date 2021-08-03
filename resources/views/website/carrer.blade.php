@@ -105,6 +105,8 @@
                 transform: translate3d(0, 0, 0);
             }
         }
+
+
     </style>
 
 @endsection
@@ -140,61 +142,110 @@
            </div>
         </div>
     </div>
+
 @endsection
+
 
 
 <!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Join US</h5>
+        <div class="modal-content" style="background-color: #fafafa;">
+            <div id="alert" class="alert alert-danger alert-dismissible fade" role="alert">
+                <h4 id="feedback_msg"></h4>
+                <ul></ul>
             </div>
+
             <div class="modal-body">
-                <form action="{{route('career')}}" method="post" enctype="multipart/form-data">
+                <form id="careerform" action="{{route('career')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="row">
                         <h4>Contact Details</h4>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" name="name" placeholder="Name..." required/>
+                            <input type="text" name="name" value="{{old('phone')}}" placeholder="Name..." />
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" name="phone" placeholder="phone number..." required/>
+                            <input type="text" name="phone" value="{{old('phone')}}" placeholder="phone number..."/>
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <input type="email" name="email" placeholder="email eaxmple(johne@gmail.com)" />
+                            <input type="email" name="email" value="{{old('email')}}" placeholder="email eaxmple(johne@gmail.com)" />
                         </div>
+
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" name="country" placeholder="your country" required/>
+                            <input type="text" name="address" value="{{old('address')}}"  placeholder="your address..." />
                         </div>
                     </div>
 
                     <div class="row">
                         <h4>Personal & Education Details</h4>
                         <div class="col-md-6 col-sm-12">
-                            <select class="custom-select" name="qualification" required>
-                                <option selected>Qualification </option>
-                                <option value="high">high</option>
-                                <option value="middle">middle</option>
-                                <option value="Normal">Normal</option>
-                                <option value="without">without a degree</option>
+                            <select class="form-control" name="qualification">
+                                <option>Select Qualification</option>
+                                <option value="B.A">B.A</option>
+                                <option value="B.Arch">B.Arch</option>
+                                <option value="BCA">BCA</option>
+                                <option value="B.B.A">B.B.A</option>
+                                <option value="B.Com">B.Com</option>
+                                <option value="B.Ed">B.Ed</option>
+                                <option value="BDS">BDS</option>
+                                <option value="BHM">BHM</option>
+                                <option value="B.Pharma">B.Pharma</option>
+                                <option value="B.Sc">B.Sc</option>
+                                <option value="B.Tech">B.Tech</option>
+                                <option value="B.E">B.E</option>
+                                <option value="LLB">LLB</option>
+                                <option value="MBBS">MBBS</option>
+                                <option value="BVSC">BVSC</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" name="faculty" placeholder="faculty..." />
+                            <input type="text" name="collage" value="{{old('collage')}}"  placeholder="faculty&collage" />
                         </div>
+
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" name="collage" placeholder="collage..." />
+                            <select class="form-control" name="degree">
+                                <option value="-1">Select Grade</option>
+                                <option value="B.A">A+</option>
+                                <option value="B.Arch">A</option>
+                                <option value="BCA">A-</option>
+                                <option value="B.B.A">B+</option>
+                                <option value="B.Com">B</option>
+                                <option value="B.Ed">B-</option>
+                                <option value="BDS">C+</option>
+                                <option value="BHM">C</option>
+                                <option value="B.Pharma">C-</option>
+                                <option value="B.Sc">D+</option>
+                                <option value="B.Tech">D</option>
+                                <option value="B.E">D-</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="row">
                         <h4>Current Professional Details</h4>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" name="industry" placeholder="current industry..." />
+                            <input type="text" name="industry" value="{{old('industry')}}" placeholder="current industry..." />
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" name="skills" placeholder="your skills..." />
+                            <input type="text" name="skills" value="{{old('skills')}}" placeholder="your skills..." />
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <select class="form-control" name="experiance">
+                                <option>Select Experiance</option>
+                                <option>0</option>
+                                <option>Less Than Year</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>More Than 8 Years</option>
+                            </select>
                         </div>
                     </div>
 
@@ -207,7 +258,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-send"></i> Send</button>
+                        <button type="button" id="sendcareerdata" class="btn btn-primary"><i class="fa fa-send"></i> Send</button>
                     </div>
                 </form>
             </div>
@@ -215,3 +266,51 @@
         </div>
     </div>
 </div>
+
+@section('script')
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script>
+        $(document).ready(function (){
+            $('#sendcareerdata').click(function (){
+                var formdata = new FormData($( "#careerform" )[0]);
+                // var formdata = $('#careerform').serialize();
+                var url = $('#careerform').attr('action');
+                $.ajax({
+                    url:url,
+                    dataType:'json',
+                    type:'post',
+                    data:formdata,
+                    contentType: false,
+                    processData: false,
+                    beforeSend:function (){
+                        $("#feedback_msg").empty();
+                        $('.alert ul').empty();
+                    },
+                    success:function (res){
+                        if (res.status)
+                        {
+                            $("#alert").removeClass('fade alert-danger').addClass('fadein alert-success');
+                            $("#feedback_msg").html(res.message);
+                        }
+
+                    },
+                    error:function (data_error,exception){
+
+                        $("#alert").removeClass('fade').addClass('fadein')
+                        var errorlist = '';
+                        if (exception=='error')
+                        {
+                            $("#feedback_msg").html(data_error.responseJSON.message);
+                            $.each(data_error.responseJSON.errors,function (index,value){
+                                errorlist+="<li>"+value+"</li>"
+                            });
+                            $('.alert ul').html(errorlist);
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+@endsection
+

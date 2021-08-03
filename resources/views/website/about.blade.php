@@ -20,7 +20,7 @@
         font-size: 20px;
     }
      h4,.timeline-heading h4{
-         color:#337ab7 !important;
+
          font-weight: bold;
      }
      #strengths_ufs , #service_felex
@@ -119,42 +119,154 @@
     </div>
     <hr>
     <div class="pageSection section">
-        <div class="container">
-            <ul class="timeline">
-                <li class="timeline-list">
-                    <div class="timeline-badge"><i class="fa fa-star"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4 class="timeline-title">Ufs Mission</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p>
-                                Our mission is to satisfy our customers' transportation and delivery needs and meet their expectations by providing the fastest and most reliable express services.                            </p>
+        <div class="container bootdey">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- timeline start -->
+                            <div class="timeline">
+                                <div class="timeline-row">
+                                    <div class="timeline-dot fb-bg"></div>
+                                    <div class="timeline-content">
+                                        <i class="fa fa-star"></i>
+                                        <h4>UFS Mission</h4>
+                                        <p>
+                                            Our mission is to satisfy our customers' transportation and delivery needs and meet their expectations by providing the fastest and most reliable express services.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-dot green-one-bg"></div>
+                                    <div class="timeline-content green-one">
+                                        <i class="fa fa-book"></i>
+                                        <h4>UFS Vision</h4>
+                                        <p>
+                                            Our vision is to be the first and most flexible in this business by delivering cost-effective and quality services.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-dot green-two-bg"></div>
+                                    <div class="timeline-content green-two">
+                                        <i class="fa fa-handshake-o"></i>
+                                        <h4>UFS Strategy</h4>
+                                        <p>
+                                            Our strategy is to be the solution provider for all customer needs.
+                                        </p>
+
+                                    </div>
+                                </div>
+                                {{--
+                                                                <div class="timeline-row">
+                                                                    <div class="timeline-time">
+                                                                        3:55 PM<small>Apr 26</small>
+                                                                    </div>
+                                                                    <div class="timeline-dot green-three-bg"></div>
+                                                                    <div class="timeline-content green-three">
+                                                                        <i class="icon-directions"></i>
+                                                                        <h4>Milestone Admin</h4>
+                                                                        <p>
+                                                                            Admin theme includes graphs, invoice, timeline, widgets, projects, calendar, components, layouts, todo's.
+                                                                        </p>
+                                                                        <div>
+                                                                            <span class="badge badge-light">Profile</span>
+                                                                            <span class="badge badge-light">Dashboard</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="timeline-row">
+                                                                    <div class="timeline-time">
+                                                                        5:24 PM<small>Apr 12</small>
+                                                                    </div>
+                                                                    <div class="timeline-dot green-four-bg"></div>
+                                                                    <div class="timeline-content green-four">
+                                                                        <i class="fa fa-user"></i>
+                                                                        <h4>Milestone Dashboard</h4>
+                                                                        <p class="no-margin">Milestone Admin Dashboard includes invoice, profile, tasks, gallery, projects, maintanence.</p>
+                                                                        <div>
+                                                                            <span class="badge badge-light">Analytics</span>
+                                                                            <span class="badge badge-light">Graphs</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="timeline-row">
+                                                                    <div class="timeline-time">
+                                                                        11:25 AM<small>Apr 19</small>
+                                                                    </div>
+                                                                    <div class="timeline-dot teal-bg"></div>
+                                                                    <div class="timeline-content teal">
+                                                                        <i class="fa fa-coffee"></i>
+                                                                        <h4>Milestone Template</h4>
+                                                                        <p class="no-margin">Panels, alerts, notifications, new input styles, pricing plans, project plan, signup, login and register.</p>
+                                                                        <div>
+                                                                            <span class="badge badge-light">Labels</span>
+                                                                            <span class="badge badge-light">Filters</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="timeline-row">
+                                                                    <div class="timeline-time">
+                                                                        12:30 PM<small>May 25</small>
+                                                                    </div>
+                                                                    <div class="timeline-dot sea-green-bg"></div>
+                                                                    <div class="timeline-content sea-green">
+                                                                        <i class="fa fa-image"></i>
+                                                                        <h4>Milestone dashboard</h4>
+                                                                        <p>Milestone Admin Dashboard contains Ion slider, heatmap, alerts, breadcrumbs, alerts, pricing, signup, login and register.</p>
+                                                                        <div>
+                                                                            <span class="badge badge-light">BS 4</span>
+                                                                            <span class="badge badge-light">Sass</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                --}}
+                            </div>
+                            <!-- timeline end -->
                         </div>
                     </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-badge warning"><i class="fa fa-book"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4 class="timeline-title">Ufs Vision</h4>
-                        </div>
-                        <div class="timeline-body">
-                           <p>Our vision is to be the first and most flexible in this business by delivering cost-effective and quality services.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-list">
-                    <div class="timeline-badge danger"><i class="fa fa-handshake-o"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4 class="timeline-title">Ufs Strategy</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Our strategy is to be the solution provider for all customer needs.</p>
-                        </div>
-                    </div>
-                </li>
+                </div>
+            </div>
+        </div>
+
+
+{{--        <div class="container">--}}
+{{--            <ul class="timeline">--}}
+{{--                <li class="timeline-list">--}}
+{{--                    <div class="timeline-badge"><i class="fa fa-star"></i></div>--}}
+{{--                    <div class="timeline-panel">--}}
+{{--                        <div class="timeline-heading">--}}
+{{--                            <h4 class="timeline-title">Ufs Mission</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="timeline-body">--}}
+{{--                            <p>--}}
+{{--                                Our mission is to satisfy our customers' transportation and delivery needs and meet their expectations by providing the fastest and most reliable express services.                            </p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--                <li class="timeline-inverted">--}}
+{{--                    <div class="timeline-badge warning"><i class="fa fa-book"></i></div>--}}
+{{--                    <div class="timeline-panel">--}}
+{{--                        <div class="timeline-heading">--}}
+{{--                            <h4 class="timeline-title">Ufs Vision</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="timeline-body">--}}
+{{--                           <p>Our vision is to be the first and most flexible in this business by delivering cost-effective and quality services.</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--                <li class="timeline-list">--}}
+{{--                    <div class="timeline-badge danger"><i class="fa fa-handshake-o"></i></div>--}}
+{{--                    <div class="timeline-panel">--}}
+{{--                        <div class="timeline-heading">--}}
+{{--                            <h4 class="timeline-title">Ufs Strategy</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="timeline-body">--}}
+{{--                            <p>Our strategy is to be the solution provider for all customer needs.</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
 
 {{--                <li class="timeline-inverted">--}}
 {{--                    <div class="timeline-panel">--}}
@@ -211,8 +323,8 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 {{--                </li>--}}
-            </ul>
-        </div>
+{{--            </ul>--}}
+{{--        </div>--}}
     </div>
     <hr class="bg-info">
 
@@ -296,24 +408,14 @@
                 var scrollhight = $(window).scrollTop();
 
                 if (scrollhight>300)
-                {
-                    $('.pageSection .container .timeline .timeline-list').addClass('fade-in-left')
-                    $('.pageSection .container .timeline .timeline-inverted').addClass('fadein')
-                }
+                    $('.pageSection .container .timeline .timeline-row').addClass('fade-in-left')
                 else
-                {
-                    $('.pageSection .container .timeline .timeline-list').removeClass('fade-in-left')
-                    $('.pageSection .container .timeline .timeline-inverted').removeClass('fadein')
-                }
+                    $('.pageSection .container .timeline .timeline-row').removeClass('fade-in-left')
 
                 if (scrollhight>900)
-                {
                     $('.container .row .main-timeline .timeline').addClass('fade-in-left')
-                }
                 else
-                {
                     $('.container .row .main-timeline .timeline').removeClass('fade-in-left')
-                }
             })
 
         });

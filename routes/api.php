@@ -317,6 +317,9 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
     Route::post('mailboxs/store', 'MailboxController@store');
     Route::post('mailboxs/destroy/{resource}', 'MailboxController@destroy');
 
+//    career route
+    Route::get('careers','CareerController@index');
+
 
 
 });

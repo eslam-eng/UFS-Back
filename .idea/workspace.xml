@@ -25,6 +25,15 @@
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/website/CareerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/website/CareerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_22_111401_create_mail_boxes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_22_111401_create_mail_boxes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/timelinestyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/timelinestyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ask_print.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ask_print.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/about.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/carrer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/carrer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -394,7 +403,9 @@
       <workItem from="1617699405919" duration="1934000" />
       <workItem from="1627411982191" duration="35360000" />
       <workItem from="1627579672701" duration="7764000" />
-      <workItem from="1627643085787" duration="15391000" />
+      <workItem from="1627643085787" duration="22373000" />
+      <workItem from="1627917261299" duration="8525000" />
+      <workItem from="1627928155850" duration="16646000" />
     </task>
     <servers />
   </component>
@@ -471,7 +482,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/website/home.blade.php</url>
-          <line>872</line>
+          <line>552</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

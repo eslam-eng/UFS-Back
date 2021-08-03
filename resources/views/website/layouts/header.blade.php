@@ -17,7 +17,6 @@ $company = App\Models\Company::admin();
     <meta name="description" content="{{ $company->name }}" />
     <meta name="robots" content="noodp" />
     <meta name="keywords" content="{{ $company->name }}" />
-    <link rel="canonical" href="index.html" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ $company->name }}" />
@@ -27,102 +26,7 @@ $company = App\Models\Company::admin();
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="{{ $company->name }}" />
     <meta name="twitter:title" content="{{ $company->name }}" />
-    <script type='application/ld+json'>
-        {
-            "@context": "http:\/\/schema.org",
-            "@type": "WebSite",
-            "@id": "#website",
-            "url": "https:\/\/logistics.stylemixthemes.com\/",
-            "name": "Transcargo | For Transportation, Logistics and Shipping Companies",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https:\/\/logistics.stylemixthemes.com\/?s={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        }
 
-    </script>
-    <script type='application/ld+json'>
-        {
-            "@context": "http:\/\/schema.org",
-            "@type": "Organization",
-            "url": "https:\/\/logistics.stylemixthemes.com\/",
-            "sameAs": [],
-            "@id": "#organization",
-            "name": "StylemixThemes",
-            "logo": ""
-        }
-
-    </script>
-    <!-- / Yoast SEO plugin. -->
-
-    <link rel='dns-prefetch' href='{{ url("/") }}/http://stylemixthemes.com/' />
-    <link rel='dns-prefetch' href='{{ url("/") }}/http://fonts.googleapis.com/' />
-    <link rel='dns-prefetch' href='{{ url("/") }}/http://s.w.org/' />
-    <link rel="alternate" type="application/rss+xml" title="Transcargo | For Transportation, Logistics and Shipping Companies &raquo; Feed" href="feed/index.html" />
-    <link rel="alternate" type="application/rss+xml" title="Transcargo | For Transportation, Logistics and Shipping Companies &raquo; Comments Feed" href="comments/feed/index.html" />
-    <link rel="alternate" type="application/rss+xml" title="Transcargo | For Transportation, Logistics and Shipping Companies &raquo; Home Comments Feed" href="home/feed/index.html" />
-    <script type="text/javascript">
-        window._wpemojiSettings = {
-            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/",
-            "ext": ".png",
-            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/",
-            "svgExt": ".svg",
-            "source": {
-                "concatemoji": "https:\/\/logistics.stylemixthemes.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.6"
-            }
-        };
-        ! function(e, a, t) {
-            var r, n, o, i, p = a.createElement("canvas"),
-                s = p.getContext && p.getContext("2d");
-
-            function c(e, t) {
-                var a = String.fromCharCode;
-                s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, e), 0, 0);
-                var r = p.toDataURL();
-                return s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, t), 0, 0), r === p.toDataURL()
-            }
-
-            function l(e) {
-                if (!s || !s.fillText) return !1;
-                switch (s.textBaseline = "top", s.font = "600 32px Arial", e) {
-                    case "flag":
-                        return !c([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) && (!c([55356,
-                            56826, 55356, 56819
-                        ], [55356, 56826, 8203, 55356, 56819]) && !c([55356, 57332, 56128, 56423, 56128, 56418,
-                            56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447
-                        ], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203,
-                            56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447
-                        ]));
-                    case "emoji":
-                        return !c([55357, 56424, 8205, 55356, 57212], [55357, 56424, 8203, 55356, 57212])
-                }
-                return !1
-            }
-
-            function d(e) {
-                var t = a.createElement("script");
-                t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t)
-            }
-            for (i = Array("flag", "emoji"), t.supports = {
-                    everything: !0,
-                    everythingExceptFlag: !0
-                }, o = 0; o < i.length; o++) t.supports[i[o]] = l(i[o]), t.supports.everything = t.supports
-                .everything && t.supports[i[o]], "flag" !== i[o] && (t.supports.everythingExceptFlag = t.supports
-                    .everythingExceptFlag && t.supports[i[o]]);
-            t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t
-                .readyCallback = function() {
-                    t.DOMReady = !0
-                }, t.supports.everything || (n = function() {
-                    t.readyCallback()
-                }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load",
-                    n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function() {
-                    "complete" === a.readyState && t.readyCallback()
-                })), (r = t.source || {}).concatemoji ? d(r.concatemoji) : r.wpemoji && r.twemoji && (d(r.twemoji),
-                    d(r.wpemoji)))
-        }(window, document, window._wpemojiSettings);
-
-    </script>
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -138,18 +42,6 @@ $company = App\Models\Company::admin();
         }
 
     </style>
-
-
-
-
-    <style id='rs-plugin-settings-inline-css' type='text/css'>
-        #rs-demo-id {}
-
-    </style>
-
-
-
-
 
     <link rel='stylesheet' id='transcargo-stm-css' href='{{ url("/") }}/wp-content/cache/autoptimize/css/autoptimize_single_e77837ebe1d09622e74a7c24732e46785152.css?ver=1.0' type='text/css' media='all' />
 
@@ -187,15 +79,6 @@ $company = App\Models\Company::admin();
     <script type='text/javascript' src='{{ url("/") }}/wp-content/plugins/revslider/public/assets/js/rs6.min36b6.js?ver=6.1.7' id='revmin-js'></script>
     <script type='text/javascript' src='{{ url("/") }}/../stylemixthemes.com/api/envato-switcher/inline40df.js?ver=5.6' id='envato-switcher-js'></script>
 
-    <link rel="https://api.w.org/" href="wp-json/index.html" />
-    <link rel="alternate" type="application/json" href="wp-json/wp/v2/pages/2.json" />
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.html?rsd" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" />
-    <meta name="generator" content="WordPress 5.6" />
-    <link rel='shortlink' href='{{ url("/") }}' />
-    <link rel="alternate" type="application/json+oembed" href="wp-json/oembed/1.0/embedd48d.json?url=https%3A%2F%2Flogistics.stylemixthemes.com%2F" />
-    <link rel="alternate" type="text/xml+oembed" href="wp-json/oembed/1.0/embed1d6f?url=https%3A%2F%2Flogistics.stylemixthemes.com%2F&amp;format=xml" />
-
     <script data-cfasync="false">
         window.a2a_config = window.a2a_config || {};
         a2a_config.callbacks = [];
@@ -210,13 +93,6 @@ $company = App\Models\Company::admin();
         })(document, "script");
 
     </script>
-    <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress." />
-    <meta name="generator" content="Powered by Slider Revolution 6.1.7 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
-    <link rel="icon" href="wp-content/uploads/2015/12/cropped-favicon-transcargo-32x32.png" sizes="32x32" />
-    <link rel="icon" href="wp-content/uploads/2015/12/cropped-favicon-transcargo-192x192.png" sizes="192x192" />
-    <link rel="apple-touch-icon" href="wp-content/uploads/2015/12/cropped-favicon-transcargo-180x180.png" />
-    <meta name="msapplication-TileImage" content="https://logistics.stylemixthemes.com/wp-content/uploads/2015/12/cropped-favicon-transcargo-270x270.png" />
-
     <style type="text/css" data-type="vc_shortcodes-custom-css">
         .vc_custom_1445941555299 {
             margin-bottom: 0px !important;
@@ -406,38 +282,6 @@ $company = App\Models\Company::admin();
 
     </script>
     <!-- End Google Tag Manager -->
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "Product",
-            "category": "Business",
-            "url": "https://logistics.stylemixthemes.com/",
-            "description": "Transcargo is the transportation, logistics, shipping company WordPress theme. Using Transcargo, you can easily create a modern website and start promoting your services. We studied and researched tons of logistic company and shipping company websites before planning the features of the theme to ensure we covered all necessary functions and abilities for transportation business website. It’s fully Responsive and Easy to Customize using intuitive Drag \u0026amp; Drop Visual Composer and Theme Options panel in WordPress Customizer. Transcargo – Transportation WordPress theme, Logistics WordPress theme, Shipping Company WordPress theme, Delivery Company WordPress theme. Transcargo is the only WordPress theme you need for Tra",
-            "name": "Transcargo - Transportation WordPress Theme for Logistics",
-            "image": "https://s3.envato.com/files/250863693/icon-transcargo.png",
-            "brand": {
-                "@type": "Brand",
-                "name": "StylemixThemes"
-            },
-            "sku": 13947082,
-            "mpn": "E-13947082",
-            "offers": {
-                "@type": "AggregateOffer",
-                "availability": "http://schema.org/InStock",
-                "lowPrice": "59.00",
-                "highPrice": "1600.00",
-                "offerCount": 1,
-                "priceCurrency": "USD"
-            },
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.82",
-                "reviewCount": "102"
-            }
-        }
-
-    </script>
-    <script src="../rum-static.pingdom.net/pa-5f967c2b5eacee001500024b.js" async></script>
     <script async src='{{ url("/") }}/cdn-cgi/bm/cv/669835187/api.js'></script>
     @yield('script')
 </head>
