@@ -117,20 +117,39 @@
                         <div class="media-right media-middle">
                             <div class="top_search">
                                 <div class="search_button"><i class="stm-tracking"></i></div>
-                                <div class="top_search_form">
+                                <div class="top_search_form" style="width: 450px">
                                     <p>For more detailed tracking and status information, sign in or contact your local
                                         BestLogistic representative for access.</p>
-                                   <h4>
-                                       <a role="button" href="{{ route('trackMore') }}" aria-current="page" data-wpel-link="internal">
-                                           <span style="color: #ff4a00">{{ ___('track more') }}</span>
-                                       </a>
-                                   </h4>
-                                    <form action="{{ route('trackAwb') }}" method="get">
-                                        @csrf
-                                        <input type="text" placeholder="Enter Reference number" value=""
-                                            name="track_number">
-                                        <button type="submit"><i class="stm-arrow-next"></i></button>
-                                    </form>
+
+
+
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item active">
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Track Domestic shipments</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Track International shipments</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active in" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                           <br>
+                                            <form action="{{ route('trackAwb') }}" method="get">
+                                                @csrf
+                                                <input type="text" placeholder="Enter Reference number" value=""
+                                                       name="track_number" autocomplete="off">
+                                                <button type="submit"><i class="stm-arrow-next"></i></button>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane fade" style="margin: -40px 0 0 0 !important;" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                <h5 style="margin: 0 !important;">
+                                                    <a role="button" href="{{ route('trackMore') }}" aria-current="page" data-wpel-link="internal">
+                                                        <span style="color: #ff4a00">{{ ___('Click Here To Track International') }}</span>
+                                                    </a>
+                                                </h5>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

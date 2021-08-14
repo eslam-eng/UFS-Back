@@ -2,6 +2,12 @@
 $company = App\Models\Company::admin();
 @endphp
 
+<style>
+    #footer .widgets_row .footer_logo a img
+    {
+        height: 90px;
+    }
+</style>
 <footer id="footer">
     <div class="widgets_row">
         <div class="container">
