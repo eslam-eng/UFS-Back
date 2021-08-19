@@ -45,7 +45,9 @@
     </div>
 
     @if(!isset($nonPrint))
-        @include("ask_print")
+    <!--
+        include("ask_print")
+    -->
     @endif
 
 </body>

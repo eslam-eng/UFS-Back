@@ -89,8 +89,11 @@
 
 
 
-                                    <li id="menu-item-641" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-641"><a href="{{url('/services')}}">{{__('services')}}</a>
-
+                                    <li id="menu-item-641" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-641"><a href="{{url('/services')}}">
+                                        <span style="text-transform: capitalize!important" >
+                                            {{__('services')}}
+                                        </span>
+                                        </a>
                                     </li>
 
 
@@ -114,6 +117,11 @@
                                     <li id="menu-item-4" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
                                         <a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page" data-wpel-link="internal">
                                             {{ ___('Go to System') }}
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-5" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
+                                        <a href="https://info.ufs-eg.com/" target="_blank" aria-current="page" data-wpel-link="internal">
+                                            {{ ___('Go to System2') }}
                                         </a>
                                     </li>
                                 </ul>
