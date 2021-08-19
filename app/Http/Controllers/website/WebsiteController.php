@@ -20,14 +20,15 @@ class WebsiteController extends Controller
         $company = Company::admin();
         return view('website.home', compact('company'));
     }
-
-    public function about()
-    {
-        $data = DB::table('website_setting')->find(1);
-        $company = Company::admin();
-        return view('website.about', compact('company', 'data'));
-    }
-
+//----------------------------------------------------------------------------------
+//    old about blade that return data to view from dashboard
+//    public function about()
+//    {
+//        $data = DB::table('website_setting')->find(1);
+//        $company = Company::admin();
+//        return view('website.about', compact('company', 'data'));
+//    }
+//----------------------------------------------------------------------------------
 //    public function services()
 //    {
 //        $data = DB::table('website_setting')->find(2);
@@ -35,14 +36,27 @@ class WebsiteController extends Controller
 //        return view('website.service', compact('company', 'data'));
 //    }
 
+
+    public function about()
+    {
+        return view('website.about');
+    }
+
+
+
     public function domesticService()
     {
         return view('website.deomestic_serveice');
     }
-
-    public function internationalService()
+// export shipments view
+    public function exportShipmentService()
     {
-        return view('website.international_service');
+        return view('website.exportshipment');
+    }
+// import shipments view
+    public function importShipmentService()
+    {
+        return view('website.importshipment');
     }
 
     public function service()

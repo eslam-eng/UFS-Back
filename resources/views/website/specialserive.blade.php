@@ -95,7 +95,7 @@
         </section>
 
     </div>
-    <div class="pageSection section">
+    <div class="pageSection section" style="background: #eee">
 
         <section class="no content-campaign  modal-for-buttons disable-coveroverlay-paddings cms-u-padding__top-custom-30 cms-u-padding__bottom-custom-16">
             <div class="cover__overlay">

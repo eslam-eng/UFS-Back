@@ -2,6 +2,12 @@
 $company = App\Models\Company::admin();
 @endphp
 
+<style>
+    #footer .widgets_row .footer_logo a img
+    {
+        height: 90px;
+    }
+</style>
 <footer id="footer">
     <div class="widgets_row">
         <div class="container">
@@ -84,7 +90,7 @@ $company = App\Models\Company::admin();
                                 <li>
                                     <div class="icon"><i class="stm-email"></i></div>
                                     <div class="text">
-                                        <p><a href="mailto:{{ $company->email }}">{{ $company->email }}</a></p>
+                                        <p><a href="mailto:Customer.Service@ufs-eg.com">Customer.Service@ufs-eg.com</a></p>
                                     </div>
                                 </li>
                                 <li>
