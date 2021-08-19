@@ -112,7 +112,7 @@
                                         </a>
                                     </li>
                                     <li id="menu-item-4" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="{{ url('/request-pickup') }}" aria-current="page" data-wpel-link="internal">
+                                        <a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page" data-wpel-link="internal">
                                             {{ ___('Go to System') }}
                                         </a>
                                     </li>
