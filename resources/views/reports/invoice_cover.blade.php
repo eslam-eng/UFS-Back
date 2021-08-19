@@ -117,7 +117,7 @@
                             <b class="w3-left"> {{ trans2('Total Shipment') }}</b>
                         </div>
                         <div class="w3-col l6 m6 s6" style="text-align: right" >
-                            <b class="w3-right"> {{ $finalTotal }}</b>
+                            <b class="w3-right"> {{ $totalAmount }}</b>
                         </div>
                     </div>
                     <div class="w3-block w3-display-container w3-row">
