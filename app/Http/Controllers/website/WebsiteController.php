@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
-use App\Imports\AreaImport;
-use App\Models\Area;
 use App\Models\Company;
 use App\Models\Status;
 use App\Models\TransType;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class WebsiteController extends Controller
 {
@@ -18,7 +16,8 @@ class WebsiteController extends Controller
     public function home()
     {
         $company = Company::admin();
-        return view('website.home', compact('company'));
+        $cities = DB::table('cities')->select('id', 'name')->get();
+        return view('website.home', compact('company','cities'));
     }
 //----------------------------------------------------------------------------------
 //    old about blade that return data to view from dashboard
@@ -46,9 +45,10 @@ class WebsiteController extends Controller
 
     public function domesticService()
     {
-        return view('website.deomestic_serveice');
+        return view('website.domestic_service');
     }
 // export shipments view
+
     public function exportShipmentService()
     {
         return view('website.exportshipment');
@@ -61,7 +61,7 @@ class WebsiteController extends Controller
 
     public function service()
     {
-        return view('website.service');
+        return view('website.services');
     }
 
 
@@ -91,5 +91,7 @@ class WebsiteController extends Controller
 
         return view('website.request_pickup', compact('company', 'companies', 'status', 'transTypes', 'types'));
     }
+
+
 
 }

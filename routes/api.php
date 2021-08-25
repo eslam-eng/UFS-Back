@@ -319,6 +319,7 @@ Route::group(['namespace'=>'App\Http\Controllers',"middleware" => "auth:api"], f
 
 //    career route
     Route::get('careers','CareerController@index');
+    Route::get('all-ask-prices-','PriceShipmentController@allAskPrice');
 
 
 

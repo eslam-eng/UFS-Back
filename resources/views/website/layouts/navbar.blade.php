@@ -1,288 +1,162 @@
-@php
-    $company = App\Models\Company::admin();
-@endphp
-<style>
-    #menu-primary-menu li a
-    {
-        font-size: 19px!important;
-    }
-</style>
-<header id="header">
-    <div class="top_bar">
-        <div class="container">
-            <div class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-dropdown js-wpml-ls-legacy-dropdown"
-                id="lang_sel">
-                <ul>
 
-                    <li tabindex="0"
-                        class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-item-legacy-dropdown">
-                        <a href="#" class="js-wpml-ls-item-toggle wpml-ls-item-toggle lang_sel_sel icl-en"><span
-                                class="wpml-ls-native icl_lang_sel_native">English</span>
-                            </a>
+<link rel="stylesheet" href="{{asset('website/css/nav.css')}}"/>
+<section class="header_area five" id="home">
+{{--    <nav id="mynav" class="navbar navbar-light bg-light justify-content-between">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-6 col-sm-6">--}}
 
-                        <ul class="wpml-ls-sub-menu">
-                            <li class="icl-de wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-de">
-                                <a href="#" class="wpml-ls-link">
-                                    <span  class="wpml-ls-display icl_lang_sel_translated">Arabic</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </li>
-
-                </ul>
-            </div>
-            <div class="top_bar_info_wr">
-
-                <ul class="top_bar_info" id="top_bar_info_1" style="display: block;">
-                    <li>
-                        <i class="stm-iphone"></i>
-                        <span>CALL FREE: {{ $company->phone }}</span>
-                    </li>
-                    <li>
-                        <a href="mailto:Customer.Service@ufs-eg.com">
-                            <i class="stm-email"></i>
-                            <span>Customer.Service@ufs-eg.com</span>
-                        </a>
-                    </li>
-                    <li>
-                        <i class="stm-clock"></i>
-                        <span>{{ $company->address }}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="top_nav_wr">
-        <div class="top_nav_affix affix-top">
-            <div class="container-fluid">
-                <div class="top_nav">
-                    <div id="menu_toggle">
-                        <button></button>
+{{--                </div>--}}
+{{--                <div class="col-md-6 col-sm-6">--}}
+{{--                    <ul>--}}
+{{--                        <li>--}}
+{{--                            <i class="fa fa-phone"></i>--}}
+{{--                            <span>CALL FREE: {{ $company->phone }}</span>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="mailto:{{ $company->email }}">--}}
+{{--                                <i class="fa fa-envelope" aria-hidden="true"></i>--}}
+{{--                                <span>{{ $company->email }}</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <i class="fa fa-map-marker"></i>--}}
+{{--                            <span>{{ $company->address }}</span>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </nav>--}}
+    <div class="logo_menu" id="sticker">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-6">
+                    <div class="logo">
+                        <a href="/"><img src="{{asset('uploads/company/161752858777432.png')}}" alt="ufs"></a>
                     </div>
-                    <div class="media">
-                        <div class="media-left media-middle">
-                            <div class="logo">
-                                <a  href="{{ url('/') }}"  data-wpel-link="internal">
-                                    <img src="{{ url('/logo.png') }}" alt="{{ $company->name }}" style="height: 100px">
+                </div>
+                <div class="col-md-8 col-xs-6  col-sm-7 col-lg-offset-1 col-lg-7 mobMenuCol" style="margin-top: 0px;">
+                    <nav class="navbar">
+                        <ul class="nav navbar-nav navbar-right menu">
+                            <li><a href="/">{{___('home')}}</a></li>
+                            <li><a href="/about-us">{{___('about')}}</a></li>
+                            <li><a href="/services">{{___('services')}}</a></li>
+                            <li><a href="/contact-us">{{___('contact')}}</a></li>
+                            <li><a href="/career">{{___('carrier')}}</a></li>
+                            <li><a href="/price-shipments">{{___('pricing')}}</a></li>
+                            <li><a href="/request-pickup">{{___('pick request')}}</a></li>
+                            <li class="current-menu-item">
+                                <a role="button" class="btn" style="color: #fff">
+                                    Track&Trace<span class="caret"></span>
                                 </a>
-                            </div>
-                            <div class="mobile_logo">
-                                <a href="{{ url('/') }}" data-wpel-link="internal">
-                                    <img src="{{ url('/logo.png') }}" alt="{{ $company->name }}">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="media-body media-middle">
-                            <div class="top_nav_menu_wr">
-                                <ul id="menu-primary-menu" class="top_nav_menu">
-                                    <li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="{{ url('/') }}" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('Home') }}
-                                        </a>
-                                    </li>
-                                    <li id="menu-item-2" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="{{ url('/about') }}" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('About Us') }}
-                                        </a>
-                                    </li>
-
-
-
-                                    <li id="menu-item-641" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-641"><a href="{{url('/services')}}">
-                                        <span style="text-transform: capitalize!important" >
-                                            {{__('services')}}
-                                        </span>
-                                        </a>
-                                    </li>
-
-
-                                    <li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="{{ url('/contact') }}" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('Contact Us') }}
-                                        </a>
-                                    </li>
-
-                                    <li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="{{ url('/career') }}" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('Career') }}
-                                        </a>
-                                    </li>
-
-                                    <li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="{{ url('/request-pickup') }}" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('Request A Pickup') }}
-                                        </a>
-                                    </li>
-                                    <li id="menu-item-4" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('Go to System') }}
-                                        </a>
-                                    </li>
-                                    <li id="menu-item-5" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                        <a href="https://info.ufs-eg.com/" target="_blank" aria-current="page" data-wpel-link="internal">
-                                            {{ ___('Go to System2') }}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="media-right media-middle">
-                            <div class="top_search">
-                                <div class="search_button"><i class="stm-tracking"></i></div>
-                                <div class="top_search_form" style="width: 450px">
+                                <ul class="dropdownMenu trackbox">
                                     <p>For more detailed tracking and status information, sign in or contact your local
-                                        BestLogistic representative for access.</p>
+                                        BestLogistic representative for access.
+                                    </p>
+                                    <div class="about_single_item">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-
-
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item active">
-                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Track Domestic shipments</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Track International shipments</a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active in" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                           <br>
-                                            <form action="{{ route('trackAwb') }}" method="get">
-                                                @csrf
-                                                <input type="text" placeholder="Enter Reference number" value=""
-                                                       name="track_number" autocomplete="off">
-                                                <button type="submit"><i class="stm-arrow-next"></i></button>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane fade" style="margin: -40px 0 0 0 !important;" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                                <h5 style="margin: 0 !important;">
-                                                    <a role="button" href="{{ route('trackMore') }}" aria-current="page" data-wpel-link="internal">
-                                                        <span style="color: #ff4a00">{{ ___('Click Here To Track International') }}</span>
-                                                    </a>
-                                                </h5>
+                                            <li class="nav-item active" style="margin-bottom: 0px;">
+                                                <a class="nav-link" id="profile-tab" style="padding-bottom: 30px" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Track Domestic</a>
+                                            </li>
+                                            <li class="nav-item" style="margin-bottom: 0px;">
+                                                <a class="nav-link" id="contact-tab" style="margin-top: 15px;padding-bottom: 30px" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Track International</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade active in" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                <div class="welcome_form">
+                                                    <br>
+                                                    <form action="{{ route('trackAwb') }}" method="get">
+                                                        @csrf
+                                                        <input class="form-control" required type="text"  name="track_number" autocomplete="off" placeholder="Enter your Awb Number">
+                                                        <input class="submit" type="submit" value="{{trans('website.contact.submit')}}">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                                <br>
+                                                <p>
+                                                    To Track International shipments<a role="button" style="color:#829eec;padding-left: 8px;font-size: 17px;font-weight: bold;" href="{{ route('trackMore') }}" aria-current="page" data-wpel-link="internal">{{ ___('Click Here') }}</a>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="top_mobile_menu_wr">
-                        <ul id="menu-primary-menu-1" class="top_mobile_menu">
-                            <li
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-7">
-                                <a href="https://logistics.stylemixthemes.com/" aria-current="page"
-                                    data-wpel-link="internal">Home</a></li>
-                            <li
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-641">
-                                <a href="#">Services</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-645">
-                                        <a href="https://logistics.stylemixthemes.com/services-icon/"
-                                            data-wpel-link="internal">Services – Icons Grid</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-688">
-                                        <a href="https://logistics.stylemixthemes.com/services-grid/"
-                                            data-wpel-link="internal">Services – Images Grid</a></li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-822"><a
-                                            href="/services/sea-freight/" data-wpel-link="internal">Single Service
-                                            Template</a></li>
                                 </ul>
                             </li>
-                            <li
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-273">
-                                <a href="#">News</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-274"><a
-                                            href="/news/?layout=grid&amp;sidebar_id=272" data-wpel-link="internal">News
-                                            – Grid View with Sidebar</a></li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-275"><a
-                                            href="/news/" data-wpel-link="internal">News – List View with Sidebar</a>
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-823"><a
-                                            href="/face-the-challenges-of-increasing-chain-complexity/"
-                                            data-wpel-link="internal">News – Post Template with Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-47">
-                                <a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-426">
-                                        <a href="https://logistics.stylemixthemes.com/about-us/"
-                                            data-wpel-link="internal">About Us</a></li>
-                                    <li
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-546">
-                                        <a href="#">Our Team</a>
-                                        <ul class="sub-menu">
-                                            <li
-                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-552">
-                                                <a href="https://logistics.stylemixthemes.com/our-team-grid/"
-                                                    data-wpel-link="internal">Team – Grid View</a></li>
-                                            <li
-                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-522">
-                                                <a href="https://logistics.stylemixthemes.com/our-team-list/"
-                                                    data-wpel-link="internal">Team – List View</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-503">
-                                        <a href="https://logistics.stylemixthemes.com/vacancies/"
-                                            data-wpel-link="internal">Vacancies</a></li>
-                                    <li
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-819">
-                                        <a href="#">Gallery</a>
-                                        <ul class="sub-menu">
-                                            <li
-                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-564">
-                                                <a href="https://logistics.stylemixthemes.com/gallery-grid/"
-                                                    data-wpel-link="internal">Gallery – Grid</a></li>
-                                            <li
-                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-623">
-                                                <a href="https://logistics.stylemixthemes.com/gallery-masonry/"
-                                                    data-wpel-link="internal">Gallery – Masonry</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-458">
-                                        <a href="https://logistics.stylemixthemes.com/incoterms/"
-                                            data-wpel-link="internal">Incoterms</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-903">
-                                        <a href="https://logistics.stylemixthemes.com/request-a-quote/"
-                                            data-wpel-link="internal">Request a Quote</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-473">
-                                        <a href="https://logistics.stylemixthemes.com/track-your-shipment/"
-                                            data-wpel-link="internal">Track Your Shipment</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                        <a href="https://logistics.stylemixthemes.com/shortcodes/"
-                                            data-wpel-link="internal">Shortcodes</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52"><a
-                                            href="https://logistics.stylemixthemes.com/typography/"
-                                            data-wpel-link="internal">Typography</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-446"><a
-                                    href="https://logistics.stylemixthemes.com/contacts/"
-                                    data-wpel-link="internal">Contacts</a></li>
                         </ul>
-                        <div class="mobile_search_form">
-                            <p>For more detailed tracking and status information, sign in or contact your local
-                                BestLogistic representative for access.</p>
-                            <form>
-                                <div class="search_button"><i class="stm-tracking"></i></div>
-                                <input type="text" placeholder="Enter Reference number" value="" name="track_number">
-                                <button type="submit"><i class="stm-arrow-next"></i></button>
-                            </form>
-                        </div>
-                    </div>
+                    </nav>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 signup" style="margin-top: 25px;">
+                    <ul class="nav navbar-nav menu">
+                        <li class="current-menu-item"><a role="button" class="btn" style="color: #fff"><i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+                                Login<span class="caret"></span></a>
+                            <ul class="dropdownMenu">
+                                <li><a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page">Login To Dashboard</a></li>
+                                <li><a href="index-2.html">Login To demo</a></li>
+
+                            </ul>
+
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    @if (isset($title))
-    <div class="page_title">
-        <div class="container">
-            <h1>{{ ___($title) }}</h1>
+    <div class="Modern-Slider">
+        <!-- Item -->
+        <div class="item">
+            <div class="img-fill">
+                <img src="{{asset('uploads/slider/slider_1.jpg')}}" alt="#">
+                <div class="info">
+                    <div>
+                        <h1>CONTINENTAL TRANSPORTATION</h1>
+                        <h4>To best support your ever-changing logistics needs <br>we are continuously evolving our transportation services.</h4>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- // Item -->
+        <!-- Item -->
+        <div class="item">
+            <div class="img-fill">
+                <img src="{{asset('uploads/slider/slider_2.jpg')}}" alt="#">
+                <div class="info">
+                    <div>
+                        <h1>TRANSATLANTIC DELIVERY</h1>
+                        <h4>Combined rail road transport is particularly well suited to the shipping of hazardous goods since it reduces risk.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Item -->
+        <!-- Item -->
+        <div class="item">
+            <div class="img-fill">
+                <img src="{{asset('uploads/slider/slider_3.jpg')}}" alt="#">
+                <div class="info">
+                    <div>
+                        <h1>SEA & OCEAN DELIVERY</h1>
+                        <h4>Sea-Air cargo is the last to be loaded and the first to be unloaded,reducing transshipment times and risk.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Item -->
+        <!-- Item -->
+        <div class="item">
+            <div class="img-fill">
+                <img src="{{asset('uploads/slider/slider_4.jpg')}}" alt="#">
+                <div class="info">
+                    <div>
+                        <h1>WAREHOUSING STORAGE</h1>
+                        <h4>You can opt for dedicated platforms from the advantages related to shared surfaces,resources and equipment.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Item -->
     </div>
-    @endif
-</header>
-
+</section>
+<!--end of header area-->

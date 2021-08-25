@@ -18,17 +18,16 @@ use Illuminate\Support\Facades\Schema;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::group(['namespace'=>'App\Http\Controllers\website'],function (){
     Route::get('/', "WebsiteController@home");
-    Route::get('/about', "WebsiteController@about");
-    Route::get('/domestic-services', "WebsiteController@domesticService")->name('domestic-shipment');
+    Route::get('/about-us', "WebsiteController@about");
+    Route::get('/domestic-shipments', "WebsiteController@domesticService")->name('domestic-shipment');
     Route::get('/export-shipments', "WebsiteController@exportShipmentService")->name('export-shipments');
     Route::get('/import-shipments', "WebsiteController@importShipmentService")->name('import-shipments');
     Route::get('/services', "WebsiteController@service");
     Route::get('/special-services', "WebsiteController@specialService");
     Route::get('/additional-services', "WebsiteController@additionalService");
-    Route::get('/contact', "WebsiteController@contact");
+    Route::get('/contact-us', "WebsiteController@contact");
     Route::post('/contact', "MailBoxController@store");
     Route::get('/career', "CareerController@career");
     Route::post('/career', "CareerController@store")->name('career');
@@ -36,6 +35,8 @@ Route::group(['namespace'=>'App\Http\Controllers\website'],function (){
     Route::post('/request-pickup', "PickupController@store");
     Route::get('/track-awb','AwbTrackController@index')->name('trackAwb');
     Route::get('/track-more','AwbTrackController@trackMore')->name('trackMore');
+    Route::get('/price-shipments',"PriceShipmentController@index")->name('pricingIndex');
+    Route::post('/price-shipments',"PriceShipmentController@calcPrice")->name('calc-price');
 });
 
 //Route::get('/1x3awb','App\Http\Controllers\AwbPrinterController@print1x3');

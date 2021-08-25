@@ -1,177 +1,128 @@
 @php
-$company = App\Models\Company::admin();
+    $company = App\Models\Company::admin();
 @endphp
 
-<style>
-    #footer .widgets_row .footer_logo a img
-    {
-        height: 90px;
-    }
-</style>
-<footer id="footer">
-    <div class="widgets_row">
-        <div class="container">
-            <div class="footer_widgets">
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="footer_logo">
-                            <a href="{{ url('/') }}" data-wpel-link="internal">
-                                <img src="{{ url('/logo.png') }}" alt="{{ $company->name }}">
-                            </a>
-                        </div>
-                        <div class="footer_text">
-                            <p>
-                                {{ $company->notes }}
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <section id="nav_menu-2" class="widget widget_nav_menu">
-                            <h6 class="widget_title">{{ ___('Useful Links') }}</h6>
-                            <div class="menu-footer-menu-container">
-                                <ul id="menu-footer-menu" class="menu">
-
-                                    <li id="menu-item-793"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-793">
-                                        <a href="{{ url('/about') }}" data-wpel-link="internal">
-                                            {{ ___('About Us') }}
-                                        </a>
-                                    </li>
-
-                                    <li id="menu-item-793"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-793">
-                                        <a href="{{ url('/services') }}" data-wpel-link="internal">
-                                            {{ ___('Our Services') }}
-                                        </a>
-                                    </li>
-
-                                    <li id="menu-item-793"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-793">
-                                        <a href="{{ url('/contact') }}" data-wpel-link="internal">
-                                            {{ ___('Contact Us') }}
-                                        </a>
-                                    </li>
-
-                                    <li id="menu-item-793"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-793">
-                                        <a href="{{ url('/awb-track') }}" data-wpel-link="internal">
-                                            {{ ___('Track Awb') }}
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <section id="contacts-2" class="widget widget_contacts">
-                            <h6 class="widget_title">{{ ___('Get In Touch') }}</h6>
-                            <ul>
-                                <li>
-                                    <div class="icon"><i class="stm-location-2"></i></div>
-                                    <a class="text"  target="_blank" href="https://www.google.com/maps/place/{{ $company->address }}">
-                                        <p>{{ $company->address }}</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <div class="icon"><i class="stm-iphone"></i></div>
-                                    <a class="text" href="tel:{{ $company->phone }}" >
-                                        <p>CALL FREE: {{ $company->phone }}</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <div class="icon"><i class="stm-fax"></i></div>
-                                    <div class="text">
-                                        <p>FAX: {{ $company->fax }}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"><i class="stm-email"></i></div>
-                                    <div class="text">
-                                        <p><a href="mailto:Customer.Service@ufs-eg.com">Customer.Service@ufs-eg.com</a></p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"><i class="stm-clock"></i></div>
-                                    <a class="text" target="_blank" href="https://www.google.com/maps/place/{{ optional($company->city)->name }}-{{ optional($company->area)->name }}" >
-                                        <p>{{ optional($company->city)->name }} - {{ optional($company->area)->name }}</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <section id="tp_widget_recent_tweets-3" class="widget widget_tp_widget_recent_tweets">
-                            <h6 class="widget_title">Latest Tweets</h6>
-                            <div class="tp_recent_tweets">
-                                <ul>
-                                    <li><span>Warm Christmas Gifts by Stylemix - <a href="https://t.co/3gw6N6QDWV"
-                                                target="_blank" data-wpel-link="external"
-                                                rel="nofollow external noopener noreferrer">https://t.co/3gw6N6QDWV</a></span><a
-                                            class="twitter_time" target="_blank"
-                                            href="https://twitter.com/stylemix_themes/statuses/1341705286260822017"
-                                            data-wpel-link="external" rel="nofollow external noopener noreferrer">87
-                                            days
-                                            ago</a></li>
-                                </ul>
-                            </div>
-                        </section>
-                    </div>
+<!--   end of slider area-->
+<section class="footer-area" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-3 col-xs-12 col-lg-3">
+                <div class="single-footer">
+                    <h2></h2>
+                    <a href="/"><img src="{{asset('uploads/company/161752858777432.png')}}" alt="ufs" style="width: 50%"></a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="copyright_row">
-        <div class="container">
-            <div class="copyright_row_wr">
-                <div class="socials">
-                    <ul>
+            <div class="col-md-3 col-sm-3 col-xs-12 col-lg-4">
+                <div class="single-footer">
+                    <h2>{{trans('website.home.about_us')}}</h2>
+                    <p style="text-align: justify;color: #fff">{{trans('website.home.about_us_content')}}</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-12 col-lg-2">
+                <div class="single-footer">
+                    <h2>More links</h2>
+                    <ul class="list">
+                        <li><a href="/about-us">about us.</a></li>
+                        <li><a href="/contact-us">contact us.</a></li>
+                        <li><a href="/request-pickup">pickup request</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/career">Carrer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 col-lg-3">
+                <div class="single-footer clearfix">
+                    <h2>{{ ___('Get In Touch') }}</h2>
+                    <ul class="list">
                         <li>
-                            <a href="https://www.facebook.com" target="_blank" class="social-facebook"
-                                data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                                <i class="fa fa-facebook"></i>
+                            <div class="icon"><i class="fa fa-location-arrow fa-2x"></i></div>
+                            <a class="text"  target="_blank" href="https://www.google.com/maps/place/{{ $company->address }}">
+                                <p>{{ $company->address }}</p>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.twitter.com" target="_blank" class="social-twitter"
-                                data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                                <i class="fa fa-twitter"></i>
+                            <div class="icon"><i class="fa fa-phone-square fa-2x"></i></div>
+                            <a class="text"  href="tel:{{ $company->phone }}" >
+                                <p>{{ $company->phone }}</p>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com" target="_blank" class="social-instagram"
-                                data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                                <i class="fa fa-instagram"></i>
-                            </a>
+                            <div class="icon"><i class="fa fa-fax fa-2x"></i></div>
+                            <div class="text">
+                                <p>FAX: {{ $company->fax }}</p>
+                            </div>
                         </li>
                         <li>
-                            <a href="https://www.google.com" target="_blank" class="social-google-plus"
-                                data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                                <i class="stm-google-plus"></i>
-                            </a>
+                            <div class="icon"><i class="fa fa-mail-forward fa-2x"></i></div>
+                            <div class="text">
+                                <p><a href="mailto:Customer.Service@ufs-eg.com">{{ $company->email }}</a></p>
+                            </div>
                         </li>
                         <li>
-                            <a href="https://www.vimeo.com" target="_blank" class="social-vimeo"
-                                data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                                <i class="fa fa-vimeo"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.linkedin.com" target="_blank" class="social-linkedin"
-                                data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                                <i class="fa fa-linkedin"></i>
+                            <div class="icon"><i class="fa fa-home fa-2x"></i></div>
+                            <a class="text" target="_blank" href="https://www.google.com/maps/place/{{ optional($company->city)->name }}-{{ optional($company->area)->name }}" >
+                                <p>{{ optional($company->city)->name }} - {{ optional($company->area)->name }}</p>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="copyright">
-                    Copyright © 2020-2021 Logistics Theme by <a href="http://dtcesolutions.com/" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">DTC ESolutions</a>. All
-                    rights reserved
-                </div>
             </div>
         </div>
     </div>
-</footer>
+</section>
+<!--end of footer area-->
+
+<!--   start copyright text area-->
+<div class="copyright-area">
+    <div class="container">
+        <div class="col-xs-12 col-sm-6 col-md-6 text-left">
+            <div class="footer-text">
+                <p>Copyright 2016, All Rights Reserved</p>
+            </div>
+        </div>
+        <div class="col-xs-12  col-sm-6 col-md-6 text-right">
+            <div class="footer-text">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-google-plus"></a>
+                <a href="#" class="fa fa-dribbble"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--    end of copyright text area-->
+
+<!--  jquery.min.js  -->
+<script src="{{asset('website/js/jquery.min.js')}}"></script>
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>--}}
+<!--    bootstrap.min.js-->
+<script src="{{asset('website/js/bootstrap.min.js')}}"></script>
+{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>--}}
+<!--    jquery.sticky.js-->
+<script src="{{asset('website/js/jquery.sticky.js')}}"></script>
+<!--  owl.carousel.min.js  -->
+<script src="{{asset('website/js/jquery.meanmenu.js')}}"></script>
+<script src="{{asset('website/js/owl.carousel.min.js')}}"></script>
+<!--  jquery.mb.YTPlayer.min.js   -->
+<script src="{{asset('website/js/jquery.mb.YTPlayer.min.js')}}"></script>
+<!--    slick.min.js-->
+<script src="{{asset('website/js/slick.min.js')}}"></script>
+<!--    jquery.nav.js-->
+<script src="{{asset('website/js/jquery.nav.js')}}"></script>
+<!--jquery waypoints js-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<!--    jquery counterup js-->
+<script src="{{asset('website/js/jquery.counterup.min.js')}}"></script>
+<!--    main.js-->
+<script src="{{asset('website/js/main.js')}}"></script>
+    @yield('script')
+    @if($errors->has('track_number'))
+        <script>
+            alert("{{$errors->first('track_number')}}")
+        </script>
+    @endif
+
+</body>
+
+</html>

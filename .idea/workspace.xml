@@ -22,13 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/service.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="composer.json" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -77,6 +71,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -323,9 +325,10 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -333,6 +336,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Eslam\UFS-Back\public\website\css" />
+      <recent name="F:\Eslam\UFS-Back\resources\lang" />
       <recent name="C:\Users\Eslam\Documents\GitHub\UFS-Back\public\js" />
       <recent name="C:\Users\Eslam\Documents\GitHub\UFS-Back\public\uploads\excel" />
       <recent name="C:\Users\Eslam\Documents\GitHub\UFS-Back\app\Helper" />
@@ -403,6 +408,26 @@
       <workItem from="1627961273965" duration="14000" />
       <workItem from="1628879104669" duration="3302000" />
       <workItem from="1628947237151" duration="1491000" />
+      <workItem from="1629463416182" duration="2336000" />
+      <workItem from="1629467353270" duration="69000" />
+      <workItem from="1629467600796" duration="1595000" />
+      <workItem from="1629469311125" duration="12047000" />
+      <workItem from="1629484591911" duration="16370000" />
+      <workItem from="1629535500398" duration="9067000" />
+      <workItem from="1629545351920" duration="1412000" />
+      <workItem from="1629547035845" duration="2389000" />
+      <workItem from="1629550631070" duration="31530000" />
+      <workItem from="1629654801734" duration="872000" />
+      <workItem from="1629655950610" duration="17371000" />
+      <workItem from="1629700221797" duration="10832000" />
+      <workItem from="1629713880997" duration="2094000" />
+      <workItem from="1629716160587" duration="6453000" />
+      <workItem from="1629738981054" duration="13744000" />
+      <workItem from="1629790824203" duration="4706000" />
+      <workItem from="1629818977824" duration="12149000" />
+      <workItem from="1629917686441" duration="5907000" />
+      <workItem from="1629924911204" duration="2889000" />
+      <workItem from="1629928476518" duration="151000" />
     </task>
     <servers />
   </component>
@@ -473,14 +498,9 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/website/awb_track.blade.php</url>
-          <line>4</line>
+          <url>file://$PROJECT_DIR$/resources/views/website/carrer.blade.php</url>
+          <line>41</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/website/home.blade.php</url>
-          <line>553</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
