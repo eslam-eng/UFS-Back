@@ -22,11 +22,13 @@
                 <div class="single-footer">
                     <h2>More links</h2>
                     <ul class="list">
-                        <li><a href="/about-us">about us.</a></li>
-                        <li><a href="/contact-us">contact us.</a></li>
-                        <li><a href="/request-pickup">pickup request</a></li>
-                        <li><a href="/services">Services</a></li>
-                        <li><a href="/career">Carrer</a></li>
+                        <li><a href="/">{{___('home')}}</a></li>
+                        <li><a href="/about-us">{{___('about')}}</a></li>
+                        <li><a href="/services">{{___('services')}}</a></li>
+                        <li><a href="/contact-us">{{___('contact')}}</a></li>
+                        <li><a href="/career">{{___('carrier')}}</a></li>
+                        <li><a href="/price-shipments">{{___('pricing')}}</a></li>
+                        <li><a href="/request-pickup">{{___('pick request')}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -77,16 +79,15 @@
     <div class="container">
         <div class="col-xs-12 col-sm-6 col-md-6 text-left">
             <div class="footer-text">
-                <p>Copyright 2016, All Rights Reserved</p>
+                <p>Copyright 2019, All Rights Reserved</p>
             </div>
         </div>
         <div class="col-xs-12  col-sm-6 col-md-6 text-right">
             <div class="footer-text">
                 <a href="#" class="fa fa-facebook"></a>
                 <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-linkedin"></a>
+                <a href="https://www.linkedin.com/in/eslam-elbadry-609548177" class="fa fa-linkedin"></a>
                 <a href="#" class="fa fa-google-plus"></a>
-                <a href="#" class="fa fa-dribbble"></a>
             </div>
         </div>
     </div>

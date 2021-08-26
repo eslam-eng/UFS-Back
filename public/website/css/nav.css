@@ -25,12 +25,18 @@
     background: #22313fd6 none repeat scroll 0 0;
     left: -132% !important;
 }
+
+.nav-item
+{
+    margin-bottom: 0 !important;
+}
 .dropdownMenu .nav-item a
 {
     display: block;
     background: none;
     border: none;
-    padding: 10px 35px;
+    padding: 20px 10px 30px 10px ;
+
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
 {
@@ -39,7 +45,7 @@
     background-color: #fff;
     border: 1px solid #2626c4 ;
     border-bottom-color: transparent;
-    height: 35px;
+    height: 40px;
 }
 .dropdownMenu p
 {

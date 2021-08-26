@@ -16,7 +16,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="about_us_content">
                         <p>UFS started working in Egypt since 2009, as a legal local courier company
-                            and powered by well Experienced key persons in sales and operation staff.
+                            and powered by well Experienced key persons in sales and operation staff.<br>
                             Our vision is to be the biggest local company in Egypt.</p>
 
                         <hr>
@@ -28,6 +28,7 @@
                             <li>A computerized system for tracking and communication.</li>
                         </ul>
 
+                        <hr>
                         <h2>SERVICE - FLEXIBILITY</h2>
                         <ul>
                             <li>Flexibility is one of our main strengths.</li>

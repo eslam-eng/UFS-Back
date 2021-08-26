@@ -5,8 +5,7 @@
     <style>
         .bosta
         {
-            margin-right: 30px;
-            margin-bottom: 30px;
+            margin-left: 40px !important;
         }
         .item_icon
         {
@@ -41,7 +40,7 @@
                         </div>
                         <div class="about_single_item_content">
                             <h4>E-Commerce Shop</h4>
-                            <p class="ml">Easily connect your Shopify or WooCommerce Website with Bosta Plugins and deliver what you love, always on schedule.</p>
+                            <p class="ml">Easily connect your Shopify or WooCommerce Website with UFS Plugins and deliver what you love, always on schedule.</p>
                         </div>
                     </div>
                 </div>
@@ -52,7 +51,7 @@
                         </div>
                         <div class="about_single_item_content">
                             <h4>Manage COD</h4>
-                            <p class="ml">Manage your cash flow by monitoring collected cash and pending invoices through Bosta cash collection service.</p>
+                            <p class="ml">Manage your cash flow by monitoring collected cash and pending invoices through UFS cash collection service.</p>
                         </div>
                     </div>
                 </div>
@@ -108,9 +107,9 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3 col-md-offset-1 text-center">
-                            <div class="single_count">
-                                <h1 class="counter">10000</h1>+
-                                <h5>Product delivered per month</h5>
+                            <div class="single_count counterplus-area">
+                                <h1 class="counter">10000</h1>
+                                <h5>More Than 10000 Product delivered per month</h5>
                             </div>
                         </div>
                     </div>
@@ -309,7 +308,7 @@
                         </div>
                         <div class="about_single_item_content">
                             <h4>Customer Returns</h4>
-                            <p>From second thoughts to total satisfaction, Bosta handles customer returns.</p>
+                            <p>From second thoughts to total satisfaction, UFS handles customer returns.</p>
                         </div>
                     </div>
                 </div>
@@ -320,7 +319,7 @@
                         </div>
                         <div class="about_single_item_content">
                             <h4>Cash Collection</h4>
-                            <p>Real-time insights on your cash collections through Bosta cash collection service.</p>
+                            <p>Real-time insights on your cash collections through UFS cash collection service.</p>
                         </div>
                     </div>
                 </div>

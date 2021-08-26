@@ -5,11 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fast Delivery</title>
+    <title>UFS</title>
+    <link rel="icon" href="{{asset('uploads/company/161752858777432.png')}}">
     <!--  bootstrap css -->
     <link rel="stylesheet" href="{{asset('website/css/bootstrap.min.css')}}">
     <!--  font Awesome Css  -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{asset('website/css/font-awesome.min.css')}}" rel="stylesheet">
     <!--    stylesheet for fonts-->
     <link href="{{asset('website/fonts/stylesheet.css')}}" rel="stylesheet">
     <!-- Reset css-->

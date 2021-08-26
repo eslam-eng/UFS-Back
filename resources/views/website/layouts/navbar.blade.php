@@ -57,11 +57,11 @@
                                     <div class="about_single_item">
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-                                            <li class="nav-item active" style="margin-bottom: 0px;">
-                                                <a class="nav-link" id="profile-tab" style="padding-bottom: 30px" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Track Domestic</a>
+                                            <li class="nav-item active">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Track Domestic</a>
                                             </li>
-                                            <li class="nav-item" style="margin-bottom: 0px;">
-                                                <a class="nav-link" id="contact-tab" style="margin-top: 15px;padding-bottom: 30px" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Track International</a>
+                                            <li class="nav-item" style="width: 165px">
+                                                <a class="nav-link" id="contact-tab" style="margin-top: 15px" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Track International</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content" id="myTabContent">
@@ -93,8 +93,8 @@
                         <li class="current-menu-item"><a role="button" class="btn" style="color: #fff"><i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
                                 Login<span class="caret"></span></a>
                             <ul class="dropdownMenu">
-                                <li><a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page">Login To Dashboard</a></li>
-                                <li><a href="index-2.html">Login To demo</a></li>
+                                <li><a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page">{{___('go to system')}}</a></li>
+                                <li><a href="https://info.ufs-eg.com/"> {{ ___('Go to System2') }}</a></li>
 
                             </ul>
 
