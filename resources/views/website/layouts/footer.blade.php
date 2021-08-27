@@ -126,4 +126,8 @@
 
 </body>
 
+<script>
+    $('#preloader').hide();
+</script>
+
 </html>
