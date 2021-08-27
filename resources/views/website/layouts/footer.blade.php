@@ -112,7 +112,7 @@
 <!--    jquery.nav.js-->
 <script src="{{asset('website/js/jquery.nav.js')}}"></script>
 <!--jquery waypoints js-->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="{{ assset('/js/waypoints.min.js') }}"></script>
 <!--    jquery counterup js-->
 <script src="{{asset('website/js/jquery.counterup.min.js')}}"></script>
 <!--    main.js-->
