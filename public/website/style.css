@@ -378,6 +378,9 @@ nav.navbar {
     text-transform: uppercase;
 }
 
+.about_us_content p {
+    color: #000;
+}
 .about_us_content > a span {
     padding-left: 10px;
 }

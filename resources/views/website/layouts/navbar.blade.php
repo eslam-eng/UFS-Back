@@ -36,7 +36,7 @@
                         <a href="/"><img src="{{asset('uploads/company/161752858777432.png')}}" alt="ufs"></a>
                     </div>
                 </div>
-                <div class="col-md-8 col-xs-6  col-sm-7 col-lg-offset-1 col-lg-7 mobMenuCol" style="margin-top: 0px;">
+                <div class="col-md-10 col-xs-6  col-sm-7 col-lg-offset-1 col-lg-7 mobMenuCol" style="margin-top: 0px;">
                     <nav class="navbar">
                         <ul class="nav navbar-nav navbar-right menu">
                             <li><a href="/">{{___('home')}}</a></li>
@@ -85,22 +85,33 @@
                                     </div>
                                 </ul>
                             </li>
+                            <ul class="nav navbar-nav menu" style="border-left: 2px solid #eee">
+                                <li class="current-menu-item"><a role="button" class="btn" style="color: #fff;margin-left: 10px"><i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+                                        Login<span class="caret"></span></a>
+                                    <ul class="dropdownMenu">
+                                        <li><a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page">{{___('go to system')}}</a></li>
+                                        <li><a href="https://info.ufs-eg.com/"> {{ ___('Go to System2') }}</a></li>
+
+                                    </ul>
+
+                                </li>
+                            </ul>
                         </ul>
                     </nav>
                 </div>
-                <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 signup" style="margin-top: 25px;">
-                    <ul class="nav navbar-nav menu">
-                        <li class="current-menu-item"><a role="button" class="btn" style="color: #fff"><i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
-                                Login<span class="caret"></span></a>
-                            <ul class="dropdownMenu">
-                                <li><a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page">{{___('go to system')}}</a></li>
-                                <li><a href="https://info.ufs-eg.com/"> {{ ___('Go to System2') }}</a></li>
+{{--                <div class="col-md-2 col-sm-3 col-xs-4 col-lg-2 signup" style="margin-top: 25px;">--}}
+{{--                    <ul class="nav navbar-nav menu">--}}
+{{--                        <li class="current-menu-item"><a role="button" class="btn" style="color: #fff"><i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>--}}
+{{--                                Login<span class="caret"></span></a>--}}
+{{--                            <ul class="dropdownMenu">--}}
+{{--                                <li><a href="https://universal.ufs-eg.com/" target="_blank" aria-current="page">{{___('go to system')}}</a></li>--}}
+{{--                                <li><a href="https://info.ufs-eg.com/"> {{ ___('Go to System2') }}</a></li>--}}
 
-                            </ul>
+{{--                            </ul>--}}
 
-                        </li>
-                    </ul>
-                </div>
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

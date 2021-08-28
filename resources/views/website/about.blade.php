@@ -79,15 +79,17 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-area-chart fa-5x"></i>
+                                    <i class="fa fa-area-chart fa-4x"></i>
                                 </div>
-                                <div class="col-xs-9 text-right" >
+                                <div class="col-xs-9 text-left" >
                                     <div class="huge">
                                         <h4>COVERAGE</h4>
                                         <br/>
                                     </div>
                                     <div class="coverage">We have established a full network of couriers and branches to deliver all throughout the nation.</div>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -98,9 +100,9 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-globe fa-5x"></i>
+                                    <i class="fa fa-globe fa-4x"></i>
                                 </div>
-                                <div class="col-xs-9 text-right">
+                                <div class="col-xs-9 text-left">
                                     <div class="huge">
                                         <h4>SOFTWARE</h4>
                                         <br/>
@@ -117,9 +119,9 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-smile-o fa-5x"></i>
+                                    <i class="fa fa-smile-o fa-4x"></i>
                                 </div>
-                                <div class="col-xs-9 text-right">
+                                <div class="col-xs-9 text-left">
                                     <div class="huge">
                                         <h4>CHALLENGE</h4>
                                         <br/>

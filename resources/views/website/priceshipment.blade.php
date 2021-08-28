@@ -48,7 +48,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-5 col-sm-10">
+                                <div class="col-md-10 col-sm-10">
                                     <label>{{___('phone')}}*</label>
                                     <input type="text" class="form-control" name="phone" id="phone_number" pattern="(01)[0-9]{9}" required="required" placeholder="{{___('phone number')}}...">
                                     <div>
@@ -59,18 +59,6 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-5 col-sm-10">
-                                    <label>{{___('email')}}</label>
-                                    <input type="text" class="form-control" name="email" id="name" placeholder="{{___('email')}}...">
-                                    <div>
-                                        @if($errors->has('email'))
-                                            <p class="text-danger">
-                                                <b>{{$errors->first('email')}}</b>
-                                            </p>
-                                        @endif
-                                    </div>
-                                </div>
-
                                 <div class="col-md-10 col-sm-10">
                                     <label>{{___('from')}}*</label>
                                     <div class="selectdiv">
