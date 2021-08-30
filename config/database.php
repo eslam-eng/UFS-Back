@@ -63,6 +63,27 @@ return [
             ]) : [],
         ],
 
+//        second database connection
+        'mysql2' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL_SECONED'),
+            'host' => env('DB_HOST_SECONED', '127.0.0.1'),
+            'port' => env('DB_PORT_SECONED', '3306'),
+            'database' => env('DB_DATABASE_SECONED', 'forge'),
+            'username' => env('DB_USERNAME_SECONED', 'forge'),
+            'password' => env('DB_PASSWORD_SECONED', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
