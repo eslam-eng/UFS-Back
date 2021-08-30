@@ -348,6 +348,7 @@ nav.navbar {
 
 .about_single_item_content {
     padding-left: 85px;
+    color: #000;
 }
 
 .about_single_item_content h4 {
@@ -674,7 +675,7 @@ nav.navbar {
 }
 
 .pricing-desc {
-    color: #919191;
+    color: #000;
     font-weight: 300;
     line-height: 28px;
 }

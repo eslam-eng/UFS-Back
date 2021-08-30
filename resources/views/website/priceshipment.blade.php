@@ -9,18 +9,30 @@
         {
             margin:10px 0 10px 0;
         }
-        .calculate_area {
-            background: url(/uploads/images/calcwhite.jpg) no-repeat center center / cover !important;
+        #tracking
+        {
+            background: #eee;
+            color: #000;
         }
+
     </style>
     <section class="calculate_area" id="tracking">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-sm-10">
-                    <div class="calculate_title">
-                        <h2>UFS Courier Service</h2>
-                        <p>Calculate Your shipment price | Thank you for choosing UFS. We are glad to serve you </p>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="about_single_item">
+                        <div class="item_icon">
+                            <img src="{{asset('uploads/company/161752858777432.png')}}" alt="item">
+                        </div>
+                        <div class="about_single_item_content">
+                            <h2>UFS Courier Service</h2><br>
+                            <p>Calculate Your shipment price | Thank you for choosing UFS. We are glad to serve you </p>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-sm-10">
                     <div class="calculate_form">
                         <form action="{{route('calc-price')}}" id="contact" method="post">
                             {{csrf_field()}}
@@ -113,7 +125,7 @@
                                         <div class="card">
                                             <div class="card-header" id="headingTwo">
                                                 <h2 class="mb-0">
-                                                    <button class="btn  text-left collapsed" style="margin-left: 15px" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    <button class="btn btn-success text-left collapsed" style="margin-left: 15px" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                         {{___('dimensions')}}
                                                     </button>
                                                 </h2>

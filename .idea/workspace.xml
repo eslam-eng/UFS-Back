@@ -25,7 +25,17 @@
     <list default="true" id="7d44dd8a-171e-4639-9e9c-60c0a6e09ae1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/website/AwbTrackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/website/AwbTrackController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/images/calcprice.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/images/calcwhite.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/images/ecommercce2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/website/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/website.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/website.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/website.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/website.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/awb_track.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/awb_track.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/calcprice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/calcprice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/priceshipment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/priceshipment.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,7 +452,7 @@
       <workItem from="1630088777448" duration="601000" />
       <workItem from="1630152082364" duration="3210000" />
       <workItem from="1630326646756" duration="37000" />
-      <workItem from="1630328972843" duration="6373000" />
+      <workItem from="1630328972843" duration="10939000" />
     </task>
     <servers />
   </component>

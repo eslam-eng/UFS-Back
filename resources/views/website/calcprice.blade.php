@@ -2,7 +2,7 @@
 @section('content')
     @include('website.layouts.fixednavbar')
     <!--start breadcrumb area-->
-    @include('website.layouts.breadcrumb',['head'=>trans('website.home.about_us'),'mainlink'=>trans('website.home.home'),'childlink'=>trans('website.home.about_us')])
+    @include('website.layouts.breadcrumb',['head'=>trans('website.shipmentdata'),'mainlink'=>trans('website.home.home'),'childlink'=>trans('website.shipmentdata')])
     <!--    start contact page content-->
     <style>
        .contact-page-area
@@ -70,6 +70,9 @@
                                     <div class="ship-header">{{___('phone')}}:<span class="ship-data">{{$shipmentdata['phone']}}</span></div>
                                     <div class="ship-header">{{___('date')}}:<span class="ship-data">{{date("Y-m-d")}}</span></div>
 
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="{{asset('uploads/images/personcalc.jpg')}}">
                                 </div>
                             </div>
                         </div>

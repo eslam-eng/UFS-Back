@@ -17,6 +17,7 @@ return [
     'explore_import_service'=>'Explore Import Service',
     'carrier'=>'Carrier',
     'pricing'=>'Pricing',
+    'shipmentdata'=>'Shipment Price',
     'home'=>[
         'home' => 'Home',
         'about_us' => 'About Us',

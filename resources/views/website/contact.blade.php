@@ -4,7 +4,7 @@
     <!--start breadcrumb area-->
     @include('website.layouts.breadcrumb',['head'=>trans('website.contact.contact_us'),'mainlink'=>trans('website.home.home'),'childlink'=>trans('website.contact.contact_us')])
     <!--    start contact page content-->
-    <section class="contact-page-area">
+    <section class="contact-page-area" style="background: #eee">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6 text-left">
@@ -70,7 +70,7 @@
                             <br>
                             <textarea name="messages" placeholder=" {{trans('website.contact.message')}}..."></textarea>
                             <input type="submit" value="{{trans('website.contact.submit')}}" class="btn btn-primary btn-sm">
-                            <input type="reset" value="{{trans('website.contact.reset')}}" class="btn btn-warning" style="width: 30%;border-radius: 15px">
+                            <input type="reset" value="{{trans('website.contact.reset')}}" class="btn btn-warning" style="width: 35%;border-radius: 15px;font-size: 20px;color: #000;">
                         </form>
                     </div>
                 </div>

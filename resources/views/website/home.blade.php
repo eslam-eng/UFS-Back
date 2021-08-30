@@ -13,7 +13,7 @@
         }
         .container-fluid .ml
         {
-            margin: 0 40px 10px;
+            margin: 0 44px 10px;
         }
     </style>
     <!--   start about top area-->

@@ -26,7 +26,7 @@ class AwbTrackController extends Controller
             $resource = $info_resource->where('code',$request->track_number)->first();
             if (!$resource)
                 return back()->withErrors(['track_number'=>___('Awb does not exsist')]);
-            
+
         }
 
 

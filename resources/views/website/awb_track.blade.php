@@ -1,6 +1,13 @@
 @extends('website.layouts.master')
 @section('style')
     <link rel="stylesheet" href="{{asset('website/css/trackAwb.css')}}"/>
+    <style>
+        .receiverdata
+        {
+            color: #0304c1;
+            font-weight: bold;
+        }
+    </style>
 @endsection
 @section('content')
     @include('website.layouts.fixednavbar')
@@ -64,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body receiverdata">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-sm-12">

@@ -18,6 +18,7 @@ return [
     'explore_import_service'=>'اقرأ المزيد',
     'carrier'=>'التوظيف',
     'pricing'=>'الاسعار',
+    'shipmentdata'=>'بيانات سعر الشحنة',
     'home'=>[
         'home' => 'الرئيسيه',
         'about_us' => 'معلومات عنا',
